@@ -6,6 +6,16 @@ public class Movie
     private String description;
     private String title;
     private int runtime;
+    private int startDate;
+    private int endDate;
+
+    public int getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(int endDate) {
+        this.endDate = endDate;
+    }
 
     public Movie(String movieID)
     {
@@ -15,12 +25,14 @@ public class Movie
         this.runtime = 0; //in minutes
     }
 
-    public Movie(String movieID, String description, String title, int runtime)
+    public Movie(String movieID, String description, String title, int runtime, int startDate, int endDate)
     {
         this.movieID = movieID;
         this.description = description;
         this.title = title;
         this.runtime = runtime;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public String getMovieID()
@@ -41,6 +53,14 @@ public class Movie
     public int getRuntime()
     {
         return runtime;
+    }
+
+    public int getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(int startDate) {
+        this.startDate = startDate;
     }
 
     public String toString()
