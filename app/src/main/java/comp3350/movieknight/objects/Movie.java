@@ -12,7 +12,7 @@ public class Movie
         this.movieID = movieID;
         this.description = null;
         this.title = null;
-        this.runtime = 0;
+        this.runtime = 0; //in minutes
     }
 
     public Movie(String movieID, String description, String title, int runtime)
@@ -61,7 +61,6 @@ public class Movie
                 result = true;
             }
         }
-
         return result;
     }
 }
