@@ -1,19 +1,27 @@
 package comp3350.movieknight.Objects;
 
+import java.util.ArrayList;
+
 public class Showing {
+    private String showingID;
     private String movieID;
     private String theatreID;
     private String showingTime;
+    private ArrayList<Boolean> seats;
 
-    public Showing(String movieID, String theatreID, int hour, int minute) {
-        if (movieID != null && theatreID != null && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
+    public Showing(String showingID, String movieID, String theatreID, int hour, int minute) {
+        if (showingID != null && movieID != null && theatreID != null && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
+            this.showingID = showingID;
             this.movieID = movieID;
             this.theatreID = theatreID;
             showingTime = hour + ":" + minute;
+            seats = new ArrayList<Boolean>();
         } else {
             throw new IllegalArgumentException("Invalid showing attributes");
         }
     }
+
+    public String getShowingID() { return showingID; }
 
     public String getMovieID()
     {
@@ -30,9 +38,11 @@ public class Showing {
         return showingTime;
     }
 
+    public ArrayList<Boolean> getSeats() { return seats; }
+
     public String toString()
     {
-        return "Movie: " + movieID + ", Theatre: " + theatreID + ", Showing Time: " + showingTime;
+        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing Time: " + showingTime;
     }
 
     public boolean equals(Object object)
