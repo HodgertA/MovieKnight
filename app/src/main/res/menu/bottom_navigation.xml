@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_movie_list"
+        android:icon="@drawable/ic_baseline_local_movies_24"
+        android:title="Movies" />
+
+    <item
+        android:id="@+id/nav_cart"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Cart" />
+
+</menu>
