@@ -1,6 +1,8 @@
-package comp3350.movieknight.objects;
+package comp3350.movieknight.tests.objects;
 
 import junit.framework.TestCase;
+
+import comp3350.movieknight.objects.Showing;
 
 public class ShowingTest extends TestCase
 {
@@ -12,6 +14,7 @@ public class ShowingTest extends TestCase
     public void testConstructor()
     {
         Showing showing1 = new Showing("1","1", "1",  2,15);
+        assertNotNull(showing1);
         assertEquals("1", showing1.getShowingID());
         assertEquals("1", showing1.getMovieID() );
         assertEquals("1", showing1.getTheatreID());
@@ -19,6 +22,7 @@ public class ShowingTest extends TestCase
         assertTrue(showing1.getSeats().isEmpty());
 
         Showing showing2 = new Showing("","", "",  0,0);
+        assertNotNull(showing2);
         assertEquals("", showing2.getShowingID());
         assertEquals("", showing2.getMovieID() );
         assertEquals("", showing2.getTheatreID());
