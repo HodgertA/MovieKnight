@@ -65,16 +65,15 @@ public class Ticket {
         return ticketID;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Ticket{" +
-//                "ticketID='" + ticketID + '\'' +
-//                ", seatNum=" + seatNum +
-//                ", userID='" + userID + '\'' +
-//                ", showingID='" + showingID + '\'' +
-//                ", theatreID='" + theatreID + '\'' +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Ticket: " +
+                "ticketID='" + ticketID + '\'' +
+                ", seatNum=" + seatNum +
+                ", userID='" + userID + '\'' +
+                ", showingID='" + showingID + '\'' +
+                ", theatreID='" + theatreID + '\'';
+    }
 
 
 
