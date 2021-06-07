@@ -1,4 +1,4 @@
-package comp3350.movieknight.Objects;
+package comp3350.movieknight.objects;
 
 import junit.framework.TestCase;
 
