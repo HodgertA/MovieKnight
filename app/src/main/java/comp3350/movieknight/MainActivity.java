@@ -1,36 +1,74 @@
 package comp3350.movieknight;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
-import comp3350.movieknight.ui.main.SectionsPagerAdapter;
-import comp3350.movieknight.databinding.ActivityMainBinding;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private BottomNavigationView bottomNav;
+    private ViewPager2 viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        bottomNav = findViewById(R.id.bottom_nav);
+        viewPager = findViewById(R.id.view_pager);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
+        setUpBottomNavigation();
+        setUpViewPager();
     }
+
+    private void setUpBottomNavigation()
+    {
+        bottomNav.setOnNavigationItemSelectedListener((item) -> {
+            switch(item.getItemId()) {
+                case R.id.nav_movie_list:
+                    viewPager.setCurrentItem(0);
+                    break;
+                case R.id.nav_cart:
+                    viewPager.setCurrentItem(1);
+                    break;
+            }
+            return true;
+        });
+    }
+
+    private void setUpViewPager()
+    {
+        FragmentStateAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
+        viewPager.setAdapter(viewPagerAdapter);
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        bottomNav.getMenu().findItem(R.id.nav_movie_list).setChecked(true);
+                        break;
+                    case 1:
+                        bottomNav.getMenu().findItem(R.id.nav_cart).setChecked(true);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                super.onPageScrollStateChanged(state);
+            }
+        });
+    }
+
 }
