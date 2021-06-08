@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation;
+package comp3350.movieknight.presentation.adapters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
