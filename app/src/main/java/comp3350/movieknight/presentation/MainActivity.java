@@ -1,4 +1,6 @@
-package comp3350.movieknight;
+package comp3350.movieknight.presentation;
+
+import comp3350.movieknight.R;
 
 import android.os.Bundle;
 import android.widget.Toast;
