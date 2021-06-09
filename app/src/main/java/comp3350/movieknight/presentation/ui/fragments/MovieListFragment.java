@@ -40,26 +40,20 @@ public class MovieListFragment extends Fragment {
         movies = new ArrayList<>();
 
         String result = accessMovies.getMoviesInTheatres(movies);
+        if (result != null)
+        {
+            //Messages.fatalError(this, result);
+            //need to add error message
+        }
+        else {
 
-        //movies = new ArrayList<>();
+            movieListRecyclerView = view.findViewById(R.id.movie_list_recycler_view);
+            movieListRecyclerView.setLayoutManager(new GridLayoutManager(context, GRID_PER_ROW));
+        }
 
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-//        movies.add(new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0));
-
-        movieListRecyclerView = view.findViewById(R.id.movie_list_recycler_view);
         MovieListRecyclerViewAdapter adapter = new MovieListRecyclerViewAdapter(context, movies);
-        movieListRecyclerView.setLayoutManager(new GridLayoutManager(context, GRID_PER_ROW));
         movieListRecyclerView.setAdapter(adapter);
+
         return view;
     }
 

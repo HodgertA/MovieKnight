@@ -1,5 +1,6 @@
 package comp3350.movieknight.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.movieknight.application.Main;
@@ -15,7 +16,7 @@ public class AccessMovies {
         dataAccess = (DatabaseStub) Services.getDataAccess(Main.dbName);
     }
 
-    public String getMoviesInTheatres(List<Movie> movies)
+    public String getMoviesInTheatres(ArrayList<Movie> movies)
     {
         dataAccess.getMovies(movies);
         return FilterList.filterMoviesInTheatres(movies);
