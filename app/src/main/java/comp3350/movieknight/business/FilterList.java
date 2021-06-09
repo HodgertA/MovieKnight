@@ -13,8 +13,8 @@ public class FilterList {
         return null;
     }
 
-    public static ArrayList<Showing> filterShowingsByDate(List<Showing> allMovies){
+    public static ArrayList<Showing> filterShowingsByDate(ArrayList<Showing> allMovies){
 
-        return null;
+        return allMovies;
     }
 }
