@@ -14,9 +14,10 @@ public class AccessShowing {
     public AccessShowing(){
         dataAccess = (DatabaseStub) Services.getDataAccess(Main.dbName);
     }
-    public ArrayList<Showing> getShowingForMovie(Movie movie){
 
-        ArrayList<Showing> showingList;
+    public String getShowingForMovie(ArrayList<Showing> showingList,Movie movie){
+
+
         showingList= dataAccess.getMovieShowings(movie);
         return FilterList.filterShowingsByDate(showingList);
 
