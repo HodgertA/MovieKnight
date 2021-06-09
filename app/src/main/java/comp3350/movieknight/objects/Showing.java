@@ -21,8 +21,6 @@ public class Showing {
             this.movieID = movieID;
             this.theatreID = theatreID;
 
-            //---------------------
-            //not sure it is 100% working
             try{
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
             this.showingDay=format.parse(year+"-"+month+"-"+date+" "+hour+":"+minute);
