@@ -1,20 +1,21 @@
 package comp3350.movieknight.objects;
 
+import java.util.Calendar;
+
 public class Movie
 {
     private String movieID;
     private String description;
     private String title;
     private int runtime;
-    private int startDate;
-    private int endDate;
+    private Calendar lastShowDate;
 
-    public int getEndDate() {
-        return endDate;
+    public Calendar getLastShowDate() {
+        return lastShowDate;
     }
 
-    public void setEndDate(int endDate) {
-        this.endDate = endDate;
+    public void setEndDate(Calendar endDate) {
+        this.lastShowDate = endDate;
     }
 
     public Movie(String movieID)
@@ -25,14 +26,14 @@ public class Movie
         this.runtime = 0; //in minutes
     }
 
-    public Movie(String movieID, String description, String title, int runtime, int startDate, int endDate)
+    public Movie(String movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
     {
         this.movieID = movieID;
         this.description = description;
         this.title = title;
         this.runtime = runtime;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.lastShowDate = Calendar.getInstance();
+        this.lastShowDate.set(endYear, endMonth-1, endDay);
     }
 
     public String getMovieID()
@@ -53,14 +54,6 @@ public class Movie
     public int getRuntime()
     {
         return runtime;
-    }
-
-    public int getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(int startDate) {
-        this.startDate = startDate;
     }
 
     public String toString()

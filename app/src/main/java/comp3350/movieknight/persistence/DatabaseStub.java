@@ -33,15 +33,15 @@ public class DatabaseStub {
         //not starting off with any tickets generated
 
         movies = new ArrayList<Movie>();
-        movie = new Movie("1", "", "The Bee Movie", 2, 0, 0);
+        movie = new Movie("1", "", "The Bee Movie", 120, 2021, 6,8);
         movies.add(movie);
-        movie = new Movie("2", "", "Finding Nemo", 2, 0, 0);
+        movie = new Movie("2", "", "Finding Nemo", 120, 2022, 6,9);
         movies.add(movie);
-        movie = new Movie("3", "", "Monsters Inc.", 2, 0, 0);
+        movie = new Movie("3", "", "Monsters Inc.", 120, 2022, 6,7);
         movies.add(movie);
-        movie = new Movie("4", "", "Ice Age", 2, 0, 0);
+        movie = new Movie("4", "", "Ice Age", 120, 2021, 7,26);
         movies.add(movie);
-        movie = new Movie("5", "", "Shrek", 2, 0, 0);
+        movie = new Movie("5", "", "Shrek", 120, 2021, 7,26);
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();
