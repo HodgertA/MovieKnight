@@ -22,7 +22,7 @@ public class Showing {
             this.theatreID = theatreID;
 
             //---------------------
-            //not sure is it working
+            //not sure it is 100% working
             try{
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
             this.showingDay=format.parse(year+"-"+month+"-"+date+" "+hour+":"+minute);
@@ -48,33 +48,32 @@ public class Showing {
         return theatreID;
     }
 
-//    public String getShowingTime()
-//    {
-//        return showingTime;
-//    }
+    public Date getShowingDay() {
+        return showingDay;
+    }
 
     public ArrayList<Boolean> getSeats() { return seats; }
 
-//    public String toString()
-//    {
-//        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing Time: " + showingTime;
-//    }
-//
-//    public boolean equals(Object object)
-//    {
-//        boolean result = false;
-//        Showing showing;
-//
-//        if (object instanceof Showing)
-//        {
-//            showing = (Showing) object;
-//            if (((showing.movieID == null && movieID == null) || (showing.movieID != null && showing.movieID.equals(movieID)))
-//                && ((showing.theatreID == null  && theatreID == null)  || (showing.theatreID != null  && showing.theatreID.equals(theatreID)))
-//                && ((showing.showingTime == null && showingTime == null) || (showing.showingTime != null && showing.showingTime.equals(showingTime))))
-//            {
-//                result = true;
-//            }
-//        }
-//        return result;
-//    }
+    public String toString()
+    {
+        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing Time: " + showingDay;
+    }
+
+    public boolean equals(Object object)
+    {
+        boolean result = false;
+        Showing showing;
+
+        if (object instanceof Showing)
+        {
+            showing = (Showing) object;
+            if (((showing.movieID == null && movieID == null) || (showing.movieID != null && showing.movieID.equals(movieID)))
+                && ((showing.theatreID == null  && theatreID == null)  || (showing.theatreID != null  && showing.theatreID.equals(theatreID)))
+                && ((showing.showingDay == null && showingDay == null) || (showing.showingDay != null && showing.showingDay.equals(showingDay))))
+            {
+                result = true;
+            }
+        }
+        return result;
+    }
 }
