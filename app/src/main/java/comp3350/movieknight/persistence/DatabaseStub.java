@@ -161,9 +161,9 @@ public class DatabaseStub {
         return null;
     }
 
-    public ArrayList<Showing> getMovieShowings(Movie movie)
+    public String getMovieShowings(ArrayList<Showing> showingList,Movie movie)
     {
-        ArrayList<Showing> result = new ArrayList<Showing>();
+
         Showing curr;
 
         for (int counter = 0; counter < showings.size(); counter++)
@@ -171,10 +171,10 @@ public class DatabaseStub {
             curr = showings.get(counter);
             if (curr.getMovieID().equals(movie.getMovieID()))
             {
-                result.add(curr);
+                showingList.add(curr);
             }
         }
-        return result;
+        return null;
     }
 
     public ArrayList<Showing> getTheatreShowings(Showing showing)
