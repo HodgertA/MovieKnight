@@ -1,6 +1,7 @@
 package comp3350.movieknight.presentation;
 
 import comp3350.movieknight.R;
+import comp3350.movieknight.application.Main;
 import comp3350.movieknight.presentation.adapters.ViewPagerAdapter;
 
 import android.os.Bundle;
@@ -19,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Main.startUp();
+
         setContentView(R.layout.activity_main);
 
         bottomNav = findViewById(R.id.bottom_nav);
