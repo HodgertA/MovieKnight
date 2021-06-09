@@ -15,7 +15,7 @@ public class Showing {
 
     private ArrayList<Boolean> seats;
 
-    public Showing(String showingID, String movieID, String theatreID, int year,int month,int date,int hour, int minute) throws ParseException {
+    public Showing(String showingID, String movieID, String theatreID, int year,int month,int date,int hour, int minute) {
         if (showingID != null && movieID != null && theatreID != null && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
             this.showingID = showingID;
             this.movieID = movieID;
@@ -23,8 +23,12 @@ public class Showing {
 
             //---------------------
             //not sure is it working
+            try{
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm");
             this.showingDay=format.parse(year+"-"+month+"-"+date+" "+hour+":"+minute);
+            }catch (ParseException e){
+
+            }
 
             seats = new ArrayList<Boolean>();
         } else {

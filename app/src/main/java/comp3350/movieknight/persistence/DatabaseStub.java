@@ -49,7 +49,6 @@ public class DatabaseStub {
         theatre = new Theatre(1, 12);
         theatres.add(theatre);
 
-        try {
             showings = new ArrayList<Showing>();
             showing = new Showing("1", "1", "1", 2021, 1, 3, 8, 0);
             showings.add(showing);
@@ -65,9 +64,7 @@ public class DatabaseStub {
             showings.add(showing);
             showing = new Showing("9", "5", "1", 2021, 1, 3, 8, 0);
             showings.add(showing);
-        }catch (ParseException e){
 
-        }
 
         users = new ArrayList<User>();
         user = new User("1", "Default User");
