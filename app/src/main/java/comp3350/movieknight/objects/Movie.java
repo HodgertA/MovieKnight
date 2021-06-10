@@ -20,20 +20,28 @@ public class Movie
 
     public Movie(int movieID)
     {
-        this.movieID = movieID;
-        this.description = null;
-        this.title = null;
-        this.runtime = 0; //in minutes
+        if (movieID >= 0) {
+            this.movieID = movieID;
+            this.description = null;
+            this.title = null;
+            this.runtime = 0; //in minutes
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public Movie(int movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
     {
-        this.movieID = movieID;
-        this.description = description;
-        this.title = title;
-        this.runtime = runtime;
-        this.lastShowDate = Calendar.getInstance();
-        this.lastShowDate.set(endYear, endMonth-1, endDay);
+        if (movieID >= 0 && runtime >= 0 && endMonth > 0 && endMonth <=12 && endDay > 0 && endDay <= 31) {
+            this.movieID = movieID;
+            this.description = description;
+            this.title = title;
+            this.runtime = runtime;
+            this.lastShowDate = Calendar.getInstance();
+            this.lastShowDate.set(endYear, endMonth-1, endDay);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getMovieID()
