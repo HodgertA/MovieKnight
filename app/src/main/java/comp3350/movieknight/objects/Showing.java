@@ -21,7 +21,7 @@ public class Showing {
             this.movieID = movieID;
             this.theatreID = theatreID;
             this.showingDate =Calendar.getInstance();
-            this.showingDate.set(year,month,date,hour,minute);
+            this.showingDate.set(year,month-1,date,hour,minute);
             this.showingTime=hour+(minute/100.0);
 
         } else {
