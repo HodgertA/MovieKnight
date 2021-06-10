@@ -5,10 +5,13 @@ public class Theatre
     private int theatreNumber;
     private int numberOfSeatsInRoom;
 
-    public Theatre(int theatreNumber, int numberOfSeatsInRoom)
-    {
-        this.theatreNumber = theatreNumber;
-        this.numberOfSeatsInRoom =  numberOfSeatsInRoom;
+    public Theatre(int theatreNumber, int numberOfSeatsInRoom) {
+        if (theatreNumber >= 0 && numberOfSeatsInRoom > 0) {
+            this.theatreNumber = theatreNumber;
+            this.numberOfSeatsInRoom = numberOfSeatsInRoom;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getTheatreNumber() { return (theatreNumber); }
