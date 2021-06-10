@@ -3,6 +3,7 @@ package comp3350.movieknight.objects;
 public class Movie
 {
     private String movieID;
+    private String poster;
     private String description;
     private String title;
     private int runtime;
@@ -20,19 +21,29 @@ public class Movie
     public Movie(String movieID)
     {
         this.movieID = movieID;
+
         this.description = null;
         this.title = null;
         this.runtime = 0; //in minutes
     }
 
-    public Movie(String movieID, String description, String title, int runtime, int startDate, int endDate)
+    public Movie(String movieID,String poster, String description, String title, int runtime, int startDate, int endDate)
     {
         this.movieID = movieID;
+        this.poster = poster;
         this.description = description;
         this.title = title;
         this.runtime = runtime;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public String getMovieID()

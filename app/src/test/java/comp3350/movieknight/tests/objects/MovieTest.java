@@ -33,7 +33,7 @@ public class MovieTest extends TestCase
 
         System.out.println("\nStarting testMovieConstructor2");
 
-        movie = new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0);
+        movie = new Movie("123","", "A movie about a bee", "The Bee Movie", 95, 0, 0);
         assertNotNull(movie);
         assertEquals("123", movie.getMovieID());
         assertEquals("A movie about a bee", movie.getDescription());
@@ -49,7 +49,7 @@ public class MovieTest extends TestCase
 
         System.out.println("\nStarting testToString");
 
-        movie = new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0);
+        movie = new Movie("123","", "A movie about a bee", "The Bee Movie", 95, 0, 0);
         assertNotNull(movie);
         assertEquals("Movie: 123 The Bee Movie", movie.toString());
 
@@ -63,8 +63,8 @@ public class MovieTest extends TestCase
 
         System.out.println("\nStarting testMovieEquals");
 
-        movie1 = new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0);
-        movie2 = new Movie("123", "A movie about a bee", "The Bee Movie", 95, 0, 0);
+        movie1 = new Movie("123", "","A movie about a bee", "The Bee Movie", 95, 0, 0);
+        movie2 = new Movie("123", "","A movie about a bee", "The Bee Movie", 95, 0, 0);
         assertNotNull(movie1);
         assertNotNull(movie2);
         assertTrue(movie1.equals(movie2));
