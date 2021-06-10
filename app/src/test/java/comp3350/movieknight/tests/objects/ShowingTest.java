@@ -48,7 +48,7 @@ public class ShowingTest extends TestCase
     public void testToString()
     {
         Showing showing = new Showing("0","1", "2",2021,5,3,1, 35);
-        assertEquals("Showing: 0, Movie: 1, Theatre: 2, Showing time: 2021 5 3 At 1.35", showing.toString());
+        assertEquals("Showing: 0, Movie: 1, Theatre: 2, Showing time: 2021 4 3 At 1.35", showing.toString());
     }
 
     public void testEquals()
