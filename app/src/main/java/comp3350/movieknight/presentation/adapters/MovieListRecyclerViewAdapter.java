@@ -1,7 +1,6 @@
 package comp3350.movieknight.presentation.adapters;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +35,7 @@ public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItem
     @Override
     public void onBindViewHolder(@NonNull MovieItemViewHolder holder, int position) {
         holder.getMovieTitle().setText(movies.get(position).getTitle());
+        holder.getMoviePoster().setImageResource(movies.get(position).getPoster());
         holder.getMovieCard().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

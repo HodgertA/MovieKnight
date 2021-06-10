@@ -7,6 +7,7 @@ public class Movie
     private String movieID;
     private String description;
     private String title;
+    private int poster;
     private int runtime;
     private Calendar lastShowDate;
 
@@ -23,14 +24,17 @@ public class Movie
         this.movieID = movieID;
         this.description = null;
         this.title = null;
+        this.poster = 0;
         this.runtime = 0; //in minutes
+        this.lastShowDate = null;
     }
 
-    public Movie(String movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
+    public Movie(String movieID, String description, String title, int poster, int runtime, int endYear, int endMonth, int endDay )
     {
         this.movieID = movieID;
         this.description = description;
         this.title = title;
+        this.poster = poster;
         this.runtime = runtime;
         this.lastShowDate = Calendar.getInstance();
         this.lastShowDate.set(endYear, endMonth-1, endDay);
@@ -49,6 +53,10 @@ public class Movie
     public String getTitle()
     {
         return title;
+    }
+
+    public int getPoster() {
+        return poster;
     }
 
     public int getRuntime()
