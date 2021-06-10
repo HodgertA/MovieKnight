@@ -1,19 +1,14 @@
 package comp3350.movieknight.objects;
 
-
-import java.util.Objects;
-
 public class Ticket {
 
-    private String ticketID;
+    private int ticketID;
     private int seatNum;
-    private String userID;
-    private String showingID;
-    private String theatreID;
+    private int userID;
+    private int showingID;
+    private int theatreID;
 
-
-
-    public Ticket(String ticketID,String userID,String showingID,String theatreID,int seatNum){
+    public Ticket(int ticketID, int userID,int showingID,int theatreID,int seatNum){
         this.ticketID=ticketID;
         this.userID=userID;
         this.showingID=showingID;
@@ -21,9 +16,9 @@ public class Ticket {
         this.seatNum=seatNum;
     }
 
-    public Ticket(String ticketID,String showingID,String theatreID,int seatNum){
+    public Ticket(int ticketID, int showingID, int theatreID, int seatNum){
         this.ticketID=ticketID;
-        this.userID=null;
+        this.userID= -1;
         this.showingID=showingID;
         this.theatreID=theatreID;
         this.seatNum=seatNum;
@@ -33,15 +28,15 @@ public class Ticket {
         this.seatNum = seatNum;
     }
 
-    public void setShowingID(String showingID) {
+    public void setShowingID(int showingID) {
         this.showingID = showingID;
     }
 
-    public void setTheatreID(String theatreID) {
+    public void setTheatreID(int theatreID) {
         this.theatreID = theatreID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 
@@ -49,51 +44,48 @@ public class Ticket {
         return seatNum;
     }
 
-    public String getShowingID() {
+    public int getShowingID() {
         return showingID;
     }
 
-    public String getTheatreID() {
+    public int getTheatreID() {
         return theatreID;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public String getTicketID() {
+    public int getTicketID() {
         return ticketID;
     }
 
     @Override
     public String toString() {
         return "Ticket: " +
-                "ticketID='" + ticketID + '\'' +
+                "ticketID=" + ticketID +
                 ", seatNum=" + seatNum +
-                ", userID='" + userID + '\'' +
-                ", showingID='" + showingID + '\'' +
-                ", theatreID='" + theatreID + '\'';
+                ", userID=" + userID +
+                ", showingID=" + showingID +
+                ", theatreID=" + theatreID ;
     }
-
-
 
     @Override
     //------------------------------------------
     //this equals function compare ticketID
     //------------------------------------------
     public boolean equals(Object o) {
-        boolean result=false;
+        boolean result = false;
         Ticket ticket;
 
         if(o instanceof Ticket)
         {
             ticket=(Ticket) o;
-            if(((ticket.ticketID==null)&&(ticketID==null))||(ticket.ticketID.equals(ticketID)))
+            if((ticket.ticketID == ticketID))
             {
                 result=true;
             }
         }
-
 
         return result;
     }

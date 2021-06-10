@@ -14,9 +14,9 @@ public class UserTest extends TestCase
 
         System.out.println("\nStarting testUser\n");
 
-        user = new User("123", "John Smith");
+        user = new User(123, "John Smith");
         assertNotNull(user);
-        assertTrue("123".equals(user.getUserID()));
+        assertEquals(123, user.getUserID());
         assertTrue("John Smith".equals(user.getUsername()));
 
         System.out.println("Finished testUser");

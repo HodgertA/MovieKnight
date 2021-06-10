@@ -3,14 +3,14 @@ package comp3350.movieknight.objects;
 import java.util.ArrayList;
 
 public class Showing {
-    private String showingID;
-    private String movieID;
-    private String theatreID;
+    private int showingID;
+    private int movieID;
+    private int theatreID;
     private String showingTime;
     private ArrayList<Boolean> seats;
 
-    public Showing(String showingID, String movieID, String theatreID, int hour, int minute) {
-        if (showingID != null && movieID != null && theatreID != null && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
+    public Showing(int showingID, int movieID, int theatreID, int hour, int minute) {
+        if (hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
             this.showingID = showingID;
             this.movieID = movieID;
             this.theatreID = theatreID;
@@ -21,14 +21,14 @@ public class Showing {
         }
     }
 
-    public String getShowingID() { return showingID; }
+    public int getShowingID() { return showingID; }
 
-    public String getMovieID()
+    public int getMovieID()
     {
         return movieID;
     }
 
-    public String getTheatreID()
+    public int getTheatreID()
     {
         return theatreID;
     }
@@ -53,9 +53,7 @@ public class Showing {
         if (object instanceof Showing)
         {
             showing = (Showing) object;
-            if (((showing.movieID == null && movieID == null) || (showing.movieID != null && showing.movieID.equals(movieID)))
-                && ((showing.theatreID == null  && theatreID == null)  || (showing.theatreID != null  && showing.theatreID.equals(theatreID)))
-                && ((showing.showingTime == null && showingTime == null) || (showing.showingTime != null && showing.showingTime.equals(showingTime))))
+            if (showing.movieID == movieID && showing.theatreID == theatreID && showing.showingTime.equals(showingTime))
             {
                 result = true;
             }

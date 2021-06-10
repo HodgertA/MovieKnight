@@ -2,15 +2,15 @@ package comp3350.movieknight.objects;
 
 public class User
 {
-    private String userID;
+    private int userID;
     private String username;
 
-    public User(String newId, String username)
+    public User(int newId, String username)
     {
         userID = newId;
         this.username = username;
     }
-    public String getUserID()
+    public int getUserID()
     {
         return (userID);
     }
@@ -35,7 +35,7 @@ public class User
         if (object instanceof User)
         {
             u = (User) object;
-            if (((u.userID == null) && (userID == null)) || (u.userID.equals(userID)))
+            if ((u.userID == userID))
             {
                 result = true;
             }

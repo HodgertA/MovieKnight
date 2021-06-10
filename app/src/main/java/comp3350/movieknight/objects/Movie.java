@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Movie
 {
-    private String movieID;
+    private int movieID;
     private String description;
     private String title;
     private int runtime;
@@ -18,7 +18,7 @@ public class Movie
         this.lastShowDate = endDate;
     }
 
-    public Movie(String movieID)
+    public Movie(int movieID)
     {
         this.movieID = movieID;
         this.description = null;
@@ -26,7 +26,7 @@ public class Movie
         this.runtime = 0; //in minutes
     }
 
-    public Movie(String movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
+    public Movie(int movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
     {
         this.movieID = movieID;
         this.description = description;
@@ -36,7 +36,7 @@ public class Movie
         this.lastShowDate.set(endYear, endMonth-1, endDay);
     }
 
-    public String getMovieID()
+    public int getMovieID()
     {
         return movieID;
     }
@@ -69,7 +69,7 @@ public class Movie
         if (object instanceof Movie)
         {
             m = (Movie) object;
-            if(((movieID == null) && (m.movieID == null)) || (m.movieID.equals(movieID)))
+            if(m.movieID == movieID)
             {
                 result = true;
             }
