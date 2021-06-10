@@ -20,7 +20,7 @@ public class Showing {
             this.movieID = movieID;
             this.theatreID = theatreID;
             this.showingDate = Calendar.getInstance();
-            this.showingDate.set(year, month, date, hour, minute);
+            this.showingDate.set(year, month-1, date, hour, minute);
             this.showingTime = hour + ( minute / 100.0);
         } else {
             throw new IllegalArgumentException();
@@ -49,7 +49,7 @@ public class Showing {
 
     public String toString()
     {
-        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing time: " + showingDate.get(Calendar.YEAR) + " " + (showingDate.get(Calendar.MONTH))+" " + showingDate.get(Calendar.DATE) + " at " + showingTime;
+        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing time: " + showingDate.get(Calendar.YEAR) + " " + (showingDate.get(Calendar.MONTH)+1)+" " + showingDate.get(Calendar.DATE) + " at " + showingTime;
     }
 
     public boolean equals(Object object)

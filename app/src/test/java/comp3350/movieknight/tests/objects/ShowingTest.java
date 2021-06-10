@@ -25,7 +25,7 @@ public class ShowingTest extends TestCase
         assertEquals(1, showing.getMovieID());
         assertEquals(1, showing.getTheatreID());
         assertEquals(2021, showing.getShowingDate().get(Calendar.YEAR));
-        assertEquals(7, showing.getShowingDate().get(Calendar.MONTH));
+        assertEquals(6, showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(10, showing.getShowingDate().get(Calendar.DATE));
         assertEquals(10.10, showing.getShowingTime());
         assertEquals(new ArrayList<Boolean>(), showing.getSeats());
@@ -51,8 +51,8 @@ public class ShowingTest extends TestCase
         assertEquals(2, showing2.getTheatreID());
         assertEquals(2021, showing1.getShowingDate().get(Calendar.YEAR));
         assertEquals(2021, showing2.getShowingDate().get(Calendar.YEAR));
-        assertEquals(7, showing1.getShowingDate().get(Calendar.MONTH));
-        assertEquals(8, showing2.getShowingDate().get(Calendar.MONTH));
+        assertEquals(6, showing1.getShowingDate().get(Calendar.MONTH));
+        assertEquals(7, showing2.getShowingDate().get(Calendar.MONTH));
         assertEquals(10, showing1.getShowingDate().get(Calendar.DATE));
         assertEquals(11, showing2.getShowingDate().get(Calendar.DATE));
         assertEquals(10.10, showing1.getShowingTime());
@@ -76,7 +76,7 @@ public class ShowingTest extends TestCase
         assertEquals(0, showing.getMovieID());
         assertEquals(0, showing.getTheatreID());
         assertEquals(1, showing.getShowingDate().get(Calendar.YEAR));
-        assertEquals(1, showing.getShowingDate().get(Calendar.MONTH));
+        assertEquals(0, showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(1, showing.getShowingDate().get(Calendar.DATE));
         assertEquals(10.10, showing.getShowingTime());
         assertEquals(new ArrayList<Boolean>(), showing.getSeats());
