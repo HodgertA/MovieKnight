@@ -46,6 +46,7 @@ public class Showing {
         return theatreID;
     }
 
+    public double getShowingTime() { return showingTime;}
 
 
     public ArrayList<Boolean> getSeats() { return seats; }
