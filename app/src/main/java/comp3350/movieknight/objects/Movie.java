@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class Movie
 {
-    private String movieID;
+    private int movieID;
     private String description;
     private String title;
     private int runtime;
@@ -18,25 +18,33 @@ public class Movie
         this.lastShowDate = endDate;
     }
 
-    public Movie(String movieID)
+    public Movie(int movieID)
     {
-        this.movieID = movieID;
-        this.description = null;
-        this.title = null;
-        this.runtime = 0; //in minutes
+        if (movieID >= 0) {
+            this.movieID = movieID;
+            this.description = null;
+            this.title = null;
+            this.runtime = 0; //in minutes
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public Movie(String movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
+    public Movie(int movieID, String description, String title, int runtime, int endYear, int endMonth, int endDay )
     {
-        this.movieID = movieID;
-        this.description = description;
-        this.title = title;
-        this.runtime = runtime;
-        this.lastShowDate = Calendar.getInstance();
-        this.lastShowDate.set(endYear, endMonth-1, endDay);
+        if (movieID >= 0 && runtime >= 0 && endMonth > 0 && endMonth <=12 && endDay > 0 && endDay <= 31) {
+            this.movieID = movieID;
+            this.description = description;
+            this.title = title;
+            this.runtime = runtime;
+            this.lastShowDate = Calendar.getInstance();
+            this.lastShowDate.set(endYear, endMonth-1, endDay);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public String getMovieID()
+    public int getMovieID()
     {
         return movieID;
     }
@@ -69,7 +77,7 @@ public class Movie
         if (object instanceof Movie)
         {
             m = (Movie) object;
-            if(((movieID == null) && (m.movieID == null)) || (m.movieID.equals(movieID)))
+            if(m.movieID == movieID)
             {
                 result = true;
             }

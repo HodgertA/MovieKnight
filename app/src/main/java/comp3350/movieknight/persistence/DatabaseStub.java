@@ -1,6 +1,5 @@
 package comp3350.movieknight.persistence;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,40 +33,39 @@ public class DatabaseStub {
         //not starting off with any tickets generated
 
         movies = new ArrayList<Movie>();
-        movie = new Movie("1", "", "The Bee Movie", 120, 2021, 6,8);
+        movie = new Movie(1, "", "The Bee Movie", 120, 2021, 6,8);
         movies.add(movie);
-        movie = new Movie("2", "", "Finding Nemo", 120, 2022, 6,9);
+        movie = new Movie(2, "", "Finding Nemo", 120, 2022, 6,9);
         movies.add(movie);
-        movie = new Movie("3", "", "Monsters Inc.", 120, 2022, 6,7);
+        movie = new Movie(3, "", "Monsters Inc.", 120, 2022, 6,7);
         movies.add(movie);
-        movie = new Movie("4", "", "Ice Age", 120, 2021, 7,26);
+        movie = new Movie(4, "", "Ice Age", 120, 2021, 7,26);
         movies.add(movie);
-        movie = new Movie("5", "", "Shrek", 120, 2021, 7,26);
+        movie = new Movie(5, "", "Shrek", 120, 2021, 7,26);
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();
         theatre = new Theatre(1, 12);
         theatres.add(theatre);
 
-            showings = new ArrayList<Showing>();
-            showing = new Showing("1", "1", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-            showing = new Showing("2", "1", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-            showing = new Showing("3", "2", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-            showing = new Showing("5", "3", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-            showing = new Showing("6", "3", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-            showing = new Showing("7", "4", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-            showing = new Showing("9", "5", "1", 2021, 1, 3, 8, 0);
-            showings.add(showing);
-
+        showings = new ArrayList<Showing>();
+        showing = new Showing(1, 1, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
+        showing = new Showing(2, 1, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
+        showing = new Showing(3, 2, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
+        showing = new Showing(5, 3, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
+        showing = new Showing(6, 3, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
+        showing = new Showing(7, 4, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
+        showing = new Showing(9, 5, 1, 2021, 1, 3, 8, 0);
+        showings.add(showing);
 
         users = new ArrayList<User>();
-        user = new User("1", "Default User");
+        user = new User(1, "Default User");
         users.add(user);
 
         tickets = new ArrayList<Ticket>();
@@ -161,20 +159,20 @@ public class DatabaseStub {
         return null;
     }
 
-    public String getMovieShowings(ArrayList<Showing> showingList,Movie movie)
+    public ArrayList<Showing> getMovieShowings(Showing showing)
     {
-
+        ArrayList<Showing> result = new ArrayList<Showing>();
         Showing curr;
 
         for (int counter = 0; counter < showings.size(); counter++)
         {
             curr = showings.get(counter);
-            if (curr.getMovieID().equals(movie.getMovieID()))
+            if (curr.getMovieID() == showing.getMovieID())
             {
-                showingList.add(curr);
+                result.add(curr);
             }
         }
-        return null;
+        return result;
     }
 
     public ArrayList<Showing> getTheatreShowings(Showing showing)
@@ -185,7 +183,7 @@ public class DatabaseStub {
         for (int counter = 0; counter < showings.size(); counter++)
         {
             curr = showings.get(counter);
-            if (curr.getTheatreID().equals(showing.getTheatreID()))
+            if (curr.getTheatreID() == showing.getTheatreID())
             {
                 result.add(curr);
             }
@@ -293,7 +291,7 @@ public class DatabaseStub {
         for (int counter = 0; counter < showings.size(); counter++)
         {
             curr = tickets.get(counter);
-            if (curr.getShowingID().equals(ticket.getShowingID()))
+            if (curr.getShowingID() == ticket.getShowingID())
             {
                 result.add(curr);
             }
@@ -309,7 +307,7 @@ public class DatabaseStub {
         for (int counter = 0; counter < showings.size(); counter++)
         {
             curr = tickets.get(counter);
-            if (curr.getUserID().equals(ticket.getUserID()))
+            if (curr.getUserID() == ticket.getUserID())
             {
                 result.add(curr);
             }
