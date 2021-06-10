@@ -21,7 +21,7 @@ import comp3350.movieknight.presentation.adapters.MovieListRecyclerViewAdapter;
 import comp3350.movieknight.business.AccessMovies;
 
 public class MovieListFragment extends Fragment {
-    private static final int GRID_PER_ROW = 3;
+    private static final int ITEMS_PER_ROW = 3;
 
     private Context context;
     private ArrayList<Movie> movies;
@@ -48,7 +48,7 @@ public class MovieListFragment extends Fragment {
         else {
 
             movieListRecyclerView = view.findViewById(R.id.movie_list_recycler_view);
-            movieListRecyclerView.setLayoutManager(new GridLayoutManager(context, GRID_PER_ROW));
+            movieListRecyclerView.setLayoutManager(new GridLayoutManager(context, ITEMS_PER_ROW));
         }
 
         MovieListRecyclerViewAdapter adapter = new MovieListRecyclerViewAdapter(context, movies);

@@ -3,6 +3,7 @@ package comp3350.movieknight.persistence;
 import java.util.ArrayList;
 import java.util.List;
 
+import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Theatre;
@@ -33,15 +34,15 @@ public class DatabaseStub {
         //not starting off with any tickets generated
 
         movies = new ArrayList<Movie>();
-        movie = new Movie(1, "", "The Bee Movie", 120, 2021, 6,8);
+        movie = new Movie(1, "", "The Bee Movie", R.drawable.the_bee_movie, 120, 2021, 6,8);
         movies.add(movie);
-        movie = new Movie(2, "", "Finding Nemo", 120, 2022, 6,9);
+        movie = new Movie(2, "", "Finding Nemo", R.drawable.finding_nemo, 120, 2022, 6,9);
         movies.add(movie);
-        movie = new Movie(3, "", "Monsters Inc.", 120, 2022, 6,7);
+        movie = new Movie(3, "", "Monsters Inc.", R.drawable.monsters_inc, 120, 2022, 6,7);
         movies.add(movie);
-        movie = new Movie(4, "", "Ice Age", 120, 2021, 7,26);
+        movie = new Movie(4, "", "Ice Age", R.drawable.ice_age, 120, 2021, 7,26);
         movies.add(movie);
-        movie = new Movie(5, "", "Shrek", 120, 2021, 7,26);
+        movie = new Movie(5, "", "Shrek", R.drawable.shrek, 120, 2021, 7,26);
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();
