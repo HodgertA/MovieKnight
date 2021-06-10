@@ -23,17 +23,17 @@ public class FilterListTest extends TestCase {
 
         ArrayList<Showing> showingArrayList=new ArrayList<Showing>();
         //correct
-        showingArrayList.add(new Showing("AA","BB","CC",toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
+        showingArrayList.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
         //different year
-        showingArrayList.add(new Showing("AA","BB","CC",1999,toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
+        showingArrayList.add(new Showing(1,2,3,1999,toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
         //correct
-        showingArrayList.add(new Showing("DD","EE","FF",toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),12,59));
+        showingArrayList.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),12,59));
         //different month
-        showingArrayList.add(new Showing("AA","BB","CC",toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH),toDay.get(Calendar.DATE),8,10));
+        showingArrayList.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH),toDay.get(Calendar.DATE),8,10));
         //correct
-        showingArrayList.add(new Showing("GG","HH","II",toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),0,0));
+        showingArrayList.add(new Showing(4,5,6,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),0,0));
         //different date
-        showingArrayList.add(new Showing("AA","BB","CC",toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE)+1,8,10));
+        showingArrayList.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE)+1,8,10));
 
 
 
