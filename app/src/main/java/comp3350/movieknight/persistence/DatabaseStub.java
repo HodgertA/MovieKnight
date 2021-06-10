@@ -1,6 +1,5 @@
 package comp3350.movieknight.persistence;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
