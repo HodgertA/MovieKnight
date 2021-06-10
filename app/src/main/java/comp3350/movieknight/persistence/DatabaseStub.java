@@ -1,5 +1,6 @@
 package comp3350.movieknight.persistence;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,21 +49,22 @@ public class DatabaseStub {
         theatre = new Theatre(1, 12);
         theatres.add(theatre);
 
-        showings = new ArrayList<Showing>();
-        showing = new Showing("1", "1", "1", 9, 00);
-        showings.add(showing);
-        showing = new Showing("2", "1", "1", 10, 45);
-        showings.add(showing);
-        showing = new Showing("3", "2", "1", 12, 35);
-        showings.add(showing);
-        showing = new Showing("5", "3", "1", 17, 20);
-        showings.add(showing);
-        showing = new Showing("6", "3", "1", 13, 10);
-        showings.add(showing);
-        showing = new Showing("7", "4", "1", 20, 30);
-        showings.add(showing);
-        showing = new Showing("9", "5", "1", 15, 15);
-        showings.add(showing);
+            showings = new ArrayList<Showing>();
+            showing = new Showing("1", "1", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+            showing = new Showing("2", "1", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+            showing = new Showing("3", "2", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+            showing = new Showing("5", "3", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+            showing = new Showing("6", "3", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+            showing = new Showing("7", "4", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+            showing = new Showing("9", "5", "1", 2021, 1, 3, 8, 0);
+            showings.add(showing);
+
 
         users = new ArrayList<User>();
         user = new User("1", "Default User");
@@ -159,20 +161,20 @@ public class DatabaseStub {
         return null;
     }
 
-    public ArrayList<Showing> getMovieShowings(Showing showing)
+    public String getMovieShowings(ArrayList<Showing> showingList,Movie movie)
     {
-        ArrayList<Showing> result = new ArrayList<Showing>();
+
         Showing curr;
 
         for (int counter = 0; counter < showings.size(); counter++)
         {
             curr = showings.get(counter);
-            if (curr.getMovieID().equals(showing.getMovieID()))
+            if (curr.getMovieID().equals(movie.getMovieID()))
             {
-                result.add(curr);
+                showingList.add(curr);
             }
         }
-        return result;
+        return null;
     }
 
     public ArrayList<Showing> getTheatreShowings(Showing showing)
