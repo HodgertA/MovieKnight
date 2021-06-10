@@ -2,23 +2,96 @@ package comp3350.movieknight.tests.objects;
 
 import junit.framework.TestCase;
 
+import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.User;
 
 public class UserTest extends TestCase
 {
     public UserTest(String arg0) { super(arg0); }
 
-    public void testUser1()
+    public void testTypicalUser()
     {
-        User user;
+        System.out.println("Starting User test: testTypicalUser");
 
-        System.out.println("\nStarting testUser\n");
-
-        user = new User(123, "John Smith");
+        User user = new User(123, "John Smith");
         assertNotNull(user);
         assertEquals(123, user.getUserID());
-        assertTrue("John Smith".equals(user.getUsername()));
+        assertEquals("John Smith", user.getUsername());
+        assertEquals("User: 123 John Smith", user.toString());
+        assertTrue(user.equals(user));
 
-        System.out.println("Finished testUser");
+        System.out.println("Finished User test: testTypicalUser");
+    }
+
+    public void testEmptyValues()
+    {
+        System.out.println("Starting User test: testEmptyValues");
+
+        User user = new User(1, "");
+        assertNotNull(user);
+        assertEquals(1, user.getUserID());
+        assertEquals("", user.getUsername());
+        assertEquals("User: 1 ", user.toString());
+        assertTrue(user.equals(user));
+
+        System.out.println("Finished User test: testEmptyValues");
+    }
+
+    public void testTwoUsers()
+    {
+        System.out.println("Starting User test: testTwoUsers");
+
+        User user1 = new User(123, "John Smith");
+        User user2 = new User(456, "Bob Jones");
+        assertNotNull(user1);
+        assertNotNull(user2);
+        assertEquals(123, user1.getUserID());
+        assertEquals(456, user2.getUserID());
+        assertEquals("John Smith", user1.getUsername());
+        assertEquals("Bob Jones", user2.getUsername());
+        assertEquals("User: 123 John Smith", user1.toString());
+        assertEquals("User: 456 Bob Jones", user2.toString());
+        assertFalse(user1.equals(user2));
+
+        System.out.println("Finished User test: testTwoUsers");
+    }
+
+    public void testNullValues()
+    {
+        System.out.println("Starting User test: testNullValues");
+
+        User user = new User(1, null);
+        assertNotNull(user);
+        assertEquals(1, user.getUserID());
+        assertEquals(null, user.getUsername());
+        assertEquals("User: 1 null", user.toString());
+        assertTrue(user.equals(user));
+
+        System.out.println("Finished User test: testNullValues");
+    }
+
+    public void testEdgeCases()
+    {
+        System.out.println("Starting User test: testEdgeCases");
+
+        User user = new User(0, "    J");
+        assertNotNull(user);
+        assertEquals(0, user.getUserID());
+        assertEquals("    J", user.getUsername());
+        assertEquals("User: 0     J", user.toString());
+        assertTrue(user.equals(user));
+
+        System.out.println("Finished User test: testEdgeCases");
+    }
+
+    public void testInvalidValues()
+    {
+        System.out.println("Starting User test: testInvalidValues");
+        try {
+            User user = new User(-1, "Bob Jones");
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        System.out.println("Finished User test: testInvalidValues");
     }
 }

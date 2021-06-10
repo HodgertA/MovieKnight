@@ -7,22 +7,26 @@ public class User
 
     public User(int newId, String username)
     {
-        userID = newId;
-        this.username = username;
+        if (newId >= 0) {
+            userID = newId;
+            this.username = username;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
     public int getUserID()
     {
-        return (userID);
+        return userID;
     }
 
     public String getUsername()
     {
-        return (username);
+        return username;
     }
 
     public String toString()
     {
-        return "User: " + userID + " " + username + "\n";
+        return "User: " + userID + " " + username;
     }
 
     public boolean equals(Object object)
