@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 
 import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Theatre;
+import comp3350.movieknight.objects.User;
 
 public class TheatreTest extends TestCase
 {
@@ -12,45 +13,68 @@ public class TheatreTest extends TestCase
         super(arg0);
     }
 
-    public void testTheatreConstructor()
+    public void testTypicalTheatre()
     {
-        Theatre theatre;
+        System.out.println("Starting Theatre test: testTypicalTheatre");
 
-        System.out.println("\nStarting testTheatreConstructor");
-
-        theatre = new Theatre(4, 200);
+        Theatre theatre =  new Theatre(1, 10);
         assertNotNull(theatre);
-        assertEquals(4, theatre.getTheatreNumber());
+        assertEquals(1,theatre.getTheatreNumber());
+        assertEquals(10, theatre.getNumberOfSeatsInRoom());
+        assertEquals("Theatre #1 can seat 10 people", theatre.toString());
+        assertTrue(theatre.equals(theatre));
 
-        System.out.println("Finished testTheatreConstructor");
+        System.out.println("Finished Theatre test: testTypicalTheatre");
     }
 
-    public void testTheatreToString()
+    public void testTwoTheatres()
     {
-        Theatre theatre;
+        System.out.println("Starting Theatre test: testTwoTheatres");
 
-        System.out.println("\nStarting testTheatreToString");
+        Theatre theatre1 =  new Theatre(1, 10);
+        Theatre theatre2 = new Theatre(2, 10);
+        assertNotNull(theatre1);
+        assertNotNull(theatre2);
+        assertEquals(1,theatre1.getTheatreNumber());
+        assertEquals(2,theatre2.getTheatreNumber());
+        assertEquals(10, theatre1.getNumberOfSeatsInRoom());
+        assertEquals(10, theatre2.getNumberOfSeatsInRoom());
+        assertEquals("Theatre #1 can seat 10 people", theatre1.toString());
+        assertEquals("Theatre #2 can seat 10 people", theatre2.toString());
+        assertFalse(theatre1.equals(theatre2));
 
-        theatre = new Theatre(1, 39);
-
-        assertEquals("Theatre #1 can seat 39 people", theatre.toString());
-
-        System.out.println("Finished testTheatreToString");
+        System.out.println("Finished Theatre test: testTwoTheatres");
     }
 
-    public void testEquals()
+    public void testEdgeCases()
     {
-        Theatre theatre;
-        Theatre theatreCopy;
+        System.out.println("Starting Theatre test: testEdgeCases");
 
-        System.out.println("\nStarting testTheatreEquals");
-
-        theatre = new Theatre(6, 60);
-        theatreCopy = new Theatre(6, 60);
+        Theatre theatre =  new Theatre(0, 1);
         assertNotNull(theatre);
-        assertNotNull(theatreCopy);
-        assertEquals(theatre,theatreCopy);
+        assertEquals(0,theatre.getTheatreNumber());
+        assertEquals(1, theatre.getNumberOfSeatsInRoom());
+        assertEquals("Theatre #0 can seat 1 people", theatre.toString());
+        assertTrue(theatre.equals(theatre));
 
-        System.out.println("Finished testTheatreEquals");
+        System.out.println("Finished Theatre test: testEdgeCases");
+    }
+
+    public void testInvalidValues()
+    {
+        System.out.println("Starting Theatre test: testInvalidValues");
+        Theatre theatre;
+
+        try {
+            theatre = new Theatre(-1, 10);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            theatre = new Theatre(1, 0);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        System.out.println("Finished Theatre test: testInvalidValues");
     }
 }

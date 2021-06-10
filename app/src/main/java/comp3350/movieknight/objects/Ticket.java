@@ -1,126 +1,84 @@
 package comp3350.movieknight.objects;
 
-
-import java.util.Objects;
-
 public class Ticket {
 
-    private String ticketID;
+    private int ticketID;
     private int seatNum;
-    private String userID;
-    private String showingID;
-    private String theatreID;
+    private int userID;
+    private int showingID;
+    private int theatreID;
 
-
-
-    public Ticket(String ticketID,String userID,String showingID,String theatreID,int seatNum){
-        this.ticketID=ticketID;
-        this.userID=userID;
-        this.showingID=showingID;
-        this.theatreID=theatreID;
-        this.seatNum=seatNum;
+    public Ticket(int ticketID, int userID, int showingID, int theatreID, int seatNum){
+        if (ticketID >= 0 && userID >= 0 && showingID >= 0 && theatreID >= 0 && seatNum> 0) {
+            this.ticketID = ticketID;
+            this.userID = userID;
+            this.showingID = showingID;
+            this.theatreID = theatreID;
+            this.seatNum = seatNum;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public Ticket(String ticketID,String showingID,String theatreID,int seatNum){
-        this.ticketID=ticketID;
-        this.userID=null;
-        this.showingID=showingID;
-        this.theatreID=theatreID;
-        this.seatNum=seatNum;
-    }
-
-    public void setSeatNum(int seatNum) {
-        this.seatNum = seatNum;
-    }
-
-    public void setShowingID(String showingID) {
-        this.showingID = showingID;
-    }
-
-    public void setTheatreID(String theatreID) {
-        this.theatreID = theatreID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public Ticket(int ticketID, int showingID, int theatreID, int seatNum){
+        if (ticketID >= 0 && showingID >= 0 && theatreID >= 0 && seatNum> 0) {
+            this.ticketID = ticketID;
+            this.userID = -1;
+            this.showingID = showingID;
+            this.theatreID = theatreID;
+            this.seatNum = seatNum;
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getSeatNum() {
         return seatNum;
     }
 
-    public String getShowingID() {
+    public int getShowingID() {
         return showingID;
     }
 
-    public String getTheatreID() {
+    public int getTheatreID() {
         return theatreID;
     }
 
-    public String getUserID() {
+    public int getUserID() {
         return userID;
     }
 
-    public String getTicketID() {
+    public int getTicketID() {
         return ticketID;
     }
 
     @Override
     public String toString() {
         return "Ticket: " +
-                "ticketID='" + ticketID + '\'' +
-                ", seatNum=" + seatNum +
-                ", userID='" + userID + '\'' +
-                ", showingID='" + showingID + '\'' +
-                ", theatreID='" + theatreID + '\'';
+                "ticketID= " + ticketID +
+                ", seatNum= " + seatNum +
+                ", userID= " + userID +
+                ", showingID= " + showingID +
+                ", theatreID= " + theatreID ;
     }
 
-
-
     @Override
-    //------------------------------------------
-    //this equals function compare ticketID
-    //------------------------------------------
     public boolean equals(Object o) {
+
         boolean result=false;
         Ticket ticket;
 
         if(o instanceof Ticket)
         {
             ticket=(Ticket) o;
-            if(((ticket.ticketID==null)&&(ticketID==null))||(ticket.ticketID.equals(ticketID)))
+            if(ticket.userID == userID
+                    && ticket.showingID == showingID
+                    && ticket.seatNum == seatNum)
             {
                 result=true;
             }
         }
 
-
         return result;
-    }
-
-
-//    @Override
-//    //------------------------------------------
-//    //this equals function compare userID, showingID and seatNum
-//    //------------------------------------------
-//    public boolean equals(Object o) {
-//
-//        boolean result=false;
-//        Ticket ticket;
-//
-//        if(o instanceof Ticket)
-//        {
-//            ticket=(Ticket) o;
-//            if(((ticket.userID==null)&&(userID==null))||(ticket.userID.equals(userID))
-//                    &&((ticket.showingID==null)&&(showingID==null))||(ticket.showingID.equals(showingID))
-//                    &&(ticket.seatNum==seatNum))
-//            {
-//                result=true;
-//            }
-//        }
-//
-//
-//        return result;
-//    }
-
+   }
 }
