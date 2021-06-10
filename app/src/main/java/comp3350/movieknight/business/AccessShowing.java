@@ -12,14 +12,11 @@ public class AccessShowing {
     private DatabaseStub dataAccess;
 
     public AccessShowing(){
-        dataAccess = (DatabaseStub) Services.getDataAccess(Main.dbName);
+        dataAccess = Services.getDataAccess(Main.dbName);
     }
 
-    public String getShowingForMovie(ArrayList<Showing> showingList,Movie movie){
-
-
-        dataAccess.getMovieShowings(showingList,movie);
+    public String getShowingForMovie(int movieID){
+        ArrayList<Showing> showingList = dataAccess.getMovieShowings(new Showing(-1, movieID, -1, 0,0, 0, 0, 0));
         return FilterList.filterShowingsByDate(showingList);
-
     }
 }

@@ -9,24 +9,19 @@ public class Showing {
     private int showingID;
     private int movieID;
     private int theatreID;
-    private String showingTime;
-    private String showingID;
-    private String movieID;
-    private String theatreID;
-
     private Calendar showingDate;
     private double showingTime;
     private ArrayList<Boolean> seats;
 
-    public Showing(String showingID, String movieID, String theatreID, int year,int month,int date,int hour, int minute) {
-        if (showingID != null && movieID != null && theatreID != null && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
+    public Showing(int showingID, int movieID, int theatreID, int year,int month,int date,int hour, int minute) {
+        if (hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
             this.seats = new ArrayList<Boolean>();
             this.showingID = showingID;
             this.movieID = movieID;
             this.theatreID = theatreID;
-            this.showingDate =Calendar.getInstance();
-            this.showingDate.set(year,month-1,date,hour,minute);
-            this.showingTime=hour+(minute/100.0);
+            this.showingDate = Calendar.getInstance();
+            this.showingDate.set(year, month-1, date, hour, minute);
+            this.showingTime = hour + ( minute / 100.0);
 
         } else {
             throw new IllegalArgumentException("Invalid showing attributes");
@@ -38,7 +33,6 @@ public class Showing {
         return showingDate;
     }
 
-    public String getShowingID() { return showingID; }
     public int getShowingID() { return showingID; }
 
     public int getMovieID()
@@ -52,7 +46,6 @@ public class Showing {
     }
 
     public double getShowingTime() { return showingTime;}
-
 
     public ArrayList<Boolean> getSeats() { return seats; }
 
@@ -69,12 +62,12 @@ public class Showing {
         if (object instanceof Showing)
         {
             showing = (Showing) object;
-            if (((showing.movieID == null && movieID == null) || (showing.movieID != null && showing.movieID.equals(movieID)))
-                    && ((showing.theatreID == null  && theatreID == null)  || (showing.theatreID != null  && showing.theatreID.equals(theatreID)))
-                    && showing.showingDate.get(Calendar.YEAR)==showingDate.get(Calendar.YEAR)
-                    && showing.showingDate.get(Calendar.MONTH)==showingDate.get(Calendar.MONTH)
-                    && showing.showingDate.get(Calendar.DATE)==showingDate.get(Calendar.DATE)
-                    && showing.showingTime==showingTime)
+            if (showing.movieID == movieID
+                    && showing.theatreID == theatreID
+                    && showing.showingDate.get(Calendar.YEAR) == showingDate.get(Calendar.YEAR)
+                    && showing.showingDate.get(Calendar.MONTH) == showingDate.get(Calendar.MONTH)
+                    && showing.showingDate.get(Calendar.DATE) == showingDate.get(Calendar.DATE)
+                    && showing.showingTime == showingTime)
             {
                 result = true;
             }
