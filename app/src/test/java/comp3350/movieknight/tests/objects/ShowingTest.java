@@ -2,7 +2,11 @@ package comp3350.movieknight.tests.objects;
 
 import junit.framework.TestCase;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import comp3350.movieknight.objects.Showing;
+import comp3350.movieknight.objects.User;
 
 public class ShowingTest extends TestCase
 {
@@ -11,43 +15,118 @@ public class ShowingTest extends TestCase
         super(arg0);
     }
 
-    public void testConstructor()
+    public void testTypicalShowing()
     {
-        Showing showing1 = new Showing(1,1, 1,  2021,5,8,20,30);
+        System.out.println("Starting Showing test: testTypicalShowing");
+
+        Showing showing = new Showing(1, 1, 1, 2021, 7, 10, 10,10);
+        assertNotNull(showing);
+        assertEquals(1, showing.getShowingID());
+        assertEquals(1, showing.getMovieID());
+        assertEquals(1, showing.getTheatreID());
+        assertEquals(2021, showing.getShowingDate().get(Calendar.YEAR));
+        assertEquals(7, showing.getShowingDate().get(Calendar.MONTH));
+        assertEquals(10, showing.getShowingDate().get(Calendar.DATE));
+        assertEquals(10.10, showing.getShowingTime());
+        assertEquals(new ArrayList<Boolean>(), showing.getSeats());
+        assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10.1", showing.toString());
+        assertTrue(showing.equals(showing));
+
+        System.out.println("Finished Showing test: testTypicalUser");
+    }
+
+    public void testTwoShowings()
+    {
+        System.out.println("Starting Showing test: testTwoShowings");
+
+        Showing showing1 = new Showing(1, 1, 1, 2021, 7, 10, 10,10);
+        Showing showing2 = new Showing(2, 2,2, 2021, 8, 11, 11, 11);
         assertNotNull(showing1);
+        assertNotNull(showing2);
         assertEquals(1, showing1.getShowingID());
-        assertEquals(1, showing1.getMovieID() );
+        assertEquals(2, showing2.getShowingID());
+        assertEquals(1, showing1.getMovieID());
+        assertEquals(2, showing2.getMovieID());
         assertEquals(1, showing1.getTheatreID());
-        assertEquals("2:15", showing1.getShowingTime());
-        assertTrue(showing1.getSeats().isEmpty());
+        assertEquals(2, showing2.getTheatreID());
+        assertEquals(2021, showing1.getShowingDate().get(Calendar.YEAR));
+        assertEquals(2021, showing2.getShowingDate().get(Calendar.YEAR));
+        assertEquals(7, showing1.getShowingDate().get(Calendar.MONTH));
+        assertEquals(8, showing2.getShowingDate().get(Calendar.MONTH));
+        assertEquals(10, showing1.getShowingDate().get(Calendar.DATE));
+        assertEquals(11, showing2.getShowingDate().get(Calendar.DATE));
+        assertEquals(10.10, showing1.getShowingTime());
+        assertEquals(11.11, showing2.getShowingTime());
+        assertEquals(new ArrayList<Boolean>(), showing1.getSeats());
+        assertEquals(new ArrayList<Boolean>(), showing2.getSeats());
+        assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10.1", showing1.toString());
+        assertEquals("Showing: 2, Movie: 2, Theatre: 2, Showing time: 2021 8 11 at 11.11", showing2.toString());
+        assertFalse(showing1.equals(showing2));
 
-        try {
-            Showing showing3 = new Showing(23,45, 2, 2021, 4, 1,78, 34);
-            fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
-
-        try {
-            Showing showing3 = new Showing(23,45, 2, 2021, 8,10,-1, 15);
-            fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
-
-        try {
-            Showing showing4 = new Showing(3,45, 2, 2021, 12, 23, 23, 60);
-            fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+        System.out.println("Finished Showing test: testTwoShowings");
     }
 
-    public void testToString()
+    public void testEdgeCases()
     {
-        Showing showing = new Showing(0,1, 2,2021,5,3,1, 35);
-        assertEquals("Showing: 0, Movie: 1, Theatre: 2, Showing time: 2021 5 3 At 1.35", showing.toString());
+        System.out.println("Starting Showing test: testEdgeCases");
+
+        Showing showing = new Showing(0, 0, 0, 1, 1, 1, 10,10);
+        assertNotNull(showing);
+        assertEquals(0, showing.getShowingID());
+        assertEquals(0, showing.getMovieID());
+        assertEquals(0, showing.getTheatreID());
+        assertEquals(1, showing.getShowingDate().get(Calendar.YEAR));
+        assertEquals(1, showing.getShowingDate().get(Calendar.MONTH));
+        assertEquals(1, showing.getShowingDate().get(Calendar.DATE));
+        assertEquals(10.10, showing.getShowingTime());
+        assertEquals(new ArrayList<Boolean>(), showing.getSeats());
+        assertEquals("Showing: 0, Movie: 0, Theatre: 0, Showing time: 1 1 1 at 10.1", showing.toString());
+        assertTrue(showing.equals(showing));
+
+        System.out.println("Finished Showing test: testEdgeCases");
     }
 
-    public void testEquals()
+    public void testInvalidValues()
     {
-        Showing showing1 = new Showing(9,1, 2, 2021, 8, 6,6, 57);
-        Showing showing2 = new Showing(9,1, 2, 2012, 8, 6, 6, 57);
-        assertTrue(showing1.equals(showing2));
+        System.out.println("Starting Showing test: testInvalidValues");
+
+        Showing showing;
+        try {
+            showing = new Showing(-1, 1,1,1, 1,1, 1, 1);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            showing = new Showing(1, -1,1,1, 1,1, 1, 1);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            showing = new Showing(1, 1,-1,1, 1,1, 1, 1);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            showing = new Showing(1, 1,1,1, 13,1, 1, 1);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            showing = new Showing(1, 1,1,1, 1,-1, 1, 1);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            showing = new Showing(1, 1,1,1, 1,1, 25, 1);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        try {
+            showing = new Showing(1, 1,1,1, 1,1, 1, 65);
+            fail("Expected an IllegalArguementException");
+        } catch (IllegalArgumentException ex) {}
+
+        System.out.println("Finished Showing test: testInvalidValues");
     }
 
 }
