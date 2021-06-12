@@ -24,7 +24,7 @@ public class MovieTest extends TestCase
         assertEquals("Movie: 1 null", movie1.toString());
         assertTrue(movie1.equals(movie1));
 
-        Movie movie2 = new Movie(1, "A description", "A title", 100, 2021, 10, 20);
+        Movie movie2 = new Movie(1, "A description", "A title",3, 100, 2021, 10, 20);
         assertNotNull(movie2);
         assertEquals(1, movie2.getMovieID());
         assertEquals("A description", movie2.getDescription());
@@ -44,7 +44,7 @@ public class MovieTest extends TestCase
     {
         System.out.println("Starting Movie test: testEmptyValues");
 
-        Movie movie1 = new Movie(1, "", "", 100, 2021, 10, 20);
+        Movie movie1 = new Movie(1, "", "",3, 100, 2021, 10, 20);
         assertNotNull(movie1);
         assertEquals(1, movie1.getMovieID());
         assertEquals("", movie1.getDescription());
@@ -73,8 +73,8 @@ public class MovieTest extends TestCase
         assertEquals("Movie: 2 null", movie2.toString());
         assertFalse(movie1.equals(movie2));
 
-        Movie movie3 = new Movie(1, "A description", "A title", 100, 2021, 10, 20);
-        Movie movie4 = new Movie(2, "description", "title", 200, 2021, 5, 2);
+        Movie movie3 = new Movie(1, "A description", "A title",3, 100, 2021, 10, 20);
+        Movie movie4 = new Movie(2, "description", "title",3, 200, 2021, 5, 2);
         assertNotNull(movie3);
         assertNotNull(movie4);
         assertEquals(1, movie3.getMovieID());
@@ -102,7 +102,7 @@ public class MovieTest extends TestCase
     {
         System.out.println("Starting Movie test: testNullValues");
 
-        Movie movie1 = new Movie(1, null, null, 100, 2021, 10, 20);
+        Movie movie1 = new Movie(1, null, null,3, 100, 2021, 10, 20);
         assertNotNull(movie1);
         assertEquals(1, movie1.getMovieID());
         assertEquals(null, movie1.getDescription());
@@ -127,7 +127,7 @@ public class MovieTest extends TestCase
         assertEquals("Movie: 0 null", movie1.toString());
         assertTrue(movie1.equals(movie1));
 
-        Movie movie2 = new Movie(0, "A description", "A title", 1, 2021, 1, 31);
+        Movie movie2 = new Movie(0, "A description", "A title",3, 1, 2021, 1, 31);
         assertNotNull(movie2);
         assertEquals(0, movie2.getMovieID());
         assertEquals("A description", movie2.getDescription());
@@ -153,22 +153,22 @@ public class MovieTest extends TestCase
         } catch (IllegalArgumentException ex) {}
 
         try {
-            movie = new Movie(-1, "A description", "A title", 1, 2021, 1, 31);
+            movie = new Movie(-1, "A description", "A title",3, 1, 2021, 1, 31);
             fail("Expected an IllegalArguementException");
         } catch (IllegalArgumentException ex) {}
 
         try {
-            movie = new Movie(0, "A description", "A title", -1, 2021, 1, 31);
+            movie = new Movie(0, "A description", "A title",3, -1, 2021, 1, 31);
             fail("Expected an IllegalArguementException");
         } catch (IllegalArgumentException ex) {}
 
         try {
-            movie = new Movie(0, "A description", "A title", 1, 2021, 13, 31);
+            movie = new Movie(0, "A description", "A title",3, 1, 2021, 13, 31);
             fail("Expected an IllegalArguementException");
         } catch (IllegalArgumentException ex) {}
 
         try {
-            movie = new Movie(0, "A description", "A title", 1, 2021, 1, 35);
+            movie = new Movie(0, "A description", "A title",3, 1, 2021, 1, 35);
             fail("Expected an IllegalArguementException");
         } catch (IllegalArgumentException ex) {}
 
