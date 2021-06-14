@@ -15,8 +15,8 @@ public class AccessShowing {
         dataAccess = Services.getDataAccess(Main.dbName);
     }
 
-    public String getShowingForMovie(ArrayList<Showing> showingList, Movie movie){
-        showingList = dataAccess.getMovieShowings(new Showing(-1, movie.getMovieID(), -1, 0,0, 0, 0, 0));
+    public String getShowingForMovie(ArrayList<Showing> showingList, int movieID){
+        showingList = dataAccess.getMovieShowings(new Showing(-1, movieID(), -1, 0,0, 0, 0, 0));
         return FilterList.filterShowingsByDate(showingList);
     }
 }
