@@ -74,7 +74,7 @@ public class DatabaseStub {
 
     public void close() { System.out.println("Closed " + dbType + " database " + dbName); }
 
-    public String getMovies(List<Movie> movieResult)
+    public String getAllMovies(List<Movie> movieResult)
     {
         movieResult.addAll(movies);
         return null;
@@ -114,10 +114,20 @@ public class DatabaseStub {
         return null;
     }
 
-    public String getTheatres(List<Theatre> theatreResult)
+    public String getAllTheatres(List<Theatre> theatreResult)
     {
         theatreResult.addAll(theatres);
         return null;
+    }
+
+    public Theatre getTheatre(Theatre theatre) {
+        Theatre result = null;
+        int index = theatres.indexOf(theatre);
+        if (index >= 0)
+        {
+            result = theatres.get(index);
+        }
+        return result;
     }
 
     public String insertTheatre(Theatre theatre)
@@ -242,7 +252,7 @@ public class DatabaseStub {
         return null;
     }
 
-    public String getUsers(List<User> userResult)
+    public String getAllUsers(List<User> userResult)
     {
         userResult.addAll(users);
         return null;

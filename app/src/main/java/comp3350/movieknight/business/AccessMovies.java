@@ -13,12 +13,12 @@ public class AccessMovies {
 
     public AccessMovies()
     {
-        dataAccess = (DatabaseStub) Services.getDataAccess(Main.dbName);
+        dataAccess = Services.getDataAccess(Main.dbName);
     }
 
     public String getMoviesInTheatres(ArrayList<Movie> movies)
     {
-        dataAccess.getMovies(movies);
+        dataAccess.getAllMovies(movies);
         return FilterList.filterMoviesInTheatres(movies);
     }
 
