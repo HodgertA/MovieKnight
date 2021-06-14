@@ -199,7 +199,11 @@ public class DatabaseStub {
 
         for (int counter = 0; counter < showings.size(); counter++)
         {
-            //will implement once we figure out how dates are going to work
+            curr = showings.get(counter);
+            if (curr.getShowingDate().equals(showing.getShowingDate()))
+            {
+                result.add(curr);
+            }
         }
         return result;
     }
