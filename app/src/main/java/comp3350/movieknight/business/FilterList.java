@@ -21,10 +21,15 @@ public class FilterList {
         //iterate through list of movies
         Iterator<Movie> itr = movies.iterator();
         while (itr.hasNext()) {
+
             Movie movie = itr.next();
+            Calendar lastShowDate = movie.getLastShowDate();
 
             //if the lastShowDate happened before today
-            if(movie.getLastShowDate().compareTo(todaysDate) < 0) {
+            if(lastShowDate.get(Calendar.YEAR) < todaysDate.get(Calendar.YEAR) || //last year
+                    (lastShowDate.get(Calendar.YEAR) == todaysDate.get(Calendar.YEAR) && lastShowDate.get(Calendar.MONTH) < todaysDate.get(Calendar.MONTH)) || //last month
+                    (lastShowDate.get(Calendar.YEAR) == todaysDate.get(Calendar.YEAR) && lastShowDate.get(Calendar.MONTH) == todaysDate.get(Calendar.MONTH) && lastShowDate.get(Calendar.DATE) < todaysDate.get(Calendar.DATE)) // yesterday
+                ) {
                 itr.remove();//remove from list
             }
         }
@@ -32,18 +37,19 @@ public class FilterList {
         return null;
     }
 
-    public static String filterShowingsByDate(ArrayList<Showing> allShowing){
+    public static String filterShowingsByDate(ArrayList<Showing> allShowings){
 
-        if(allShowing!=null) {
-            Calendar toDay = Calendar.getInstance();
-            Iterator<Showing> iterator = allShowing.iterator();
+        if(allShowings!=null) {
+            Calendar today = Calendar.getInstance();
+            Iterator<Showing> iterator = allShowings.iterator();
             while (iterator.hasNext()) {
                 Showing sh = iterator.next();
 
-                if (    sh==null||
-                        sh.getShowingDate().get(Calendar.YEAR) != toDay.get(Calendar.YEAR) ||
-                        sh.getShowingDate().get(Calendar.MONTH) != toDay.get(Calendar.MONTH) ||
-                        sh.getShowingDate().get(Calendar.DATE) != toDay.get(Calendar.DATE)) {
+                if (sh==null ||
+                        sh.getShowingDate().get(Calendar.YEAR) != today.get(Calendar.YEAR) ||
+                        sh.getShowingDate().get(Calendar.MONTH) != today.get(Calendar.MONTH) ||
+                        sh.getShowingDate().get(Calendar.DATE) != today.get(Calendar.DATE)
+                ) {
                     iterator.remove();
                 }
             }
