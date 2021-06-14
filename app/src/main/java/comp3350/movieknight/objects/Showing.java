@@ -4,6 +4,8 @@ package comp3350.movieknight.objects;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import comp3350.movieknight.business.AccessTheatre;
+
 
 public class Showing {
     private int showingID;
@@ -11,11 +13,12 @@ public class Showing {
     private int theatreID;
     private Calendar showingDate;
     private double showingTime;
-    private ArrayList<Boolean> seats;
+    private int seats;
 
     public Showing(int showingID, int movieID, int theatreID, int year, int month, int date, int hour, int minute) {
         if (showingID >=0 && movieID >= 0 && theatreID >= 0 && month > 0 && month <=12 && date >0 && date <=31 && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
-            this.seats = new ArrayList<Boolean>();
+            AccessTheatre accessTheatre = new AccessTheatre();
+            this.seats = accessTheatre.getTheatre(theatreID).getNumberOfSeatsInRoom();
             this.showingID = showingID;
             this.movieID = movieID;
             this.theatreID = theatreID;
@@ -45,7 +48,7 @@ public class Showing {
 
     public double getShowingTime() { return showingTime;}
 
-    public ArrayList<Boolean> getSeats() { return seats; }
+    public int getSeats() { return seats; }
 
     public String toString()
     {
