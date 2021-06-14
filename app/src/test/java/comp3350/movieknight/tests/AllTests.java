@@ -3,7 +3,8 @@ package comp3350.movieknight.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import comp3350.movieknight.tests.business.FilterListTest;
+import comp3350.movieknight.tests.business.FilterMoviesTest;
+import comp3350.movieknight.tests.business.FilterShowingsTest;
 import comp3350.movieknight.tests.objects.*;
 
 
@@ -31,6 +32,7 @@ public class AllTests
 
     private static void testBusiness()
     {
-        suite.addTestSuite(FilterListTest.class);
+        suite.addTestSuite(FilterShowingsTest.class);
+        suite.addTestSuite(FilterMoviesTest.class);
     }
 }
