@@ -11,21 +11,13 @@ public class Movie
     private int runtime;
     private Calendar lastShowDate;
 
-    public Calendar getLastShowDate() {
-        return lastShowDate;
-    }
-
-    public void setEndDate(Calendar endDate) {
-        this.lastShowDate = endDate;
-    }
-
     public Movie(int movieID)
     {
         if (movieID >= 0) {
             this.movieID = movieID;
             this.description = null;
             this.title = null;
-            this.poster = 0;
+            this.poster = -1;
             this.runtime = 0; //in minutes
         } else {
             throw new IllegalArgumentException();
@@ -69,6 +61,14 @@ public class Movie
     public int getRuntime()
     {
         return runtime;
+    }
+
+    public Calendar getLastShowDate() {
+        return lastShowDate;
+    }
+
+    public void setEndDate(Calendar endDate) {
+        this.lastShowDate = endDate;
     }
 
     public String toString()
