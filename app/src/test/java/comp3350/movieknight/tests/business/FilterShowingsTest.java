@@ -7,7 +7,6 @@ import java.util.Calendar;
 import java.util.Iterator;
 
 import comp3350.movieknight.business.FilterList;
-import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 
 public class FilterShowingsTest extends TestCase {
@@ -49,7 +48,7 @@ public class FilterShowingsTest extends TestCase {
     }
 
     public void testAllMoviesShowingToday(){
-        System.out.println("Starting filter movies test: testAllShowingToday");
+        System.out.println("Starting filter movies test: testAllMoviesShowingToday");
 
         Calendar today = Calendar.getInstance();
 
@@ -73,7 +72,7 @@ public class FilterShowingsTest extends TestCase {
         assertEquals(showing2,iterator.next());
         assertEquals(showing3,iterator.next());
 
-        System.out.println("Finished filter movies test: testAllShowingToday");
+        System.out.println("Finished filter movies test: testAllMoviesShowingToday");
 
     }
 
@@ -145,9 +144,8 @@ public class FilterShowingsTest extends TestCase {
             assertEquals( sh.getShowingDate().get(Calendar.DATE),toDay.get(Calendar.DATE));
             System.out.println("\t"+sh);
         }
-        System.out.println("\tshowing today");
 
-        System.out.println("Finished filter movies test: testNoMoviesShowingToday");
+        System.out.println("Finished filter movies test: testNormalCase");
     }
 
 }
