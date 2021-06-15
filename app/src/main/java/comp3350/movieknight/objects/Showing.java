@@ -1,11 +1,6 @@
 package comp3350.movieknight.objects;
 
-
-import java.util.ArrayList;
 import java.util.Calendar;
-
-import comp3350.movieknight.business.AccessTheatre;
-
 
 public class Showing {
     private int showingID;
@@ -15,10 +10,9 @@ public class Showing {
     private double showingTime;
     private int seats;
 
-    public Showing(int showingID, int movieID, int theatreID, int year, int month, int date, int hour, int minute) {
-        if (showingID >=0 && movieID >= 0 && theatreID >= 0 && month > 0 && month <=12 && date >0 && date <=31 && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
-            AccessTheatre accessTheatre = new AccessTheatre();
-            this.seats = accessTheatre.getTheatre(theatreID).getNumberOfSeatsInRoom();
+    public Showing(int showingID, int movieID, int theatreID, int seats, int year, int month, int date, int hour, int minute) {
+        if (showingID >=0 && movieID >= 0 && theatreID >= 0 && seats >= 1 && month > 0 && month <=12 && date >0 && date <=31 && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
+            this.seats = seats;
             this.showingID = showingID;
             this.movieID = movieID;
             this.theatreID = theatreID;
