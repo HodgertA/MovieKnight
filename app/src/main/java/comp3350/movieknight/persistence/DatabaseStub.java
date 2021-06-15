@@ -50,19 +50,19 @@ public class DatabaseStub {
         theatres.add(theatre);
 
         showings = new ArrayList<Showing>();
-        showing = new Showing(1, 1, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(), 2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(2, 1, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(2, 1, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(3, 2, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(3, 2, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(5, 3, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(5, 3, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(6, 3, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(6, 3, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(7, 4, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(7, 4, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(9, 5, 1, 2021, 1, 3, 8, 0);
+        showing = new Showing(9, 5, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
         showings.add(showing);
 
         users = new ArrayList<User>();

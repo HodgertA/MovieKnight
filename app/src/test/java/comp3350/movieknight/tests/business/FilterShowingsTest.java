@@ -54,11 +54,11 @@ public class FilterShowingsTest extends TestCase {
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
 
-        Showing showing1 = new Showing(1,2,3,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
+        Showing showing1 = new Showing(1,2,3, 10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
         showings.add(showing1);
-        Showing showing2 = new Showing(4,5,6,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),0,0);
+        Showing showing2 = new Showing(4,5,6,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),0,0);
         showings.add(showing2);
-        Showing showing3 = new Showing(7,8,9,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
+        Showing showing3 = new Showing(7,8,9,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
         showings.add(showing3);
 
         FilterList.filterShowingsByDate(showings);
@@ -83,8 +83,8 @@ public class FilterShowingsTest extends TestCase {
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
 
-        showings.add(new Showing(1,2,3,2000,toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
-        showings.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),1,toDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,10,2000,toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,10,toDay.get(Calendar.YEAR),1,toDay.get(Calendar.DATE),8,10));
         int notToday;
         if(toDay.get(Calendar.DATE)<15){
             notToday=20;
@@ -92,7 +92,7 @@ public class FilterShowingsTest extends TestCase {
         else {
             notToday=10;
         }
-        showings.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,notToday,8,10));
+        showings.add(new Showing(1,2,3,10,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,notToday,8,10));
 
         FilterList.filterShowingsByDate(showings);
 
@@ -110,15 +110,15 @@ public class FilterShowingsTest extends TestCase {
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
         //correct
-        showings.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,10,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
         //different year
-        showings.add(new Showing(1,2,3,1999,toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,10,1999,toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),8,10));
         //correct
-        showings.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),12,59));
+        showings.add(new Showing(1,2,3,10,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),12,59));
         //different month
-        showings.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH),toDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,10,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH),toDay.get(Calendar.DATE),8,10));
         //correct
-        showings.add(new Showing(4,5,6,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),0,0));
+        showings.add(new Showing(4,5,6,10,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,toDay.get(Calendar.DATE),0,0));
         //different date
         int notToday;
         if(toDay.get(Calendar.DATE)<15){
@@ -127,7 +127,7 @@ public class FilterShowingsTest extends TestCase {
         else {
             notToday=10;
         }
-        showings.add(new Showing(1,2,3,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,notToday,8,10));
+        showings.add(new Showing(1,2,3,10,toDay.get(Calendar.YEAR),toDay.get(Calendar.MONTH)+1,notToday,8,10));
 
 
         FilterList.filterShowingsByDate(showings);
