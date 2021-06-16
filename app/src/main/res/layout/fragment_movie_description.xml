@@ -7,8 +7,6 @@
     android:orientation="vertical"
     tools:context=".presentation.ui.fragments.MovieDescriptionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
         android:id="@+id/textViewMovieTitle"
         android:textSize="25dp"

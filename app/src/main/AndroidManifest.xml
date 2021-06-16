@@ -12,8 +12,7 @@
         android:theme="@style/Theme.MovieKnight">
         <activity
             android:name=".presentation.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.MovieKnight.NoActionBar">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

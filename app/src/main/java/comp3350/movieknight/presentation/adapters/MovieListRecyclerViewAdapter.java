@@ -22,7 +22,7 @@ public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItem
 
     private Context context;
     private ArrayList<Movie> movies;
-private MovieListFragment movieListFragment;
+    private MovieListFragment movieListFragment;
     public MovieListRecyclerViewAdapter(Context context, MovieListFragment movieListFragment, ArrayList<Movie> movies) {
         this.context = context;
         this.movies = movies;
