@@ -1,9 +1,12 @@
 package comp3350.movieknight.business;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
+import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Ticket;
 import comp3350.movieknight.persistence.DatabaseStub;
 
@@ -37,4 +40,20 @@ public class AccessTickets {
         return dataAccess.deleteTicket(ticket);
     }
 
+    public boolean[] compileSeatReservations(Showing showing) {
+        boolean[] result = new boolean[showing.getSeats()];
+        Arrays.fill(result, true);
+
+        ArrayList<Ticket> ticketList = this.dataAccess.getShowingTickets(new Ticket(0, 0, showing.getShowingID(), 0, 0));
+
+        Iterator<Ticket> itr = ticketList.iterator();
+        while (itr.hasNext()) {
+
+            Ticket ticket = itr.next();
+            result[ticket.getSeatNum()] = false;
+
+        }
+
+        return result;
+    }
 }
