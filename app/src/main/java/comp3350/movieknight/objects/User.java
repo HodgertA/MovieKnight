@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 public class User
 {
     private int userID;
@@ -24,6 +26,7 @@ public class User
         return username;
     }
 
+    @NotNull
     public String toString()
     {
         return "User: " + userID + " " + username;
@@ -32,15 +35,14 @@ public class User
     public boolean equals(Object object)
     {
         boolean result;
-        User u;
+        User user;
 
         result = false;
 
-        if (object instanceof User)
-        {
-            u = (User) object;
-            if ((u.userID == userID))
-            {
+        if (object instanceof User) {
+            user = (User) object;
+
+            if ((user.userID == userID)) {
                 result = true;
             }
         }
