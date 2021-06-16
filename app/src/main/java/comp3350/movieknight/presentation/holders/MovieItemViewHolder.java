@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation;
+package comp3350.movieknight.presentation.holders;
 
 import android.view.View;
 import android.widget.ImageView;

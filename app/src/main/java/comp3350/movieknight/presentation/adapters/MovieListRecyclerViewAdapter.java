@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
-import comp3350.movieknight.presentation.MovieItemViewHolder;
+import comp3350.movieknight.presentation.holders.MovieItemViewHolder;
 import comp3350.movieknight.presentation.ui.fragments.MovieListFragment;
 
 public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItemViewHolder>{

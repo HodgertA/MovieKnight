@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
 import comp3350.movieknight.objects.Showing;
-import comp3350.movieknight.presentation.SeatViewHolder;
+import comp3350.movieknight.presentation.holders.SeatViewHolder;
 
 public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
