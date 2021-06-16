@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Calendar;
 
 public class Movie
@@ -67,10 +69,7 @@ public class Movie
         return lastShowDate;
     }
 
-    public void setEndDate(Calendar endDate) {
-        this.lastShowDate = endDate;
-    }
-
+    @NotNull
     public String toString()
     {
         return "Movie: " + movieID + " " + title;

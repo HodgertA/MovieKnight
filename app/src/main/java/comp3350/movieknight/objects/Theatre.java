@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Theatre
 {
     private int theatreNumber;
@@ -18,6 +20,7 @@ public class Theatre
 
     public int getNumSeats() { return (numSeats); }
     
+    @NotNull
     public String toString()
     {
         return "Theatre: " + theatreNumber +", Number of seats: " + numSeats;

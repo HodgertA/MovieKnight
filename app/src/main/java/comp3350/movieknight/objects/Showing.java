@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Calendar;
 
 public class Showing {
@@ -44,6 +46,7 @@ public class Showing {
 
     public int getSeats() { return seats; }
 
+    @NotNull
     public String toString()
     {
         return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing time: " + showingDate.get(Calendar.YEAR) + " " + (showingDate.get(Calendar.MONTH)+1)+" " + showingDate.get(Calendar.DATE) + " at " + showingTime;

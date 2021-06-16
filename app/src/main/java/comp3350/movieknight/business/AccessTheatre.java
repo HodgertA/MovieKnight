@@ -22,12 +22,12 @@ public class AccessTheatre {
         return dataAccess.insertTheatre(theatre);
     }
 
-    public String updateTicket(Theatre theatre)
+    public String updateTheatre(Theatre theatre)
     {
         return dataAccess.updateTheatre(theatre);
     }
 
-    public String deleteTicket(Theatre theatre)
+    public String deleteTheatre(Theatre theatre)
     {
         return dataAccess.deleteTheatre(theatre);
     }

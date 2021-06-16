@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Ticket {
 
     private int ticketID;
@@ -52,12 +54,11 @@ public class Ticket {
         return ticketID;
     }
 
-    @Override
+    @NotNull
     public String toString() {
         return "Ticket: " + ticketID + ", Seat Number: " + seatNum + ", User: " + userID + ", Showing: " + showingID + ", Theatre: " + theatreID ;
     }
 
-    @Override
     public boolean equals(Object object) {
 
         boolean result=false;

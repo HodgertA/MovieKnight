@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 public class User
 {
     private int userID;
@@ -24,6 +26,7 @@ public class User
         return username;
     }
 
+    @NotNull
     public String toString()
     {
         return "User: " + userID + " " + username;
