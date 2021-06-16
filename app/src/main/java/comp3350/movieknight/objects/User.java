@@ -32,15 +32,14 @@ public class User
     public boolean equals(Object object)
     {
         boolean result;
-        User u;
+        User user;
 
         result = false;
 
-        if (object instanceof User)
-        {
-            u = (User) object;
-            if ((u.userID == userID))
-            {
+        if (object instanceof User) {
+            user = (User) object;
+
+            if ((user.userID == userID)) {
                 result = true;
             }
         }

@@ -50,19 +50,19 @@ public class DatabaseStub {
         theatres.add(theatre);
 
         showings = new ArrayList<Showing>();
-        showing = new Showing(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(), 2021, 1, 3, 8, 0);
+        showing = new Showing(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(), 2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(2, 1, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
+        showing = new Showing(2, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(3, 2, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
+        showing = new Showing(3, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(5, 3, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
+        showing = new Showing(5, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(6, 3, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
+        showing = new Showing(6, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(7, 4, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
+        showing = new Showing(7, 4, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),2021, 1, 3, 8, 0);
         showings.add(showing);
-        showing = new Showing(9, 5, 1, getTheatre(new Theatre(1, 1)).getNumberOfSeatsInRoom(),2021, 1, 3, 8, 0);
+        showing = new Showing(9, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),2021, 1, 3, 8, 0);
         showings.add(showing);
 
         users = new ArrayList<User>();
@@ -95,8 +95,7 @@ public class DatabaseStub {
         int index;
 
         index = movies.indexOf(movie);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             movies.set(index, movie);
         }
         return null;
@@ -107,8 +106,7 @@ public class DatabaseStub {
         int index;
 
         index = movies.indexOf(movie);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             movies.remove(index);
         }
         return null;
@@ -122,9 +120,9 @@ public class DatabaseStub {
 
     public Theatre getTheatre(Theatre theatre) {
         Theatre result = null;
+
         int index = theatres.indexOf(theatre);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             result = theatres.get(index);
         }
         return result;
@@ -145,8 +143,7 @@ public class DatabaseStub {
         int index;
 
         index = theatres.indexOf(theatre);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             theatres.set(index, theatre);
         }
         return null;
@@ -157,8 +154,7 @@ public class DatabaseStub {
         int index;
 
         index = theatres.indexOf(theatre);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             theatres.remove(index);
         }
         return null;
@@ -175,11 +171,9 @@ public class DatabaseStub {
         ArrayList<Showing> result = new ArrayList<Showing>();
         Showing curr;
 
-        for (int counter = 0; counter < showings.size(); counter++)
-        {
+        for (int counter = 0; counter < showings.size(); counter++) {
             curr = showings.get(counter);
-            if (curr.getMovieID() == showing.getMovieID())
-            {
+            if (curr.getMovieID() == showing.getMovieID()) {
                 result.add(curr);
             }
         }
@@ -191,11 +185,10 @@ public class DatabaseStub {
         ArrayList<Showing> result = new ArrayList<Showing>();
         Showing curr;
 
-        for (int counter = 0; counter < showings.size(); counter++)
-        {
+        for (int counter = 0; counter < showings.size(); counter++) {
             curr = showings.get(counter);
-            if (curr.getTheatreID() == showing.getTheatreID())
-            {
+
+            if (curr.getTheatreID() == showing.getTheatreID()) {
                 result.add(curr);
             }
         }
@@ -207,11 +200,10 @@ public class DatabaseStub {
         ArrayList<Showing> result = new ArrayList<Showing>();
         Showing curr;
 
-        for (int counter = 0; counter < showings.size(); counter++)
-        {
+        for (int counter = 0; counter < showings.size(); counter++) {
             curr = showings.get(counter);
-            if (curr.getShowingDate().equals(showing.getShowingDate()))
-            {
+
+            if (curr.getShowingDate().equals(showing.getShowingDate())) {
                 result.add(curr);
             }
         }
@@ -233,8 +225,7 @@ public class DatabaseStub {
         int index;
 
         index = showings.indexOf(showing);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             showings.set(index, showing);
         }
         return null;
@@ -245,8 +236,7 @@ public class DatabaseStub {
         int index;
 
         index = showings.indexOf(showing);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             showings.remove(index);
         }
         return null;
@@ -273,8 +263,7 @@ public class DatabaseStub {
         int index;
 
         index = users.indexOf(user);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             users.set(index, user);
         }
         return null;
@@ -285,8 +274,7 @@ public class DatabaseStub {
         int index;
 
         index = users.indexOf(user);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             users.remove(index);
         }
         return null;
@@ -303,11 +291,10 @@ public class DatabaseStub {
         ArrayList<Ticket> result = new ArrayList<Ticket>();
         Ticket curr;
 
-        for (int counter = 0; counter < showings.size(); counter++)
-        {
+        for (int counter = 0; counter < showings.size(); counter++) {
             curr = tickets.get(counter);
-            if (curr.getShowingID() == ticket.getShowingID())
-            {
+
+            if (curr.getShowingID() == ticket.getShowingID()) {
                 result.add(curr);
             }
         }
@@ -319,11 +306,10 @@ public class DatabaseStub {
         ArrayList<Ticket> result = new ArrayList<Ticket>();
         Ticket curr;
 
-        for (int counter = 0; counter < showings.size(); counter++)
-        {
+        for (int counter = 0; counter < showings.size(); counter++) {
             curr = tickets.get(counter);
-            if (curr.getUserID() == ticket.getUserID())
-            {
+
+            if (curr.getUserID() == ticket.getUserID()) {
                 result.add(curr);
             }
         }
@@ -345,8 +331,7 @@ public class DatabaseStub {
         int index;
 
         index = tickets.indexOf(ticket);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             tickets.set(index, ticket);
         }
         return null;
@@ -357,8 +342,7 @@ public class DatabaseStub {
         int index;
 
         index = tickets.indexOf(ticket);
-        if (index >= 0)
-        {
+        if (index >= 0) {
             tickets.remove(index);
         }
         return null;

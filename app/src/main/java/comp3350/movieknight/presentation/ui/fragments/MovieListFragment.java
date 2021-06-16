@@ -63,7 +63,7 @@ public class MovieListFragment extends Fragment {
     public void openMovieDetailPage(Movie movie) {
         movieListRecyclerView.setVisibility(View.GONE);
         childFragment = new MovieDescriptionFragment();
-        Bundle bundle=new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putString("movieTitle",movie.getTitle());
         bundle.putInt("moviePoster",movie.getPoster());
         bundle.putString("movieDesc",movie.getDescription());

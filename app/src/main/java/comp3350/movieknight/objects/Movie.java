@@ -79,13 +79,12 @@ public class Movie
     public boolean equals(Object object)
     {
         boolean result = false;
-        Movie m;
+        Movie movie;
 
-        if (object instanceof Movie)
-        {
-            m = (Movie) object;
-            if(m.movieID == movieID)
-            {
+        if (object instanceof Movie) {
+            movie = (Movie) object;
+
+            if(movie.movieID == movieID) {
                 result = true;
             }
         }

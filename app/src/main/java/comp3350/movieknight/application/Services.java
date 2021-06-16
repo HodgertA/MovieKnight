@@ -8,8 +8,7 @@ public class Services {
 
     public static DatabaseStub createDataAccess(String dbName)
     {
-        if (dataAccessService == null)
-        {
+        if (dataAccessService == null) {
             dataAccessService = new DatabaseStub(dbName);
             dataAccessService.open(Main.dbName);
         }
@@ -18,8 +17,7 @@ public class Services {
 
     public static DatabaseStub getDataAccess(String dbName)
     {
-        if (dataAccessService == null)
-        {
+        if (dataAccessService == null) {
             System.out.println("Connection to data access has not been established.");
             System.exit(1);
         }
@@ -28,8 +26,7 @@ public class Services {
 
     public static void closeDataAccess()
     {
-        if (dataAccessService != null)
-        {
+        if (dataAccessService != null) {
             dataAccessService.close();
         }
         dataAccessService = null;

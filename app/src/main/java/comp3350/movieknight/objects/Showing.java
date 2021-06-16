@@ -54,16 +54,15 @@ public class Showing {
         boolean result = false;
         Showing showing;
 
-        if (object instanceof Showing)
-        {
+        if (object instanceof Showing) {
             showing = (Showing) object;
+
             if (showing.movieID == movieID
                     && showing.theatreID == theatreID
                     && showing.showingDate.get(Calendar.YEAR) == showingDate.get(Calendar.YEAR)
                     && showing.showingDate.get(Calendar.MONTH) == showingDate.get(Calendar.MONTH)
                     && showing.showingDate.get(Calendar.DATE) == showingDate.get(Calendar.DATE)
-                    && showing.showingTime == showingTime)
-            {
+                    && showing.showingTime == showingTime) {
                 result = true;
             }
         }
