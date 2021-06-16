@@ -7,8 +7,6 @@ import comp3350.movieknight.tests.business.FilterMoviesTest;
 import comp3350.movieknight.tests.business.FilterShowingsTest;
 import comp3350.movieknight.tests.objects.*;
 
-
-
 public class AllTests
 {
 	public static TestSuite suite;

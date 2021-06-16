@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Ticket {
 
     private int ticketID;
@@ -52,28 +54,21 @@ public class Ticket {
         return ticketID;
     }
 
-    @Override
+    @NotNull
     public String toString() {
-        return "Ticket: " +
-                "ticketID= " + ticketID +
-                ", seatNum= " + seatNum +
-                ", userID= " + userID +
-                ", showingID= " + showingID +
-                ", theatreID= " + theatreID ;
+        return "Ticket: " + ticketID + ", Seat Number: " + seatNum + ", User: " + userID + ", Showing: " + showingID + ", Theatre: " + theatreID ;
     }
 
-    @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object object) {
 
         boolean result=false;
         Ticket ticket;
 
-        if(o instanceof Ticket)
+        if(object instanceof Ticket)
         {
-            ticket=(Ticket) o;
-            if(ticket.userID == userID
-                    && ticket.showingID == showingID
-                    && ticket.seatNum == seatNum)
+            ticket=(Ticket) object;
+
+            if(ticket.userID == userID && ticket.showingID == showingID && ticket.seatNum == seatNum)
             {
                 result=true;
             }

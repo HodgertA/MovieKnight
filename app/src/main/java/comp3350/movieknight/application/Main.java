@@ -8,8 +8,6 @@ public class Main {
     {
         startUp();
 
-        //run the application here
-
         shutDown();
         System.out.println("All done");
     }

@@ -1,5 +1,7 @@
 package comp3350.movieknight.objects;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Calendar;
 
 public class Movie
@@ -67,10 +69,7 @@ public class Movie
         return lastShowDate;
     }
 
-    public void setEndDate(Calendar endDate) {
-        this.lastShowDate = endDate;
-    }
-
+    @NotNull
     public String toString()
     {
         return "Movie: " + movieID + " " + title;
@@ -79,13 +78,12 @@ public class Movie
     public boolean equals(Object object)
     {
         boolean result = false;
-        Movie m;
+        Movie movie;
 
-        if (object instanceof Movie)
-        {
-            m = (Movie) object;
-            if(m.movieID == movieID)
-            {
+        if (object instanceof Movie) {
+            movie = (Movie) object;
+
+            if(movie.movieID == movieID) {
                 result = true;
             }
         }

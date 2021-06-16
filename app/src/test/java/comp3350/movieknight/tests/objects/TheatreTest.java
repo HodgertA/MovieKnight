@@ -2,9 +2,7 @@ package comp3350.movieknight.tests.objects;
 
 import junit.framework.TestCase;
 
-import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Theatre;
-import comp3350.movieknight.objects.User;
 
 public class TheatreTest extends TestCase
 {
@@ -20,8 +18,8 @@ public class TheatreTest extends TestCase
         Theatre theatre =  new Theatre(1, 10);
         assertNotNull(theatre);
         assertEquals(1,theatre.getTheatreNumber());
-        assertEquals(10, theatre.getNumberOfSeatsInRoom());
-        assertEquals("Theatre #1 can seat 10 people", theatre.toString());
+        assertEquals(10, theatre.getNumSeats());
+        assertEquals("Theatre: 1, Number of seats: 10", theatre.toString());
         assertTrue(theatre.equals(theatre));
 
         System.out.println("Finished Theatre test: testTypicalTheatre");
@@ -37,10 +35,10 @@ public class TheatreTest extends TestCase
         assertNotNull(theatre2);
         assertEquals(1,theatre1.getTheatreNumber());
         assertEquals(2,theatre2.getTheatreNumber());
-        assertEquals(10, theatre1.getNumberOfSeatsInRoom());
-        assertEquals(10, theatre2.getNumberOfSeatsInRoom());
-        assertEquals("Theatre #1 can seat 10 people", theatre1.toString());
-        assertEquals("Theatre #2 can seat 10 people", theatre2.toString());
+        assertEquals(10, theatre1.getNumSeats());
+        assertEquals(10, theatre2.getNumSeats());
+        assertEquals("Theatre: 1, Number of seats: 10", theatre1.toString());
+        assertEquals("Theatre: 2, Number of seats: 10", theatre2.toString());
         assertFalse(theatre1.equals(theatre2));
 
         System.out.println("Finished Theatre test: testTwoTheatres");
@@ -53,8 +51,8 @@ public class TheatreTest extends TestCase
         Theatre theatre =  new Theatre(0, 1);
         assertNotNull(theatre);
         assertEquals(0,theatre.getTheatreNumber());
-        assertEquals(1, theatre.getNumberOfSeatsInRoom());
-        assertEquals("Theatre #0 can seat 1 people", theatre.toString());
+        assertEquals(1, theatre.getNumSeats());
+        assertEquals("Theatre: 0, Number of seats: 1", theatre.toString());
         assertTrue(theatre.equals(theatre));
 
         System.out.println("Finished Theatre test: testEdgeCases");

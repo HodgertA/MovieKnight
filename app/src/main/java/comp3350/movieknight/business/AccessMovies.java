@@ -1,7 +1,6 @@
 package comp3350.movieknight.business;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;

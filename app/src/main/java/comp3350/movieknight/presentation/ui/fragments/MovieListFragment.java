@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -63,7 +62,7 @@ public class MovieListFragment extends Fragment {
     public void openMovieDetailPage(Movie movie) {
         movieListRecyclerView.setVisibility(View.GONE);
         childFragment = new MovieDescriptionFragment();
-        Bundle bundle=new Bundle();
+        Bundle bundle = new Bundle();
         bundle.putString("movieTitle",movie.getTitle());
         bundle.putInt("moviePoster",movie.getPoster());
         bundle.putString("movieDesc",movie.getDescription());

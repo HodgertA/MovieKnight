@@ -1,7 +1,5 @@
 package comp3350.movieknight.business;
 
-import java.util.ArrayList;
-
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Theatre;
@@ -24,12 +22,12 @@ public class AccessTheatre {
         return dataAccess.insertTheatre(theatre);
     }
 
-    public String updateTicket(Theatre theatre)
+    public String updateTheatre(Theatre theatre)
     {
         return dataAccess.updateTheatre(theatre);
     }
 
-    public String deleteTicket(Theatre theatre)
+    public String deleteTheatre(Theatre theatre)
     {
         return dataAccess.deleteTheatre(theatre);
     }
