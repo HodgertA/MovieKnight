@@ -34,15 +34,15 @@ public class DatabaseStub {
         //not starting off with any tickets generated
 
         movies = new ArrayList<Movie>();
-        movie = new Movie(1, "", "The Bee Movie", R.drawable.the_bee_movie, 120, 2021, 6,8);
+        movie = new Movie(1, "Description for The Bee Movie", "The Bee Movie", R.drawable.the_bee_movie, 120, 2021, 6,8);
         movies.add(movie);
-        movie = new Movie(2, "", "Finding Nemo", R.drawable.finding_nemo, 120, 2022, 6,9);
+        movie = new Movie(2, "Description for Finding Nemo", "Finding Nemo", R.drawable.finding_nemo, 120, 2022, 6,9);
         movies.add(movie);
-        movie = new Movie(3, "", "Monsters Inc.", R.drawable.monsters_inc, 120, 2022, 6,7);
+        movie = new Movie(3, "Description for Monsters Inc.", "Monsters Inc.", R.drawable.monsters_inc, 120, 2022, 6,7);
         movies.add(movie);
-        movie = new Movie(4, "", "Ice Age", R.drawable.ice_age, 120, 2021, 7,26);
+        movie = new Movie(4, "Description for Ice Age", "Ice Age", R.drawable.ice_age, 120, 2021, 7,26);
         movies.add(movie);
-        movie = new Movie(5, "", "Shrek", R.drawable.shrek, 120, 2021, 7,26);
+        movie = new Movie(5, "Description for Shrek", "Shrek", R.drawable.shrek, 120, 2021, 7,26);
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();

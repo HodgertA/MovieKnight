@@ -8,20 +8,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+//import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.presentation.MovieItemViewHolder;
+import comp3350.movieknight.presentation.ui.fragments.MovieListFragment;
 
 public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItemViewHolder>{
 
     private Context context;
     private ArrayList<Movie> movies;
-
-    public MovieListRecyclerViewAdapter(Context context, ArrayList<Movie> movies) {
+    private MovieListFragment movieListFragment;
+    public MovieListRecyclerViewAdapter(Context context, MovieListFragment movieListFragment, ArrayList<Movie> movies) {
         this.context = context;
         this.movies = movies;
+        this.movieListFragment=movieListFragment;
     }
 
     @NonNull
@@ -40,6 +44,7 @@ public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItem
             @Override
             public void onClick(View v) {
                 //when the card is clicked, do stuff here
+                movieListFragment.openMovieDetailPage(movies.get(position));
             }
         });
     }
