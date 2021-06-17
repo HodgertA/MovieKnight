@@ -32,10 +32,7 @@ public class DatabaseStub {
         Theatre theatre;
         Showing showing;
         User user;
-        //not starting off with any tickets generated
-
-
-
+        Ticket ticket;
 
 
 
@@ -52,12 +49,10 @@ public class DatabaseStub {
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();
-        theatre = new Theatre(1, 12);
+        theatre = new Theatre(1, 24);
         theatres.add(theatre);
 
         Calendar today = Calendar.getInstance();
-
-        //ArrayList<Showing> showings = new ArrayList<Showing>();
 
         showings = new ArrayList<Showing>();
         showing = new Showing(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(), today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 15);
@@ -88,8 +83,60 @@ public class DatabaseStub {
         users = new ArrayList<User>();
         user = new User(1, "Default User");
         users.add(user);
+        user = new User(2, "User2");
+        users.add(user);
+        user = new User(3, "User3");
+        users.add(user);
 
         tickets = new ArrayList<Ticket>();
+        ticket = new Ticket(1, 1, 1, 1, 0);
+        tickets.add(ticket);
+        ticket = new Ticket(2, 2, 1, 2, 1);
+        tickets.add(ticket);
+        ticket = new Ticket(3, 3, 1, 1, 2);
+        tickets.add(ticket);
+        ticket = new Ticket(4, 1, 1, 2, 3);
+        tickets.add(ticket);
+        ticket = new Ticket(5, 2, 2, 1, 4);
+        tickets.add(ticket);
+        ticket = new Ticket(6, 3, 2, 2, 5);
+        tickets.add(ticket);
+        ticket = new Ticket(7, 1, 2, 1, 6);
+        tickets.add(ticket);
+        ticket = new Ticket(8, 2, 2, 2, 7);
+        tickets.add(ticket);
+        ticket = new Ticket(1, 3, 3, 1, 8);
+        tickets.add(ticket);
+        ticket = new Ticket(2, 1, 3, 2, 9);
+        tickets.add(ticket);
+        ticket = new Ticket(3, 2, 3, 1, 10);
+        tickets.add(ticket);
+        ticket = new Ticket(4, 3, 4, 2, 11);
+        tickets.add(ticket);
+        ticket = new Ticket(5, 1, 5, 1, 12);
+        tickets.add(ticket);
+        ticket = new Ticket(6, 2, 6, 2, 13);
+        tickets.add(ticket);
+        ticket = new Ticket(7, 3, 6, 1, 14);
+        tickets.add(ticket);
+        ticket = new Ticket(8, 1, 7, 2, 15);
+        tickets.add(ticket);
+        ticket = new Ticket(1, 2, 8, 1, 16);
+        tickets.add(ticket);
+        ticket = new Ticket(2, 3, 9, 2, 17);
+        tickets.add(ticket);
+        ticket = new Ticket(3, 1, 10, 1, 18);
+        tickets.add(ticket);
+        ticket = new Ticket(4, 2, 11, 2, 19);
+        tickets.add(ticket);
+        ticket = new Ticket(5, 3, 12, 1, 1);
+        tickets.add(ticket);
+        ticket = new Ticket(6, 1, 12, 2, 4);
+        tickets.add(ticket);
+        ticket = new Ticket(7, 2, 12, 1, 8);
+        tickets.add(ticket);
+        ticket = new Ticket(8, 3, 12, 2, 5);
+        tickets.add(ticket);
     }
 
     public void close() { System.out.println("Closed " + dbType + " database " + dbName); }
@@ -311,7 +358,7 @@ public class DatabaseStub {
         ArrayList<Ticket> result = new ArrayList<Ticket>();
         Ticket curr;
 
-        for (int counter = 0; counter < showings.size(); counter++) {
+        for (int counter = 0; counter < tickets.size(); counter++) {
             curr = tickets.get(counter);
 
             if (curr.getShowingID() == ticket.getShowingID()) {
@@ -326,7 +373,7 @@ public class DatabaseStub {
         ArrayList<Ticket> result = new ArrayList<Ticket>();
         Ticket curr;
 
-        for (int counter = 0; counter < showings.size(); counter++) {
+        for (int counter = 0; counter < tickets.size(); counter++) {
             curr = tickets.get(counter);
 
             if (curr.getUserID() == ticket.getUserID()) {

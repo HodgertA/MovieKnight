@@ -11,7 +11,7 @@ public class Ticket {
     private int theatreID;
 
     public Ticket(int ticketID, int userID, int showingID, int theatreID, int seatNum){
-        if (ticketID >= 0 && userID >= 0 && showingID >= 0 && theatreID >= 0 && seatNum> 0) {
+        if (ticketID >= 0 && userID >= 0 && showingID >= 0 && theatreID >= 0 && seatNum >= 0) {
             this.ticketID = ticketID;
             this.userID = userID;
             this.showingID = showingID;
@@ -23,7 +23,7 @@ public class Ticket {
     }
 
     public Ticket(int ticketID, int showingID, int theatreID, int seatNum){
-        if (ticketID >= 0 && showingID >= 0 && theatreID >= 0 && seatNum> 0) {
+        if (ticketID >= 0 && showingID >= 0 && theatreID >= 0 && seatNum >= 0) {
             this.ticketID = ticketID;
             this.userID = -1;
             this.showingID = showingID;

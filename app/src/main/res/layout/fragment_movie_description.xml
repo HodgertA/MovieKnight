@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_description_fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,44 +10,33 @@
 
     <TextView
         android:id="@+id/textViewMovieTitle"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:text="@string/hello_blank_fragment"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imageViewMovieImage"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:layout_margin="16dp"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        android:layout_margin="16dp" />
 
     <TextView
         android:id="@+id/textViewMovieDesc"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="center_horizontal"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/show_time_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/movie_description_fragment_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 
 </LinearLayout>

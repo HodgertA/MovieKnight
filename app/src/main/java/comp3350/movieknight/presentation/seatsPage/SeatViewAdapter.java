@@ -35,18 +35,14 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull SeatViewHolder holder, int position) {
-        String backround;
-
-        if(seats[position])
-        {
-            backround = "@drawable/available_seat";
+        Drawable seatBackground;
+        if(seats[position]) {
+            seatBackground = context.getResources().getDrawable(R.drawable.available_seat);
         }
-        else
-        {
-            backround = "@drawable/reserved_seat";
+        else{
+            seatBackground = context.getResources().getDrawable(R.drawable.reserved_seat);
         }
-
-        holder.getSeatView().setBackground(Drawable.createFromPath(backround));
+        holder.getSeatView().setBackground(seatBackground);
     }
 
     @Override

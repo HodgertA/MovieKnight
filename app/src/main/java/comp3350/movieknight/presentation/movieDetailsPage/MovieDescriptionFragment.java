@@ -22,14 +22,14 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import comp3350.movieknight.R;
-import comp3350.movieknight.objects.Movie;
+
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.business.AccessShowing;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
-import comp3350.movieknight.presentation.movieListPage.MovieListRecyclerViewAdapter;
+
+import comp3350.movieknight.presentation.seatsPage.SeatsFragment;
 
 public class MovieDescriptionFragment extends Fragment {
 
@@ -42,6 +42,10 @@ public class MovieDescriptionFragment extends Fragment {
     private int moviePoster;
     private String movieDesc;
     private int movieId;
+
+    private TextView textViewMovieTitle;
+    private ImageView imageViewMovieImage;
+    private TextView textViewMovieDesc;
 
 
     private AccessShowing accessShowing;
@@ -110,9 +114,9 @@ public class MovieDescriptionFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
         setHasOptionsMenu(true);
 
-        TextView textViewMovieTitle = view.findViewById(R.id.textViewMovieTitle);
-        ImageView imageViewMovieImage = view.findViewById(R.id.imageViewMovieImage);
-        TextView textViewMovieDesc = view.findViewById(R.id.textViewMovieDesc);
+        textViewMovieTitle = view.findViewById(R.id.textViewMovieTitle);
+        imageViewMovieImage = view.findViewById(R.id.imageViewMovieImage);
+        textViewMovieDesc = view.findViewById(R.id.textViewMovieDesc);
 
         textViewMovieTitle.setText(movieTitle);
         textViewMovieDesc.setText(movieDesc);
@@ -133,11 +137,18 @@ public class MovieDescriptionFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void openSeatsPage(Showing showing) {
         showingTimeRecyclerView.setVisibility(View.GONE);
-        childFragment = new MovieDescriptionFragment();
+        textViewMovieTitle.setVisibility(View.GONE);
+        imageViewMovieImage.setVisibility(View.GONE);
+        textViewMovieDesc.setVisibility(View.GONE);
+
+        this.getParentFragment().setMenuVisibility(false);
+        childFragment = new SeatsFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("showingId",showing.getShowingID());
+        bundle.putInt("numSeats",showing.getSeats());
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.movie_description_fragment_container, childFragment).commit();

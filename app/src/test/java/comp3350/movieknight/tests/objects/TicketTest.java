@@ -133,7 +133,7 @@ public class TicketTest extends TestCase {
         } catch (IllegalArgumentException ex) {}
 
         try {
-            ticket = new Ticket(1, 1,1,1,0);
+            ticket = new Ticket(1, 1,1,1,-1);
             fail("Expected an IllegalArguementException");
         } catch (IllegalArgumentException ex) {}
 
@@ -153,7 +153,7 @@ public class TicketTest extends TestCase {
         } catch (IllegalArgumentException ex) {}
 
         try {
-            ticket = new Ticket(1,1,1,0);
+            ticket = new Ticket(1,1,1,-1);
             fail("Expected an IllegalArguementException");
         } catch (IllegalArgumentException ex) {}
 
