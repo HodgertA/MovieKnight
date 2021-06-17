@@ -17,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 import comp3350.movieknight.R;
-
 import comp3350.movieknight.business.AccessTickets;
-
 import comp3350.movieknight.presentation.movieDetailsPage.MovieDescriptionFragment;
 
 public class SeatsFragment extends Fragment {
@@ -29,18 +27,16 @@ public class SeatsFragment extends Fragment {
     private Context context;
     private RecyclerView seatsRecyclerView;
     RecyclerView.LayoutManager layoutManager;
-
     private int showingId;
     private int numberOfSeats;
     private boolean[] seats;
 
     private static final String ARG_PARAM1 = "showingId";
     private static final String ARG_PARAM2 = "numSeats";
-
     private AccessTickets accessTickets;
 
-
     public SeatsFragment() { }
+
     public static SeatsFragment newInstance(int showingId, int numberOfSeats) {
         SeatsFragment fragment = new SeatsFragment();
         Bundle args = new Bundle();
@@ -75,7 +71,6 @@ public class SeatsFragment extends Fragment {
         seatsRecyclerView.setAdapter(adapter);
 
         return view;
-
     }
 
     @Override

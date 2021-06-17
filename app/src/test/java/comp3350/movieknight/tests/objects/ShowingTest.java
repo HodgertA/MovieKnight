@@ -1,12 +1,9 @@
 package comp3350.movieknight.tests.objects;
 
 import junit.framework.TestCase;
-
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import comp3350.movieknight.objects.Showing;
-import comp3350.movieknight.objects.Theatre;
 
 public class ShowingTest extends TestCase
 {

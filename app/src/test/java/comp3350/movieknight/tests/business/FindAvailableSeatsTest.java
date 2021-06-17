@@ -1,25 +1,25 @@
 package comp3350.movieknight.tests.business;
 
 import junit.framework.TestCase;
-
 import java.util.*;
 
 import comp3350.movieknight.business.FindAvailableSeats;
 import comp3350.movieknight.objects.Ticket;
 
 public class FindAvailableSeatsTest extends TestCase {
+
     public FindAvailableSeatsTest(String arg0)
     {
         super(arg0);
     }
 
-    public void testNullList(){
+    public void testNullList() {
         System.out.println("Starting find available seats test: testNullList");
 
-        try{
+        try {
             FindAvailableSeats.compileReservedSeats(null,10);
             fail("Expected an IllegalArguementException");
-        }catch (NullPointerException e){}
+        } catch (NullPointerException e){}
 
         System.out.println("Finished find available seats test: testNullList");
     }
@@ -42,11 +42,11 @@ public class FindAvailableSeatsTest extends TestCase {
 
         ArrayList<Ticket> tickets=new ArrayList<>();
         tickets.add(null);
-        try{
+
+        try {
             FindAvailableSeats.compileReservedSeats(tickets,10);
             fail("Expected an IllegalArguementException");
-        }catch (NullPointerException e){}
-
+        } catch (NullPointerException e){}
 
         System.out.println("Finished find available seats test: testNullTicket");
     }
@@ -58,6 +58,7 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(new Ticket(1,1,1,0));
         boolean [] result;
         boolean [] expectedResult={false};
+
         result=FindAvailableSeats.compileReservedSeats(tickets,1);
         assertTrue(Arrays.equals(result,expectedResult));
 
@@ -73,11 +74,10 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(new Ticket(1,1,1,1));
         tickets.add(new Ticket(1,1,1,1));
 
-        try{
+        try {
             FindAvailableSeats.compileReservedSeats(tickets,0);
             fail("Expected an IllegalArguementException");
-        }catch (ArrayIndexOutOfBoundsException e){}
-
+        } catch (ArrayIndexOutOfBoundsException e){}
 
         System.out.println("Finished find available seats test: testZeroSeat");
     }
@@ -90,11 +90,10 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(new Ticket(1,1,1,1));
         tickets.add(new Ticket(1,1,1,1));
 
-        try{
+        try {
             FindAvailableSeats.compileReservedSeats(tickets,-1);
             fail("Expected an IllegalArguementException");
-        }catch (NegativeArraySizeException e){}
-
+        } catch (NegativeArraySizeException e){}
 
         System.out.println("Finished find available seats test: testNegativeSeat");
     }
@@ -106,18 +105,14 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(new Ticket(1,1,1,100));
         tickets.add(new Ticket(1,1,1,200));
 
-        try{
+        try {
             //ticket seat number is bigger than the number of seats
             FindAvailableSeats.compileReservedSeats(tickets,10);
             fail("Expected an IllegalArguementException");
-        }catch (ArrayIndexOutOfBoundsException e){}
-
+        } catch (ArrayIndexOutOfBoundsException e){}
 
         System.out.println("Finished find available seats test: testTicketSeatNumberBiggerThanTotalSeatsNum");
     }
-
-
-
 
     public void testNoTicket(){
         System.out.println("Starting find available seats test: testNoTickets");

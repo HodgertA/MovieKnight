@@ -3,7 +3,6 @@ package comp3350.movieknight.tests.objects;
 import junit.framework.TestCase;
 
 import comp3350.movieknight.objects.Ticket;
-import comp3350.movieknight.objects.User;
 
 public class TicketTest extends TestCase {
 

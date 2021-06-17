@@ -5,17 +5,15 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.jetbrains.annotations.NotNull;
 
 import comp3350.movieknight.R;
 
 public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
-    private boolean []seats;
+    private boolean[] seats;
     private SeatsFragment seatsFragment;
     private Context context;
 
@@ -38,8 +36,7 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
         Drawable seatBackground;
         if(seats[position]) {
             seatBackground = context.getResources().getDrawable(R.drawable.available_seat);
-        }
-        else{
+        } else{
             seatBackground = context.getResources().getDrawable(R.drawable.reserved_seat);
         }
         holder.getSeatView().setBackground(seatBackground);
