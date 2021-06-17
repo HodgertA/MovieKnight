@@ -67,7 +67,7 @@ public class DatabaseStub {
         showings.add(showing);
         showing = new Showing(6, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 12, 55);
         showings.add(showing);
-        showing = new Showing(7, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 12, 15);
+        showing = new Showing(7, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 7, 15);
         showings.add(showing);
         showing = new Showing(8, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
         showings.add(showing);
