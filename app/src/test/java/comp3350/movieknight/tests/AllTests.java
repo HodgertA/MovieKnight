@@ -5,6 +5,7 @@ import junit.framework.TestSuite;
 
 import comp3350.movieknight.tests.business.FilterMoviesTest;
 import comp3350.movieknight.tests.business.FilterShowingsTest;
+import comp3350.movieknight.tests.business.FindAvailableSeatsTest;
 import comp3350.movieknight.tests.objects.*;
 
 public class AllTests
@@ -32,5 +33,6 @@ public class AllTests
     {
         suite.addTestSuite(FilterShowingsTest.class);
         suite.addTestSuite(FilterMoviesTest.class);
+        suite.addTestSuite(FindAvailableSeatsTest.class);
     }
 }
