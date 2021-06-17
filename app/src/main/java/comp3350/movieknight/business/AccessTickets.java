@@ -40,20 +40,8 @@ public class AccessTickets {
         return dataAccess.deleteTicket(ticket);
     }
 
-    public boolean[] compileSeatReservations(Showing showing) {
-        boolean[] result = new boolean[showing.getSeats()];
-        Arrays.fill(result, true);
-
-        ArrayList<Ticket> ticketList = this.dataAccess.getShowingTickets(new Ticket(0, 0, showing.getShowingID(), 0, 0));
-
-        Iterator<Ticket> itr = ticketList.iterator();
-        while (itr.hasNext()) {
-
-            Ticket ticket = itr.next();
-            result[ticket.getSeatNum()] = false;
-
-        }
-
-        return result;
+    public boolean[] compileSeatReservations(int showingID, int numberOfSeats) {
+        ArrayList<Ticket> tickets = this.dataAccess.getShowingTickets(new Ticket(0, 0, showingID, 0, 0));
+        return FindAvailableSeats.compileReservedSeats(tickets, numberOfSeats);
     }
 }

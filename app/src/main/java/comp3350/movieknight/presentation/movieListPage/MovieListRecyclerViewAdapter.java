@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation.adapters;
+package comp3350.movieknight.presentation.movieListPage;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
-import comp3350.movieknight.presentation.holders.MovieItemViewHolder;
-import comp3350.movieknight.presentation.ui.fragments.MovieListFragment;
 
 public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItemViewHolder>{
 

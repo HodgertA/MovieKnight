@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation.adapters;
+package comp3350.movieknight.presentation;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import comp3350.movieknight.presentation.ui.fragments.CartFragment;
-import comp3350.movieknight.presentation.ui.fragments.MovieListFragment;
+import comp3350.movieknight.presentation.cartPage.CartFragment;
+import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 

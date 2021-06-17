@@ -1,5 +1,6 @@
-package comp3350.movieknight.presentation.adapters;
+package comp3350.movieknight.presentation.seatsPage;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,24 +12,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 import comp3350.movieknight.R;
-import comp3350.movieknight.business.AccessTickets;
-import comp3350.movieknight.objects.Showing;
-import comp3350.movieknight.presentation.holders.SeatViewHolder;
 
 public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
-    boolean []seats;
+    private boolean []seats;
+    private SeatsFragment seatsFragment;
+    private Context context;
 
-    public SeatViewAdapter(Showing showing) {
-        AccessTickets accessTickets = new AccessTickets();
-        this.seats = accessTickets.compileSeatReservations(showing);
+    public SeatViewAdapter(Context context,SeatsFragment seatsFragment, boolean []seats) {
+        this.seats = seats;
+        this.context = context;
+        this.seatsFragment = seatsFragment;
     }
 
     @NonNull
     @NotNull
     @Override
     public SeatViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seat_item_card,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.seat_item_card,parent,false);
         return new SeatViewHolder(view);
     }
 
