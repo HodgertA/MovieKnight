@@ -52,7 +52,6 @@ public class MovieListFragment extends Fragment {
 
         return view;
     }
-
     public void openMovieDetailPage(Movie movie) {
         movieListRecyclerView.setVisibility(View.GONE);
         childFragment = new MovieDescriptionFragment();
@@ -75,5 +74,4 @@ public class MovieListFragment extends Fragment {
         transaction.remove(childFragment);
         transaction.commit();
     }
-
 }
