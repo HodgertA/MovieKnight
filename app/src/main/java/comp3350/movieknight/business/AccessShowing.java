@@ -15,7 +15,7 @@ public class AccessShowing {
     }
 
     public String getShowingForMovie(ArrayList<Showing> showingList, int movieID){
-        showingList = dataAccess.getMovieShowings(new Showing(-1, movieID, -1, 0,0, 0, 0, 0, 0));
+        dataAccess.getMovieShowings(showingList ,movieID);
         return FilterList.filterShowingsByDate(showingList);
     }
 }
