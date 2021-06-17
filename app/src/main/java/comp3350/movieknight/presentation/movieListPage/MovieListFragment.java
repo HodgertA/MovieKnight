@@ -60,6 +60,7 @@ public class MovieListFragment extends Fragment {
         bundle.putString("movieTitle",movie.getTitle());
         bundle.putInt("moviePoster",movie.getPoster());
         bundle.putString("movieDesc",movie.getDescription());
+        bundle.putInt("movieId",movie.getMovieID());
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.child_fragment_container, childFragment).commit();
