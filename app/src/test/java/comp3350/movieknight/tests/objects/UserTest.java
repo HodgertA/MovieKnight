@@ -2,7 +2,6 @@ package comp3350.movieknight.tests.objects;
 
 import junit.framework.TestCase;
 
-import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.User;
 
 public class UserTest extends TestCase

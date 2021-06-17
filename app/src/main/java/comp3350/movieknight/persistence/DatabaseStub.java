@@ -34,8 +34,6 @@ public class DatabaseStub {
         User user;
         Ticket ticket;
 
-
-
         movies = new ArrayList<Movie>();
         movie = new Movie(1, "Description for The Bee Movie", "The Bee Movie", R.drawable.the_bee_movie, 120, 2021, 6,8);
         movies.add(movie);
@@ -233,9 +231,8 @@ public class DatabaseStub {
         return null;
     }
 
-    public String getMovieShowings(ArrayList showingList,int movieId)
+    public String getMovieShowings(ArrayList<Showing> showingList, int movieId)
     {
-
         Showing curr;
 
         for (int counter = 0; counter < showings.size(); counter++) {

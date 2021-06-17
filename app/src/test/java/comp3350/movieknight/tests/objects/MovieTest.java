@@ -5,7 +5,6 @@ import junit.framework.TestCase;
 import java.util.Calendar;
 
 import comp3350.movieknight.objects.Movie;
-import comp3350.movieknight.objects.User;
 
 public class MovieTest extends TestCase
 {

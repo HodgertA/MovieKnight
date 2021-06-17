@@ -4,19 +4,18 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 
 import comp3350.movieknight.business.FilterList;
 import comp3350.movieknight.objects.Showing;
 
 public class FilterShowingsTest extends TestCase {
+
     public FilterShowingsTest(String arg0)
     {
         super(arg0);
     }
 
-
-    public void testNullItem(){
+    public void testNullItem() {
         System.out.println("Starting filter movies test: testNullItem");
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
@@ -51,7 +50,6 @@ public class FilterShowingsTest extends TestCase {
         System.out.println("Starting filter movies test: testAllMoviesShowingToday");
 
         Calendar today = Calendar.getInstance();
-
         ArrayList<Showing> showings = new ArrayList<Showing>();
 
         Showing showing1 = new Showing(1,2,3, 10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
@@ -62,7 +60,6 @@ public class FilterShowingsTest extends TestCase {
         showings.add(showing3);
 
         FilterList.filterShowingsByDate(showings);
-
 
         assertEquals(3,showings.size());
 
@@ -91,7 +88,6 @@ public class FilterShowingsTest extends TestCase {
         showings.add(new Showing(1,2,3,10,differentYear.get(Calendar.YEAR),differentYear.get(Calendar.MONTH)+1,differentYear.get(Calendar.DATE),8,10));
 
         FilterList.filterShowingsByDate(showings);
-
         assertTrue(showings.isEmpty());
 
         System.out.println("Finished filter movies test: testNoMoviesShowingToday");
@@ -126,7 +122,6 @@ public class FilterShowingsTest extends TestCase {
         //different Month
         showings.add(new Showing(1,2,3, 10,differentMonth.get(Calendar.YEAR),differentMonth.get(Calendar.MONTH)+1,differentMonth.get(Calendar.DATE),8,10));
 
-
         //correct
         Showing showing3 = new Showing(7,8,9,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
         showings.add(showing3);
@@ -134,12 +129,8 @@ public class FilterShowingsTest extends TestCase {
         //different year
         showings.add(new Showing(1,2,3, 10,differentYear.get(Calendar.YEAR),differentYear.get(Calendar.MONTH)+1,differentYear.get(Calendar.DATE),8,10));
 
-
-
         FilterList.filterShowingsByDate(showings);
         assertEquals(3,showings.size());
-        //there are three showing today.
-
         assertTrue(showings.contains(showing1));
         assertTrue(showings.contains(showing2));
         assertTrue(showings.contains(showing3));

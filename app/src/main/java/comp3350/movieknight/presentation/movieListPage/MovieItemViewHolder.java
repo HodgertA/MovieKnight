@@ -3,11 +3,9 @@ package comp3350.movieknight.presentation.movieListPage;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import comp3350.movieknight.R;
 
 public class MovieItemViewHolder extends RecyclerView.ViewHolder {
@@ -22,7 +20,6 @@ public class MovieItemViewHolder extends RecyclerView.ViewHolder {
         movieTitle = itemView.findViewById(R.id.movie_title);
         moviePoster = itemView.findViewById(R.id.movie_poster);
         movieCard = itemView.findViewById(R.id.movie_card);
-
     }
 
     public TextView getMovieTitle() {

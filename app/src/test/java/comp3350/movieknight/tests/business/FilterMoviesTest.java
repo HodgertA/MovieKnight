@@ -1,7 +1,6 @@
 package comp3350.movieknight.tests.business;
 
 import junit.framework.TestCase;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -9,11 +8,11 @@ import comp3350.movieknight.business.FilterList;
 import comp3350.movieknight.objects.Movie;
 
 public class FilterMoviesTest extends TestCase {
+
     public FilterMoviesTest(String arg0)
     {
         super(arg0);
     }
-
 
     public void testNullList(){
         System.out.println("Starting filter movies test: testNullList");
@@ -44,16 +43,13 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Starting filter movies test: testOneMovieInTheatres");
 
         Calendar calendar = Calendar.getInstance();
-
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
         Movie movie = new Movie(5, "", "Shrek", 0, 120, calendar.get(Calendar.YEAR)+1, calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
-
         assertEquals(1, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertFalse(movies.isEmpty());
         assertEquals(1, movies.size());
         assertTrue(movies.contains(movie));
@@ -66,15 +62,12 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Starting filter movies test: testOneMovieNotInTheatres");
 
         Calendar calendar = Calendar.getInstance();
-
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
         movies.add(new Movie(5, "", "Shrek", 0, 120, calendar.get(Calendar.YEAR-1), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH)));
-
         assertEquals(1, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertTrue(movies.isEmpty());
 
         System.out.println("Finished filter movies test: testOneMovieNotInTheatres");
@@ -95,11 +88,9 @@ public class FilterMoviesTest extends TestCase {
         movies.add(new Movie(1, "", "Shrek", 0, 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE)));
         movies.add(new Movie(2, "", "Finding Nemo", 0, 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE)));
         movies.add(new Movie(3, "", "Ice Age", 0, 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE)));
-
         assertEquals(3, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertTrue(movies.isEmpty());
 
         System.out.println("Finished filter movies test: testAllMoviesNotInTheatres");
@@ -124,11 +115,9 @@ public class FilterMoviesTest extends TestCase {
         movies.add(movie2);
         Movie movie3 = new Movie(3, "", "Ice Age", 0, 120, nextYear.get(Calendar.YEAR), nextYear.get(Calendar.MONTH)+1, nextYear.get(Calendar.DATE));
         movies.add(movie3);
-
         assertEquals(3, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertEquals(3, movies.size());
         assertTrue(movies.contains(movie1));
         assertTrue(movies.contains(movie2));
@@ -141,16 +130,13 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Starting filter movies test: testLastDayInTheatres");
 
         Calendar today = Calendar.getInstance();
-
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
         Movie movie = new Movie(5, "", "Shrek", 0, 120, today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
-
         assertEquals(1, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertFalse(movies.isEmpty());
         assertEquals(1, movies.size());
         assertTrue(movies.contains(movie));
@@ -168,11 +154,9 @@ public class FilterMoviesTest extends TestCase {
 
         Movie movie = new Movie(5, "", "Shrek", 0, 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
-
         assertEquals(1, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertFalse(movies.isEmpty());
         assertEquals(1, movies.size());
         assertTrue(movies.contains(movie));
@@ -190,11 +174,9 @@ public class FilterMoviesTest extends TestCase {
 
         Movie movie = new Movie(5, "", "Shrek", 0, 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
-
         assertEquals(1, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertTrue(movies.isEmpty());
 
         System.out.println("Finished filter movies test: testDayBeforeLastDayInTheatres");
@@ -216,7 +198,6 @@ public class FilterMoviesTest extends TestCase {
         Calendar nextYear = Calendar.getInstance();
         nextYear.add(Calendar.YEAR, 1);
 
-
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
         Movie movieNotPlaying1 =new Movie(5, "", "Shrek", 0, 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE));
@@ -231,11 +212,9 @@ public class FilterMoviesTest extends TestCase {
         movies.add(moviePlaying2);
         Movie moviePlaying3 = new Movie(3, "", "Ice Age", 0, 120, nextYear.get(Calendar.YEAR), nextYear.get(Calendar.MONTH)+1, nextYear.get(Calendar.DATE));
         movies.add(moviePlaying3);
-
         assertEquals(6, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
-
         assertEquals(3, movies.size());
         assertTrue(movies.contains(moviePlaying1));
         assertTrue(movies.contains(moviePlaying2));

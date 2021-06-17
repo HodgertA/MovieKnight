@@ -47,15 +47,13 @@ public class MovieDescriptionFragment extends Fragment {
     private ImageView imageViewMovieImage;
     private TextView textViewMovieDesc;
 
-
     private AccessShowing accessShowing;
     private ArrayList<Showing> showings;
     private RecyclerView showingTimeRecyclerView;
     private Context context;
     private Fragment childFragment;
 
-    public MovieDescriptionFragment() {
-    }
+    public MovieDescriptionFragment() {}
 
     public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieId) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
@@ -86,12 +84,10 @@ public class MovieDescriptionFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
 
-
         accessShowing=new AccessShowing();
 
         showings =new ArrayList<>();
         String result = accessShowing.getShowingForMovie(showings,movieId);
-
 
         if(result == null) {
             showingTimeRecyclerView= view.findViewById(R.id.show_time_recycler_view);
@@ -100,7 +96,6 @@ public class MovieDescriptionFragment extends Fragment {
 
         ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
         showingTimeRecyclerView.setAdapter(adapter);
-
 
         return view;
     }

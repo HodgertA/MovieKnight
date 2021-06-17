@@ -2,11 +2,8 @@ package comp3350.movieknight.presentation;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.application.Main;
-
 import android.os.Bundle;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;

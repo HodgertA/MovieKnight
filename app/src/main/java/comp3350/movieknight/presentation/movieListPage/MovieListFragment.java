@@ -2,7 +2,6 @@ package comp3350.movieknight.presentation.movieListPage;
 
 import android.content.Context;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,11 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 
 import comp3350.movieknight.R;
@@ -38,7 +35,6 @@ public class MovieListFragment extends Fragment {
         context = requireContext();
 
         accessMovies = new AccessMovies();
-
         movies = new ArrayList<>();
 
         String result = accessMovies.getMoviesInTheatres(movies);
@@ -52,18 +48,20 @@ public class MovieListFragment extends Fragment {
 
         return view;
     }
+
     public void openMovieDetailPage(Movie movie) {
         movieListRecyclerView.setVisibility(View.GONE);
         childFragment = new MovieDescriptionFragment();
+
         Bundle bundle = new Bundle();
         bundle.putString("movieTitle",movie.getTitle());
         bundle.putInt("moviePoster",movie.getPoster());
         bundle.putString("movieDesc",movie.getDescription());
         bundle.putInt("movieId",movie.getMovieID());
         childFragment.setArguments(bundle);
+
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.child_fragment_container, childFragment).commit();
-
     }
 
     //Remove child fragment (MovieDescriptionFragment) from stack of fragment to show parent fragment(MovieListFragment)
