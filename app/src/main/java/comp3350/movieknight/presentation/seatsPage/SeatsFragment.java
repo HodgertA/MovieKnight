@@ -20,7 +20,7 @@ import comp3350.movieknight.R;
 
 import comp3350.movieknight.business.AccessTickets;
 
-import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
+import comp3350.movieknight.presentation.movieDetailsPage.MovieDescriptionFragment;
 
 public class SeatsFragment extends Fragment {
 
@@ -90,7 +90,7 @@ public class SeatsFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==android.R.id.home) {
             Fragment fragment = SeatsFragment.this.getParentFragment();
-            MovieListFragment frag = (MovieListFragment) fragment;
+            MovieDescriptionFragment frag = (MovieDescriptionFragment) fragment;
             frag.finishMyChild();
 
             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);

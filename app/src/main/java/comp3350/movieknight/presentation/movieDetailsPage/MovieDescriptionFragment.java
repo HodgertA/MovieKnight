@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import comp3350.movieknight.R;
+import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.business.AccessShowing;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
@@ -30,8 +33,6 @@ import comp3350.movieknight.presentation.movieListPage.MovieListRecyclerViewAdap
 
 public class MovieDescriptionFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "movieTitle";
     private static final String ARG_PARAM2 = "moviePoster";
     private static final String ARG_PARAM3 = "movieDesc";
@@ -47,20 +48,11 @@ public class MovieDescriptionFragment extends Fragment {
     private ArrayList<Showing> showings;
     private RecyclerView showingTimeRecyclerView;
     private Context context;
+    private Fragment childFragment;
 
     public MovieDescriptionFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param movieTitle Parameter 1.
-     * @param moviePoster Parameter 2.
-     * @param movieDesc Parameter 3.
-     * @return A new instance of fragment MovieDescriptionFragment.
-     */
     public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieId) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
         Bundle args = new Bundle();
@@ -139,5 +131,24 @@ public class MovieDescriptionFragment extends Fragment {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openSeatsPage(Showing showing) {
+        showingTimeRecyclerView.setVisibility(View.GONE);
+        childFragment = new MovieDescriptionFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("showingId",showing.getShowingID());
+        childFragment.setArguments(bundle);
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.movie_description_fragment_container, childFragment).commit();
+    }
+
+    //Remove child fragment (MovieDescriptionFragment) from stack of fragment to show parent fragment(MovieListFragment)
+    public void finishMyChild(){
+        showingTimeRecyclerView.setVisibility(View.VISIBLE);
+        FragmentManager manager = getChildFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(childFragment);
+        transaction.commit();
     }
 }

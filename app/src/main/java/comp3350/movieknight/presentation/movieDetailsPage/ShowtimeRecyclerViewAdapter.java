@@ -24,7 +24,6 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
         this.movieDescriptionFragment = movieDescriptionFragment;
 
     }
-//
 
     @NonNull
     @Override
@@ -38,19 +37,16 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
     public void onBindViewHolder(@NonNull ShowtimeHolder holder, int position) {
         String showtime=String.valueOf(showings.get(position).getShowingTime());
 
-        String time[]=showtime.split("\\.");
+        String[] time=showtime.split("\\.");
 
         holder.getShowtime().setText( time[0] + ":" + time[1]);
 
-//        holder.getMovieTitle().setText(movies.get(position).getTitle());
-//        holder.getMoviePoster().setImageResource(movies.get(position).getPoster());
-//        holder.getMovieCard().setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //when the card is clicked, do stuff here
-//                movieListFragment.openMovieDetailPage(movies.get(position));
-//            }
-//        });
+        holder.getShowtime().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                movieDescriptionFragment.openSeatsPage(showings.get(position));
+            }
+        });
     }
 
     @Override
