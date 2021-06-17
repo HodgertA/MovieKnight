@@ -42,13 +42,7 @@ public class MovieListFragment extends Fragment {
         movies = new ArrayList<>();
 
         String result = accessMovies.getMoviesInTheatres(movies);
-        if (result != null)
-        {
-            //Messages.fatalError(this, result);
-            //need to add error message
-        }
-        else {
-
+        if(result == null) {
             movieListRecyclerView = view.findViewById(R.id.movie_list_recycler_view);
             movieListRecyclerView.setLayoutManager(new GridLayoutManager(context, ITEMS_PER_ROW));
         }
