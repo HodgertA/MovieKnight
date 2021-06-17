@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation.ui.fragments;
+package comp3350.movieknight.presentation.cartPage;
 
 import android.os.Bundle;
 

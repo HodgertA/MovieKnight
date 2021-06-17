@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation.ui.fragments;
+package comp3350.movieknight.presentation.movieListPage;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
-import comp3350.movieknight.presentation.adapters.MovieListRecyclerViewAdapter;
+import comp3350.movieknight.presentation.movieDetailsPage.MovieDescriptionFragment;
 import comp3350.movieknight.business.AccessMovies;
 
 public class MovieListFragment extends Fragment {

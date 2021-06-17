@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation;
+package comp3350.movieknight.presentation.movieListPage;
 
 import android.view.View;
 import android.widget.ImageView;

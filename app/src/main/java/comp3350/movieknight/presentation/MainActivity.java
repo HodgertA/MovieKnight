@@ -2,7 +2,6 @@ package comp3350.movieknight.presentation;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.application.Main;
-import comp3350.movieknight.presentation.adapters.ViewPagerAdapter;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation.ui.fragments;
+package comp3350.movieknight.presentation.movieDetailsPage;
 
 import android.os.Bundle;
 
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 import comp3350.movieknight.R;
+import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 
 public class MovieDescriptionFragment extends Fragment {
 
