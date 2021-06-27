@@ -8,15 +8,31 @@
     android:orientation="vertical"
     tools:context=".presentation.movieDetailsPage.MovieDescriptionFragment">
 
-    <TextView
-        android:id="@+id/textViewMovieTitle"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center_horizontal"
-        android:text="@string/hello_blank_fragment"
-        android:textSize="25dp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/date_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            app:backgroundTint="@color/black"
+            ></Button>
+        <TextView
+            android:id="@+id/textViewMovieTitle"
+            android:layout_toLeftOf="@+id/date_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center_horizontal"
+            android:text="@string/hello_blank_fragment"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
 
     <ImageView
         android:id="@+id/imageViewMovieImage"
@@ -38,5 +54,7 @@
         android:id="@+id/show_time_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 
 </LinearLayout>
