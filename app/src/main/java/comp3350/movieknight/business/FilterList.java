@@ -52,4 +52,24 @@ public class FilterList {
 
         return null;
     }
+    public static String filterShowingsBySelectDate(ArrayList<Showing> showings,Calendar date){
+
+        if(showings != null) {
+
+            Iterator<Showing> iterator = showings.iterator();
+
+            while (iterator.hasNext()) {
+
+                Showing sh = iterator.next();
+
+                if (sh==null || sh.getShowingDate().get(Calendar.YEAR) != date.get(Calendar.YEAR) ||
+                        sh.getShowingDate().get(Calendar.MONTH) != date.get(Calendar.MONTH) ||
+                        sh.getShowingDate().get(Calendar.DATE) != date.get(Calendar.DATE)) {
+                    iterator.remove();
+                }
+            }
+        }
+
+        return null;
+    }
 }
