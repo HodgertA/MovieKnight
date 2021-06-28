@@ -1,0 +1,68 @@
+package comp3350.movieknight.persistence;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import comp3350.movieknight.objects.Movie;
+import comp3350.movieknight.objects.Showing;
+import comp3350.movieknight.objects.Theatre;
+import comp3350.movieknight.objects.Ticket;
+import comp3350.movieknight.objects.User;
+
+public interface DataAccess {
+    void open(String string);
+
+    void close();
+
+    String getAllMovies(List<Movie> movieResult);
+
+    String insertMovie(Movie movie);
+
+    String updateMovie(Movie movie);
+
+    String deleteMovie(Movie movie);
+
+    String getAllTheatres(List<Theatre> theatreResult);
+
+    Theatre getTheatre(Theatre theatre);
+
+    String insertTheatre(Theatre theatre);
+
+    String updateTheatre(Theatre theatre);
+
+    String deleteTheatre(Theatre theatre);
+
+    String getAllShowings(List<Showing> showingResult);
+
+    String getMovieShowings(ArrayList<Showing> showingList, int movieId);
+
+    ArrayList<Showing> getTheatreShowings(Showing showing);
+
+    ArrayList<Showing> getDateShowings(Showing showing);
+
+    String insertShowing(Showing showing);
+
+    String updateShowing(Showing showing);
+
+    String deleteShowing(Showing showing);
+
+    String getAllUsers(List<User> userResult);
+
+    String insertUser(User user);
+
+    String updateUser(User user);
+
+    String deleteUser(User user);
+
+    String getAllTickets(List<Ticket> ticketResult);
+
+    ArrayList<Ticket> getShowingTickets(Ticket ticket);
+
+    ArrayList<Ticket> getUserTickets(Ticket ticket);
+
+    String insertTicket(Ticket ticket);
+
+    String updateTicket(Ticket ticket);
+
+    String deleteTicket(Ticket ticket);
+}
