@@ -1,10 +1,11 @@
 package comp3350.movieknight.presentation.seatsPage;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
@@ -17,7 +18,7 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     private SeatsFragment seatsFragment;
     private Context context;
 
-    public SeatViewAdapter(Context context,SeatsFragment seatsFragment, boolean []seats) {
+    public SeatViewAdapter(Context context, SeatsFragment seatsFragment, boolean []seats) {
         this.seats = seats;
         this.context = context;
         this.seatsFragment = seatsFragment;
@@ -33,13 +34,21 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull SeatViewHolder holder, int position) {
-        Drawable seatBackground;
-        if(seats[position]) {
-            seatBackground = context.getResources().getDrawable(R.drawable.available_seat);
-        } else{
-            seatBackground = context.getResources().getDrawable(R.drawable.reserved_seat);
+        ImageButton seat = holder.getSeatView();
+        if(!seats[position]) {
+//            seat.setEnabled(false);
+//            seat.getBackground().setAlpha(128);
+            seat.setImageDrawable(context.getResources().getDrawable(R.drawable.reserved_seat));
+        } else {
+            seat.setImageDrawable(context.getResources().getDrawable(R.drawable.available_seat));
         }
-        holder.getSeatView().setBackground(seatBackground);
+        holder.getSeatView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seats[position] = !seats[position];
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
