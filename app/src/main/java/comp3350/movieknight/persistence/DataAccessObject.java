@@ -183,7 +183,7 @@ public class DataAccessObject implements DataAccess {
         }
 
         try {
-            while (rs4.next())
+            while (rs3.next())
             {
                 theatreID = rs3.getInt("TheatreID");
                 numSeats = rs3.getInt("NumSeats");
@@ -277,11 +277,64 @@ public class DataAccessObject implements DataAccess {
 
     @Override
     public String getAllShowings(List<Showing> showingResult) {
+        /*
+        Showing showing;
+        int showingID, movieID, theatreID, seats;
+        long showingDate;
+        double showingTime;
+
+        result = null;
+        try {
+            cmdString = "Select * from Showings";
+            rs4 = st3.executeQuery(cmdString);
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs4.next())
+            {
+                showingID = rs4.getInt("ShowingID");
+                movieID = rs4.getInt("MovieID");
+                theatreID = rs4.getInt("TheatreID");
+                showingDate = rs4.getLong("ShowingDate");
+                showingTime = rs4.getDouble("ShowingTime");
+                seats = rs4.getInt("Seats");
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(showingDate);
+                int hour = (int) Math.floor(showingTime);
+                int minute = (int) showingTime - hour;
+
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), hour, minute);
+                showingResult.add(showing);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
+
+         */
         return null;
     }
 
     @Override
     public String getMovieShowings(ArrayList<Showing> showingList, int movieId) {
+        /*
+        Showing showing;
+        int showingID, movieID, theatreID, seats;
+        long showingDate;
+        double showingTime;
+        int counter = 0;
+
+        try {
+            cmdString = "Select * from Showings where MovieID"
+        } catch (Exception e) {
+
+        }
+
+         */
         return null;
     }
 
@@ -312,22 +365,82 @@ public class DataAccessObject implements DataAccess {
 
     @Override
     public String getAllUsers(List<User> userResult) {
-        return null;
+        User user;
+        int userID;
+        String username;
+
+        result = null;
+        try {
+            cmdString = "Select * from Movies";
+            rs6 = st4.executeQuery(cmdString);
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs6.next())
+            {
+                userID = rs6.getInt("UserID");
+                username = rs6.getString("Username");
+
+                user = new User(userID, username);
+                userResult.add(user);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
     }
 
     @Override
     public String insertUser(User user) {
-        return null;
+        String values;
+
+        result = null;
+        try {
+            values = user.getUserID() + ", '"
+                    + user.getUsername();
+
+            cmdString = "Insert into Users " +" Values(" + values +")";
+            updateCount = st4.executeUpdate(cmdString);
+            result = checkWarning(st4, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
     public String updateUser(User user) {
-        return null;
+        String values;
+        String where;
+
+        result = null;
+        try {
+            values = "Username= " + user.getUsername();
+            where = "where UserID=" + user.getUserID();
+
+            cmdString = "Update Users " + " Set " +values+ " "+where;
+            updateCount = st4.executeUpdate(cmdString);
+            result = checkWarning(st4, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
     public String deleteUser(User user) {
-        return null;
+        result = null;
+        try {
+            cmdString = "Delete from Users where UserID="+user.getUserID();
+            updateCount = st2.executeUpdate(cmdString);
+            result = checkWarning(st2, updateCount);
+        } catch (Exception e){
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
