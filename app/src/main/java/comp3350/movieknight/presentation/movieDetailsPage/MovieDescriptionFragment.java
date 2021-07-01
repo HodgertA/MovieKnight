@@ -98,26 +98,7 @@ public class MovieDescriptionFragment extends Fragment {
 
         View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
-///////-----------------------------------------
 
-        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                selectDate.set(Calendar.YEAR,year);
-                selectDate.set(Calendar.MONTH,month-1);
-                selectDate.set(Calendar.DATE,dayOfMonth);
-            }
-        };
-        datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
-
-        dateButton= view.findViewById(R.id.date_button);
-        dateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                datePicker.show();
-            }
-        });
-///////-----------------------------------------
         accessShowing=new AccessShowing();
 
         showings =new ArrayList<>();
@@ -131,10 +112,37 @@ public class MovieDescriptionFragment extends Fragment {
 
         ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
         showingTimeRecyclerView.setAdapter(adapter);
+        ///////-----------------------------------------
+
+        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                selectDate.set(Calendar.YEAR,year);
+                selectDate.set(Calendar.MONTH,month);
+                selectDate.set(Calendar.DATE,dayOfMonth);
+                showings.clear();
+                accessShowing.getShowingForMovieByDate(showings,movieId,selectDate);
+                adapter.notifyDataSetChanged();
+
+            }
+        };
+        datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
+
+        dateButton= view.findViewById(R.id.date_button);
+        dateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePicker.show();
+            }
+        });
+///////-----------------------------------------
+
 
 
         return view;
     }
+
+
 
 
 
