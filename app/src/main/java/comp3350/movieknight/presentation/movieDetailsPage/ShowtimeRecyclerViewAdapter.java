@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
         this.context=context;
         this.showings=showings;
         this.movieDescriptionFragment = movieDescriptionFragment;
+
     }
 
     @NonNull
@@ -37,7 +39,12 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
 
         String[] time=showtime.split("\\.");
 
+        if(time[1].length()<2){
+            time[1]+='0';
+        }
+
         holder.getShowtime().setText( time[0] + ":" + time[1]);
+
 
         holder.getShowtime().setOnClickListener(new View.OnClickListener() {
             @Override
