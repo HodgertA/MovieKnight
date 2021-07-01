@@ -15,10 +15,13 @@
 
         <Button
             android:id="@+id/date_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentRight="true"
-            app:backgroundTint="@color/black"
+
+            android:background="@drawable/calender"
+            app:backgroundTint="@color/cardview_shadow_end_color"
+            app:backgroundTintMode="src_over"
             ></Button>
         <TextView
             android:id="@+id/textViewMovieTitle"
