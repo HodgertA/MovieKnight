@@ -127,7 +127,9 @@ public class MovieDescriptionFragment extends Fragment {
             }
         };
         datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
-
+        datePicker.getDatePicker().setMinDate(selectDate.getTimeInMillis());
+        selectDate.add(Calendar.DATE,6);
+        datePicker.getDatePicker().setMaxDate(selectDate.getTimeInMillis());
         dateButton= view.findViewById(R.id.date_button);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
