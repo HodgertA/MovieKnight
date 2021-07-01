@@ -20,7 +20,7 @@ import comp3350.movieknight.presentation.movieDetailsPage.MovieDescriptionFragme
 import comp3350.movieknight.business.AccessMovies;
 
 public class MovieListFragment extends Fragment {
-    private static final int ITEMS_PER_ROW = 3;
+    private static final int ITEMS_PER_ROW = 2;
     private Fragment childFragment;
     private Context context;
     private ArrayList<Movie> movies;
