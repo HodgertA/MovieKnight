@@ -19,7 +19,7 @@
             android:layout_height="60dp"
             android:layout_alignParentRight="true"
 
-            android:background="@drawable/calender"
+            android:background="@drawable/calendar"
             app:backgroundTint="@color/cardview_shadow_end_color"
             app:backgroundTintMode="src_over"
             ></Button>
