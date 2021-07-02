@@ -186,6 +186,7 @@ public class MovieDescriptionFragment extends Fragment {
         textViewMovieTitle.setVisibility(View.GONE);
         imageViewMovieImage.setVisibility(View.GONE);
         textViewMovieDesc.setVisibility(View.GONE);
+        dateButton.setVisibility(View.GONE);
 
         this.getParentFragment().setMenuVisibility(false);
         childFragment = new SeatsFragment();
