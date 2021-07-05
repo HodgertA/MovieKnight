@@ -1,7 +1,5 @@
 package comp3350.movieknight.persistence;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import comp3350.movieknight.objects.Movie;

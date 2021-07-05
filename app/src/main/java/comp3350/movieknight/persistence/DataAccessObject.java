@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,12 +23,6 @@ public class DataAccessObject implements DataAccess {
     private String dbName;
     private String dbType;
 
-    private ArrayList<Movie> movies;
-    private ArrayList<Showing> showings;
-    private ArrayList<Theatre> theatres;
-    private ArrayList<Ticket> tickets;
-    private ArrayList<User> users;
-
     private String cmdString;
     private int updateCount;
     private String result;
@@ -44,10 +37,9 @@ public class DataAccessObject implements DataAccess {
     public void open(String dbPath) {
         String url;
         try {
-            // Setup for HSQL
             dbType = "HSQL";
             Class.forName("org.hsqldb.jdbcDriver").newInstance();
-            url = "jdbc:hsqldb:file:" + dbPath; // stored on disk mode
+            url = "jdbc:hsqldb:file:" + dbPath;
             c1 = DriverManager.getConnection(url, "SA", "");
             st1 = c1.createStatement();
             st2 = c1.createStatement();
@@ -63,7 +55,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public void close() {
         try
-        {	// commit all changes to the database
+        {
             cmdString = "shutdown compact";
             rs2 = st1.executeQuery(cmdString);
             c1.close();
@@ -81,6 +73,8 @@ public class DataAccessObject implements DataAccess {
         int movieID, poster, runtime;
         String description, title;
         long lastShowDate;
+        description = EOF;
+        title = EOF;
 
         result = null;
         try {
@@ -119,12 +113,12 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = movie.getMovieID() + ", '"
-                    + movie.getDescription()
-                    + "', '" + movie.getTitle()
-                    + "', " + movie.getPoster()
-                    + ", " + movie.getRuntime()
-                    + ", " + movie.getLastShowDate().getTimeInMillis();
+            values = "MovieID=" + movie.getMovieID() +
+                    ", Description=" + movie.getDescription() +
+                    "', ' Title=" + movie.getTitle() +
+                    "', Poster=" + movie.getPoster() +
+                    ", Runtime=" + movie.getRuntime() +
+                    ", LastShowDate=" + movie.getLastShowDate().getTimeInMillis();
 
             cmdString = "Insert into Movies " +" Values(" + values +")";
             updateCount = st1.executeUpdate(cmdString);
@@ -161,6 +155,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String deleteMovie(Movie movie) {
         result = null;
+
         try {
             cmdString = "Delete from Movies where MovieID="+movie.getMovieID();
             updateCount = st1.executeUpdate(cmdString);
@@ -233,8 +228,8 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = theatre.getTheatreNumber() + ", '"
-                    + theatre.getNumSeats();
+            values = "TheatreID=" + theatre.getTheatreNumber() +
+                    ", NumSeats=" + theatre.getNumSeats();
 
             cmdString = "Insert into Theatres " +" Values(" + values +")";
             updateCount = st2.executeUpdate(cmdString);
@@ -267,6 +262,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String deleteTheatre(Theatre theatre) {
         result = null;
+
         try {
             cmdString = "Delete from Theatres where TheatreID="+theatre.getTheatreNumber();
             updateCount = st2.executeUpdate(cmdString);
@@ -324,7 +320,6 @@ public class DataAccessObject implements DataAccess {
         int showingID, movieID, theatreID, seats;
         long showingDate;
         double showingTime;
-        int counter = 0;
 
         try {
             cmdString = "Select * from Showings where MovieID=" + newMovieID;
@@ -365,7 +360,6 @@ public class DataAccessObject implements DataAccess {
         int showingID, movieID, theatreID, seats;
         long showingDate;
         double showingTime;
-        int counter = 0;
 
         try {
             cmdString = "Select * from Showings where TheatreID=" + newTheatreID;
@@ -448,6 +442,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String deleteShowing(Showing showing) {
         result = null;
+
         try {
             cmdString = "Delete from Showings where ShowingID="+ showing.getShowingID();
             updateCount = st3.executeUpdate(cmdString);
@@ -462,7 +457,7 @@ public class DataAccessObject implements DataAccess {
     public String getAllUsers(List<User> userResult) {
         User user;
         int userID;
-        String username;
+        String username = EOF;
 
         result = null;
         try {
@@ -494,8 +489,9 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "UserID=" + user.getUserID() + ", '"
-                    + "Username= " + user.getUsername();
+            values = "UserID=" + user.getUserID() +
+                    ", 'Username= " + user.getUsername() +
+                    "'";
 
             cmdString = "Insert into Users " +" Values(" + values +")";
             updateCount = st4.executeUpdate(cmdString);
@@ -513,7 +509,7 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "Username= " + user.getUsername();
+            values = "Username= '" + user.getUsername() + "'";
             where = "where UserID=" + user.getUserID();
 
             cmdString = "Update Users " + " Set " +values+ " "+where;
@@ -528,6 +524,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String deleteUser(User user) {
         result = null;
+
         try {
             cmdString = "Delete from Users where UserID="+user.getUserID();
             updateCount = st4.executeUpdate(cmdString);
@@ -640,11 +637,11 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "TicketID=" + ticket.getTicketID() + ", "
-                    + "UserID=" + ticket.getUserID() + ", "
-                    + "ShowingID=" + ticket.getShowingID() + ", "
-                    + "TheatreID=" + ticket.getTheatreID() + ", "
-                    + "SeatNum=" + ticket.getSeatNum();
+            values = "TicketID=" + ticket.getTicketID() +
+                    ", UserID=" + ticket.getUserID() +
+                    ", ShowingID=" + ticket.getShowingID() +
+                    ", TheatreID=" + ticket.getTheatreID() +
+                    ", SeatNum=" + ticket.getSeatNum();
 
             cmdString = "Insert into Users " +" Values(" + values +")";
             updateCount = st5.executeUpdate(cmdString);
@@ -662,10 +659,10 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "UserID=" + ticket.getUserID() + ", "
-                    + "ShowingID=" + ticket.getShowingID() + ", "
-                    + "TheatreID=" + ticket.getTheatreID() + ", "
-                    + "SeatNum=" + ticket.getSeatNum();
+            values = "UserID=" + ticket.getUserID() +
+                    ", ShowingID=" + ticket.getShowingID() +
+                    ", TheatreID=" + ticket.getTheatreID() +
+                    ", SeatNum=" + ticket.getSeatNum();
             where = "where TicketID=" + ticket.getTicketID();
 
             cmdString = "Update Tickets " + " Set " +values+ " "+where;
@@ -680,6 +677,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String deleteTicket(Ticket ticket) {
         result = null;
+
         try {
             cmdString = "Delete from Tickets where TicketID="+ ticket.getTicketID();
             updateCount = st5.executeUpdate(cmdString);
