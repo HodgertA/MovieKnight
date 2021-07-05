@@ -70,8 +70,8 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getAllMovies(List<Movie> movieResult) {
         Movie movie;
-        int movieID, poster, runtime;
-        String description, title;
+        int movieID, runtime;
+        String description, title, poster;
         long lastShowDate;
         description = EOF;
         title = EOF;
@@ -90,7 +90,7 @@ public class DataAccessObject implements DataAccess {
                 movieID = rs2.getInt("MovieID");
                 description = rs2.getString("Description");
                 title = rs2.getString("Title");
-                poster = rs2.getInt("Poster");
+                poster = rs2.getString("Poster");
                 runtime = rs2.getInt("Runtime");
                 lastShowDate = rs2.getLong("LastShowDate");
 

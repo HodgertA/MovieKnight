@@ -55,7 +55,7 @@ public class MovieListFragment extends Fragment {
 
         Bundle bundle = new Bundle();
         bundle.putString("movieTitle",movie.getTitle());
-        bundle.putInt("moviePoster",movie.getPoster());
+        bundle.putInt("moviePoster", getResources().getIdentifier(movie.getPoster() , "drawable", getActivity().getPackageName()));
         bundle.putString("movieDesc",movie.getDescription());
         bundle.putInt("movieId",movie.getMovieID());
         childFragment.setArguments(bundle);

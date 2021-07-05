@@ -9,7 +9,7 @@ public class Movie
     private int movieID;
     private String description;
     private String title;
-    private int poster;
+    private String poster;
     private int runtime;
     private Calendar lastShowDate;
 
@@ -19,14 +19,14 @@ public class Movie
             this.movieID = movieID;
             this.description = null;
             this.title = null;
-            this.poster = -1;
+            this.poster = null;
             this.runtime = 0; //in minutes
         } else {
             throw new IllegalArgumentException();
         }
     }
 
-    public Movie(int movieID, String description, String title, int poster, int runtime, int endYear, int endMonth, int endDay )
+    public Movie(int movieID, String description, String title, String poster, int runtime, int endYear, int endMonth, int endDay )
     {
         if (movieID >= 0 && runtime >= 0 && endMonth > 0 && endMonth <=12 && endDay > 0 && endDay <= 31) {
             this.movieID = movieID;
@@ -56,7 +56,7 @@ public class Movie
         return title;
     }
 
-    public int getPoster() {
+    public String getPoster() {
         return poster;
     }
 
