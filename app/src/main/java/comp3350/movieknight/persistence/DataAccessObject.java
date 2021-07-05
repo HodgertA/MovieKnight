@@ -97,7 +97,7 @@ public class DataAccessObject implements DataAccess {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(lastShowDate);
 
-                movie = new Movie(movieID, description, title, poster, runtime, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE));
+                movie = new Movie(movieID, description, title, poster, runtime, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
                 movieResult.add(movie);
             }
         } catch (Exception e) {
@@ -303,7 +303,7 @@ public class DataAccessObject implements DataAccess {
                 int hour = (int) Math.floor(showingTime);
                 int minute = (int) showingTime - hour;
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), hour, minute);
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
             }
         } catch (Exception e) {
@@ -344,7 +344,7 @@ public class DataAccessObject implements DataAccess {
                 int hour = (int) Math.floor(showingTime);
                 int minute = (int) showingTime - hour;
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), hour, minute);
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
             }
         } catch (Exception e) {
@@ -384,7 +384,7 @@ public class DataAccessObject implements DataAccess {
                 int hour = (int) Math.floor(showingTime);
                 int minute = (int) showingTime - hour;
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), hour, minute);
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
             }
         } catch (Exception e) {
