@@ -34,4 +34,9 @@ public class AccessTickets {
         ArrayList<Ticket> tickets = this.dataAccess.getShowingTickets(new Ticket(0, 0, showingID, 0, 0));
         return FindAvailableSeats.compileReservedSeats(tickets, numberOfSeats);
     }
+
+    public ArrayList<Ticket> getUserTickets(int userId) {
+        Ticket userTicket = new Ticket(0, userId, 0,0,0);
+        return dataAccess.getUserTickets(userTicket);
+    }
 }
