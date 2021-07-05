@@ -37,7 +37,8 @@ public class AccessTickets {
     }
 
     public ArrayList<Ticket> getUserTickets(int userId) {
-        Ticket userTicket = new Ticket(0, userId, 0,0,0);
-        return dataAccess.getUserTickets(userTicket);
+        ArrayList<Ticket> list = new ArrayList<Ticket>();
+        dataAccess.getUserTickets(list, userId);
+        return list;
     }
 }
