@@ -51,6 +51,8 @@ public class DatabaseStub {
         theatres.add(theatre);
 
         Calendar today = Calendar.getInstance();
+        Calendar tomorrow=Calendar.getInstance();
+        tomorrow.add(Calendar.DATE,1);
 
         showings = new ArrayList<Showing>();
         showing = new Showing(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(), today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 15);
@@ -65,17 +67,32 @@ public class DatabaseStub {
         showings.add(showing);
         showing = new Showing(6, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 12, 55);
         showings.add(showing);
-        showing = new Showing(7, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 7, 15);
+
+        showing = new Showing(7, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 3, 10);
         showings.add(showing);
-        showing = new Showing(8, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
+
+
+
+        showing = new Showing(8, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 7, 15);
         showings.add(showing);
-        showing = new Showing(9, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 15, 25);
+        showing = new Showing(9, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
         showings.add(showing);
-        showing = new Showing(10, 4, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 20, 35);
+        showing = new Showing(10, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 15, 25);
         showings.add(showing);
-        showing = new Showing(11, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 45);
+
+        showing = new Showing(11, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 10, 10);
         showings.add(showing);
-        showing = new Showing(12, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 45);
+        showing = new Showing(12, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 11, 00);
+        showings.add(showing);
+
+
+        showing = new Showing(13, 4, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 20, 35);
+        showings.add(showing);
+        showing = new Showing(14, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 45);
+        showings.add(showing);
+        showing = new Showing(15, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 45);
+        showings.add(showing);
+        showing = new Showing(16, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 22, 50);
         showings.add(showing);
 
         users = new ArrayList<User>();

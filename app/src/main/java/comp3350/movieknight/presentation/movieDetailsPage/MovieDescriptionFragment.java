@@ -1,5 +1,7 @@
 package comp3350.movieknight.presentation.movieDetailsPage;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -16,12 +18,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import comp3350.movieknight.R;
 
@@ -30,6 +35,7 @@ import comp3350.movieknight.business.AccessShowing;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 
 import comp3350.movieknight.presentation.seatsPage.SeatsFragment;
+
 
 public class MovieDescriptionFragment extends Fragment {
 
@@ -47,13 +53,18 @@ public class MovieDescriptionFragment extends Fragment {
     private ImageView imageViewMovieImage;
     private TextView textViewMovieDesc;
 
+
     private AccessShowing accessShowing;
     private ArrayList<Showing> showings;
     private RecyclerView showingTimeRecyclerView;
     private Context context;
     private Fragment childFragment;
+    private DatePickerDialog datePicker;
+    private Button dateButton;
+    private Calendar selectDate;
 
-    public MovieDescriptionFragment() {}
+    public MovieDescriptionFragment() {
+    }
 
     public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieId) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
@@ -74,6 +85,7 @@ public class MovieDescriptionFragment extends Fragment {
             moviePoster = getArguments().getInt(ARG_PARAM2);
             movieDesc = getArguments().getString(ARG_PARAM3);
             movieId=getArguments().getInt(ARG_PARAM4);
+            selectDate=Calendar.getInstance();
 
         }
     }
@@ -81,13 +93,17 @@ public class MovieDescriptionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+
+
         View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
 
         accessShowing=new AccessShowing();
 
         showings =new ArrayList<>();
-        String result = accessShowing.getShowingForMovie(showings,movieId);
+        String result = accessShowing.getShowingForMovieByDate(showings,movieId,selectDate);
+
 
         if(result == null) {
             showingTimeRecyclerView= view.findViewById(R.id.show_time_recycler_view);
@@ -96,9 +112,41 @@ public class MovieDescriptionFragment extends Fragment {
 
         ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
         showingTimeRecyclerView.setAdapter(adapter);
+        ///////-----------------------------------------
+
+        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                selectDate.set(Calendar.YEAR,year);
+                selectDate.set(Calendar.MONTH,month);
+                selectDate.set(Calendar.DATE,dayOfMonth);
+                showings.clear();
+                accessShowing.getShowingForMovieByDate(showings,movieId,selectDate);
+                adapter.notifyDataSetChanged();
+
+            }
+        };
+        datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
+        datePicker.getDatePicker().setMinDate(selectDate.getTimeInMillis());
+        selectDate.add(Calendar.DATE,6);
+        datePicker.getDatePicker().setMaxDate(selectDate.getTimeInMillis());
+        dateButton= view.findViewById(R.id.date_button);
+        dateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePicker.show();
+            }
+        });
+///////-----------------------------------------
+
+
 
         return view;
     }
+
+
+
+
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -138,6 +186,7 @@ public class MovieDescriptionFragment extends Fragment {
         textViewMovieTitle.setVisibility(View.GONE);
         imageViewMovieImage.setVisibility(View.GONE);
         textViewMovieDesc.setVisibility(View.GONE);
+        dateButton.setVisibility(View.GONE);
 
         this.getParentFragment().setMenuVisibility(false);
         childFragment = new SeatsFragment();
