@@ -8,32 +8,27 @@ CREATE USER SA PASSWORD ""
 GRANT DBA TO SA
 SET WRITE_DELAY 20
 SET SCHEMA PUBLIC
-
-INSERT INTO MOVIES VALUES(1, "Description for The Bee Movie", "The Bee Movie", R.drawable.the_bee_movie, 120, 2021, 6,8);
-INSERT INTO MOVIES VALUES(2, "Description for Finding Nemo", "Finding Nemo", R.drawable.finding_nemo, 120, 2022, 6,9);
-INSERT INTO MOVIES VALUES(3, "Description for Monsters Inc.", "Monsters Inc.", R.drawable.monsters_inc, 120, 2022, 6,7);
-INSERT INTO MOVIES VALUES(4, "Description for Ice Age", "Ice Age", R.drawable.ice_age, 120, 2021, 7,26);
-INSERT INTO MOVIES VALUES(5, "Description for Shrek", "Shrek", R.drawable.shrek, 120, 2021, 7,26);
-
+INSERT INTO MOVIES VALUES(1, "Description for The Bee Movie", "The Bee Movie", "the_bee_movie", 120, 1623128400000);
+INSERT INTO MOVIES VALUES(2, "Description for Finding Nemo", "Finding Nemo", "finding_nemo", 120, 1654750800000);
+INSERT INTO MOVIES VALUES(3, "Description for Monsters Inc.", "Monsters Inc.", "monsters_inc", 120, 1654578000000);
+INSERT INTO MOVIES VALUES(4, "Description for Ice Age", "Ice Age", "ice_age", 120, 1627275600000);
+INSERT INTO MOVIES VALUES(5, "Description for Shrek", "Shrek", "shrek", 120, 1627275600000);
 INSERT INTO THEATRES VALUES(1, 24);
-
-INSERT INTO SHOWINGS VALUES(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(), today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 15);
-INSERT INTO SHOWINGS VALUES(2, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
-INSERT INTO SHOWINGS VALUES(3, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 55);
-INSERT INTO SHOWINGS VALUES(4, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 55);
-INSERT INTO SHOWINGS VALUES(5, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 11, 55);
-INSERT INTO SHOWINGS VALUES(6, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 12, 55);
-INSERT INTO SHOWINGS VALUES(7, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 7, 15);
-INSERT INTO SHOWINGS VALUES(8, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
-INSERT INTO SHOWINGS VALUES(9, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 15, 25);
-INSERT INTO SHOWINGS VALUES(10, 4, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 20, 35);
-INSERT INTO SHOWINGS VALUES(11, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 45);
-INSERT INTO SHOWINGS VALUES(12, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 45);
-
+INSERT INTO SHOWINGS VALUES(1, 1, 1, 24, 1625461200000, 8.15);
+INSERT INTO SHOWINGS VALUES(2, 1, 1, 24, 1625461200000, 10.35);
+INSERT INTO SHOWINGS VALUES(3, 2, 1, 24, 1625461200000, 9.55);
+INSERT INTO SHOWINGS VALUES(4, 2, 1, 24, 1625461200000, 10.55);
+INSERT INTO SHOWINGS VALUES(5, 2, 1, 24, 1625461200000, 11.55);
+INSERT INTO SHOWINGS VALUES(6, 2, 1, 24, 1625461200000, 12.55);
+INSERT INTO SHOWINGS VALUES(7, 3, 1, 24, 1625461200000, 7.15);
+INSERT INTO SHOWINGS VALUES(8, 3, 1, 24, 1625461200000, 10.35);
+INSERT INTO SHOWINGS VALUES(9, 3, 1, 24, 1625461200000, 15.25);
+INSERT INTO SHOWINGS VALUES(10, 4, 1, 24, 1625461200000, 20.35);
+INSERT INTO SHOWINGS VALUES(11, 5, 1, 24, 1625461200000, 8.45);
+INSERT INTO SHOWINGS VALUES(12, 5, 1, 24, 1625461200000, 9.45);
 INSERT INTO USERS VALUES(1, "Default User");
 INSERT INTO USERS VALUES(2, "User2");
 INSERT INTO USERS VALUES(3, "User3");
-
 INSERT INTO TICKETS VALUES(1, 1, 1, 1, 0);
 INSERT INTO TICKETS VALUES(2, 2, 1, 2, 1);
 INSERT INTO TICKETS VALUES(3, 3, 1, 1, 2);
