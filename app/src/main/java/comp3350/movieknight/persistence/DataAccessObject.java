@@ -19,7 +19,7 @@ public class DataAccessObject implements DataAccess {
 
     private Statement st1, st2, st3, st4, st5;
     private Connection c1;
-    private ResultSet rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9;
+    private ResultSet rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10;
 
     private String dbName;
     private String dbType;
@@ -52,6 +52,8 @@ public class DataAccessObject implements DataAccess {
             st1 = c1.createStatement();
             st2 = c1.createStatement();
             st3 = c1.createStatement();
+            st4 = c1.createStatement();
+            st5 = c1.createStatement();
         } catch (Exception e) {
             processSQLError(e);
         }
@@ -470,16 +472,16 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Users";
-            rs6 = st4.executeQuery(cmdString);
+            rs7 = st4.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs6.next())
+            while (rs7.next())
             {
-                userID = rs6.getInt("UserID");
-                username = rs6.getString("Username");
+                userID = rs7.getInt("UserID");
+                username = rs7.getString("Username");
 
                 user = new User(userID, username);
                 userResult.add(user);
@@ -543,32 +545,154 @@ public class DataAccessObject implements DataAccess {
 
     @Override
     public String getAllTickets(List<Ticket> ticketResult) {
-        return null;
+        Ticket ticket;
+        int ticketID, userID, showingID, theatreID, seatNum;
+
+        result = null;
+        try {
+            cmdString = "Select * from Tickets";
+            rs8 = st5.executeQuery(cmdString);
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs8.next())
+            {
+                ticketID = rs8.getInt("TicketID");
+                userID = rs8.getInt("UserID");
+                showingID = rs8.getInt("ShowingID");
+                theatreID = rs8.getInt("TheatreID");
+                seatNum = rs8.getInt("SeatNum");
+
+                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticketResult.add(ticket);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
     }
 
     @Override
-    public String getShowingTickets(List<Ticket> ticketResult, int showingID) {
-        return null;
+    public String getShowingTickets(List<Ticket> ticketResult, int newShowingID) {
+        Ticket ticket;
+        int ticketID, userID, showingID, theatreID, seatNum;
+
+        result = null;
+        try {
+            cmdString = "Select * from Tickets where ShowingID= " + newShowingID;
+            rs9 = st5.executeQuery(cmdString);
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs9.next())
+            {
+                ticketID = rs9.getInt("TicketID");
+                userID = rs9.getInt("UserID");
+                showingID = rs9.getInt("ShowingID");
+                theatreID = rs9.getInt("TheatreID");
+                seatNum = rs9.getInt("SeatNum");
+
+                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticketResult.add(ticket);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
     }
 
     @Override
-    public String getUserTickets(List<Ticket> ticketResult, int userID) {
-        return null;
+    public String getUserTickets(List<Ticket> ticketResult, int newUserID) {
+        Ticket ticket;
+        int ticketID, userID, showingID, theatreID, seatNum;
+
+        result = null;
+        try {
+            cmdString = "Select * from Tickets where UserID= " + newUserID;
+            rs10 = st5.executeQuery(cmdString);
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs10.next())
+            {
+                ticketID = rs10.getInt("TicketID");
+                userID = rs10.getInt("UserID");
+                showingID = rs10.getInt("ShowingID");
+                theatreID = rs10.getInt("TheatreID");
+                seatNum = rs10.getInt("SeatNum");
+
+                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticketResult.add(ticket);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
     }
 
     @Override
     public String insertTicket(Ticket ticket) {
-        return null;
+        String values;
+
+        result = null;
+        try {
+            values = "TicketID=" + ticket.getTicketID() + ", "
+                    + "UserID=" + ticket.getUserID() + ", "
+                    + "ShowingID=" + ticket.getShowingID() + ", "
+                    + "TheatreID=" + ticket.getTheatreID() + ", "
+                    + "SeatNum=" + ticket.getSeatNum();
+
+            cmdString = "Insert into Users " +" Values(" + values +")";
+            updateCount = st5.executeUpdate(cmdString);
+            result = checkWarning(st5, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
     public String updateTicket(Ticket ticket) {
-        return null;
+        String values;
+        String where;
+
+        result = null;
+        try {
+            values = "UserID=" + ticket.getUserID() + ", "
+                    + "ShowingID=" + ticket.getShowingID() + ", "
+                    + "TheatreID=" + ticket.getTheatreID() + ", "
+                    + "SeatNum=" + ticket.getSeatNum();
+            where = "where TicketID=" + ticket.getTicketID();
+
+            cmdString = "Update Tickets " + " Set " +values+ " "+where;
+            updateCount = st5.executeUpdate(cmdString);
+            result = checkWarning(st5, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
     public String deleteTicket(Ticket ticket) {
-        return null;
+        result = null;
+        try {
+            cmdString = "Delete from Tickets where TicketID="+ ticket.getTicketID();
+            updateCount = st5.executeUpdate(cmdString);
+            result = checkWarning(st5, updateCount);
+        } catch (Exception e){
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     public String checkWarning(Statement st, int updateCount)
