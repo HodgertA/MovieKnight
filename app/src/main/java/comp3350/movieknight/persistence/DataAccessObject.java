@@ -401,11 +401,6 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public String getDateShowings(ArrayList<Showing> showingResult, Calendar Date) {
-        return null;
-    }
-
-    @Override
     public String insertShowing(Showing showing) {
         String values;
 

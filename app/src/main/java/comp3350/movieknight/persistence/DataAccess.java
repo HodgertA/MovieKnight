@@ -39,8 +39,6 @@ public interface DataAccess {
 
     String getTheatreShowings(ArrayList<Showing> showingList, int theatreId);
 
-    String getDateShowings(ArrayList<Showing> showingList, Calendar date);
-
     String insertShowing(Showing showing);
 
     String updateShowing(Showing showing);
