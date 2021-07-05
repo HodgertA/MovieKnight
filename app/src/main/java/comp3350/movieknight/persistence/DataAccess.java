@@ -35,9 +35,9 @@ public interface DataAccess {
 
     String getAllShowings(List<Showing> showingResult);
 
-    String getMovieShowings(ArrayList<Showing> showingList, int movieId);
+    String getMovieShowings(List<Showing> showingList, int movieId);
 
-    String getTheatreShowings(ArrayList<Showing> showingList, int theatreId);
+    String getTheatreShowings(List<Showing> showingList, int theatreId);
 
     String insertShowing(Showing showing);
 

@@ -11,7 +11,7 @@ import comp3350.movieknight.objects.Theatre;
 import comp3350.movieknight.objects.Ticket;
 import comp3350.movieknight.objects.User;
 
-public class DatabaseStub {
+public class DatabaseStub implements DataAccess {
 
     private String dbName;
     private String dbType = "stub";
@@ -156,12 +156,14 @@ public class DatabaseStub {
 
     public void close() { System.out.println("Closed " + dbType + " database " + dbName); }
 
+    @Override
     public String getAllMovies(List<Movie> movieResult)
     {
         movieResult.addAll(movies);
         return null;
     }
 
+    @Override
     public String insertMovie(Movie movie)
     {
         if (!movies.contains(movie)) {
@@ -172,6 +174,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String updateMovie(Movie movie)
     {
         int index;
@@ -183,6 +186,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String deleteMovie(Movie movie)
     {
         int index;
@@ -194,12 +198,14 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String getAllTheatres(List<Theatre> theatreResult)
     {
         theatreResult.addAll(theatres);
         return null;
     }
 
+    @Override
     public Theatre getTheatre(Theatre theatre) {
         Theatre result = null;
 
@@ -210,6 +216,7 @@ public class DatabaseStub {
         return result;
     }
 
+    @Override
     public String insertTheatre(Theatre theatre)
     {
         if (!theatres.contains(theatre)) {
@@ -220,6 +227,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String updateTheatre(Theatre theatre)
     {
         int index;
@@ -231,6 +239,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String deleteTheatre(Theatre theatre)
     {
         int index;
@@ -242,13 +251,15 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String getAllShowings(List<Showing> showingResult)
     {
         showingResult.addAll(showings);
         return null;
     }
 
-    public String getMovieShowings(ArrayList<Showing> showingList, int movieId)
+    @Override
+    public String getMovieShowings(List<Showing> showingList, int movieId)
     {
         Showing curr;
 
@@ -261,36 +272,21 @@ public class DatabaseStub {
        return null;
     }
 
-    public ArrayList<Showing> getTheatreShowings(Showing showing)
+    @Override
+    public String getTheatreShowings(List<Showing> showingList, int theatreId)
     {
-        ArrayList<Showing> result = new ArrayList<Showing>();
         Showing curr;
 
         for (int counter = 0; counter < showings.size(); counter++) {
             curr = showings.get(counter);
-
-            if (curr.getTheatreID() == showing.getTheatreID()) {
-                result.add(curr);
+            if (curr.getTheatreID() == theatreId) {
+                showingList.add(curr);
             }
         }
-        return result;
+        return null;
     }
 
-    public ArrayList<Showing> getDateShowings(Showing showing)
-    {
-        ArrayList<Showing> result = new ArrayList<Showing>();
-        Showing curr;
-
-        for (int counter = 0; counter < showings.size(); counter++) {
-            curr = showings.get(counter);
-
-            if (curr.getShowingDate().equals(showing.getShowingDate())) {
-                result.add(curr);
-            }
-        }
-        return result;
-    }
-
+    @Override
     public String insertShowing(Showing showing)
     {
         if (!showings.contains(showing)) {
@@ -301,6 +297,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String updateShowing(Showing showing)
     {
         int index;
@@ -312,6 +309,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String deleteShowing(Showing showing)
     {
         int index;
@@ -323,12 +321,14 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String getAllUsers(List<User> userResult)
     {
         userResult.addAll(users);
         return null;
     }
 
+    @Override
     public String insertUser(User user)
     {
         if (!users.contains(user)) {
@@ -339,6 +339,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String updateUser(User user)
     {
         int index;
@@ -350,6 +351,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String deleteUser(User user)
     {
         int index;
@@ -361,42 +363,42 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String getAllTickets(List<Ticket> ticketResult)
     {
         ticketResult.addAll(tickets);
         return null;
     }
 
-    public ArrayList<Ticket> getShowingTickets(Ticket ticket)
+    @Override
+    public String getShowingTickets(List<Ticket> ticketList, int showingId)
     {
-        ArrayList<Ticket> result = new ArrayList<Ticket>();
         Ticket curr;
 
         for (int counter = 0; counter < tickets.size(); counter++) {
             curr = tickets.get(counter);
-
-            if (curr.getShowingID() == ticket.getShowingID()) {
-                result.add(curr);
+            if (curr.getShowingID() == showingId) {
+                ticketList.add(curr);
             }
         }
-        return result;
+        return null;
     }
 
-    public ArrayList<Ticket> getUserTickets(Ticket ticket)
+    @Override
+    public String getUserTickets(List<Ticket> ticketList, int userId)
     {
-        ArrayList<Ticket> result = new ArrayList<Ticket>();
         Ticket curr;
 
         for (int counter = 0; counter < tickets.size(); counter++) {
             curr = tickets.get(counter);
-
-            if (curr.getUserID() == ticket.getUserID()) {
-                result.add(curr);
+            if (curr.getUserID() == userId) {
+                ticketList.add(curr);
             }
         }
-        return result;
+        return null;
     }
 
+    @Override
     public String insertTicket(Ticket ticket)
     {
         if (!tickets.contains(ticket)) {
@@ -407,6 +409,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String updateTicket(Ticket ticket)
     {
         int index;
@@ -418,6 +421,7 @@ public class DatabaseStub {
         return null;
     }
 
+    @Override
     public String deleteTicket(Ticket ticket)
     {
         int index;

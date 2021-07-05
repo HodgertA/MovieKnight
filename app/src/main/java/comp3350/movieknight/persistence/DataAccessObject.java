@@ -318,7 +318,7 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public String getMovieShowings(ArrayList<Showing> showingResult, int newMovieID) {
+    public String getMovieShowings(List<Showing> showingResult, int newMovieID) {
 
         Showing showing;
         int showingID, movieID, theatreID, seats;
@@ -360,7 +360,7 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public String getTheatreShowings(ArrayList<Showing> showingResult, int newTheatreID) {
+    public String getTheatreShowings(List<Showing> showingResult, int newTheatreID) {
         Showing showing;
         int showingID, movieID, theatreID, seats;
         long showingDate;
