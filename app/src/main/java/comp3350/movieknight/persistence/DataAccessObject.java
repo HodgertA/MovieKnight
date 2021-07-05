@@ -277,7 +277,6 @@ public class DataAccessObject implements DataAccess {
 
     @Override
     public String getAllShowings(List<Showing> showingResult) {
-        /*
         Showing showing;
         int showingID, movieID, theatreID, seats;
         long showingDate;
@@ -314,14 +313,11 @@ public class DataAccessObject implements DataAccess {
         }
 
         return result;
-
-         */
-        return null;
     }
 
     @Override
-    public String getMovieShowings(ArrayList<Showing> showingList, int movieId) {
-        /*
+    public String getMovieShowings(ArrayList<Showing> showingResult, int newMovieID) {
+
         Showing showing;
         int showingID, movieID, theatreID, seats;
         long showingDate;
@@ -329,38 +325,140 @@ public class DataAccessObject implements DataAccess {
         int counter = 0;
 
         try {
-            cmdString = "Select * from Showings where MovieID"
-        } catch (Exception e) {
+            cmdString = "Select * from Showings where MovieID=" + newMovieID;
+            rs5 = st3.executeQuery(cmdString);
 
+        } catch (Exception e) {
+            processSQLError(e);
         }
 
-         */
-        return null;
+        try {
+            while (rs5.next())
+            {
+                showingID = rs5.getInt("ShowingID");
+                movieID = rs5.getInt("MovieID");
+                theatreID = rs5.getInt("TheatreID");
+                showingDate = rs5.getLong("ShowingDate");
+                showingTime = rs5.getDouble("ShowingTime");
+                seats = rs5.getInt("Seats");
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(showingDate);
+                int hour = (int) Math.floor(showingTime);
+                int minute = (int) showingTime - hour;
+
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), hour, minute);
+                showingResult.add(showing);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
     }
 
     @Override
-    public ArrayList<Showing> getTheatreShowings(Showing showing) {
-        return null;
+    public String getTheatreShowings(ArrayList<Showing> showingResult, int newTheatreID) {
+        Showing showing;
+        int showingID, movieID, theatreID, seats;
+        long showingDate;
+        double showingTime;
+        int counter = 0;
+
+        try {
+            cmdString = "Select * from Showings where TheatreID=" + newTheatreID;
+            rs6 = st3.executeQuery(cmdString);
+
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs6.next())
+            {
+                showingID = rs6.getInt("ShowingID");
+                movieID = rs6.getInt("MovieID");
+                theatreID = rs6.getInt("TheatreID");
+                showingDate = rs6.getLong("ShowingDate");
+                showingTime = rs6.getDouble("ShowingTime");
+                seats = rs6.getInt("Seats");
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(showingDate);
+                int hour = (int) Math.floor(showingTime);
+                int minute = (int) showingTime - hour;
+
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), hour, minute);
+                showingResult.add(showing);
+            }
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+
+        return result;
     }
 
     @Override
-    public ArrayList<Showing> getDateShowings(Showing showing) {
+    public String getDateShowings(ArrayList<Showing> showingResult, Calendar Date) {
         return null;
     }
 
     @Override
     public String insertShowing(Showing showing) {
-        return null;
+        String values;
+
+        result = null;
+        try {
+            values = "ShowingID=" + showing.getShowingID() + ", "
+                    + "MovieID=" + showing.getMovieID() + ", "
+                    + "TheatreID=" + showing.getTheatreID() + ", "
+                    + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
+                    + "ShowingTime=" + showing.getShowingTime() + ", "
+                    + "Seats=" + showing.getSeats();
+
+            cmdString = "Insert into Showings " +" Values(" + values +")";
+            updateCount = st3.executeUpdate(cmdString);
+            result = checkWarning(st3, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
     public String updateShowing(Showing showing) {
-        return null;
+        String values;
+        String where;
+
+        result = null;
+        try {
+            values = "MovieID=" + showing.getMovieID() + ", "
+                    + "TheatreID=" + showing.getTheatreID() + ", "
+                    + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
+                    + "ShowingTime=" + showing.getShowingTime() + ", "
+                    + "Seats=" + showing.getSeats();
+            where = "where ShowingID=" + showing.getShowingID();
+
+            cmdString = "Update Showings " + " Set " +values+ " "+where;
+            updateCount = st3.executeUpdate(cmdString);
+            result = checkWarning(st3, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
     public String deleteShowing(Showing showing) {
-        return null;
+        result = null;
+        try {
+            cmdString = "Delete from Showings where ShowingID="+ showing.getShowingID();
+            updateCount = st3.executeUpdate(cmdString);
+            result = checkWarning(st3, updateCount);
+        } catch (Exception e){
+            result = processSQLError(e);
+        }
+        return result;
     }
 
     @Override
@@ -371,7 +469,7 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            cmdString = "Select * from Movies";
+            cmdString = "Select * from Users";
             rs6 = st4.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
@@ -399,8 +497,8 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = user.getUserID() + ", '"
-                    + user.getUsername();
+            values = "UserID=" + user.getUserID() + ", '"
+                    + "Username= " + user.getUsername();
 
             cmdString = "Insert into Users " +" Values(" + values +")";
             updateCount = st4.executeUpdate(cmdString);
@@ -435,8 +533,8 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Delete from Users where UserID="+user.getUserID();
-            updateCount = st2.executeUpdate(cmdString);
-            result = checkWarning(st2, updateCount);
+            updateCount = st4.executeUpdate(cmdString);
+            result = checkWarning(st4, updateCount);
         } catch (Exception e){
             result = processSQLError(e);
         }
@@ -449,12 +547,12 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public ArrayList<Ticket> getShowingTickets(Ticket ticket) {
+    public String getShowingTickets(List<Ticket> ticketResult, int showingID) {
         return null;
     }
 
     @Override
-    public ArrayList<Ticket> getUserTickets(Ticket ticket) {
+    public String getUserTickets(List<Ticket> ticketResult, int userID) {
         return null;
     }
 

@@ -1,6 +1,7 @@
 package comp3350.movieknight.persistence;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import comp3350.movieknight.objects.Movie;
@@ -36,9 +37,9 @@ public interface DataAccess {
 
     String getMovieShowings(ArrayList<Showing> showingList, int movieId);
 
-    ArrayList<Showing> getTheatreShowings(Showing showing);
+    String getTheatreShowings(ArrayList<Showing> showingList, int theatreId);
 
-    ArrayList<Showing> getDateShowings(Showing showing);
+    String getDateShowings(ArrayList<Showing> showingList, Calendar date);
 
     String insertShowing(Showing showing);
 
@@ -56,9 +57,9 @@ public interface DataAccess {
 
     String getAllTickets(List<Ticket> ticketResult);
 
-    ArrayList<Ticket> getShowingTickets(Ticket ticket);
+    String getShowingTickets(List<Ticket> ticketResult, int showingID);
 
-    ArrayList<Ticket> getUserTickets(Ticket ticket);
+    String getUserTickets(List<Ticket> ticketResult, int userID);
 
     String insertTicket(Ticket ticket);
 
