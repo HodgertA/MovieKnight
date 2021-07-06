@@ -1,4 +1,4 @@
-package comp3350.movieknight.persistence;
+package comp3350.movieknight.tests.persistence;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,6 +10,7 @@ import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Theatre;
 import comp3350.movieknight.objects.Ticket;
 import comp3350.movieknight.objects.User;
+import comp3350.movieknight.persistence.DataAccess;
 
 public class DatabaseStub implements DataAccess {
 

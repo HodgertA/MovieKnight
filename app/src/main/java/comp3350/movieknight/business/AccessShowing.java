@@ -6,10 +6,10 @@ import java.util.Calendar;
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Showing;
-import comp3350.movieknight.persistence.DatabaseStub;
+import comp3350.movieknight.persistence.DataAccess;
 
 public class AccessShowing {
-    private DatabaseStub dataAccess;
+    private DataAccess dataAccess;
 
     public AccessShowing(){
         dataAccess = Services.getDataAccess(Main.dbName);

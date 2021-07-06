@@ -1,21 +1,32 @@
 package comp3350.movieknight.application;
 
-import comp3350.movieknight.persistence.DatabaseStub;
+import comp3350.movieknight.persistence.DataAccess;
+import comp3350.movieknight.persistence.DataAccessObject;
 
 public class Services {
 
-    private static DatabaseStub dataAccessService = null;
+    private static DataAccess dataAccessService = null;
 
-    public static DatabaseStub createDataAccess(String dbName)
+    public static DataAccess createDataAccess(String dbName)
     {
         if (dataAccessService == null) {
-            dataAccessService = new DatabaseStub(dbName);
-            dataAccessService.open(Main.dbName);
+            dataAccessService = new DataAccessObject(dbName);
+            dataAccessService.open(Main.getDBPathName());
         }
         return dataAccessService;
     }
 
-    public static DatabaseStub getDataAccess(String dbName)
+    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
+    {
+        if (dataAccessService == null)
+        {
+            dataAccessService = alternateDataAccessService;
+            dataAccessService.open(Main.getDBPathName());
+        }
+        return dataAccessService;
+    }
+
+    public static DataAccess getDataAccess(String dbName)
     {
         if (dataAccessService == null) {
             System.out.println("Connection to data access has not been established.");

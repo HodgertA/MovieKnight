@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Movie;
-import comp3350.movieknight.persistence.DatabaseStub;
+import comp3350.movieknight.persistence.DataAccess;
 
 public class AccessMovies {
-    private DatabaseStub dataAccess;
+    private DataAccess dataAccess;
 
     public AccessMovies()
     {

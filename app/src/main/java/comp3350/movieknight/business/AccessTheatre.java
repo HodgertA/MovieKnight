@@ -3,10 +3,10 @@ package comp3350.movieknight.business;
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Theatre;
-import comp3350.movieknight.persistence.DatabaseStub;
+import comp3350.movieknight.persistence.DataAccess;
 
 public class AccessTheatre {
-    private DatabaseStub dataAccess;
+    private DataAccess dataAccess;
 
     public AccessTheatre() {
         dataAccess = Services.getDataAccess(Main.dbName);
