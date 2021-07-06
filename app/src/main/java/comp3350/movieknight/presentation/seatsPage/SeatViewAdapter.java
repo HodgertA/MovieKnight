@@ -10,18 +10,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 import comp3350.movieknight.R;
 
 public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
     private boolean[] seats;
-    private SeatsFragment seatsFragment;
+    private boolean[] unavailableSeats;
+    private ArrayList<Integer> selectedSeats;
     private Context context;
 
     public SeatViewAdapter(Context context, SeatsFragment seatsFragment, boolean []seats) {
         this.seats = seats;
+        unavailableSeats = new boolean[seats.length];
+        System.arraycopy(seats, 0, unavailableSeats, 0, seats.length);
+        this.selectedSeats = new ArrayList<>();
         this.context = context;
-        this.seatsFragment = seatsFragment;
     }
 
     @NonNull
@@ -36,8 +41,10 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     public void onBindViewHolder(@NonNull @NotNull SeatViewHolder holder, int position) {
         ImageButton seat = holder.getSeatView();
         if(!seats[position]) {
-//            seat.setEnabled(false);
-//            seat.getBackground().setAlpha(128);
+            if(!unavailableSeats[position]) {
+                seat.setEnabled(false);
+                seat.setAlpha(64);
+            }
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.reserved_seat));
         } else {
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.available_seat));
@@ -46,6 +53,11 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
             @Override
             public void onClick(View v) {
                 seats[position] = !seats[position];
+                if(!seats[position] && !selectedSeats.contains(position)) {
+                    selectedSeats.add(position);
+                } else {
+                    selectedSeats.remove((Integer) position);
+                }
                 notifyDataSetChanged();
             }
         });
