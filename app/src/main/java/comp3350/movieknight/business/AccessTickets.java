@@ -31,12 +31,14 @@ public class AccessTickets {
     }
 
     public boolean[] compileSeatReservations(int showingID, int numberOfSeats) {
-        ArrayList<Ticket> tickets = this.dataAccess.getShowingTickets(new Ticket(0, 0, showingID, 0, 0));
+        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+        dataAccess.getShowingTickets(tickets, showingID);
         return FindAvailableSeats.compileReservedSeats(tickets, numberOfSeats);
     }
 
     public ArrayList<Ticket> getUserTickets(int userId) {
-        Ticket userTicket = new Ticket(0, userId, 0,0,0);
-        return dataAccess.getUserTickets(userTicket);
+        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+        dataAccess.getUserTickets(tickets, userId);
+        return tickets;
     }
 }

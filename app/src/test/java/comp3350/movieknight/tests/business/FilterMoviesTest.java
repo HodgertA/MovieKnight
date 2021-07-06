@@ -45,7 +45,7 @@ public class FilterMoviesTest extends TestCase {
         Calendar calendar = Calendar.getInstance();
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movie = new Movie(5, "", "Shrek", 0, 120, calendar.get(Calendar.YEAR)+1, calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH));
+        Movie movie = new Movie(5, "", "Shrek", "poster", 120, calendar.get(Calendar.YEAR)+1, calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
         assertEquals(1, movies.size());
 
@@ -64,7 +64,7 @@ public class FilterMoviesTest extends TestCase {
         Calendar calendar = Calendar.getInstance();
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        movies.add(new Movie(5, "", "Shrek", 0, 120, calendar.get(Calendar.YEAR-1), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH)));
+        movies.add(new Movie(5, "", "Shrek", "poster", 120, calendar.get(Calendar.YEAR-1), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DAY_OF_MONTH)));
         assertEquals(1, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
@@ -85,9 +85,9 @@ public class FilterMoviesTest extends TestCase {
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        movies.add(new Movie(1, "", "Shrek", 0, 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE)));
-        movies.add(new Movie(2, "", "Finding Nemo", 0, 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE)));
-        movies.add(new Movie(3, "", "Ice Age", 0, 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE)));
+        movies.add(new Movie(1, "", "Shrek", "poster", 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE)));
+        movies.add(new Movie(2, "", "Finding Nemo", "poster", 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE)));
+        movies.add(new Movie(3, "", "Ice Age", "poster", 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE)));
         assertEquals(3, movies.size());
 
         FilterList.filterMoviesInTheatres(movies);
@@ -109,11 +109,11 @@ public class FilterMoviesTest extends TestCase {
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movie1 = new Movie(1, "", "Shrek", 0, 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DATE));
+        Movie movie1 = new Movie(1, "", "Shrek", "poster", 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DATE));
         movies.add(movie1);
-        Movie movie2 = new Movie(2, "", "Finding Nemo", 0, 120, nextMonth.get(Calendar.YEAR), nextMonth.get(Calendar.MONTH)+1, nextMonth.get(Calendar.DATE));
+        Movie movie2 = new Movie(2, "", "Finding Nemo", "poster", 120, nextMonth.get(Calendar.YEAR), nextMonth.get(Calendar.MONTH)+1, nextMonth.get(Calendar.DATE));
         movies.add(movie2);
-        Movie movie3 = new Movie(3, "", "Ice Age", 0, 120, nextYear.get(Calendar.YEAR), nextYear.get(Calendar.MONTH)+1, nextYear.get(Calendar.DATE));
+        Movie movie3 = new Movie(3, "", "Ice Age", "poster", 120, nextYear.get(Calendar.YEAR), nextYear.get(Calendar.MONTH)+1, nextYear.get(Calendar.DATE));
         movies.add(movie3);
         assertEquals(3, movies.size());
 
@@ -132,7 +132,7 @@ public class FilterMoviesTest extends TestCase {
         Calendar today = Calendar.getInstance();
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movie = new Movie(5, "", "Shrek", 0, 120, today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DAY_OF_MONTH));
+        Movie movie = new Movie(5, "", "Shrek", "poster", 120, today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
         assertEquals(1, movies.size());
 
@@ -152,7 +152,7 @@ public class FilterMoviesTest extends TestCase {
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movie = new Movie(5, "", "Shrek", 0, 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DAY_OF_MONTH));
+        Movie movie = new Movie(5, "", "Shrek", "poster", 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
         assertEquals(1, movies.size());
 
@@ -172,7 +172,7 @@ public class FilterMoviesTest extends TestCase {
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movie = new Movie(5, "", "Shrek", 0, 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DAY_OF_MONTH));
+        Movie movie = new Movie(5, "", "Shrek", "poster", 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DAY_OF_MONTH));
         movies.add(movie);
         assertEquals(1, movies.size());
 
@@ -200,17 +200,17 @@ public class FilterMoviesTest extends TestCase {
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movieNotPlaying1 =new Movie(5, "", "Shrek", 0, 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE));
+        Movie movieNotPlaying1 =new Movie(5, "", "Shrek", "poster", 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE));
         movies.add(movieNotPlaying1);
-        Movie movieNotPlaying2 =new Movie(5, "", "Finding Nemo", 0, 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE));
+        Movie movieNotPlaying2 =new Movie(5, "", "Finding Nemo", "poster", 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE));
         movies.add(movieNotPlaying2);
-        Movie movieNotPlaying3 =new Movie(5, "", "Ice Age", 0, 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE));
+        Movie movieNotPlaying3 =new Movie(5, "", "Ice Age", "poster", 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE));
         movies.add(movieNotPlaying3);
-        Movie moviePlaying1 = new Movie(1, "", "Shrek", 0, 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DATE));
+        Movie moviePlaying1 = new Movie(1, "", "Shrek", "poster", 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DATE));
         movies.add(moviePlaying1);
-        Movie moviePlaying2 = new Movie(2, "", "Finding Nemo", 0, 120, nextMonth.get(Calendar.YEAR), nextMonth.get(Calendar.MONTH)+1, nextMonth.get(Calendar.DATE));
+        Movie moviePlaying2 = new Movie(2, "", "Finding Nemo", "poster", 120, nextMonth.get(Calendar.YEAR), nextMonth.get(Calendar.MONTH)+1, nextMonth.get(Calendar.DATE));
         movies.add(moviePlaying2);
-        Movie moviePlaying3 = new Movie(3, "", "Ice Age", 0, 120, nextYear.get(Calendar.YEAR), nextYear.get(Calendar.MONTH)+1, nextYear.get(Calendar.DATE));
+        Movie moviePlaying3 = new Movie(3, "", "Ice Age", "poster", 120, nextYear.get(Calendar.YEAR), nextYear.get(Calendar.MONTH)+1, nextYear.get(Calendar.DATE));
         movies.add(moviePlaying3);
         assertEquals(6, movies.size());
 
