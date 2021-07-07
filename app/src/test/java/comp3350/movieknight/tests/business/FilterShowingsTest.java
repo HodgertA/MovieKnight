@@ -6,13 +6,36 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import comp3350.movieknight.business.FilterList;
+import comp3350.movieknight.objects.Seat;
 import comp3350.movieknight.objects.Showing;
+import comp3350.movieknight.objects.Theatre;
 
 public class FilterShowingsTest extends TestCase {
 
     public FilterShowingsTest(String arg0)
     {
         super(arg0);
+    }
+    private Theatre theatre;
+
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+
+        ArrayList<Seat> seats = new ArrayList<>();
+        seats.add(new Seat(1,false));
+        seats.add(new Seat(2,false));
+        seats.add(new Seat(3,false));
+        seats.add(new Seat(4,false));
+        seats.add(new Seat(5,false));
+        seats.add(new Seat(6,false));
+        seats.add(new Seat(7,false));
+        seats.add(new Seat(8,false));
+        seats.add(new Seat(9,false));
+        seats.add(new Seat(10,false));
+
+        theatre = new Theatre(1,seats);
+
     }
 
     public void testNullItem() {
@@ -52,11 +75,11 @@ public class FilterShowingsTest extends TestCase {
         Calendar today = Calendar.getInstance();
         ArrayList<Showing> showings = new ArrayList<Showing>();
 
-        Showing showing1 = new Showing(1,2,3, 10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
+        Showing showing1 = new Showing(1,2,3, theatre,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
         showings.add(showing1);
-        Showing showing2 = new Showing(4,5,6,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),0,0);
+        Showing showing2 = new Showing(4,5,6,theatre,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),0,0);
         showings.add(showing2);
-        Showing showing3 = new Showing(7,8,9,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
+        Showing showing3 = new Showing(7,8,9,theatre,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
         showings.add(showing3);
 
         FilterList.filterShowingsByDate(showings);
@@ -83,9 +106,9 @@ public class FilterShowingsTest extends TestCase {
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
 
-        showings.add(new Showing(1,2,3,10,differentDay.get(Calendar.YEAR),differentDay.get(Calendar.MONTH)+1,differentDay.get(Calendar.DATE),8,10));
-        showings.add(new Showing(1,2,3,10,differentMonth.get(Calendar.YEAR),differentMonth.get(Calendar.MONTH)+1,differentMonth.get(Calendar.DATE),8,10));
-        showings.add(new Showing(1,2,3,10,differentYear.get(Calendar.YEAR),differentYear.get(Calendar.MONTH)+1,differentYear.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,theatre,differentDay.get(Calendar.YEAR),differentDay.get(Calendar.MONTH)+1,differentDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,theatre,differentMonth.get(Calendar.YEAR),differentMonth.get(Calendar.MONTH)+1,differentMonth.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3,theatre,differentYear.get(Calendar.YEAR),differentYear.get(Calendar.MONTH)+1,differentYear.get(Calendar.DATE),8,10));
 
         FilterList.filterShowingsByDate(showings);
         assertTrue(showings.isEmpty());
@@ -109,25 +132,25 @@ public class FilterShowingsTest extends TestCase {
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
         //correct
-        Showing showing1 = new Showing(1,2,3, 10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
+        Showing showing1 = new Showing(1,2,3, theatre,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),8,10);
         showings.add(showing1);
 
         //different Day
-        showings.add(new Showing(1,2,3, 10,differentDay.get(Calendar.YEAR),differentDay.get(Calendar.MONTH)+1,differentDay.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3, theatre,differentDay.get(Calendar.YEAR),differentDay.get(Calendar.MONTH)+1,differentDay.get(Calendar.DATE),8,10));
 
         //correct
-        Showing showing2 = new Showing(4,5,6,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),0,0);
+        Showing showing2 = new Showing(4,5,6,theatre,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),0,0);
         showings.add(showing2);
 
         //different Month
-        showings.add(new Showing(1,2,3, 10,differentMonth.get(Calendar.YEAR),differentMonth.get(Calendar.MONTH)+1,differentMonth.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3, theatre,differentMonth.get(Calendar.YEAR),differentMonth.get(Calendar.MONTH)+1,differentMonth.get(Calendar.DATE),8,10));
 
         //correct
-        Showing showing3 = new Showing(7,8,9,10,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
+        Showing showing3 = new Showing(7,8,9,theatre,today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE),12,59);
         showings.add(showing3);
 
         //different year
-        showings.add(new Showing(1,2,3, 10,differentYear.get(Calendar.YEAR),differentYear.get(Calendar.MONTH)+1,differentYear.get(Calendar.DATE),8,10));
+        showings.add(new Showing(1,2,3, theatre,differentYear.get(Calendar.YEAR),differentYear.get(Calendar.MONTH)+1,differentYear.get(Calendar.DATE),8,10));
 
         FilterList.filterShowingsByDate(showings);
         assertEquals(3,showings.size());

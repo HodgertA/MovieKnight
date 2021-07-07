@@ -13,19 +13,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import comp3350.movieknight.R;
+import comp3350.movieknight.objects.Seat;
 
 public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
-    private boolean[] seats;
-    private boolean[] unavailableSeats;
-    private ArrayList<Integer> selectedSeats;
+    private ArrayList<Seat> seats;
     private Context context;
 
-    public SeatViewAdapter(Context context, SeatsFragment seatsFragment, boolean []seats) {
+    public SeatViewAdapter(Context context, ArrayList<Seat> seats) {
         this.seats = seats;
-        unavailableSeats = new boolean[seats.length];
-        System.arraycopy(seats, 0, unavailableSeats, 0, seats.length);
-        this.selectedSeats = new ArrayList<>();
         this.context = context;
     }
 
@@ -40,11 +36,9 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull SeatViewHolder holder, int position) {
         ImageButton seat = holder.getSeatView();
-        if(!seats[position]) {
-            if(!unavailableSeats[position]) {
-                seat.setEnabled(false);
-                seat.setAlpha(64);
-            }
+        if(seats.get(position).isSelected()) {
+            seat.setEnabled(false);
+            seat.setAlpha(64);
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.reserved_seat));
         } else {
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.available_seat));
@@ -52,12 +46,7 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
         holder.getSeatView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                seats[position] = !seats[position];
-                if(!seats[position] && !selectedSeats.contains(position)) {
-                    selectedSeats.add(position);
-                } else {
-                    selectedSeats.remove((Integer) position);
-                }
+                seats.get(position).setSelected(true);
                 notifyDataSetChanged();
             }
         });
@@ -65,6 +54,6 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
     @Override
     public int getItemCount() {
-        return seats.length;
+        return seats.size();
     }
 }

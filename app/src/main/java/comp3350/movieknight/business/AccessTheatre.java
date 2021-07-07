@@ -1,5 +1,7 @@
 package comp3350.movieknight.business;
 
+import java.util.ArrayList;
+
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Theatre;
@@ -14,7 +16,7 @@ public class AccessTheatre {
 
     public Theatre getTheatre(int theatreID)
     {
-        return dataAccess.getTheatre(new Theatre(theatreID, 1));
+        return dataAccess.getTheatre(new Theatre(theatreID, new ArrayList<>()));
     }
 
     public String insertTheatre(Theatre theatre)

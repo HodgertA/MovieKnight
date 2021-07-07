@@ -16,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
+import comp3350.movieknight.objects.Seat;
 import comp3350.movieknight.presentation.movieDetailsPage.MovieDescriptionFragment;
 
 public class SeatsFragment extends Fragment {
@@ -28,8 +31,7 @@ public class SeatsFragment extends Fragment {
     private RecyclerView seatsRecyclerView;
     RecyclerView.LayoutManager layoutManager;
     private int showingId;
-    private int numberOfSeats;
-    private boolean[] seats;
+    private ArrayList<Seat> seats;
 
     private static final String ARG_PARAM1 = "showingId";
     private static final String ARG_PARAM2 = "numSeats";
@@ -37,11 +39,10 @@ public class SeatsFragment extends Fragment {
 
     public SeatsFragment() { }
 
-    public static SeatsFragment newInstance(int showingId, int numberOfSeats) {
+    public static SeatsFragment newInstance(int showingId) {
         SeatsFragment fragment = new SeatsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, showingId);
-        args.putInt(ARG_PARAM2, numberOfSeats);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,7 +52,6 @@ public class SeatsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             showingId = getArguments().getInt(ARG_PARAM1);
-            numberOfSeats = getArguments().getInt(ARG_PARAM2);
         }
     }
 
@@ -61,13 +61,13 @@ public class SeatsFragment extends Fragment {
 
         accessTickets = new AccessTickets();
 
-        seats = accessTickets.compileSeatReservations(showingId, numberOfSeats);
+        seats = accessTickets.getShowingSeats(showingId);
 
         seatsRecyclerView = view.findViewById(R.id.seats_recycler_view);
         layoutManager = new GridLayoutManager(context, ITEMS_PER_ROW);
         seatsRecyclerView.setLayoutManager(layoutManager);
 
-        SeatViewAdapter adapter = new SeatViewAdapter(context,this, seats);
+        SeatViewAdapter adapter = new SeatViewAdapter(context, seats);
         seatsRecyclerView.setAdapter(adapter);
 
         return view;

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
+import comp3350.movieknight.objects.Seat;
 import comp3350.movieknight.objects.Ticket;
 import comp3350.movieknight.persistence.DatabaseStub;
 
@@ -31,7 +32,7 @@ public class AccessTickets {
     }
 
     public boolean[] compileSeatReservations(int showingID, int numberOfSeats) {
-        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+        ArrayList<Ticket> tickets = new ArrayList<>();
         dataAccess.getShowingTickets(tickets, showingID);
         return FindAvailableSeats.compileReservedSeats(tickets, numberOfSeats);
     }
@@ -40,5 +41,9 @@ public class AccessTickets {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
         dataAccess.getUserTickets(tickets, userId);
         return tickets;
+    }
+
+    public ArrayList<Seat> getShowingSeats(int showingId) {
+        return dataAccess.getShowingById(showingId).getTheatre().getSeats();
     }
 }

@@ -192,7 +192,6 @@ public class MovieDescriptionFragment extends Fragment {
         childFragment = new SeatsFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("showingId",showing.getShowingID());
-        bundle.putInt("numSeats",showing.getSeats());
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.movie_description_fragment_container, childFragment).commit();

@@ -2,6 +2,7 @@ package comp3350.movieknight.objects;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Showing {
@@ -10,11 +11,11 @@ public class Showing {
     private int theatreID;
     private Calendar showingDate;
     private double showingTime;
-    private int seats;
+    private Theatre theatre;
 
-    public Showing(int showingID, int movieID, int theatreID, int seats, int year, int month, int date, int hour, int minute) {
-        if (showingID >=0 && movieID >= 0 && theatreID >= 0 && seats >= 1 && month > 0 && month <=12 && date >0 && date <=31 && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
-            this.seats = seats;
+    public Showing(int showingID, int movieID, int theatreID, Theatre theatre, int year, int month, int date, int hour, int minute) {
+        if (showingID >=0 && movieID >= 0 && theatreID >= 0 && theatre.getNumSeats() >= 1 && month > 0 && month <=12 && date >0 && date <=31 && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
+            this.theatre = theatre;
             this.showingID = showingID;
             this.movieID = movieID;
             this.theatreID = theatreID;
@@ -44,7 +45,7 @@ public class Showing {
 
     public double getShowingTime() { return showingTime;}
 
-    public int getSeats() { return seats; }
+    public Theatre getTheatre() { return theatre; }
 
     @NotNull
     public String toString()

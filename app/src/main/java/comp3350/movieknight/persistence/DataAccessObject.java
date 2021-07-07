@@ -185,8 +185,8 @@ public class DataAccessObject implements DataAccess {
                 theatreID = rs3.getInt("TheatreID");
                 numSeats = rs3.getInt("NumSeats");
 
-                theatre = new Theatre(theatreID, numSeats);
-                theatreResult.add(theatre);
+                //theatre = new Theatre(theatreID, numSeats);
+                //theatreResult.add(theatre);
             }
         } catch (Exception e) {
             result = processSQLError(e);
@@ -213,7 +213,7 @@ public class DataAccessObject implements DataAccess {
                 theatreID = rs4.getInt("TheatreID");
                 numSeats = rs4.getInt("NumSeats");
 
-                result = new Theatre(theatreID, numSeats);
+                //result = new Theatre(theatreID, numSeats);
             }
         } catch (Exception e) {
             processSQLError(e);
@@ -303,8 +303,8 @@ public class DataAccessObject implements DataAccess {
                 int hour = (int) Math.floor(showingTime);
                 int minute = (int) showingTime - hour;
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
-                showingResult.add(showing);
+                //showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
+                //showingResult.add(showing);
             }
         } catch (Exception e) {
             result = processSQLError(e);
@@ -344,8 +344,8 @@ public class DataAccessObject implements DataAccess {
                 int hour = (int) Math.floor(showingTime);
                 int minute = (int) showingTime - hour;
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
-                showingResult.add(showing);
+                //showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
+                //showingResult.add(showing);
             }
         } catch (Exception e) {
             result = processSQLError(e);
@@ -384,8 +384,8 @@ public class DataAccessObject implements DataAccess {
                 int hour = (int) Math.floor(showingTime);
                 int minute = (int) showingTime - hour;
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
-                showingResult.add(showing);
+                //showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
+                //showingResult.add(showing);
             }
         } catch (Exception e) {
             result = processSQLError(e);
@@ -405,7 +405,7 @@ public class DataAccessObject implements DataAccess {
                     + "TheatreID=" + showing.getTheatreID() + ", "
                     + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
                     + "ShowingTime=" + showing.getShowingTime() + ", "
-                    + "Seats=" + showing.getSeats();
+                    + "Seats=" + showing.getTheatre().getNumSeats();
 
             cmdString = "Insert into Showings " +" Values(" + values +")";
             updateCount = st3.executeUpdate(cmdString);
@@ -427,7 +427,7 @@ public class DataAccessObject implements DataAccess {
                     + "TheatreID=" + showing.getTheatreID() + ", "
                     + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
                     + "ShowingTime=" + showing.getShowingTime() + ", "
-                    + "Seats=" + showing.getSeats();
+                    + "Seats=" + showing.getTheatre().getNumSeats();
             where = "where ShowingID=" + showing.getShowingID();
 
             cmdString = "Update Showings " + " Set " +values+ " "+where;

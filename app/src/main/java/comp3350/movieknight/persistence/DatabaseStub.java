@@ -6,6 +6,7 @@ import java.util.List;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
+import comp3350.movieknight.objects.Seat;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Theatre;
 import comp3350.movieknight.objects.Ticket;
@@ -47,7 +48,32 @@ public class DatabaseStub implements DataAccess {
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();
-        theatre = new Theatre(1, 24);
+        ArrayList<Seat> seats = new ArrayList<>();
+        seats.add(new Seat(0,false));
+        seats.add(new Seat(1,false));
+        seats.add(new Seat(2,false));
+        seats.add(new Seat(3,false));
+        seats.add(new Seat(4,false));
+        seats.add(new Seat(5,false));
+        seats.add(new Seat(6,false));
+        seats.add(new Seat(7,false));
+        seats.add(new Seat(8,false));
+        seats.add(new Seat(9,false));
+        seats.add(new Seat(10,false));
+        seats.add(new Seat(11,false));
+        seats.add(new Seat(12,false));
+        seats.add(new Seat(13,false));
+        seats.add(new Seat(14,false));
+        seats.add(new Seat(15,false));
+        seats.add(new Seat(16,false));
+        seats.add(new Seat(17,false));
+        seats.add(new Seat(18,false));
+        seats.add(new Seat(19,false));
+        seats.add(new Seat(20,false));
+        seats.add(new Seat(21,false));
+        seats.add(new Seat(22,false));
+        seats.add(new Seat(23,false));
+        theatre = new Theatre(1, seats);
         theatres.add(theatre);
 
         Calendar today = Calendar.getInstance();
@@ -55,44 +81,44 @@ public class DatabaseStub implements DataAccess {
         tomorrow.add(Calendar.DATE,1);
 
         showings = new ArrayList<Showing>();
-        showing = new Showing(1, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(), today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 15);
+        showing = new Showing(0, 1, 1, new Theatre(1, duplicateList(seats)), today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 15);
         showings.add(showing);
-        showing = new Showing(2, 1, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
+        showing = new Showing(1, 1, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
         showings.add(showing);
-        showing = new Showing(3, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 55);
+        showing = new Showing(2, 2, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 55);
         showings.add(showing);
-        showing = new Showing(4, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 55);
+        showing = new Showing(3, 2, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 55);
         showings.add(showing);
-        showing = new Showing(5, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 11, 55);
+        showing = new Showing(4, 2, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 11, 55);
         showings.add(showing);
-        showing = new Showing(6, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 12, 55);
-        showings.add(showing);
-
-        showing = new Showing(7, 2, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 3, 10);
+        showing = new Showing(5, 2, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 12, 55);
         showings.add(showing);
 
-
-
-        showing = new Showing(8, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 7, 15);
-        showings.add(showing);
-        showing = new Showing(9, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
-        showings.add(showing);
-        showing = new Showing(10, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 15, 25);
-        showings.add(showing);
-
-        showing = new Showing(11, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 10, 10);
-        showings.add(showing);
-        showing = new Showing(12, 3, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 11, 00);
+        showing = new Showing(6, 2, 1, new Theatre(1, duplicateList(seats)),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 3, 10);
         showings.add(showing);
 
 
-        showing = new Showing(13, 4, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 20, 35);
+
+        showing = new Showing(7, 3, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 7, 15);
         showings.add(showing);
-        showing = new Showing(14, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 45);
+        showing = new Showing(8, 3, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 10, 35);
         showings.add(showing);
-        showing = new Showing(15, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 45);
+        showing = new Showing(9, 3, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 15, 25);
         showings.add(showing);
-        showing = new Showing(16, 5, 1, getTheatre(new Theatre(1, 1)).getNumSeats(),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 22, 50);
+
+        showing = new Showing(10, 3, 1, new Theatre(1, duplicateList(seats)),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 10, 10);
+        showings.add(showing);
+        showing = new Showing(11, 3, 1, new Theatre(1, duplicateList(seats)),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 11, 00);
+        showings.add(showing);
+
+
+        showing = new Showing(12, 4, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 20, 35);
+        showings.add(showing);
+        showing = new Showing(13, 5, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 8, 45);
+        showings.add(showing);
+        showing = new Showing(14, 5, 1, new Theatre(1, duplicateList(seats)),today.get(Calendar.YEAR),today.get(Calendar.MONTH)+1,today.get(Calendar.DATE), 9, 45);
+        showings.add(showing);
+        showing = new Showing(15, 5, 1, new Theatre(1, duplicateList(seats)),tomorrow.get(Calendar.YEAR),tomorrow.get(Calendar.MONTH)+1,tomorrow.get(Calendar.DATE), 22, 50);
         showings.add(showing);
 
         users = new ArrayList<User>();
@@ -431,5 +457,17 @@ public class DatabaseStub implements DataAccess {
             tickets.remove(index);
         }
         return null;
+    }
+
+    public Showing getShowingById(int showingId) {
+           return showings.get(showingId);
+    }
+
+    public ArrayList<Seat> duplicateList(ArrayList<Seat> seats) {
+        ArrayList<Seat> seats1 = new ArrayList<>();
+        for(Seat seat: seats) {
+            seats1.add(new Seat(seat.getSeatId(),seat.isSelected()));
+        }
+        return seats1;
     }
 }
