@@ -538,7 +538,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getAllTickets(List<Ticket> ticketResult) {
         Ticket ticket;
-        int ticketID, userID, showingID, seatNum;
+        int userID, showingID, seatNum;
 
         result = null;
         try {
@@ -551,12 +551,11 @@ public class DataAccessObject implements DataAccess {
         try {
             while (rs8.next())
             {
-                ticketID = rs8.getInt("TicketID");
                 userID = rs8.getInt("UserID");
                 showingID = rs8.getInt("ShowingID");
                 seatNum = rs8.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, seatNum);
+                ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -569,7 +568,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getShowingTickets(List<Ticket> ticketResult, int newShowingID) {
         Ticket ticket;
-        int ticketID, userID, showingID, theatreID, seatNum;
+        int userID, showingID, seatNum;
 
         result = null;
         try {
@@ -582,12 +581,11 @@ public class DataAccessObject implements DataAccess {
         try {
             while (rs9.next())
             {
-                ticketID = rs9.getInt("TicketID");
                 userID = rs9.getInt("UserID");
                 showingID = rs9.getInt("ShowingID");
                 seatNum = rs9.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, seatNum);
+                ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -600,7 +598,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getUserTickets(List<Ticket> ticketResult, int newUserID) {
         Ticket ticket;
-        int ticketID, userID, showingID, seatNum;
+        int userID, showingID, seatNum;
 
         result = null;
         try {
@@ -613,12 +611,11 @@ public class DataAccessObject implements DataAccess {
         try {
             while (rs10.next())
             {
-                ticketID = rs10.getInt("TicketID");
                 userID = rs10.getInt("UserID");
                 showingID = rs10.getInt("ShowingID");
                 seatNum = rs10.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, seatNum);
+                ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -634,8 +631,7 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = ticket.getTicketID() +
-                    ", " + ticket.getUserID() +
+            values = ticket.getUserID() +
                     ", " + ticket.getShowingID() +
                     ", " + ticket.getSeatNum();
 
@@ -655,10 +651,9 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "UserID=" + ticket.getUserID() +
-                    ", ShowingID=" + ticket.getShowingID() +
-                    ", SeatNum=" + ticket.getSeatNum();
-            where = "where TicketID=" + ticket.getTicketID();
+            values = "UserID=" + ticket.getUserID();
+            where = "where ShowingID=" + ticket.getShowingID() +
+                    "AND SeatNum=" + ticket.getSeatNum();
 
             cmdString = "Update Tickets " + " Set " +values+ " "+where;
             updateCount = st5.executeUpdate(cmdString);
@@ -674,7 +669,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
 
         try {
-            cmdString = "Delete from Tickets where TicketID="+ ticket.getTicketID();
+            cmdString = "Delete from Tickets where ShowingID="+ ticket.getShowingID() + " AND SeatNum=" + ticket.getSeatNum();
             updateCount = st5.executeUpdate(cmdString);
             result = checkWarning(st5, updateCount);
         } catch (Exception e){

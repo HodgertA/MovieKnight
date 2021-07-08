@@ -44,7 +44,7 @@ public class AccessTickets {
 
     public void createTicket(int userID, ArrayList<Integer> selectedSeats, int showingID) {
         for (int seatNum : selectedSeats) {
-            Ticket newTicket = new Ticket(0, userID, showingID, seatNum);
+            Ticket newTicket = new Ticket(userID, showingID, seatNum);
             dataAccess.insertTicket(newTicket);
         }
     }

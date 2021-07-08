@@ -4,14 +4,12 @@ import org.jetbrains.annotations.NotNull;
 
 public class Ticket {
 
-    private int ticketID;
     private int seatNum;
     private int userID;
     private int showingID;
 
-    public Ticket(int ticketID, int userID, int showingID, int seatNum){
-        if (ticketID >= 0 && userID >= 0 && showingID >= 0 && seatNum >= 0) {
-            this.ticketID = ticketID;
+    public Ticket(int userID, int showingID, int seatNum){
+        if (userID >= 0 && showingID >= 0 && seatNum >= 0) {
             this.userID = userID;
             this.showingID = showingID;
             this.seatNum = seatNum;
@@ -20,9 +18,8 @@ public class Ticket {
         }
     }
 
-    public Ticket(int ticketID, int showingID, int seatNum){
-        if (ticketID >= 0 && showingID >= 0 && seatNum >= 0) {
-            this.ticketID = ticketID;
+    public Ticket(int showingID, int seatNum){
+        if (showingID >= 0 && seatNum >= 0) {
             this.userID = -1;
             this.showingID = showingID;
             this.seatNum = seatNum;
@@ -43,13 +40,9 @@ public class Ticket {
         return userID;
     }
 
-    public int getTicketID() {
-        return ticketID;
-    }
-
     @NotNull
     public String toString() {
-        return "Ticket: " + ticketID + ", Seat Number: " + seatNum + ", User: " + userID + ", Showing: " + showingID;
+        return "Seat Number: " + seatNum + ", User: " + userID + ", Showing: " + showingID;
     }
 
     public boolean equals(Object object) {
