@@ -41,4 +41,8 @@ public class TicketFragment extends Fragment {
         return view;
     }
 
+    public void updateTickets(){
+        adapter.notifyDataSetChanged();
+    }
+
 }

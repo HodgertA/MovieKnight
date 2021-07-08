@@ -12,6 +12,7 @@ import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 public class ViewPagerAdapter extends FragmentStateAdapter {
 
     private static final int NUM_FRAGMENTS = 2;
+    private TicketFragment ticketFragment;
 
     public ViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
@@ -24,7 +25,9 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new MovieListFragment();
             case 1:
-                return new TicketFragment();
+
+                ticketFragment=new TicketFragment();
+                return ticketFragment;
             default:
                 return new MovieListFragment();
         }
@@ -33,5 +36,10 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public int getItemCount() {
         return NUM_FRAGMENTS;
+    }
+
+    public void updateTicketFragment(){
+        if(ticketFragment!=null)
+        ticketFragment.updateTickets();
     }
 }
