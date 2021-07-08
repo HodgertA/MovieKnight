@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import comp3350.movieknight.presentation.cartPage.CartFragment;
+import comp3350.movieknight.presentation.ticketPage.TicketFragment;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
@@ -24,7 +24,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new MovieListFragment();
             case 1:
-                return new CartFragment();
+                return new TicketFragment();
             default:
                 return new MovieListFragment();
         }
