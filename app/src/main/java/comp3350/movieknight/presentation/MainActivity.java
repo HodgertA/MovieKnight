@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_movie_list:
                     viewPager.setCurrentItem(0);
                     break;
-                case R.id.nav_cart:
+                case R.id.nav_tickets:
                     viewPager.setCurrentItem(1);
                     break;
             }
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         bottomNav.getMenu().findItem(R.id.nav_movie_list).setChecked(true);
                         break;
                     case 1:
-                        bottomNav.getMenu().findItem(R.id.nav_cart).setChecked(true);
+                        bottomNav.getMenu().findItem(R.id.nav_tickets).setChecked(true);
                         break;
                 }
             }
