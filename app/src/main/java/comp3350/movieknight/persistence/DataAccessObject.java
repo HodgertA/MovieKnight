@@ -538,7 +538,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getAllTickets(List<Ticket> ticketResult) {
         Ticket ticket;
-        int ticketID, userID, showingID, theatreID, seatNum;
+        int ticketID, userID, showingID, seatNum;
 
         result = null;
         try {
@@ -554,10 +554,9 @@ public class DataAccessObject implements DataAccess {
                 ticketID = rs8.getInt("TicketID");
                 userID = rs8.getInt("UserID");
                 showingID = rs8.getInt("ShowingID");
-                theatreID = rs8.getInt("TheatreID");
                 seatNum = rs8.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticket = new Ticket(ticketID, userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -586,10 +585,9 @@ public class DataAccessObject implements DataAccess {
                 ticketID = rs9.getInt("TicketID");
                 userID = rs9.getInt("UserID");
                 showingID = rs9.getInt("ShowingID");
-                theatreID = rs9.getInt("TheatreID");
                 seatNum = rs9.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticket = new Ticket(ticketID, userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -602,7 +600,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getUserTickets(List<Ticket> ticketResult, int newUserID) {
         Ticket ticket;
-        int ticketID, userID, showingID, theatreID, seatNum;
+        int ticketID, userID, showingID, seatNum;
 
         result = null;
         try {
@@ -618,10 +616,9 @@ public class DataAccessObject implements DataAccess {
                 ticketID = rs10.getInt("TicketID");
                 userID = rs10.getInt("UserID");
                 showingID = rs10.getInt("ShowingID");
-                theatreID = rs10.getInt("TheatreID");
                 seatNum = rs10.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticket = new Ticket(ticketID, userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -640,7 +637,6 @@ public class DataAccessObject implements DataAccess {
             values = ticket.getTicketID() +
                     ", " + ticket.getUserID() +
                     ", " + ticket.getShowingID() +
-                    ", " + ticket.getTheatreID() +
                     ", " + ticket.getSeatNum();
 
             cmdString = "Insert into Users " +" Values(" + values +")";
@@ -661,7 +657,6 @@ public class DataAccessObject implements DataAccess {
         try {
             values = "UserID=" + ticket.getUserID() +
                     ", ShowingID=" + ticket.getShowingID() +
-                    ", TheatreID=" + ticket.getTheatreID() +
                     ", SeatNum=" + ticket.getSeatNum();
             where = "where TicketID=" + ticket.getTicketID();
 
