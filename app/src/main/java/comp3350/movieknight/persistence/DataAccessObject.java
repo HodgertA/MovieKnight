@@ -113,14 +113,14 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "MovieID=" + movie.getMovieID() +
-                    ", Description=" + movie.getDescription() +
-                    "', ' Title=" + movie.getTitle() +
-                    "', Poster=" + movie.getPoster() +
-                    ", Runtime=" + movie.getRuntime() +
-                    ", LastShowDate=" + movie.getLastShowDate().getTimeInMillis();
+            values = movie.getMovieID() +
+                    ", '" + movie.getDescription() +
+                    "', '" + movie.getTitle() +
+                    "', '" + movie.getPoster() +
+                    "', " + movie.getRuntime() +
+                    ", " + movie.getLastShowDate().getTimeInMillis();
 
-            cmdString = "Insert into Movies " +" Values(" + values +")";
+            cmdString = "Insert into Movies " + " Values(" + values +")";
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
@@ -138,8 +138,8 @@ public class DataAccessObject implements DataAccess {
         try {
             values = "Description='" + movie.getDescription()
                     + "', Title='" + movie.getTitle()
-                    + "', Poster=" + movie.getPoster()
-                    + ", Runtime=" + movie.getRuntime()
+                    + "', Poster='" + movie.getPoster()
+                    + "', Runtime=" + movie.getRuntime()
                     + ", LastShowDate=" + movie.getLastShowDate().getTimeInMillis();
             where = "where MovieID=" + movie.getMovieID();
 
@@ -228,8 +228,8 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "TheatreID=" + theatre.getTheatreNumber() +
-                    ", NumSeats=" + theatre.getNumSeats();
+            values = theatre.getTheatreNumber() +
+                    ", " + theatre.getNumSeats();
 
             cmdString = "Insert into Theatres " +" Values(" + values +")";
             updateCount = st2.executeUpdate(cmdString);
@@ -250,7 +250,7 @@ public class DataAccessObject implements DataAccess {
             values = "NumSeats= " + theatre.getNumSeats();
             where = "where TheatreID=" + theatre.getTheatreNumber();
 
-            cmdString = "Update Theatres " + " Set " +values+ " "+where;
+            cmdString = "Update Theatres " + " Set " +values+ " " + where;
             updateCount = st2.executeUpdate(cmdString);
             result = checkWarning(st2, updateCount);
         } catch (Exception e) {
@@ -264,7 +264,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
 
         try {
-            cmdString = "Delete from Theatres where TheatreID="+theatre.getTheatreNumber();
+            cmdString = "Delete from Theatres where TheatreID=" + theatre.getTheatreNumber();
             updateCount = st2.executeUpdate(cmdString);
             result = checkWarning(st2, updateCount);
         } catch (Exception e){
@@ -400,14 +400,14 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "ShowingID=" + showing.getShowingID() + ", "
-                    + "MovieID=" + showing.getMovieID() + ", "
-                    + "TheatreID=" + showing.getTheatreID() + ", "
-                    + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
-                    + "ShowingTime=" + showing.getShowingTime() + ", "
-                    + "Seats=" + showing.getSeats();
+            values = showing.getShowingID()
+                    + ", " + showing.getMovieID()
+                    + ", " + showing.getTheatreID()
+                    + ", " + showing.getShowingDate().getTimeInMillis()
+                    + ", " + showing.getShowingTime()
+                    + ", " + showing.getSeats();
 
-            cmdString = "Insert into Showings " +" Values(" + values +")";
+            cmdString = "Insert into Showings " +" Values(" + values + ")";
             updateCount = st3.executeUpdate(cmdString);
             result = checkWarning(st3, updateCount);
         } catch (Exception e) {
@@ -489,8 +489,8 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "UserID=" + user.getUserID() +
-                    ", 'Username= " + user.getUsername() +
+            values =  user.getUserID() +
+                    ", '" + user.getUsername() +
                     "'";
 
             cmdString = "Insert into Users " +" Values(" + values +")";
@@ -637,11 +637,11 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "TicketID=" + ticket.getTicketID() +
-                    ", UserID=" + ticket.getUserID() +
-                    ", ShowingID=" + ticket.getShowingID() +
-                    ", TheatreID=" + ticket.getTheatreID() +
-                    ", SeatNum=" + ticket.getSeatNum();
+            values = ticket.getTicketID() +
+                    ", " + ticket.getUserID() +
+                    ", " + ticket.getShowingID() +
+                    ", " + ticket.getTheatreID() +
+                    ", " + ticket.getSeatNum();
 
             cmdString = "Insert into Users " +" Values(" + values +")";
             updateCount = st5.executeUpdate(cmdString);
@@ -693,20 +693,15 @@ public class DataAccessObject implements DataAccess {
         String result;
 
         result = null;
-        try
-        {
+        try {
             SQLWarning warning = st.getWarnings();
-            if (warning != null)
-            {
+            if (warning != null) {
                 result = warning.getMessage();
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             result = processSQLError(e);
         }
-        if (updateCount != 1)
-        {
+        if (updateCount != 1) {
             result = "Tuple not inserted correctly.";
         }
         return result;
