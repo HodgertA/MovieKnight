@@ -201,7 +201,7 @@ public class DataAccessObject implements DataAccess {
 
         Theatre result = null;
         try {
-            cmdString = "Select * from Theatres where TheatreID=" + theatre.getTheatreNumber();
+            cmdString = "Select * from Theatres where TheatreID=" + theatre.getTheatreID();
             rs4 = st2.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
@@ -228,7 +228,7 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = theatre.getTheatreNumber() +
+            values = theatre.getTheatreID() +
                     ", " + theatre.getNumSeats();
 
             cmdString = "Insert into Theatres " +" Values(" + values +")";
@@ -248,7 +248,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             values = "NumSeats= " + theatre.getNumSeats();
-            where = "where TheatreID=" + theatre.getTheatreNumber();
+            where = "where TheatreID=" + theatre.getTheatreID();
 
             cmdString = "Update Theatres " + " Set " +values+ " " + where;
             updateCount = st2.executeUpdate(cmdString);
@@ -264,7 +264,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
 
         try {
-            cmdString = "Delete from Theatres where TheatreID=" + theatre.getTheatreNumber();
+            cmdString = "Delete from Theatres where TheatreID=" + theatre.getTheatreID();
             updateCount = st2.executeUpdate(cmdString);
             result = checkWarning(st2, updateCount);
         } catch (Exception e){

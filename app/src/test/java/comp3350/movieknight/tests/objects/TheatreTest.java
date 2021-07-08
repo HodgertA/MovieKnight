@@ -17,7 +17,7 @@ public class TheatreTest extends TestCase
 
         Theatre theatre =  new Theatre(1, 10);
         assertNotNull(theatre);
-        assertEquals(1,theatre.getTheatreNumber());
+        assertEquals(1,theatre.getTheatreID());
         assertEquals(10, theatre.getNumSeats());
         assertEquals("Theatre: 1, Number of seats: 10", theatre.toString());
         assertTrue(theatre.equals(theatre));
@@ -33,8 +33,8 @@ public class TheatreTest extends TestCase
         Theatre theatre2 = new Theatre(2, 10);
         assertNotNull(theatre1);
         assertNotNull(theatre2);
-        assertEquals(1,theatre1.getTheatreNumber());
-        assertEquals(2,theatre2.getTheatreNumber());
+        assertEquals(1,theatre1.getTheatreID());
+        assertEquals(2,theatre2.getTheatreID());
         assertEquals(10, theatre1.getNumSeats());
         assertEquals(10, theatre2.getNumSeats());
         assertEquals("Theatre: 1, Number of seats: 10", theatre1.toString());
@@ -50,7 +50,7 @@ public class TheatreTest extends TestCase
 
         Theatre theatre =  new Theatre(0, 1);
         assertNotNull(theatre);
-        assertEquals(0,theatre.getTheatreNumber());
+        assertEquals(0,theatre.getTheatreID());
         assertEquals(1, theatre.getNumSeats());
         assertEquals("Theatre: 0, Number of seats: 1", theatre.toString());
         assertTrue(theatre.equals(theatre));
