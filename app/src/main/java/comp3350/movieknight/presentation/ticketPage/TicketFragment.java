@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.os.ParcelableCompatCreatorCallbacks;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import comp3350.movieknight.R;
+import comp3350.movieknight.business.AccessTickets;
 import comp3350.movieknight.objects.Ticket;
 
 public class TicketFragment extends Fragment {
@@ -22,19 +24,18 @@ public class TicketFragment extends Fragment {
     private RecyclerView ticketRecyclerView;
     private TicketRecyclerViewAdapter adapter;
     private ArrayList<Ticket> tickets;
+    private AccessTickets accessTickets;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_ticket, container, false);
-
-        tickets=new ArrayList<>();
-        tickets.add(new Ticket(1,1,1,1,1));
-        tickets.add(new Ticket(1,1,1,1,1));
+        accessTickets=new AccessTickets();
+        tickets= accessTickets.getUserTickets(1);//////////////////hard code userid here
 
         ticketRecyclerView=view.findViewById(R.id.tickets_recycler_view);
         ticketRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter=new TicketRecyclerViewAdapter(tickets);/////////////
+        adapter=new TicketRecyclerViewAdapter(tickets);
         ticketRecyclerView.setAdapter(adapter);
 
 

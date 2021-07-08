@@ -19,16 +19,16 @@
         android:text="Name of the movie"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textSize="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/ticket_theatre_name"
+        app:layout_constraintBottom_toTopOf="@+id/ticket_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/ticket_theatre_name"
+        android:id="@+id/ticket_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="the theatre name"
+        android:text="date"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/ticket_movie_title"
         app:layout_constraintTop_toBottomOf="@+id/ticket_movie_title" />
