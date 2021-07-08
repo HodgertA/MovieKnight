@@ -21,6 +21,7 @@ import comp3350.movieknight.business.AccessMovies;
 
 public class MovieListFragment extends Fragment {
     private static final int ITEMS_PER_ROW = 2;
+    private static final int userID = 1;
     private Fragment childFragment;
     private Context context;
     private ArrayList<Movie> movies;
@@ -58,6 +59,7 @@ public class MovieListFragment extends Fragment {
         bundle.putInt("moviePoster", getResources().getIdentifier(movie.getPoster() , "drawable", getActivity().getPackageName()));
         bundle.putString("movieDesc",movie.getDescription());
         bundle.putInt("movieId",movie.getMovieID());
+        bundle.putInt("userId",userID);
         childFragment.setArguments(bundle);
 
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
