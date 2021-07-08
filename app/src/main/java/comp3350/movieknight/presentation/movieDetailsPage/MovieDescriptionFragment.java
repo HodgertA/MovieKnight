@@ -43,11 +43,13 @@ public class MovieDescriptionFragment extends Fragment {
     private static final String ARG_PARAM2 = "moviePoster";
     private static final String ARG_PARAM3 = "movieDesc";
     private static final String ARG_PARAM4 = "movieId";
+    private static final String ARG_PARAM5 = "userId";
 
     private String movieTitle;
     private int moviePoster;
     private String movieDesc;
-    private int movieId;
+    private int movieID;
+    private int userID;
 
     private TextView textViewMovieTitle;
     private ImageView imageViewMovieImage;
@@ -66,13 +68,14 @@ public class MovieDescriptionFragment extends Fragment {
     public MovieDescriptionFragment() {
     }
 
-    public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieId) {
+    public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieID, int userID) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, movieTitle);
         args.putInt(ARG_PARAM2, moviePoster);
         args.putString(ARG_PARAM3, movieDesc);
-        args.putInt(ARG_PARAM4,movieId);
+        args.putInt(ARG_PARAM4,movieID);
+        args.putInt(ARG_PARAM5,userID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,7 +87,8 @@ public class MovieDescriptionFragment extends Fragment {
             movieTitle = getArguments().getString(ARG_PARAM1);
             moviePoster = getArguments().getInt(ARG_PARAM2);
             movieDesc = getArguments().getString(ARG_PARAM3);
-            movieId=getArguments().getInt(ARG_PARAM4);
+            movieID=getArguments().getInt(ARG_PARAM4);
+            userID=getArguments().getInt(ARG_PARAM5);
             selectDate=Calendar.getInstance();
 
         }
@@ -94,15 +98,13 @@ public class MovieDescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
-
         View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
 
         accessShowing=new AccessShowing();
 
         showings =new ArrayList<>();
-        String result = accessShowing.getShowingForMovieByDate(showings,movieId,selectDate);
+        String result = accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
 
 
         if(result == null) {
@@ -112,7 +114,6 @@ public class MovieDescriptionFragment extends Fragment {
 
         ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
         showingTimeRecyclerView.setAdapter(adapter);
-        ///////-----------------------------------------
 
         DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -121,7 +122,7 @@ public class MovieDescriptionFragment extends Fragment {
                 selectDate.set(Calendar.MONTH,month);
                 selectDate.set(Calendar.DATE,dayOfMonth);
                 showings.clear();
-                accessShowing.getShowingForMovieByDate(showings,movieId,selectDate);
+                accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
                 adapter.notifyDataSetChanged();
 
             }
@@ -193,6 +194,7 @@ public class MovieDescriptionFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt("showingId",showing.getShowingID());
         bundle.putInt("numSeats",showing.getSeats());
+        bundle.putInt("userId",userID);
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.movie_description_fragment_container, childFragment).commit();

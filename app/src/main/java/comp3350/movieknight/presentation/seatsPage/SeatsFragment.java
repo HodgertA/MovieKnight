@@ -27,21 +27,25 @@ public class SeatsFragment extends Fragment {
     private Context context;
     private RecyclerView seatsRecyclerView;
     RecyclerView.LayoutManager layoutManager;
-    private int showingId;
+    private int showingID;
+    private int userID;
     private int numberOfSeats;
     private boolean[] seats;
 
     private static final String ARG_PARAM1 = "showingId";
     private static final String ARG_PARAM2 = "numSeats";
+    private static final String ARG_PARAM3 = "userId";
+
     private AccessTickets accessTickets;
 
     public SeatsFragment() { }
 
-    public static SeatsFragment newInstance(int showingId, int numberOfSeats) {
+    public static SeatsFragment newInstance(int showingId, int numberOfSeats, int userID) {
         SeatsFragment fragment = new SeatsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, showingId);
         args.putInt(ARG_PARAM2, numberOfSeats);
+        args.putInt(ARG_PARAM3, userID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,8 +54,9 @@ public class SeatsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            showingId = getArguments().getInt(ARG_PARAM1);
+            showingID = getArguments().getInt(ARG_PARAM1);
             numberOfSeats = getArguments().getInt(ARG_PARAM2);
+            userID = getArguments().getInt(ARG_PARAM3);
         }
     }
 
@@ -61,7 +66,7 @@ public class SeatsFragment extends Fragment {
 
         accessTickets = new AccessTickets();
 
-        seats = accessTickets.compileSeatReservations(showingId, numberOfSeats);
+        seats = accessTickets.compileSeatReservations(showingID, numberOfSeats);
 
         seatsRecyclerView = view.findViewById(R.id.seats_recycler_view);
         layoutManager = new GridLayoutManager(context, ITEMS_PER_ROW);
