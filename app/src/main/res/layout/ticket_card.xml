@@ -18,7 +18,7 @@
         android:layout_marginBottom="16dp"
         android:text="Name of the movie"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textSize="30sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/ticket_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
