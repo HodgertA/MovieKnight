@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-
+    android:background="@drawable/available_seat"
+    android:layout_margin="15dp"
     >
 
     <TextView
@@ -17,8 +17,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="Name of the movie"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textSize="17dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/ticket_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="date"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/ticket_movie_title"
         app:layout_constraintTop_toBottomOf="@+id/ticket_movie_title" />
@@ -40,7 +41,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:text="00:00"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

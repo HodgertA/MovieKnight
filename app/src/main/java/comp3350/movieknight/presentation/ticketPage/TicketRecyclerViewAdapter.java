@@ -44,7 +44,7 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     public void onBindViewHolder(@NonNull @NotNull TicketViewHolder holder, int position) {
         ArrayList<Showing>showings=accessShowing.getShowingByID(tickets.get(position).getShowingID());
         if(showings.size()>0){
-            String ticketDate=String.valueOf("Date: "+(showings.get(0).getShowingDate().get(Calendar.MONTH)+1)+"."+showings.get(0).getShowingDate().get(Calendar.DATE));
+            String ticketDate=String.valueOf((showings.get(0).getShowingDate().get(Calendar.MONTH)+1)+"/"+showings.get(0).getShowingDate().get(Calendar.DATE));
             holder.getTicketDate().setText(ticketDate);
 
             String showingTime=String.valueOf(showings.get(0).getShowingTime());
