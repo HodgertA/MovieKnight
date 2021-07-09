@@ -4,26 +4,26 @@ import org.jetbrains.annotations.NotNull;
 
 public class Theatre
 {
-    private int TheatreID;
+    private int theatreID;
     private int numSeats;
 
-    public Theatre(int TheatreID, int numSeats) {
-        if (TheatreID >= 0 && numSeats > 0) {
-            this.TheatreID = TheatreID;
+    public Theatre(int theatreID, int numSeats) {
+        if (theatreID >= 0 && numSeats > 0) {
+            this.theatreID = theatreID;
             this.numSeats = numSeats;
         } else {
             throw new IllegalArgumentException();
         }
     }
 
-    public int getTheatreID() { return (TheatreID); }
+    public int getTheatreID() { return (theatreID); }
 
     public int getNumSeats() { return (numSeats); }
     
     @NotNull
     public String toString()
     {
-        return "Theatre: " + TheatreID +", Number of seats: " + numSeats;
+        return "Theatre: " + theatreID +", Number of seats: " + numSeats;
     }
 
     public boolean equals(Object object)
@@ -36,7 +36,7 @@ public class Theatre
         if (object instanceof Theatre) {
             theatre = (Theatre) object;
 
-            if (theatre.TheatreID == this.TheatreID) {
+            if (theatre.theatreID == this.theatreID) {
                 result = true;
             }
         }
