@@ -50,6 +50,7 @@ public class DataAccessObject implements DataAccess {
             processSQLError(e);
         }
         System.out.println("Opened " +dbType +" database " +dbPath);
+        UpdateAllShowingDays();
     }
 
     @Override
@@ -339,6 +340,8 @@ public class DataAccessObject implements DataAccess {
                 showingTime = rs5.getDouble("ShowingTime");
                 seats = rs5.getInt("Seats");
 
+                System.out.println(showingID + ", " + movieID + ", " + theatreID + ", " + showingDate + ", " + showingTime + ", " + seats);
+
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
@@ -429,6 +432,25 @@ public class DataAccessObject implements DataAccess {
                     + "ShowingTime=" + showing.getShowingTime() + ", "
                     + "Seats=" + showing.getSeats();
             where = "where ShowingID=" + showing.getShowingID();
+
+            cmdString = "Update Showings " + " Set " +values+ " "+where;
+            updateCount = st3.executeUpdate(cmdString);
+            result = checkWarning(st3, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+    public String updateShowingDay(int showingID, long day)
+    {
+        String values;
+        String where;
+
+        result = null;
+        try {
+            values = "ShowingDate=" + day;
+            where = "where ShowingID=" + showingID;
 
             cmdString = "Update Showings " + " Set " +values+ " "+where;
             updateCount = st3.executeUpdate(cmdString);
@@ -703,5 +725,44 @@ public class DataAccessObject implements DataAccess {
         e.printStackTrace();
 
         return result;
+    }
+
+    private void UpdateAllShowingDays() {
+        Showing showing;
+        Calendar day1, day2, day3, day4, day5, day6, day7;
+        int num_showings = 84;
+
+        day1 = Calendar.getInstance();
+        day2 = Calendar.getInstance();
+        day2.add(Calendar.DATE,1);
+        day3 = Calendar.getInstance();
+        day3.add(Calendar.DATE,2);
+        day4 = Calendar.getInstance();
+        day4.add(Calendar.DATE,3);
+        day5 = Calendar.getInstance();
+        day5.add(Calendar.DATE,4);
+        day6 = Calendar.getInstance();
+        day6.add(Calendar.DATE,5);
+        day7 = Calendar.getInstance();
+        day7.add(Calendar.DATE,6);
+
+        for (int i = 1; i <= num_showings; i++)
+        {
+            Calendar day = day1;
+            if (i > 12 && i <= 24) {
+                day = day2;
+            } else if (i > 24 && i <= 36) {
+                day = day3;
+            } else if (i > 36 && i <= 48) {
+                day = day4;
+            } else if (i > 48 && i <= 60) {
+                day = day5;
+            } else if (i > 60 && i <= 72) {
+                day = day6;
+            } else if (i > 72 && i <= 84) {
+                day = day7;
+            }
+            updateShowingDay(i, day.getTimeInMillis());
+        }
     }
 }
