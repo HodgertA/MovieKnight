@@ -7,8 +7,8 @@
         android:title="Movies" />
 
     <item
-        android:id="@+id/nav_cart"
+        android:id="@+id/nav_tickets"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:title="Cart" />
+        android:title="My Tickets" />
 
 </menu>
