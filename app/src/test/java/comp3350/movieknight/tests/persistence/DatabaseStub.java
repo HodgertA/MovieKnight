@@ -314,36 +314,43 @@ public class DatabaseStub implements DataAccess {
     @Override
     public String insertMovie(Movie movie)
     {
+        String result = null;
         if (!movies.contains(movie)) {
             movies.add(movie);
         } else {
-            System.out.println("Duplicate Movie");
+            result = "Duplicate Movie";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String updateMovie(Movie movie)
     {
         int index;
+        String result = null;
 
         index = movies.indexOf(movie);
         if (index >= 0) {
             movies.set(index, movie);
+        } else {
+            result = "Nonexistent Movie";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String deleteMovie(Movie movie)
     {
         int index;
+        String result = null;
 
         index = movies.indexOf(movie);
         if (index >= 0) {
             movies.remove(index);
+        } else {
+            result = "Nonexistent Movie";
         }
-        return null;
+        return result;
     }
 
     @Override
@@ -367,36 +374,43 @@ public class DatabaseStub implements DataAccess {
     @Override
     public String insertTheatre(Theatre theatre)
     {
+        String result = null;
         if (!theatres.contains(theatre)) {
             theatres.add(theatre);
         } else {
-            System.out.println("Duplicate Theatre");
+            result = "Duplicate Theatre";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String updateTheatre(Theatre theatre)
     {
         int index;
+        String result = null;
 
         index = theatres.indexOf(theatre);
         if (index >= 0) {
             theatres.set(index, theatre);
+        } else {
+            result = "Nonexistent Theatre";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String deleteTheatre(Theatre theatre)
     {
         int index;
+        String result = null;
 
         index = theatres.indexOf(theatre);
         if (index >= 0) {
             theatres.remove(index);
+        } else {
+            result = "Nonexistent Theatre";
         }
-        return null;
+        return result;
     }
 
     @Override
@@ -410,63 +424,79 @@ public class DatabaseStub implements DataAccess {
     public String getMovieShowings(List<Showing> showingList, int movieId)
     {
         Showing curr;
-
-        for (int counter = 0; counter < showings.size(); counter++) {
-            curr = showings.get(counter);
-            if (curr.getMovieID() == movieId) {
-                showingList.add(curr);
+        String result = null;
+        if (movieId > 0) {
+            for (int counter = 0; counter < showings.size(); counter++) {
+                curr = showings.get(counter);
+                if (curr.getMovieID() == movieId) {
+                    showingList.add(curr);
+                }
             }
+        } else {
+            result = "Invalid MovieID";
         }
-       return null;
+       return result;
     }
 
     @Override
     public String getTheatreShowings(List<Showing> showingList, int theatreId)
     {
         Showing curr;
+        String result = null;
 
-        for (int counter = 0; counter < showings.size(); counter++) {
-            curr = showings.get(counter);
-            if (curr.getTheatreID() == theatreId) {
-                showingList.add(curr);
+        if (theatreId > 0) {
+            for (int counter = 0; counter < showings.size(); counter++) {
+                curr = showings.get(counter);
+                if (curr.getTheatreID() == theatreId) {
+                    showingList.add(curr);
+                }
             }
+        } else {
+            result = "Invalid TheatreID";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String insertShowing(Showing showing)
     {
+        String result = null;
         if (!showings.contains(showing)) {
             showings.add(showing);
         } else {
-            System.out.println("Duplicate Showing");
+            result = "Duplicate Showing";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String updateShowing(Showing showing)
     {
         int index;
+        String result = null;
 
         index = showings.indexOf(showing);
         if (index >= 0) {
             showings.set(index, showing);
+        } else {
+            result = "Nonexistent Showing";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String deleteShowing(Showing showing)
     {
         int index;
+        String result = null;
 
         index = showings.indexOf(showing);
         if (index >= 0) {
             showings.remove(index);
+        } else {
+            result = "Nonexistent Showing";
         }
-        return null;
+        return result;
     }
 
     @Override
@@ -479,36 +509,43 @@ public class DatabaseStub implements DataAccess {
     @Override
     public String insertUser(User user)
     {
+        String result = null;
         if (!users.contains(user)) {
             users.add(user);
         } else {
-            System.out.println("Duplicate User");
+            result = "Duplicate User";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String updateUser(User user)
     {
         int index;
+        String result = null;
 
         index = users.indexOf(user);
         if (index >= 0) {
             users.set(index, user);
+        } else {
+            result = "Nonexistent User";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String deleteUser(User user)
     {
         int index;
+        String result = null;
 
         index = users.indexOf(user);
         if (index >= 0) {
             users.remove(index);
+        } else {
+            result = "Nonexistent User";
         }
-        return null;
+        return result;
     }
 
     @Override
@@ -522,62 +559,80 @@ public class DatabaseStub implements DataAccess {
     public String getShowingTickets(List<Ticket> ticketList, int showingId)
     {
         Ticket curr;
+        String result = null;
 
-        for (int counter = 0; counter < tickets.size(); counter++) {
-            curr = tickets.get(counter);
-            if (curr.getShowingID() == showingId) {
-                ticketList.add(curr);
+        if (showingId > 0) {
+            for (int counter = 0; counter < tickets.size(); counter++) {
+                curr = tickets.get(counter);
+                if (curr.getShowingID() == showingId) {
+                    ticketList.add(curr);
+                }
             }
+        } else {
+            result = "Invalid ShowingID";
         }
-        return null;
+
+        return result;
     }
 
     @Override
     public String getUserTickets(List<Ticket> ticketList, int userId)
     {
         Ticket curr;
+        String result = null;
 
-        for (int counter = 0; counter < tickets.size(); counter++) {
-            curr = tickets.get(counter);
-            if (curr.getUserID() == userId) {
-                ticketList.add(curr);
+        if (userId > 0 ) {
+            for (int counter = 0; counter < tickets.size(); counter++) {
+                curr = tickets.get(counter);
+                if (curr.getUserID() == userId) {
+                    ticketList.add(curr);
+                }
             }
+        } else {
+            result = "Invalid UserID";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String insertTicket(Ticket ticket)
     {
+        String result = null;
         if (!tickets.contains(ticket)) {
             tickets.add(ticket);
         } else {
-            System.out.println("Duplicate Ticket");
+            result = "Duplicate Ticket";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String updateTicket(Ticket ticket)
     {
         int index;
+        String result = null;
 
         index = tickets.indexOf(ticket);
         if (index >= 0) {
             tickets.set(index, ticket);
+        } else {
+            result = "Nonexistent Ticket";
         }
-        return null;
+        return result;
     }
 
     @Override
     public String deleteTicket(Ticket ticket)
     {
         int index;
+        String result = null;
 
         index = tickets.indexOf(ticket);
         if (index >= 0) {
             tickets.remove(index);
+        } else {
+            result = "Nonexistent Ticket";
         }
-        return null;
+        return result;
     }
 }
