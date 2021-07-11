@@ -766,19 +766,19 @@ public class DataAccessTest extends TestCase {
         System.out.println("Started DataAccessTest: testInvalidIDs");
 
         result = dataAccess.getMovieShowings(showings, -1);
-        assertEquals("Invalid MovieID", result);
+        assertNotNull(result);
         assertTrue(showings.isEmpty());
 
         result = dataAccess.getTheatreShowings(showings, -1);
-        assertEquals("Invalid TheatreID", result);
+        assertNotNull(result);
         assertTrue(showings.isEmpty());
 
         result = dataAccess.getShowingTickets(tickets, -1);
-        assertEquals("Invalid ShowingID", result);
+        assertNotNull(result);
         assertTrue(tickets.isEmpty());
 
         result = dataAccess.getUserTickets(tickets, -1);
-        assertEquals("Invalid UserID", result);
+        assertNotNull(result);
         assertTrue(tickets.isEmpty());
 
         System.out.println("Finished DataAccessTest: testInvalidIDs");
