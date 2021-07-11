@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Ticket;
-import comp3350.movieknight.persistence.DatabaseStub;
+import comp3350.movieknight.persistence.DataAccess;
 
 public class AccessTickets {
-    private DatabaseStub dataAccess;
+    private DataAccess dataAccess;
 
     public AccessTickets()
     {
@@ -44,7 +44,7 @@ public class AccessTickets {
 
     public void createTicket(int userID, ArrayList<Integer> selectedSeats, int showingID) {
         for (int seatNum : selectedSeats) {
-            Ticket newTicket = new Ticket(0, userID, showingID, 0, seatNum);
+            Ticket newTicket = new Ticket(userID, showingID, seatNum);
             dataAccess.insertTicket(newTicket);
         }
     }

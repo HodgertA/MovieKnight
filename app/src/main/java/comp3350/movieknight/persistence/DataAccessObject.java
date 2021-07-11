@@ -50,6 +50,7 @@ public class DataAccessObject implements DataAccess {
             processSQLError(e);
         }
         System.out.println("Opened " +dbType +" database " +dbPath);
+        UpdateAllShowingDays();
     }
 
     @Override
@@ -113,14 +114,14 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "MovieID=" + movie.getMovieID() +
-                    ", Description=" + movie.getDescription() +
-                    "', ' Title=" + movie.getTitle() +
-                    "', Poster=" + movie.getPoster() +
-                    ", Runtime=" + movie.getRuntime() +
-                    ", LastShowDate=" + movie.getLastShowDate().getTimeInMillis();
+            values = movie.getMovieID() +
+                    ", '" + movie.getDescription() +
+                    "', '" + movie.getTitle() +
+                    "', '" + movie.getPoster() +
+                    "', " + movie.getRuntime() +
+                    ", " + movie.getLastShowDate().getTimeInMillis();
 
-            cmdString = "Insert into Movies " +" Values(" + values +")";
+            cmdString = "Insert into Movies " + " Values(" + values +")";
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
         } catch (Exception e) {
@@ -138,8 +139,8 @@ public class DataAccessObject implements DataAccess {
         try {
             values = "Description='" + movie.getDescription()
                     + "', Title='" + movie.getTitle()
-                    + "', Poster=" + movie.getPoster()
-                    + ", Runtime=" + movie.getRuntime()
+                    + "', Poster='" + movie.getPoster()
+                    + "', Runtime=" + movie.getRuntime()
                     + ", LastShowDate=" + movie.getLastShowDate().getTimeInMillis();
             where = "where MovieID=" + movie.getMovieID();
 
@@ -201,7 +202,7 @@ public class DataAccessObject implements DataAccess {
 
         Theatre result = null;
         try {
-            cmdString = "Select * from Theatres where TheatreID=" + theatre.getTheatreNumber();
+            cmdString = "Select * from Theatres where TheatreID=" + theatre.getTheatreID();
             rs4 = st2.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
@@ -228,8 +229,8 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "TheatreID=" + theatre.getTheatreNumber() +
-                    ", NumSeats=" + theatre.getNumSeats();
+            values = theatre.getTheatreID() +
+                    ", " + theatre.getNumSeats();
 
             cmdString = "Insert into Theatres " +" Values(" + values +")";
             updateCount = st2.executeUpdate(cmdString);
@@ -248,9 +249,9 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             values = "NumSeats= " + theatre.getNumSeats();
-            where = "where TheatreID=" + theatre.getTheatreNumber();
+            where = "where TheatreID=" + theatre.getTheatreID();
 
-            cmdString = "Update Theatres " + " Set " +values+ " "+where;
+            cmdString = "Update Theatres " + " Set " +values+ " " + where;
             updateCount = st2.executeUpdate(cmdString);
             result = checkWarning(st2, updateCount);
         } catch (Exception e) {
@@ -264,7 +265,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
 
         try {
-            cmdString = "Delete from Theatres where TheatreID="+theatre.getTheatreNumber();
+            cmdString = "Delete from Theatres where TheatreID=" + theatre.getTheatreID();
             updateCount = st2.executeUpdate(cmdString);
             result = checkWarning(st2, updateCount);
         } catch (Exception e){
@@ -339,6 +340,8 @@ public class DataAccessObject implements DataAccess {
                 showingTime = rs5.getDouble("ShowingTime");
                 seats = rs5.getInt("Seats");
 
+                System.out.println(showingID + ", " + movieID + ", " + theatreID + ", " + showingDate + ", " + showingTime + ", " + seats);
+
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
@@ -400,14 +403,14 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "ShowingID=" + showing.getShowingID() + ", "
-                    + "MovieID=" + showing.getMovieID() + ", "
-                    + "TheatreID=" + showing.getTheatreID() + ", "
-                    + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
-                    + "ShowingTime=" + showing.getShowingTime() + ", "
-                    + "Seats=" + showing.getSeats();
+            values = showing.getShowingID()
+                    + ", " + showing.getMovieID()
+                    + ", " + showing.getTheatreID()
+                    + ", " + showing.getShowingDate().getTimeInMillis()
+                    + ", " + showing.getShowingTime()
+                    + ", " + showing.getSeats();
 
-            cmdString = "Insert into Showings " +" Values(" + values +")";
+            cmdString = "Insert into Showings " +" Values(" + values + ")";
             updateCount = st3.executeUpdate(cmdString);
             result = checkWarning(st3, updateCount);
         } catch (Exception e) {
@@ -429,6 +432,25 @@ public class DataAccessObject implements DataAccess {
                     + "ShowingTime=" + showing.getShowingTime() + ", "
                     + "Seats=" + showing.getSeats();
             where = "where ShowingID=" + showing.getShowingID();
+
+            cmdString = "Update Showings " + " Set " +values+ " "+where;
+            updateCount = st3.executeUpdate(cmdString);
+            result = checkWarning(st3, updateCount);
+        } catch (Exception e) {
+            result = processSQLError(e);
+        }
+        return result;
+    }
+
+    public String updateShowingDay(int showingID, long day)
+    {
+        String values;
+        String where;
+
+        result = null;
+        try {
+            values = "ShowingDate=" + day;
+            where = "where ShowingID=" + showingID;
 
             cmdString = "Update Showings " + " Set " +values+ " "+where;
             updateCount = st3.executeUpdate(cmdString);
@@ -489,8 +511,8 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "UserID=" + user.getUserID() +
-                    ", 'Username= " + user.getUsername() +
+            values =  user.getUserID() +
+                    ", '" + user.getUsername() +
                     "'";
 
             cmdString = "Insert into Users " +" Values(" + values +")";
@@ -538,7 +560,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getAllTickets(List<Ticket> ticketResult) {
         Ticket ticket;
-        int ticketID, userID, showingID, theatreID, seatNum;
+        int userID, showingID, seatNum;
 
         result = null;
         try {
@@ -551,13 +573,11 @@ public class DataAccessObject implements DataAccess {
         try {
             while (rs8.next())
             {
-                ticketID = rs8.getInt("TicketID");
                 userID = rs8.getInt("UserID");
                 showingID = rs8.getInt("ShowingID");
-                theatreID = rs8.getInt("TheatreID");
                 seatNum = rs8.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -570,7 +590,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getShowingTickets(List<Ticket> ticketResult, int newShowingID) {
         Ticket ticket;
-        int ticketID, userID, showingID, theatreID, seatNum;
+        int userID, showingID, seatNum;
 
         result = null;
         try {
@@ -583,13 +603,11 @@ public class DataAccessObject implements DataAccess {
         try {
             while (rs9.next())
             {
-                ticketID = rs9.getInt("TicketID");
                 userID = rs9.getInt("UserID");
                 showingID = rs9.getInt("ShowingID");
-                theatreID = rs9.getInt("TheatreID");
                 seatNum = rs9.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -602,7 +620,7 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getUserTickets(List<Ticket> ticketResult, int newUserID) {
         Ticket ticket;
-        int ticketID, userID, showingID, theatreID, seatNum;
+        int userID, showingID, seatNum;
 
         result = null;
         try {
@@ -615,13 +633,11 @@ public class DataAccessObject implements DataAccess {
         try {
             while (rs10.next())
             {
-                ticketID = rs10.getInt("TicketID");
                 userID = rs10.getInt("UserID");
                 showingID = rs10.getInt("ShowingID");
-                theatreID = rs10.getInt("TheatreID");
                 seatNum = rs10.getInt("SeatNum");
 
-                ticket = new Ticket(ticketID, userID, showingID, theatreID, seatNum);
+                ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
             }
         } catch (Exception e) {
@@ -637,11 +653,9 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "TicketID=" + ticket.getTicketID() +
-                    ", UserID=" + ticket.getUserID() +
-                    ", ShowingID=" + ticket.getShowingID() +
-                    ", TheatreID=" + ticket.getTheatreID() +
-                    ", SeatNum=" + ticket.getSeatNum();
+            values = ticket.getUserID() +
+                    ", " + ticket.getShowingID() +
+                    ", " + ticket.getSeatNum();
 
             cmdString = "Insert into Users " +" Values(" + values +")";
             updateCount = st5.executeUpdate(cmdString);
@@ -659,11 +673,9 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            values = "UserID=" + ticket.getUserID() +
-                    ", ShowingID=" + ticket.getShowingID() +
-                    ", TheatreID=" + ticket.getTheatreID() +
-                    ", SeatNum=" + ticket.getSeatNum();
-            where = "where TicketID=" + ticket.getTicketID();
+            values = "UserID=" + ticket.getUserID();
+            where = "where ShowingID=" + ticket.getShowingID() +
+                    "AND SeatNum=" + ticket.getSeatNum();
 
             cmdString = "Update Tickets " + " Set " +values+ " "+where;
             updateCount = st5.executeUpdate(cmdString);
@@ -679,7 +691,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
 
         try {
-            cmdString = "Delete from Tickets where TicketID="+ ticket.getTicketID();
+            cmdString = "Delete from Tickets where ShowingID="+ ticket.getShowingID() + " AND SeatNum=" + ticket.getSeatNum();
             updateCount = st5.executeUpdate(cmdString);
             result = checkWarning(st5, updateCount);
         } catch (Exception e){
@@ -693,20 +705,15 @@ public class DataAccessObject implements DataAccess {
         String result;
 
         result = null;
-        try
-        {
+        try {
             SQLWarning warning = st.getWarnings();
-            if (warning != null)
-            {
+            if (warning != null) {
                 result = warning.getMessage();
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             result = processSQLError(e);
         }
-        if (updateCount != 1)
-        {
+        if (updateCount != 1) {
             result = "Tuple not inserted correctly.";
         }
         return result;
@@ -718,5 +725,44 @@ public class DataAccessObject implements DataAccess {
         e.printStackTrace();
 
         return result;
+    }
+
+    private void UpdateAllShowingDays() {
+        Showing showing;
+        Calendar day1, day2, day3, day4, day5, day6, day7;
+        int num_showings = 84;
+
+        day1 = Calendar.getInstance();
+        day2 = Calendar.getInstance();
+        day2.add(Calendar.DATE,1);
+        day3 = Calendar.getInstance();
+        day3.add(Calendar.DATE,2);
+        day4 = Calendar.getInstance();
+        day4.add(Calendar.DATE,3);
+        day5 = Calendar.getInstance();
+        day5.add(Calendar.DATE,4);
+        day6 = Calendar.getInstance();
+        day6.add(Calendar.DATE,5);
+        day7 = Calendar.getInstance();
+        day7.add(Calendar.DATE,6);
+
+        for (int i = 1; i <= num_showings; i++)
+        {
+            Calendar day = day1;
+            if (i > 12 && i <= 24) {
+                day = day2;
+            } else if (i > 24 && i <= 36) {
+                day = day3;
+            } else if (i > 36 && i <= 48) {
+                day = day4;
+            } else if (i > 48 && i <= 60) {
+                day = day5;
+            } else if (i > 60 && i <= 72) {
+                day = day6;
+            } else if (i > 72 && i <= 84) {
+                day = day7;
+            }
+            updateShowingDay(i, day.getTimeInMillis());
+        }
     }
 }

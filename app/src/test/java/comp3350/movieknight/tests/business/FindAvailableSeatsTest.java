@@ -55,7 +55,7 @@ public class FindAvailableSeatsTest extends TestCase {
         System.out.println("Starting find available seats test: testOneTicketInList");
 
         ArrayList<Ticket> tickets=new ArrayList<>();
-        tickets.add(new Ticket(1,1,1,0));
+        tickets.add(new Ticket(1,0));
         boolean [] result;
         boolean [] expectedResult={false};
 
@@ -71,8 +71,8 @@ public class FindAvailableSeatsTest extends TestCase {
 
         ArrayList<Ticket> tickets=new ArrayList<>();
         //add some tickets to the list, the list is not empty
-        tickets.add(new Ticket(1,1,1,1));
-        tickets.add(new Ticket(1,1,1,1));
+        tickets.add(new Ticket(1,1));
+        tickets.add(new Ticket(1,1));
 
         try {
             FindAvailableSeats.compileReservedSeats(tickets,0);
@@ -87,8 +87,8 @@ public class FindAvailableSeatsTest extends TestCase {
 
         ArrayList<Ticket> tickets=new ArrayList<>();
         //add some tickets to the list, the list is not empty
-        tickets.add(new Ticket(1,1,1,1));
-        tickets.add(new Ticket(1,1,1,1));
+        tickets.add(new Ticket(1,1));
+        tickets.add(new Ticket(1,1));
 
         try {
             FindAvailableSeats.compileReservedSeats(tickets,-1);
@@ -102,8 +102,8 @@ public class FindAvailableSeatsTest extends TestCase {
         System.out.println("Starting find available seats test: testTicketSeatNumberBiggerThanTotalSeatsNum");
 
         ArrayList<Ticket> tickets=new ArrayList<>();
-        tickets.add(new Ticket(1,1,1,100));
-        tickets.add(new Ticket(1,1,1,200));
+        tickets.add(new Ticket(1,100));
+        tickets.add(new Ticket(1,200));
 
         try {
             //ticket seat number is bigger than the number of seats
@@ -139,9 +139,9 @@ public class FindAvailableSeatsTest extends TestCase {
         System.out.println("Starting find available seats test: testDuplicatedTickets");
 
         ArrayList<Ticket> tickets=new ArrayList<>();
-        tickets.add(new Ticket(1,1,1,0));
-        tickets.add(new Ticket(1,1,1,0));
-        tickets.add(new Ticket(1,1,1,0));
+        tickets.add(new Ticket(1,0));
+        tickets.add(new Ticket(1,0));
+        tickets.add(new Ticket(1,0));
 
         boolean [] result;
         boolean [] expectedResult={ false,true,true,true,true,
@@ -165,12 +165,12 @@ public class FindAvailableSeatsTest extends TestCase {
         System.out.println("Starting find available seats test: testManyTickets");
 
         ArrayList<Ticket> tickets=new ArrayList<>();
-        tickets.add(new Ticket(1,1,1,0));
-        tickets.add(new Ticket(1,1,1,3));
-        tickets.add(new Ticket(1,1,1,10));
-        tickets.add(new Ticket(1,1,1,20));
-        tickets.add(new Ticket(1,1,1,27));
-        tickets.add(new Ticket(1,1,1,39));
+        tickets.add(new Ticket(1,0));
+        tickets.add(new Ticket(1,3));
+        tickets.add(new Ticket(1,10));
+        tickets.add(new Ticket(1,20));
+        tickets.add(new Ticket(1,27));
+        tickets.add(new Ticket(1,39));
 
         boolean [] result;
         boolean [] expectedResult={ false,true,true,false,true,

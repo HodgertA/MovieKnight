@@ -6,11 +6,11 @@ import java.util.Iterator;
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
 import comp3350.movieknight.objects.Movie;
+import comp3350.movieknight.persistence.DataAccess;
 import comp3350.movieknight.objects.Showing;
-import comp3350.movieknight.persistence.DatabaseStub;
 
 public class AccessMovies {
-    private DatabaseStub dataAccess;
+    private DataAccess dataAccess;
 
     public AccessMovies()
     {
