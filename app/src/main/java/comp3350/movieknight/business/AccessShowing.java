@@ -16,15 +16,12 @@ public class AccessShowing {
         dataAccess = Services.getDataAccess(Main.dbName);
     }
 
-    public String getShowingForMovie(ArrayList<Showing> showingList, int movieID){
-        dataAccess.getMovieShowings(showingList ,movieID);
-        return FilterList.filterShowingsByDate(showingList);
-    }
     public String getShowingForMovieByDate(ArrayList<Showing> showingList, int movieID, Calendar date){
         dataAccess.getMovieShowings(showingList ,movieID);
         return FilterList.filterShowingsBySelectDate(showingList,date);
     }
-    public ArrayList<Showing> getShowingByID(int ShowingID){
+
+    public ArrayList<Showing> getShowingByID(int ShowingID) {
         ArrayList<Showing> showings=new ArrayList<>();
         dataAccess.getAllShowings(showings);
 
@@ -41,8 +38,6 @@ public class AccessShowing {
                 }
             }
         }
-
-
         return showings;
     }
 }
