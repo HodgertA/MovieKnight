@@ -60,12 +60,7 @@ public class Showing {
         if (object instanceof Showing) {
             showing = (Showing) object;
 
-            if (showing.movieID == movieID
-                    && showing.theatreID == theatreID
-                    && showing.showingDate.get(Calendar.YEAR) == showingDate.get(Calendar.YEAR)
-                    && showing.showingDate.get(Calendar.MONTH) == showingDate.get(Calendar.MONTH)
-                    && showing.showingDate.get(Calendar.DATE) == showingDate.get(Calendar.DATE)
-                    && showing.showingTime == showingTime) {
+            if (showing.showingID == showingID) {
                 result = true;
             }
         }

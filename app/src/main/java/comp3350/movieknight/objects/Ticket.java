@@ -54,7 +54,7 @@ public class Ticket {
         {
             ticket=(Ticket) object;
 
-            if(ticket.userID == userID && ticket.showingID == showingID && ticket.seatNum == seatNum)
+            if(ticket.showingID == showingID && ticket.seatNum == seatNum)
             {
                 result=true;
             }
