@@ -32,26 +32,6 @@ public class FilterList {
         return null;
     }
 
-    public static String filterShowingsByDate(ArrayList<Showing> showings){
-
-        if(showings != null) {
-            Calendar today = Calendar.getInstance();
-            Iterator<Showing> iterator = showings.iterator();
-
-            while (iterator.hasNext()) {
-
-                Showing sh = iterator.next();
-
-                if (sh==null || sh.getShowingDate().get(Calendar.YEAR) != today.get(Calendar.YEAR) ||
-                        sh.getShowingDate().get(Calendar.MONTH) != today.get(Calendar.MONTH) ||
-                        sh.getShowingDate().get(Calendar.DATE) != today.get(Calendar.DATE)) {
-                    iterator.remove();
-                }
-            }
-        }
-
-        return null;
-    }
     public static String filterShowingsBySelectDate(ArrayList<Showing> showings,Calendar date){
 
         if(showings != null) {
