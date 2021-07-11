@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Theatre;

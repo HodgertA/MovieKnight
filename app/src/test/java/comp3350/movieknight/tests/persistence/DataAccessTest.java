@@ -760,8 +760,6 @@ public class DataAccessTest extends TestCase {
         ArrayList<Showing> showings = new ArrayList<Showing>();
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
         String result;
-        Showing showing;
-        Ticket ticket;
 
         System.out.println("Started DataAccessTest: testInvalidIDs");
 
