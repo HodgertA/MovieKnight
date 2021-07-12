@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/seat_fragment_container">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/seats_recycler_view"
@@ -17,13 +18,29 @@
 
     <TextView
         android:id="@+id/screen_textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="5dp"
         android:text="Screen"
         android:textSize="50sp"
-        android:layout_marginTop="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/seats_select_back_button"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/seats_select_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="@color/white"
+        app:tint="@color/black"
+        android:scaleX="2.25"
+        android:scaleY="2.25"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="@+id/screen_textView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/screen_textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
