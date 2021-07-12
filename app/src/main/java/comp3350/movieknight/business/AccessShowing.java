@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
+import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.persistence.DataAccess;
 
@@ -21,23 +22,5 @@ public class AccessShowing {
         return FilterList.filterShowingsBySelectDate(showingList,date);
     }
 
-    public ArrayList<Showing> getShowingByID(int ShowingID) {
-        ArrayList<Showing> showings=new ArrayList<>();
-        dataAccess.getAllShowings(showings);
-
-        if(showings != null) {
-
-            Iterator<Showing> iterator = showings.iterator();
-
-            while (iterator.hasNext()) {
-
-                Showing sh = iterator.next();
-
-                if (sh.getShowingID()!=ShowingID) {
-                    iterator.remove();
-                }
-            }
-        }
-        return showings;
-    }
+    public Showing getShowing(int showingID){return dataAccess.getShowing(new Showing(showingID));}
 }
