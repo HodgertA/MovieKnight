@@ -20,7 +20,7 @@ public class TheatreTest extends TestCase
         assertEquals(1,theatre.getTheatreID());
         assertEquals(10, theatre.getNumSeats());
         assertEquals("Theatre: 1, Number of seats: 10", theatre.toString());
-        assertTrue(theatre.equals(theatre));
+        assertEquals(theatre,theatre);
 
         System.out.println("Finished Theatre test: testTypicalTheatre");
     }
@@ -53,7 +53,7 @@ public class TheatreTest extends TestCase
         assertEquals(0,theatre.getTheatreID());
         assertEquals(1, theatre.getNumSeats());
         assertEquals("Theatre: 0, Number of seats: 1", theatre.toString());
-        assertTrue(theatre.equals(theatre));
+        assertEquals(theatre,theatre);
 
         System.out.println("Finished Theatre test: testEdgeCases");
     }

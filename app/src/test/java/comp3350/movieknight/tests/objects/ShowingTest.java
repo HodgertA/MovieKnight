@@ -27,7 +27,7 @@ public class ShowingTest extends TestCase
         assertEquals(10, showing.getShowingDate().get(Calendar.DATE));
         assertEquals(10.10, showing.getShowingTime());
         assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10.1", showing.toString());
-        assertTrue(showing.equals(showing));
+        assertEquals(showing,showing);
 
         System.out.println("Finished Showing test: testTypicalUser");
     }
@@ -78,7 +78,7 @@ public class ShowingTest extends TestCase
         assertEquals(1, showing.getShowingDate().get(Calendar.DATE));
         assertEquals(10.10, showing.getShowingTime());
         assertEquals("Showing: 0, Movie: 0, Theatre: 0, Showing time: 1 1 1 at 10.1", showing.toString());
-        assertTrue(showing.equals(showing));
+        assertEquals(showing,showing);
 
         System.out.println("Finished Showing test: testEdgeCases");
     }
