@@ -10,20 +10,20 @@ import org.jetbrains.annotations.NotNull;
 import comp3350.movieknight.R;
 
 public class TicketViewHolder extends RecyclerView.ViewHolder {
-    private TextView moveTitle,ticketDate,showingTime;
+    private TextView movieTitle,ticketDate,showingTime;
 
 
 
     public TicketViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
-        moveTitle=itemView.findViewById(R.id.ticket_movie_title);
+        movieTitle=itemView.findViewById(R.id.ticket_movie_title);
         ticketDate=itemView.findViewById(R.id.ticket_date);
         showingTime=itemView.findViewById(R.id.ticket_showing_time);
 
     }
 
-    public TextView getMoveTitle(){
-        return moveTitle;
+    public TextView getMovieTitle(){
+        return movieTitle;
     }
 
     public TextView getTicketDate(){
