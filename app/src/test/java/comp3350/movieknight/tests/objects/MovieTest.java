@@ -21,7 +21,7 @@ public class MovieTest extends TestCase
         assertNotNull(movie1);
         assertEquals(1, movie1.getMovieID());
         assertEquals("Movie: 1 null", movie1.toString());
-        assertTrue(movie1.equals(movie1));
+        assertEquals(movie1,movie1);
 
         Movie movie2 = new Movie(1, "A description", "A title","poster", 100, 2021, 10, 20);
         assertNotNull(movie2);
@@ -34,8 +34,8 @@ public class MovieTest extends TestCase
         assertEquals(9, movie2.getLastShowDate().get(Calendar.MONTH));
         assertEquals(20, movie2.getLastShowDate().get(Calendar.DATE));
         assertEquals("Movie: 1 A title", movie2.toString());
-        assertTrue(movie2.equals(movie2));
-        assertTrue(movie1.equals(movie2));
+        assertEquals(movie2,movie2);
+        assertEquals(movie1,movie2);
 
         System.out.println("Finished Movie test: testTypicalMovie");
     }
@@ -55,7 +55,7 @@ public class MovieTest extends TestCase
         assertEquals(9, movie1.getLastShowDate().get(Calendar.MONTH));
         assertEquals(20, movie1.getLastShowDate().get(Calendar.DATE));
         assertEquals("Movie: 1 ", movie1.toString());
-        assertTrue(movie1.equals(movie1));
+        assertEquals(movie1,movie1);
 
         System.out.println("Finished Movie test: testEmptyValues");
     }
@@ -96,7 +96,7 @@ public class MovieTest extends TestCase
         assertEquals(2, movie4.getLastShowDate().get(Calendar.DATE));
         assertEquals("Movie: 1 A title", movie3.toString());
         assertEquals("Movie: 2 title", movie4.toString());
-        assertTrue(movie3.equals(movie3));
+        assertEquals(movie3,movie3);
 
         System.out.println("Finished Movie test: testTwoMovies");
     }
@@ -116,7 +116,7 @@ public class MovieTest extends TestCase
         assertEquals(9, movie1.getLastShowDate().get(Calendar.MONTH));
         assertEquals(20, movie1.getLastShowDate().get(Calendar.DATE));
         assertEquals("Movie: 1 null", movie1.toString());
-        assertTrue(movie1.equals(movie1));
+        assertEquals(movie1,movie1);
 
         System.out.println("Finished Movie test: testNullValues");
     }
@@ -129,7 +129,7 @@ public class MovieTest extends TestCase
         assertNotNull(movie1);
         assertEquals(0, movie1.getMovieID());
         assertEquals("Movie: 0 null", movie1.toString());
-        assertTrue(movie1.equals(movie1));
+        assertEquals(movie1,movie1);
 
         Movie movie2 = new Movie(0, "A description", "A title","poster", 1, 2021, 1, 31);
         assertNotNull(movie2);
@@ -142,7 +142,7 @@ public class MovieTest extends TestCase
         assertEquals(0, movie2.getLastShowDate().get(Calendar.MONTH));
         assertEquals(31, movie2.getLastShowDate().get(Calendar.DATE));
         assertEquals("Movie: 0 A title", movie2.toString());
-        assertTrue(movie2.equals(movie2));
+        assertEquals(movie2,movie2);
 
         System.out.println("Finished Movie test: testEdgeCases");
     }

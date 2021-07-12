@@ -18,7 +18,7 @@ public class TicketTest extends TestCase {
         assertEquals(1, ticket1.getShowingID());
         assertEquals(10, ticket1.getSeatNum());
         assertEquals("Seat Number: 10, User: 1, Showing: 1", ticket1.toString());
-        assertTrue(ticket1.equals(ticket1));
+        assertEquals(ticket1,ticket1);
 
         Ticket ticket2 = new Ticket(1,  10);
         assertNotNull(ticket2);
@@ -26,7 +26,7 @@ public class TicketTest extends TestCase {
         assertEquals(1, ticket2.getShowingID());
         assertEquals(10, ticket2.getSeatNum());
         assertEquals("Seat Number: 10, User: -1, Showing: 1", ticket2.toString());
-        assertTrue(ticket2.equals(ticket2));
+        assertEquals(ticket2,ticket2);
 
         System.out.println("Finished Ticket test: testTypicalTicket");
     }
@@ -76,7 +76,7 @@ public class TicketTest extends TestCase {
         assertEquals(0, ticket1.getShowingID());
         assertEquals(1, ticket1.getSeatNum());
         assertEquals("Seat Number: 1, User: 0, Showing: 0", ticket1.toString());
-        assertTrue(ticket1.equals(ticket1));
+        assertEquals(ticket1,ticket1);
 
         Ticket ticket2 = new Ticket(0, 1);
         assertNotNull(ticket2);
@@ -84,7 +84,7 @@ public class TicketTest extends TestCase {
         assertEquals(0, ticket2.getShowingID());
         assertEquals(1, ticket2.getSeatNum());
         assertEquals("Seat Number: 1, User: -1, Showing: 0", ticket2.toString());
-        assertTrue(ticket2.equals(ticket2));
+        assertEquals(ticket2,ticket2);
 
         System.out.println("Finished Ticket test: testEdgeCases");
     }
