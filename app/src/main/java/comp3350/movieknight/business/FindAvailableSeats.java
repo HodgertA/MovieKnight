@@ -8,7 +8,7 @@ import comp3350.movieknight.objects.Ticket;
 
 public class FindAvailableSeats {
 
-    public static boolean[] compileReservedSeats(ArrayList<Ticket> tickets, int numberOfSeats) {
+    public static boolean[] compileAvailableSeats(ArrayList<Ticket> tickets, int numberOfSeats) {
         boolean[] result = new boolean[numberOfSeats];
         Arrays.fill(result, true);
 

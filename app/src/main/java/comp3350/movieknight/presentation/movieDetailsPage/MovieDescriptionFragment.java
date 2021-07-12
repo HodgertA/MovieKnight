@@ -14,12 +14,16 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,6 +68,7 @@ public class MovieDescriptionFragment extends Fragment {
     private DatePickerDialog datePicker;
     private Button dateButton;
     private Calendar selectDate;
+    private ImageButton backButton;
 
     public MovieDescriptionFragment() {
     }
@@ -90,7 +95,6 @@ public class MovieDescriptionFragment extends Fragment {
             movieID=getArguments().getInt(ARG_PARAM4);
             userID=getArguments().getInt(ARG_PARAM5);
             selectDate=Calendar.getInstance();
-
         }
     }
 
@@ -127,8 +131,15 @@ public class MovieDescriptionFragment extends Fragment {
 
             }
         };
+
         datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
         datePicker.getDatePicker().setMinDate(selectDate.getTimeInMillis());
+        datePicker.getDatePicker().setX(105);
+        datePicker.getDatePicker().setY(20);
+        datePicker.getDatePicker().setScaleY(1.1f);
+        datePicker.getDatePicker().setScaleX(1.1f);
+
+
         selectDate.add(Calendar.DATE,6);
         datePicker.getDatePicker().setMaxDate(selectDate.getTimeInMillis());
         dateButton= view.findViewById(R.id.date_button);
@@ -138,25 +149,23 @@ public class MovieDescriptionFragment extends Fragment {
                 datePicker.show();
             }
         });
-///////-----------------------------------------
 
-
-
+        backButton = view.findViewById(R.id.movie_description_back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getChildFragmentManager().popBackStack();
+                Fragment fragment = MovieDescriptionFragment.this.getParentFragment(); // getParentFragment() is a built-in method in Android, this method can return a fragment
+                MovieListFragment frag = (MovieListFragment) fragment; // Note that this type conversion must be performed to make the fragment generic into a specific parent fragment
+                frag.finishMyChild();
+            }
+        });
         return view;
     }
-
-
-
-
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //for displaying back arrow
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setHasOptionsMenu(true);
 
         textViewMovieTitle = view.findViewById(R.id.textViewMovieTitle);
         imageViewMovieImage = view.findViewById(R.id.imageViewMovieImage);
@@ -165,22 +174,7 @@ public class MovieDescriptionFragment extends Fragment {
         textViewMovieTitle.setText(movieTitle);
         textViewMovieDesc.setText(movieDesc);
         imageViewMovieImage.setImageResource(moviePoster);
-
     }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==android.R.id.home) {
-            Fragment fragment = MovieDescriptionFragment.this.getParentFragment(); // getParentFragment() is a built-in method in Android, this method can return a fragment
-            MovieListFragment frag = (MovieListFragment) fragment; // Note that this type conversion must be performed to make the fragment generic into a specific parent fragment
-            frag.finishMyChild();
-
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
     public void openSeatsPage(Showing showing) {
         showingTimeRecyclerView.setVisibility(View.GONE);
@@ -188,6 +182,7 @@ public class MovieDescriptionFragment extends Fragment {
         imageViewMovieImage.setVisibility(View.GONE);
         textViewMovieDesc.setVisibility(View.GONE);
         dateButton.setVisibility(View.GONE);
+        backButton.setVisibility(View.GONE);
 
         this.getParentFragment().setMenuVisibility(false);
         childFragment = new SeatsFragment();
@@ -197,12 +192,17 @@ public class MovieDescriptionFragment extends Fragment {
         bundle.putInt("userId",userID);
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.movie_description_fragment_container, childFragment).commit();
+        transaction.replace(R.id.movie_description_fragment_container, childFragment).addToBackStack(null).commit();
     }
 
     //Remove child fragment (MovieDescriptionFragment) from stack of fragment to show parent fragment(MovieListFragment)
     public void finishMyChild(){
         showingTimeRecyclerView.setVisibility(View.VISIBLE);
+        textViewMovieTitle.setVisibility(View.VISIBLE);
+        imageViewMovieImage.setVisibility(View.VISIBLE);
+        textViewMovieDesc.setVisibility(View.VISIBLE);
+        dateButton.setVisibility(View.VISIBLE);
+        backButton.setVisibility(View.VISIBLE);
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.remove(childFragment);

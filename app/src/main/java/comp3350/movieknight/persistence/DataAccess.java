@@ -15,6 +15,8 @@ public interface DataAccess {
 
     String getAllMovies(List<Movie> movieResult);
 
+    Movie getMovie(Movie movie);
+
     String insertMovie(Movie movie);
 
     String updateMovie(Movie movie);
@@ -32,6 +34,8 @@ public interface DataAccess {
     String deleteTheatre(Theatre theatre);
 
     String getAllShowings(List<Showing> showingResult);
+
+    Showing getShowing(Showing showing);
 
     String getMovieShowings(List<Showing> showingList, int movieId);
 

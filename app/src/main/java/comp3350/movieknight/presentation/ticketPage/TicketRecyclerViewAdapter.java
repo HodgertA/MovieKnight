@@ -42,12 +42,12 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull TicketViewHolder holder, int position) {
-        ArrayList<Showing>showings=accessShowing.getShowingByID(tickets.get(position).getShowingID());
-        if(showings.size()>0){
-            String ticketDate=String.valueOf((showings.get(0).getShowingDate().get(Calendar.MONTH)+1)+"/"+showings.get(0).getShowingDate().get(Calendar.DATE));
+        Showing showing=accessShowing.getShowing(tickets.get(position).getShowingID());
+
+            String ticketDate=String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
             holder.getTicketDate().setText(ticketDate);
 
-            String showingTime=String.valueOf(showings.get(0).getShowingTime());
+            String showingTime=String.valueOf(showing.getShowingTime());
             String[] time=showingTime.split("\\.");
 
             if(time[1].length()<2){
@@ -55,11 +55,10 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
             }
             holder.getShowingTime().setText(time[0] + ":" + time[1]);
 
-            ArrayList<Movie> movies=accessMovies.getMovieByID(showings.get(0).getMovieID());
-            if(movies.size()>0){
-                holder.getMoveTitle().setText(movies.get(0).getTitle());
-            }
-        }
+            Movie movie=accessMovies.getMovie(showing.getMovieID());
+
+            holder.getMovieTitle().setText(movie.getTitle());
+
     }
 
     @Override

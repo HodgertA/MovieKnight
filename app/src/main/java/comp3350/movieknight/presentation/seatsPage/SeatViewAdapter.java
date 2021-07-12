@@ -20,11 +20,13 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     private boolean[] unavailableSeats;
     private ArrayList<Integer> selectedSeats;
     private Context context;
+    private final int FULL_OPACITY = 255;
+    private final int QUARTER_OPACITY = 64;
+    private final boolean DEFAULT_ENABLED = true;
 
     public SeatViewAdapter(Context context, SeatsFragment seatsFragment, boolean []seats) {
         this.seats = seats;
-        unavailableSeats = new boolean[seats.length];
-        System.arraycopy(seats, 0, unavailableSeats, 0, seats.length);
+        unavailableSeats = seats.clone();
         this.selectedSeats = new ArrayList<>();
         this.context = context;
     }
@@ -40,10 +42,12 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull SeatViewHolder holder, int position) {
         ImageButton seat = holder.getSeatView();
+        seat.setEnabled(DEFAULT_ENABLED);
+        seat.setImageAlpha(FULL_OPACITY);
         if(!seats[position]) {
             if(!unavailableSeats[position]) {
-                seat.setEnabled(false);
-                seat.setAlpha(64);
+                seat.setEnabled(!DEFAULT_ENABLED);
+                seat.setImageAlpha(QUARTER_OPACITY);
             }
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.reserved_seat));
         } else {

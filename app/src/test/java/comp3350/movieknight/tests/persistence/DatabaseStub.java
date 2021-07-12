@@ -311,6 +311,17 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
+    public Movie getMovie(Movie movie) {
+        Movie result = null;
+
+        int index = movies.indexOf(movie);
+        if (index >= 0) {
+            result = movies.get(index);
+        }
+        return result;
+    }
+
+    @Override
     public String insertMovie(Movie movie)
     {
         String result = null;
@@ -417,6 +428,17 @@ public class DatabaseStub implements DataAccess {
     {
         showingResult.addAll(showings);
         return null;
+    }
+
+    @Override
+    public Showing getShowing(Showing showing){
+        Showing result=null;
+
+        int index=showings.indexOf(showing);
+        if(index>=0){
+            result=showings.get(index);
+        }
+        return result;
     }
 
     @Override
