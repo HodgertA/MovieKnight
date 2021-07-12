@@ -2,7 +2,6 @@ package comp3350.movieknight.business;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.application.Services;
@@ -21,23 +20,11 @@ public class AccessShowing {
         return FilterList.filterShowingsBySelectDate(showingList,date);
     }
 
-    public ArrayList<Showing> getShowingByID(int ShowingID) {
-        ArrayList<Showing> showings=new ArrayList<>();
-        dataAccess.getAllShowings(showings);
+    public Showing getShowing(int showingID){return dataAccess.getShowing(new Showing(showingID));}
 
-        if(showings != null) {
+    public String insertShowing(Showing newShowing){return dataAccess.insertShowing(newShowing);}
 
-            Iterator<Showing> iterator = showings.iterator();
+    public String updateShowing(Showing showing){return dataAccess.updateShowing(showing);}
 
-            while (iterator.hasNext()) {
-
-                Showing sh = iterator.next();
-
-                if (sh.getShowingID()!=ShowingID) {
-                    iterator.remove();
-                }
-            }
-        }
-        return showings;
-    }
+    public String deleteShowing(Showing showing){return dataAccess.deleteShowing(showing);}
 }

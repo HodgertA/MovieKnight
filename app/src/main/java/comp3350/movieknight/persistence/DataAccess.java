@@ -35,6 +35,8 @@ public interface DataAccess {
 
     String getAllShowings(List<Showing> showingResult);
 
+    Showing getShowing(Showing showing);
+
     String getMovieShowings(List<Showing> showingList, int movieId);
 
     String getTheatreShowings(List<Showing> showingList, int theatreId);

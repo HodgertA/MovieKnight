@@ -353,6 +353,46 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
+    public Showing getShowing(Showing showing){
+
+        int showingID, movieID, theatreID, seats;
+        long showingDate;
+        double showingTime;
+        Showing result=null;
+
+        try{
+            cmdString="Select * from Showings where ShowingID="+showing.getShowingID();
+            rs4=st3.executeQuery(cmdString);
+        }catch (Exception e){
+            processSQLError(e);
+        }
+
+        try{
+            while (rs4.next()){
+                showingID = rs4.getInt("ShowingID");
+                movieID = rs4.getInt("MovieID");
+                theatreID = rs4.getInt("TheatreID");
+                showingDate = rs4.getLong("ShowingDate");
+                showingTime = rs4.getDouble("ShowingTime");
+                seats = rs4.getInt("Seats");
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(showingDate);
+
+                int hour = (int) Math.floor(showingTime);
+                int minute = (int) showingTime - hour;
+
+                result =new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE),hour,minute);
+            }
+        }catch (Exception e){
+            processSQLError(e);
+        }
+
+        return result;
+
+    }
+
+    @Override
     public String getMovieShowings(List<Showing> showingResult, int newMovieID) {
 
         Showing showing;
