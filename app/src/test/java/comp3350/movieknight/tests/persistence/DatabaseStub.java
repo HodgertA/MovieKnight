@@ -431,6 +431,17 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
+    public Showing getShowing(Showing showing){
+        Showing result=null;
+
+        int index=showings.indexOf(showing);
+        if(index>=0){
+            result=showings.get(index);
+        }
+        return result;
+    }
+
+    @Override
     public String getMovieShowings(List<Showing> showingList, int movieId)
     {
         Showing curr;

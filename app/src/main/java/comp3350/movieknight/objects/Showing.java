@@ -12,6 +12,18 @@ public class Showing {
     private double showingTime;
     private int seats;
 
+    public Showing(int showingID){
+        if(showingID>=0){
+            this.showingID=showingID;
+            this.movieID=0;
+            this.theatreID=0;
+            this.showingDate=null;
+            this.showingTime=0d;
+            this.seats=0;
+        }else {
+            throw new IllegalArgumentException();
+        }
+    }
     public Showing(int showingID, int movieID, int theatreID, int seats, int year, int month, int date, int hour, int minute) {
         if (showingID >=0 && movieID >= 0 && theatreID >= 0 && seats >= 1 && month > 0 && month <=12 && date >0 && date <=31 && hour >= 0 && hour <= 23 && minute >= 0 && minute <=59) {
             this.seats = seats;
