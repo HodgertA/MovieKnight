@@ -15,14 +15,14 @@
 
         <Button
             android:id="@+id/date_button"
-            android:layout_width="60dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/calendar"
-            app:backgroundTint="@color/cardview_shadow_end_color"
-            app:backgroundTintMode="src_over"
+            android:layout_margin="7dp"
+
+            android:background="@drawable/ic_baseline_date_range_24"
+
+            app:backgroundTint="@color/cardview_dark_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"></Button>

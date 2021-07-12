@@ -14,10 +14,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -128,8 +131,15 @@ public class MovieDescriptionFragment extends Fragment {
 
             }
         };
+
         datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
         datePicker.getDatePicker().setMinDate(selectDate.getTimeInMillis());
+        datePicker.getDatePicker().setX(105);
+        datePicker.getDatePicker().setY(20);
+        datePicker.getDatePicker().setScaleY(1.1f);
+        datePicker.getDatePicker().setScaleX(1.1f);
+
+
         selectDate.add(Calendar.DATE,6);
         datePicker.getDatePicker().setMaxDate(selectDate.getTimeInMillis());
         dateButton= view.findViewById(R.id.date_button);
