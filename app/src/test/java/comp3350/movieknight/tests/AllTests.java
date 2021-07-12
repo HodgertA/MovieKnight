@@ -4,6 +4,7 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import comp3350.movieknight.tests.business.AccessMoviesTest;
+import comp3350.movieknight.tests.business.AccessTheatreTest;
 import comp3350.movieknight.tests.business.FilterMoviesTest;
 import comp3350.movieknight.tests.business.FilterShowingsTest;
 import comp3350.movieknight.tests.business.FindAvailableSeatsTest;
@@ -38,6 +39,7 @@ public class AllTests
         suite.addTestSuite(FilterMoviesTest.class);
         suite.addTestSuite(FindAvailableSeatsTest.class);
         suite.addTestSuite(AccessMoviesTest.class);
+        suite.addTestSuite(AccessTheatreTest.class);
     }
 
     private static void testPersistence()
