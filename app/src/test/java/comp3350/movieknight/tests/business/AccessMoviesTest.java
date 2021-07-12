@@ -42,6 +42,7 @@ public class AccessMoviesTest extends TestCase {
         assertTrue(movies.contains(movie5));
 
         Services.closeDataAccess();
+        System.out.println("\nFinished getMoviesInTheatres tests (using stub)");
     }
 
     public void testGetMovie() {
@@ -69,6 +70,7 @@ public class AccessMoviesTest extends TestCase {
         assertEquals(movie5, accessMovies.getMovie(5));
 
         Services.closeDataAccess();
+        System.out.println("\nFinished getMovie tests (using stub)");
     }
 
     public void testDeleteMovie() {
@@ -95,10 +97,11 @@ public class AccessMoviesTest extends TestCase {
         assertEquals(null, accessMovies.getMovie(2));
 
         Services.closeDataAccess();
+        System.out.println("\nFinished deleteMovie tests (using stub)");
     }
 
     public void testInsertMovie() {
-        System.out.println("\nStarting deleteMovie tests (using stub)");
+        System.out.println("\nStarting insertMovie tests (using stub)");
 
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
@@ -113,10 +116,11 @@ public class AccessMoviesTest extends TestCase {
         assertEquals(movie, accessMovies.getMovie(6));
 
         Services.closeDataAccess();
+        System.out.println("\nFinished insertMovie tests (using stub)");
     }
 
     public void testUpdateMovie() {
-        System.out.println("\nStarting deleteMovie tests (using stub)");
+        System.out.println("\nStarting updateMovie tests (using stub)");
 
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
@@ -136,5 +140,6 @@ public class AccessMoviesTest extends TestCase {
         assertEquals("Shrek 2", accessMovies.getMovie(5).getTitle());
 
         Services.closeDataAccess();
+        System.out.println("\nFinished updateMovie tests (using stub)");
     }
 }
