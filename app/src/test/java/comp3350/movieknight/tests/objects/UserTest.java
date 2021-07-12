@@ -17,7 +17,7 @@ public class UserTest extends TestCase
         assertEquals(123, user.getUserID());
         assertEquals("John Smith", user.getUsername());
         assertEquals("User: 123 John Smith", user.toString());
-        assertTrue(user.equals(user));
+        assertEquals(user,user);
 
         System.out.println("Finished User test: testTypicalUser");
     }
@@ -31,7 +31,7 @@ public class UserTest extends TestCase
         assertEquals(1, user.getUserID());
         assertEquals("", user.getUsername());
         assertEquals("User: 1 ", user.toString());
-        assertTrue(user.equals(user));
+        assertEquals(user,user);
 
         System.out.println("Finished User test: testEmptyValues");
     }
@@ -64,7 +64,7 @@ public class UserTest extends TestCase
         assertEquals(1, user.getUserID());
         assertEquals(null, user.getUsername());
         assertEquals("User: 1 null", user.toString());
-        assertTrue(user.equals(user));
+        assertEquals(user,user);
 
         System.out.println("Finished User test: testNullValues");
     }
@@ -78,7 +78,7 @@ public class UserTest extends TestCase
         assertEquals(0, user.getUserID());
         assertEquals("    J", user.getUsername());
         assertEquals("User: 0     J", user.toString());
-        assertTrue(user.equals(user));
+        assertEquals(user,user);
 
         System.out.println("Finished User test: testEdgeCases");
     }
