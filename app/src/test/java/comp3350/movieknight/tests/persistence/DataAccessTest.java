@@ -119,6 +119,11 @@ public class DataAccessTest extends TestCase {
         assertEquals(1, theatre.getTheatreID());
         assertEquals(24, theatre.getNumSeats());
 
+        theatre = new Theatre(1, 24);
+        theatre = dataAccess.getTheatre(theatre);
+        assertEquals(1, theatre.getTheatreID());
+        assertEquals(24, theatre.getNumSeats());
+
         System.out.println("Finished DataAccess Test: testDefaultTheatres");
     }
 
@@ -717,6 +722,9 @@ public class DataAccessTest extends TestCase {
         dataAccess.getAllTheatres(theatres);
         assertEquals(1, theatres.size());
 
+        theatre = dataAccess.getTheatre(theatre);
+        assertNull(theatre);
+
         showing = new Showing(90, 1, 1, 1, 1, 1, 1, 10, 10);
         result = dataAccess.updateShowing(showing);
         assertEquals("Nonexistent Showing", result);
@@ -869,8 +877,13 @@ public class DataAccessTest extends TestCase {
         movie = new Movie(6, "", "", "", 1, 1, 1, 1);
         result = dataAccess.deleteMovie(movie);
         assertNull(result);
+        result = dataAccess.getAllMovies(movies);
+        assertNull(result);
         assertEquals(0, movies.size());
         assertFalse(movies.contains(movie));
+
+        result = dataAccess.deleteMovie(movie);
+        assertNotNull(result);
 
         System.out.println("Finished DataAccessTest: testEmptyMovieTable");
     }
@@ -888,6 +901,10 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.getAllTheatres(theatres);
         assertNull(result);
         assertEquals(0, theatres.size());
+
+        theatres.clear();
+        theatre = dataAccess.getTheatre(new Theatre(4, 10));
+        assertNull(theatre);
 
         theatres.clear();
         theatre = new Theatre(2, 20);
@@ -917,8 +934,13 @@ public class DataAccessTest extends TestCase {
         theatre = new Theatre(2, 40);
         result = dataAccess.deleteTheatre(theatre);
         assertNull(result);
+        result = dataAccess.getAllTheatres(theatres);
+        assertNull(result);
         assertEquals(0, theatres.size());
         assertFalse(theatres.contains(theatre));
+
+        result = dataAccess.deleteTheatre(theatre);
+        assertNotNull(result);
 
         System.out.println("Finished DataAccessTest: testEmptyTheatreTable");
     }
@@ -1113,6 +1135,9 @@ public class DataAccessTest extends TestCase {
         assertEquals(0, showings.size());
         assertFalse(showings.contains(new Showing(85, 2, 1, 20, day.get(Calendar.YEAR), day.get(Calendar.MONTH)+1, day.get(Calendar.DATE), 10, 15)));
 
+        result = dataAccess.deleteShowing(showing);
+        assertNotNull(result);
+
         System.out.println("Finished DataAccessTest: testEmptyShowingTable");
     }
 
@@ -1230,6 +1255,9 @@ public class DataAccessTest extends TestCase {
         assertEquals(0, tickets.size());
         assertFalse(tickets.contains(new Ticket(2, 3,3)));
 
+        result = dataAccess.deleteTicket(ticket);
+        assertNotNull(result);
+
         System.out.println("Finished DataAccessTest: testEmptyTicketTable");
     }
 
@@ -1281,6 +1309,9 @@ public class DataAccessTest extends TestCase {
         assertNull(result);
         assertEquals(0, users.size());
         assertFalse(users.contains(user));
+
+        result = dataAccess.deleteUser(user);
+        assertNotNull(result);
 
         System.out.println("Finished DataAccessTest: testEmptyUserTable");
     }
