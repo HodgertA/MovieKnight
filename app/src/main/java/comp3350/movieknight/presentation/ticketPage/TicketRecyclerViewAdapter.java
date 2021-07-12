@@ -55,10 +55,9 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
             }
             holder.getShowingTime().setText(time[0] + ":" + time[1]);
 
-            ArrayList<Movie> movies=accessMovies.getMovieByID(showings.get(0).getMovieID());
-            if(movies.size()>0){
-                holder.getMoveTitle().setText(movies.get(0).getTitle());
-            }
+            Movie movie=accessMovies.getMovie(showings.get(0).getMovieID());
+
+            holder.getMovieTitle().setText(movie.getTitle());
         }
     }
 

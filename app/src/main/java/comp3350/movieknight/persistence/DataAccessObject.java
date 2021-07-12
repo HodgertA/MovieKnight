@@ -109,6 +109,44 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
+    public Movie getMovie(Movie movie) {
+        int movieID, runtime;
+        String description, title, poster;
+        long lastShowDate;
+        description = EOF;
+        title = EOF;
+
+        Movie result = null;
+        try {
+            cmdString = "Select * from Movies where MovieID=" + movie.getMovieID();
+            rs2 = st1.executeQuery(cmdString);
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        try {
+            while (rs2.next())
+            {
+                movieID = rs2.getInt("MovieID");
+                description = rs2.getString("Description");
+                title = rs2.getString("Title");
+                poster = rs2.getString("Poster");
+                runtime = rs2.getInt("Runtime");
+                lastShowDate = rs2.getLong("LastShowDate");
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTimeInMillis(lastShowDate);
+
+                result = new Movie(movieID, description, title, poster, runtime, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+            }
+        } catch (Exception e) {
+            processSQLError(e);
+        }
+
+        return result;
+    }
+
+    @Override
     public String insertMovie(Movie movie) {
         String values;
 
