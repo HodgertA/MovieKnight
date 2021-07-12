@@ -15,6 +15,8 @@ public interface DataAccess {
 
     String getAllMovies(List<Movie> movieResult);
 
+    Movie getMovie(Movie movie);
+
     String insertMovie(Movie movie);
 
     String updateMovie(Movie movie);
