@@ -30,10 +30,10 @@ public class AccessTickets {
         return dataAccess.deleteTicket(ticket);
     }
 
-    public boolean[] compileSeatReservations(int showingID, int numberOfSeats) {
+    public boolean[] compileSeatAvailability(int showingID, int numberOfSeats) {
         ArrayList<Ticket> tickets = new ArrayList<Ticket>();
         dataAccess.getShowingTickets(tickets, showingID);
-        return FindAvailableSeats.compileReservedSeats(tickets, numberOfSeats);
+        return FindAvailableSeats.compileAvailableSeats(tickets, numberOfSeats);
     }
 
     public ArrayList<Ticket> getUserTickets(int userId) {

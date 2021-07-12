@@ -17,7 +17,7 @@ public class FindAvailableSeatsTest extends TestCase {
         System.out.println("Starting find available seats test: testNullList");
 
         try {
-            FindAvailableSeats.compileReservedSeats(null,10);
+            FindAvailableSeats.compileAvailableSeats(null,10);
             fail("Expected an IllegalArguementException");
         } catch (NullPointerException e){}
 
@@ -31,7 +31,7 @@ public class FindAvailableSeatsTest extends TestCase {
         boolean [] result;
         boolean [] expectedResult={true};
 
-        result=FindAvailableSeats.compileReservedSeats(tickets,1);
+        result=FindAvailableSeats.compileAvailableSeats(tickets,1);
         assertTrue(Arrays.equals(result,expectedResult));
 
         System.out.println("Finished find available seats test: testEmptyList");
@@ -44,7 +44,7 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(null);
 
         try {
-            FindAvailableSeats.compileReservedSeats(tickets,10);
+            FindAvailableSeats.compileAvailableSeats(tickets,10);
             fail("Expected an IllegalArguementException");
         } catch (NullPointerException e){}
 
@@ -59,7 +59,7 @@ public class FindAvailableSeatsTest extends TestCase {
         boolean [] result;
         boolean [] expectedResult={false};
 
-        result=FindAvailableSeats.compileReservedSeats(tickets,1);
+        result=FindAvailableSeats.compileAvailableSeats(tickets,1);
         assertTrue(Arrays.equals(result,expectedResult));
 
         System.out.println("Finished find available seats test: testOneTicketInList");
@@ -75,7 +75,7 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(new Ticket(1,1));
 
         try {
-            FindAvailableSeats.compileReservedSeats(tickets,0);
+            FindAvailableSeats.compileAvailableSeats(tickets,0);
             fail("Expected an IllegalArguementException");
         } catch (ArrayIndexOutOfBoundsException e){}
 
@@ -91,7 +91,7 @@ public class FindAvailableSeatsTest extends TestCase {
         tickets.add(new Ticket(1,1));
 
         try {
-            FindAvailableSeats.compileReservedSeats(tickets,-1);
+            FindAvailableSeats.compileAvailableSeats(tickets,-1);
             fail("Expected an IllegalArguementException");
         } catch (NegativeArraySizeException e){}
 
@@ -107,7 +107,7 @@ public class FindAvailableSeatsTest extends TestCase {
 
         try {
             //ticket seat number is bigger than the number of seats
-            FindAvailableSeats.compileReservedSeats(tickets,10);
+            FindAvailableSeats.compileAvailableSeats(tickets,10);
             fail("Expected an IllegalArguementException");
         } catch (ArrayIndexOutOfBoundsException e){}
 
@@ -130,7 +130,7 @@ public class FindAvailableSeatsTest extends TestCase {
                                     true,true,true,true,true};
 
 
-        result=FindAvailableSeats.compileReservedSeats(tickets,40);
+        result=FindAvailableSeats.compileAvailableSeats(tickets,40);
         assertTrue(Arrays.equals(result,expectedResult));
         System.out.println("Finished find available seats test: testNoTickets");
     }
@@ -154,7 +154,7 @@ public class FindAvailableSeatsTest extends TestCase {
                                     true,true,true,true,true};
 
 
-        result=FindAvailableSeats.compileReservedSeats(tickets,40);
+        result=FindAvailableSeats.compileAvailableSeats(tickets,40);
         assertTrue(Arrays.equals(result,expectedResult));
 
         System.out.println("Finished find available seats test: testDuplicatedTickets");
@@ -183,7 +183,7 @@ public class FindAvailableSeatsTest extends TestCase {
                                     true,true,true,true,false};
 
 
-        result=FindAvailableSeats.compileReservedSeats(tickets,40);
+        result=FindAvailableSeats.compileAvailableSeats(tickets,40);
         assertTrue(Arrays.equals(result,expectedResult));
 
         System.out.println("Finished find available seats test: testManyTickets");

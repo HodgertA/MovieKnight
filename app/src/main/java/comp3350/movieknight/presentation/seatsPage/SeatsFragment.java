@@ -66,7 +66,7 @@ public class SeatsFragment extends Fragment {
 
         accessTickets = new AccessTickets();
 
-        seats = accessTickets.compileSeatReservations(showingID, numberOfSeats);
+        seats = accessTickets.compileSeatAvailability(showingID, numberOfSeats);
 
         seatsRecyclerView = view.findViewById(R.id.seats_recycler_view);
         layoutManager = new GridLayoutManager(context, ITEMS_PER_ROW);
