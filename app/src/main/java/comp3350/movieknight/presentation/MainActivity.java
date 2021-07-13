@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
-
+    private final int loggedInUser = 1;
     private BottomNavigationView bottomNav;
     private ViewPager2 viewPager;
 
@@ -52,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpViewPager()
-    {
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
+    private void setUpViewPager() {
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), loggedInUser);
         viewPager.setAdapter(viewPagerAdapter);
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

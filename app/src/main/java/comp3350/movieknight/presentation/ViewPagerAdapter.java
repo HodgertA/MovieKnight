@@ -13,9 +13,11 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
 
     private static final int NUM_FRAGMENTS = 2;
     private TicketFragment ticketFragment;
+    private int userID;
 
-    public ViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public ViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int userID) {
         super(fragmentManager, lifecycle);
+        this.userID = userID;
     }
 
     @NonNull
@@ -23,13 +25,12 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch(position) {
             case 0:
-                return new MovieListFragment();
+                return new MovieListFragment(userID);
             case 1:
-
-                ticketFragment=new TicketFragment();
+                ticketFragment = new TicketFragment(userID);
                 return ticketFragment;
             default:
-                return new MovieListFragment();
+                return new MovieListFragment(userID);
         }
     }
 

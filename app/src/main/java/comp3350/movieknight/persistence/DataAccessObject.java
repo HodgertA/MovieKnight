@@ -18,7 +18,7 @@ public class DataAccessObject implements DataAccess {
 
     private Statement st1, st2, st3, st4, st5;
     private Connection c1;
-    private ResultSet rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10;
+    private ResultSet rs2, rs3, rs4, rs5, rs6, rs7, rs8, rs9, rs10, rs11, rs12, rs13;
 
     private String dbName;
     private String dbType;
@@ -55,14 +55,12 @@ public class DataAccessObject implements DataAccess {
 
     @Override
     public void close() {
-        try
-        {
+        try {
             cmdString = "shutdown compact";
             rs2 = st1.executeQuery(cmdString);
             c1.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             processSQLError(e);
         }
         System.out.println("Closed " +dbType +" database " +dbName);
@@ -86,8 +84,7 @@ public class DataAccessObject implements DataAccess {
         }
 
         try {
-            while (rs2.next())
-            {
+            while (rs2.next()) {
                 movieID = rs2.getInt("MovieID");
                 description = rs2.getString("Description");
                 title = rs2.getString("Title");
@@ -119,20 +116,19 @@ public class DataAccessObject implements DataAccess {
         Movie result = null;
         try {
             cmdString = "Select * from Movies where MovieID=" + movie.getMovieID();
-            rs2 = st1.executeQuery(cmdString);
+            rs3 = st1.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs2.next())
-            {
-                movieID = rs2.getInt("MovieID");
-                description = rs2.getString("Description");
-                title = rs2.getString("Title");
-                poster = rs2.getString("Poster");
-                runtime = rs2.getInt("Runtime");
-                lastShowDate = rs2.getLong("LastShowDate");
+            while (rs3.next()) {
+                movieID = rs3.getInt("MovieID");
+                description = rs3.getString("Description");
+                title = rs3.getString("Title");
+                poster = rs3.getString("Poster");
+                runtime = rs3.getInt("Runtime");
+                lastShowDate = rs3.getLong("LastShowDate");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(lastShowDate);
@@ -213,16 +209,15 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Theatres";
-            rs3 = st2.executeQuery(cmdString);
+            rs4 = st2.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs3.next())
-            {
-                theatreID = rs3.getInt("TheatreID");
-                numSeats = rs3.getInt("NumSeats");
+            while (rs4.next()) {
+                theatreID = rs4.getInt("TheatreID");
+                numSeats = rs4.getInt("NumSeats");
 
                 theatre = new Theatre(theatreID, numSeats);
                 theatreResult.add(theatre);
@@ -241,16 +236,15 @@ public class DataAccessObject implements DataAccess {
         Theatre result = null;
         try {
             cmdString = "Select * from Theatres where TheatreID=" + theatre.getTheatreID();
-            rs4 = st2.executeQuery(cmdString);
+            rs5 = st2.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs5.next())
-            {
-                theatreID = rs4.getInt("TheatreID");
-                numSeats = rs4.getInt("NumSeats");
+            while (rs5.next()) {
+                theatreID = rs5.getInt("TheatreID");
+                numSeats = rs5.getInt("NumSeats");
 
                 result = new Theatre(theatreID, numSeats);
             }
@@ -328,19 +322,18 @@ public class DataAccessObject implements DataAccess {
         }
 
         try {
-            while (rs4.next())
-            {
-                showingID = rs4.getInt("ShowingID");
-                movieID = rs4.getInt("MovieID");
-                theatreID = rs4.getInt("TheatreID");
-                showingDate = rs4.getLong("ShowingDate");
-                showingTime = rs4.getDouble("ShowingTime");
-                seats = rs4.getInt("Seats");
+            while (rs6.next()) {
+                showingID = rs6.getInt("ShowingID");
+                movieID = rs6.getInt("MovieID");
+                theatreID = rs6.getInt("TheatreID");
+                showingDate = rs6.getLong("ShowingDate");
+                showingTime = rs6.getDouble("ShowingTime");
+                seats = rs6.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
@@ -353,43 +346,41 @@ public class DataAccessObject implements DataAccess {
     }
 
     @Override
-    public Showing getShowing(Showing showing){
+    public Showing getShowing(Showing showing) {
 
         int showingID, movieID, theatreID, seats;
         long showingDate;
         double showingTime;
-        Showing result=null;
+        Showing result = null;
 
-        try{
+        try {
             cmdString="Select * from Showings where ShowingID="+showing.getShowingID();
-            rs4=st3.executeQuery(cmdString);
+            rs7 = st3.executeQuery(cmdString);
         }catch (Exception e){
             processSQLError(e);
         }
 
         try{
-            while (rs4.next()){
-                showingID = rs4.getInt("ShowingID");
-                movieID = rs4.getInt("MovieID");
-                theatreID = rs4.getInt("TheatreID");
-                showingDate = rs4.getLong("ShowingDate");
-                showingTime = rs4.getDouble("ShowingTime");
-                seats = rs4.getInt("Seats");
+            while (rs7.next()) {
+                showingID = rs7.getInt("ShowingID");
+                movieID = rs7.getInt("MovieID");
+                theatreID = rs7.getInt("TheatreID");
+                showingDate = rs7.getLong("ShowingDate");
+                showingTime = rs7.getDouble("ShowingTime");
+                seats = rs7.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
 
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
-                result =new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE),hour,minute);
+                result = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE),hour,minute);
             }
         }catch (Exception e){
             processSQLError(e);
         }
-
         return result;
-
     }
 
     @Override
@@ -402,28 +393,25 @@ public class DataAccessObject implements DataAccess {
 
         try {
             cmdString = "Select * from Showings where MovieID=" + newMovieID;
-            rs5 = st3.executeQuery(cmdString);
+            rs8 = st3.executeQuery(cmdString);
 
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs5.next())
-            {
-                showingID = rs5.getInt("ShowingID");
-                movieID = rs5.getInt("MovieID");
-                theatreID = rs5.getInt("TheatreID");
-                showingDate = rs5.getLong("ShowingDate");
-                showingTime = rs5.getDouble("ShowingTime");
-                seats = rs5.getInt("Seats");
-
-                System.out.println(showingID + ", " + movieID + ", " + theatreID + ", " + showingDate + ", " + showingTime + ", " + seats);
+            while (rs8.next()) {
+                showingID = rs8.getInt("ShowingID");
+                movieID = rs8.getInt("MovieID");
+                theatreID = rs8.getInt("TheatreID");
+                showingDate = rs8.getLong("ShowingDate");
+                showingTime = rs8.getDouble("ShowingTime");
+                seats = rs8.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
@@ -444,26 +432,25 @@ public class DataAccessObject implements DataAccess {
 
         try {
             cmdString = "Select * from Showings where TheatreID=" + newTheatreID;
-            rs6 = st3.executeQuery(cmdString);
+            rs9 = st3.executeQuery(cmdString);
 
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs6.next())
-            {
-                showingID = rs6.getInt("ShowingID");
-                movieID = rs6.getInt("MovieID");
-                theatreID = rs6.getInt("TheatreID");
-                showingDate = rs6.getLong("ShowingDate");
-                showingTime = rs6.getDouble("ShowingTime");
-                seats = rs6.getInt("Seats");
+            while (rs9.next()) {
+                showingID = rs9.getInt("ShowingID");
+                movieID = rs9.getInt("MovieID");
+                theatreID = rs9.getInt("TheatreID");
+                showingDate = rs9.getLong("ShowingDate");
+                showingTime = rs9.getDouble("ShowingTime");
+                seats = rs9.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
@@ -520,8 +507,7 @@ public class DataAccessObject implements DataAccess {
         return result;
     }
 
-    public String updateShowingDay(int showingID, long day)
-    {
+    public String updateShowingDay(int showingID, long day) {
         String values;
         String where;
 
@@ -562,16 +548,16 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Users";
-            rs7 = st4.executeQuery(cmdString);
+            rs10 = st4.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs7.next())
+            while (rs10.next())
             {
-                userID = rs7.getInt("UserID");
-                username = rs7.getString("Username");
+                userID = rs10.getInt("UserID");
+                username = rs10.getString("Username");
 
                 user = new User(userID, username);
                 userResult.add(user);
@@ -643,17 +629,16 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Tickets";
-            rs8 = st5.executeQuery(cmdString);
+            rs11 = st5.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs8.next())
-            {
-                userID = rs8.getInt("UserID");
-                showingID = rs8.getInt("ShowingID");
-                seatNum = rs8.getInt("SeatNum");
+            while (rs11.next()) {
+                userID = rs11.getInt("UserID");
+                showingID = rs11.getInt("ShowingID");
+                seatNum = rs11.getInt("SeatNum");
 
                 ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
@@ -673,17 +658,16 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Tickets where ShowingID= " + newShowingID;
-            rs9 = st5.executeQuery(cmdString);
+            rs12 = st5.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs9.next())
-            {
-                userID = rs9.getInt("UserID");
-                showingID = rs9.getInt("ShowingID");
-                seatNum = rs9.getInt("SeatNum");
+            while (rs12.next()) {
+                userID = rs12.getInt("UserID");
+                showingID = rs12.getInt("ShowingID");
+                seatNum = rs12.getInt("SeatNum");
 
                 ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
@@ -703,17 +687,16 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Tickets where UserID= " + newUserID;
-            rs10 = st5.executeQuery(cmdString);
+            rs13 = st5.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
 
         try {
-            while (rs10.next())
-            {
-                userID = rs10.getInt("UserID");
-                showingID = rs10.getInt("ShowingID");
-                seatNum = rs10.getInt("SeatNum");
+            while (rs13.next()) {
+                userID = rs13.getInt("UserID");
+                showingID = rs13.getInt("ShowingID");
+                seatNum = rs13.getInt("SeatNum");
 
                 ticket = new Ticket(userID, showingID, seatNum);
                 ticketResult.add(ticket);
@@ -772,14 +755,13 @@ public class DataAccessObject implements DataAccess {
             cmdString = "Delete from Tickets where ShowingID="+ ticket.getShowingID() + " AND SeatNum=" + ticket.getSeatNum();
             updateCount = st5.executeUpdate(cmdString);
             result = checkWarning(st5, updateCount);
-        } catch (Exception e){
+        } catch (Exception e) {
             result = processSQLError(e);
         }
         return result;
     }
 
-    public String checkWarning(Statement st, int updateCount)
-    {
+    public String checkWarning(Statement st, int updateCount) {
         String result;
 
         result = null;
@@ -797,8 +779,7 @@ public class DataAccessObject implements DataAccess {
         return result;
     }
 
-    public String processSQLError(Exception e)
-    {
+    public String processSQLError(Exception e) {
         String result = "*** SQL Error: " + e.getMessage();
         e.printStackTrace();
 
@@ -824,8 +805,8 @@ public class DataAccessObject implements DataAccess {
         day7 = Calendar.getInstance();
         day7.add(Calendar.DATE,6);
 
-        for (int i = 1; i <= num_showings; i++)
-        {
+        for (int i = 1; i <= num_showings; i++) {
+
             Calendar day = day1;
             if (i > 12 && i <= 24) {
                 day = day2;

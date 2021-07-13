@@ -7,8 +7,7 @@ public class Services {
 
     private static DataAccess dataAccessService = null;
 
-    public static DataAccess createDataAccess(String dbName)
-    {
+    public static DataAccess createDataAccess(String dbName) {
         if (dataAccessService == null) {
             dataAccessService = new DataAccessObject(dbName);
             dataAccessService.open(Main.getDBPathName());
@@ -16,10 +15,8 @@ public class Services {
         return dataAccessService;
     }
 
-    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
-    {
-        if (dataAccessService == null)
-        {
+    public static DataAccess createDataAccess(DataAccess alternateDataAccessService) {
+        if (dataAccessService == null) {
             dataAccessService = alternateDataAccessService;
             dataAccessService.open(Main.getDBPathName());
         }

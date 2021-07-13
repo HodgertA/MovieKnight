@@ -2,8 +2,7 @@ package comp3350.movieknight.objects;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Theatre
-{
+public class Theatre {
     private int theatreID;
     private int numSeats;
 
@@ -21,13 +20,11 @@ public class Theatre
     public int getNumSeats() { return (numSeats); }
     
     @NotNull
-    public String toString()
-    {
+    public String toString() {
         return "Theatre: " + theatreID +", Number of seats: " + numSeats;
     }
 
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         boolean result;
         Theatre theatre;
 

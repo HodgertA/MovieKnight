@@ -12,8 +12,8 @@ public class Showing {
     private double showingTime;
     private int seats;
 
-    public Showing(int showingID){
-        if(showingID>=0){
+    public Showing(int showingID) {
+        if(showingID>=0) {
             this.showingID=showingID;
             this.movieID=0;
             this.theatreID=0;
@@ -59,13 +59,11 @@ public class Showing {
     public int getSeats() { return seats; }
 
     @NotNull
-    public String toString()
-    {
+    public String toString() {
         return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing time: " + showingDate.get(Calendar.YEAR) + " " + (showingDate.get(Calendar.MONTH)+1)+" " + showingDate.get(Calendar.DATE) + " at " + showingTime;
     }
 
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         boolean result = false;
         Showing showing;
 

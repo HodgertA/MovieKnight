@@ -5,8 +5,7 @@ public class Main {
     public static final String dbName="DB";
     private static String dbPathName = "database/DB";
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         startUp();
 
         shutDown();

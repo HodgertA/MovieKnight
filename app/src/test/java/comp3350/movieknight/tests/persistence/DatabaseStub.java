@@ -26,8 +26,7 @@ public class DatabaseStub implements DataAccess {
 
     public DatabaseStub() {this.dbName = "DB"; }
 
-    public void open(String dbName)
-    {
+    public void open(String dbName) {
         Movie movie;
         Theatre theatre;
         Showing showing;
@@ -304,8 +303,7 @@ public class DatabaseStub implements DataAccess {
     public void close() { System.out.println("Closed " + dbType + " database " + dbName); }
 
     @Override
-    public String getAllMovies(List<Movie> movieResult)
-    {
+    public String getAllMovies(List<Movie> movieResult) {
         movieResult.addAll(movies);
         return null;
     }
@@ -322,8 +320,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String insertMovie(Movie movie)
-    {
+    public String insertMovie(Movie movie) {
         String result = null;
         if (!movies.contains(movie)) {
             movies.add(movie);
@@ -334,8 +331,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String updateMovie(Movie movie)
-    {
+    public String updateMovie(Movie movie) {
         int index;
         String result = null;
 
@@ -349,8 +345,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String deleteMovie(Movie movie)
-    {
+    public String deleteMovie(Movie movie) {
         int index;
         String result = null;
 
@@ -364,8 +359,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getAllTheatres(List<Theatre> theatreResult)
-    {
+    public String getAllTheatres(List<Theatre> theatreResult) {
         theatreResult.addAll(theatres);
         return null;
     }
@@ -382,8 +376,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String insertTheatre(Theatre theatre)
-    {
+    public String insertTheatre(Theatre theatre) {
         String result = null;
         if (!theatres.contains(theatre)) {
             theatres.add(theatre);
@@ -394,8 +387,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String updateTheatre(Theatre theatre)
-    {
+    public String updateTheatre(Theatre theatre) {
         int index;
         String result = null;
 
@@ -409,8 +401,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String deleteTheatre(Theatre theatre)
-    {
+    public String deleteTheatre(Theatre theatre) {
         int index;
         String result = null;
 
@@ -424,14 +415,13 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getAllShowings(List<Showing> showingResult)
-    {
+    public String getAllShowings(List<Showing> showingResult) {
         showingResult.addAll(showings);
         return null;
     }
 
     @Override
-    public Showing getShowing(Showing showing){
+    public Showing getShowing(Showing showing) {
         Showing result=null;
 
         int index=showings.indexOf(showing);
@@ -442,8 +432,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getMovieShowings(List<Showing> showingList, int movieId)
-    {
+    public String getMovieShowings(List<Showing> showingList, int movieId) {
         Showing curr;
         String result = null;
         if (movieId > 0) {
@@ -460,8 +449,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getTheatreShowings(List<Showing> showingList, int theatreId)
-    {
+    public String getTheatreShowings(List<Showing> showingList, int theatreId) {
         Showing curr;
         String result = null;
 
@@ -479,8 +467,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String insertShowing(Showing showing)
-    {
+    public String insertShowing(Showing showing) {
         String result = null;
         if (!showings.contains(showing)) {
             showings.add(showing);
@@ -491,8 +478,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String updateShowing(Showing showing)
-    {
+    public String updateShowing(Showing showing) {
         int index;
         String result = null;
 
@@ -506,8 +492,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String deleteShowing(Showing showing)
-    {
+    public String deleteShowing(Showing showing) {
         int index;
         String result = null;
 
@@ -521,15 +506,13 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getAllUsers(List<User> userResult)
-    {
+    public String getAllUsers(List<User> userResult) {
         userResult.addAll(users);
         return null;
     }
 
     @Override
-    public String insertUser(User user)
-    {
+    public String insertUser(User user) {
         String result = null;
         if (!users.contains(user)) {
             users.add(user);
@@ -540,8 +523,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String updateUser(User user)
-    {
+    public String updateUser(User user) {
         int index;
         String result = null;
 
@@ -555,8 +537,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String deleteUser(User user)
-    {
+    public String deleteUser(User user) {
         int index;
         String result = null;
 
@@ -570,15 +551,13 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getAllTickets(List<Ticket> ticketResult)
-    {
+    public String getAllTickets(List<Ticket> ticketResult) {
         ticketResult.addAll(tickets);
         return null;
     }
 
     @Override
-    public String getShowingTickets(List<Ticket> ticketList, int showingId)
-    {
+    public String getShowingTickets(List<Ticket> ticketList, int showingId) {
         Ticket curr;
         String result = null;
 
@@ -597,8 +576,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String getUserTickets(List<Ticket> ticketList, int userId)
-    {
+    public String getUserTickets(List<Ticket> ticketList, int userId) {
         Ticket curr;
         String result = null;
 
@@ -616,8 +594,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String insertTicket(Ticket ticket)
-    {
+    public String insertTicket(Ticket ticket) {
         String result = null;
         if (!tickets.contains(ticket)) {
             tickets.add(ticket);
@@ -628,8 +605,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String updateTicket(Ticket ticket)
-    {
+    public String updateTicket(Ticket ticket) {
         int index;
         String result = null;
 
@@ -643,8 +619,7 @@ public class DatabaseStub implements DataAccess {
     }
 
     @Override
-    public String deleteTicket(Ticket ticket)
-    {
+    public String deleteTicket(Ticket ticket) {
         int index;
         String result = null;
 
