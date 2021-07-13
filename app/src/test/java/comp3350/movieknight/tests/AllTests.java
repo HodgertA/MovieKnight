@@ -13,12 +13,10 @@ import comp3350.movieknight.tests.business.FindAvailableSeatsTest;
 import comp3350.movieknight.tests.objects.*;
 import comp3350.movieknight.tests.persistence.DataAccessTest;
 
-public class AllTests
-{
+public class AllTests {
 	public static TestSuite suite;
 
-    public static Test suite()
-    {
+    public static Test suite() {
         suite = new TestSuite("All tests");
         testObjects();
         testBusiness();
@@ -26,8 +24,7 @@ public class AllTests
         return suite;
     }
 
-    private static void testObjects()
-    {
+    private static void testObjects() {
         suite.addTestSuite(MovieTest.class);
         suite.addTestSuite(ShowingTest.class);
         suite.addTestSuite(TheatreTest.class);
@@ -35,8 +32,7 @@ public class AllTests
         suite.addTestSuite(UserTest.class);
     }
 
-    private static void testBusiness()
-    {
+    private static void testBusiness() {
         suite.addTestSuite(FilterShowingsTest.class);
         suite.addTestSuite(FilterMoviesTest.class);
         suite.addTestSuite(FindAvailableSeatsTest.class);
@@ -46,8 +42,7 @@ public class AllTests
         suite.addTestSuite(AccessTicketsTest.class);
     }
 
-    private static void testPersistence()
-    {
+    private static void testPersistence() {
         suite.addTestSuite(DataAccessTest.class);
     }
 }
