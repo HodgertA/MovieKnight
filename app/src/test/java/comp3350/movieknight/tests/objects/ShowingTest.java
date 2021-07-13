@@ -25,8 +25,9 @@ public class ShowingTest extends TestCase
         assertEquals(2021, showing.getShowingDate().get(Calendar.YEAR));
         assertEquals(6, showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(10, showing.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.10, showing.getShowingTime());
-        assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10.1", showing.toString());
+        assertEquals(10, showing.getShowingHour());
+        assertEquals(10, showing.getShowingMinute());
+        assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10:10", showing.toString());
         assertEquals(showing,showing);
 
         System.out.println("Finished Showing test: testTypicalUser");
@@ -54,10 +55,12 @@ public class ShowingTest extends TestCase
         assertEquals(7, showing2.getShowingDate().get(Calendar.MONTH));
         assertEquals(10, showing1.getShowingDate().get(Calendar.DATE));
         assertEquals(11, showing2.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.10, showing1.getShowingTime());
-        assertEquals(11.11, showing2.getShowingTime());
-        assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10.1", showing1.toString());
-        assertEquals("Showing: 2, Movie: 2, Theatre: 2, Showing time: 2021 8 11 at 11.11", showing2.toString());
+        assertEquals(10, showing1.getShowingHour());
+        assertEquals(10, showing1.getShowingMinute());
+        assertEquals(11, showing2.getShowingHour());
+        assertEquals(11, showing2.getShowingMinute());
+        assertEquals("Showing: 1, Movie: 1, Theatre: 1, Showing time: 2021 7 10 at 10:10", showing1.toString());
+        assertEquals("Showing: 2, Movie: 2, Theatre: 2, Showing time: 2021 8 11 at 11:11", showing2.toString());
         assertFalse(showing1.equals(showing2));
 
         System.out.println("Finished Showing test: testTwoShowings");
@@ -76,8 +79,9 @@ public class ShowingTest extends TestCase
         assertEquals(1, showing.getShowingDate().get(Calendar.YEAR));
         assertEquals(0, showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(1, showing.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.10, showing.getShowingTime());
-        assertEquals("Showing: 0, Movie: 0, Theatre: 0, Showing time: 1 1 1 at 10.1", showing.toString());
+        assertEquals(10, showing.getShowingHour());
+        assertEquals(10, showing.getShowingMinute());
+        assertEquals("Showing: 0, Movie: 0, Theatre: 0, Showing time: 1 1 1 at 10:10", showing.toString());
         assertEquals(showing,showing);
 
         System.out.println("Finished Showing test: testEdgeCases");
