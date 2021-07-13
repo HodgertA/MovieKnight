@@ -43,21 +43,20 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     public void onBindViewHolder(@NonNull @NotNull TicketViewHolder holder, int position) {
         Showing showing=accessShowing.getShowing(tickets.get(position).getShowingID());
 
-            String ticketDate = String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
-            holder.getTicketDate().setText(ticketDate);
+        String ticketDate = String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
+        holder.getTicketDate().setText(ticketDate);
 
-            String showingTime = String.valueOf(showing.getShowingTime());
-            String[] time = showingTime.split("\\.");
+        String showingHour = String.valueOf(showing.getShowingHour());
+        String showingMinute = String.valueOf(showing.getShowingMinute());
 
-            if(time[1].length() < 2){
-                time[1] += '0';
-            }
-            holder.getShowingTime().setText(time[0] + ":" + time[1]);
+        if (Integer.parseInt(showingMinute) < 10) {
+            showingMinute = "0" + showingMinute;
+        }
+        holder.getShowingTime().setText(showingHour + ":" + showingMinute);
 
-            Movie movie = accessMovies.getMovie(showing.getMovieID());
+        Movie movie = accessMovies.getMovie(showing.getMovieID());
 
-            holder.getMovieTitle().setText(movie.getTitle());
-
+        holder.getMovieTitle().setText(movie.getTitle());
     }
 
     @Override

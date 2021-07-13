@@ -160,7 +160,8 @@ public class AccessShowingTest extends TestCase {
         assertEquals(oldShowing.getSeats(),accessShowing.getShowing(1).getSeats());
         assertEquals(oldShowing.getShowingID(),accessShowing.getShowing(1).getShowingID());
         assertEquals(oldShowing.getTheatreID(),accessShowing.getShowing(1).getTheatreID());
-        assertEquals(oldShowing.getShowingTime(),accessShowing.getShowing(1).getShowingTime());
+        assertEquals(oldShowing.getShowingHour(),accessShowing.getShowing(1).getShowingHour());
+        assertEquals(oldShowing.getShowingMinute(),accessShowing.getShowing(1).getShowingMinute());
 
         Showing newShowing = new Showing(1,2,2,30,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 11, 20);
         accessShowing.updateShowing(newShowing);
@@ -169,7 +170,8 @@ public class AccessShowingTest extends TestCase {
         assertEquals(newShowing.getSeats(),accessShowing.getShowing(1).getSeats());
         assertEquals(newShowing.getShowingID(),accessShowing.getShowing(1).getShowingID());
         assertEquals(newShowing.getTheatreID(),accessShowing.getShowing(1).getTheatreID());
-        assertEquals(newShowing.getShowingTime(),accessShowing.getShowing(1).getShowingTime());
+        assertEquals(newShowing.getShowingHour(),accessShowing.getShowing(1).getShowingHour());
+        assertEquals(newShowing.getShowingMinute(),accessShowing.getShowing(1).getShowingMinute());
 
         Services.closeDataAccess();
         System.out.println("\nFinished updateShowing tests (using stub)");
