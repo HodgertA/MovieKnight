@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPager();
     }
 
-    private void setUpBottomNavigation()
-    {
+    private void setUpBottomNavigation() {
         bottomNav.setOnNavigationItemSelectedListener((item) -> {
             switch(item.getItemId()) {
                 case R.id.nav_movie_list:
@@ -78,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             public void onPageScrollStateChanged(int state) {
                 super.onPageScrollStateChanged(state);
                 viewPagerAdapter.updateTicketFragment();
-
             }
         });
     }

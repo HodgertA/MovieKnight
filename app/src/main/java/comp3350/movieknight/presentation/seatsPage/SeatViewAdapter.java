@@ -68,6 +68,10 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
         });
     }
 
+    public ArrayList getSelectedSeats() {
+        return selectedSeats;
+    }
+
     @Override
     public int getItemCount() {
         return seats.length;
