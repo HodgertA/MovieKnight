@@ -2,18 +2,14 @@ package comp3350.movieknight.presentation.cartFragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -21,12 +17,9 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
-import comp3350.movieknight.persistence.DataAccess;
-import comp3350.movieknight.presentation.seatsPage.SeatsFragment;
 
 public class CartFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters
     private static final String ARG_PARAM1 = "movieTitle";
     private static final String ARG_PARAM2 = "movieTime";
@@ -36,7 +29,6 @@ public class CartFragment extends Fragment {
     private static final String ARG_PARAM6 = "showingId";
     private static final String ARG_PARAM7 = "selectedSeats";
 
-    // TODO: Rename and change types of parameters
     private String movieTitle;
     private String movieTime;
     private int numTickets;
@@ -53,16 +45,6 @@ public class CartFragment extends Fragment {
 
     public CartFragment() { }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param movieTitle Parameter 1.
-     * @param movieTime Parameter 2.
-     * @param numTickets Parameter 3.
-     * @return A new instance of fragment cartFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CartFragment newInstance(String movieTitle, String movieTime, int numTickets) {
         CartFragment fragment = new CartFragment();
         Bundle args = new Bundle();
