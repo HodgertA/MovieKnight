@@ -21,13 +21,17 @@ import comp3350.movieknight.business.AccessMovies;
 
 public class MovieListFragment extends Fragment {
     private static final int ITEMS_PER_ROW = 2;
-    private static final int userID = 1;
+    private int userID;
     private Fragment childFragment;
     private Context context;
     private ArrayList<Movie> movies;
     private RecyclerView movieListRecyclerView;
 
     private AccessMovies accessMovies;
+
+    public MovieListFragment(int userID){
+        this.userID = userID;
+    }
 
     @Nullable
     @Override
@@ -67,7 +71,7 @@ public class MovieListFragment extends Fragment {
     }
 
     //Remove child fragment (MovieDescriptionFragment) from stack of fragment to show parent fragment(MovieListFragment)
-    public void finishMyChild(){
+    public void finishMyChild() {
         movieListRecyclerView.setVisibility(View.VISIBLE);
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

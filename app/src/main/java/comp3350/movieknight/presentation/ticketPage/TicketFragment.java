@@ -24,18 +24,24 @@ public class TicketFragment extends Fragment {
     private TicketRecyclerViewAdapter adapter;
     private ArrayList<Ticket> tickets;
     private AccessTickets accessTickets;
+    private int userID;
 
+    public TicketFragment(int userID){
+        this.userID = userID;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_ticket, container, false);
+        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         accessTickets = new AccessTickets();
-        tickets = accessTickets.getUserTickets(1);
 
-        ticketRecyclerView = view.findViewById(R.id.tickets_recycler_view);
+        tickets= accessTickets.getUserTickets(userID);
+
+        ticketRecyclerView=view.findViewById(R.id.tickets_recycler_view);
         ticketRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new TicketRecyclerViewAdapter(tickets);
+        adapter=new TicketRecyclerViewAdapter(tickets);
         ticketRecyclerView.setAdapter(adapter);
+
 
         return view;
     }
