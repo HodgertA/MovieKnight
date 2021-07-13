@@ -18,18 +18,18 @@ public class AccessShowingTest extends TestCase {
 
     private static String dbName = Main.dbName;
 
-    public void testGetShowingForMovieByDate(){
+    public void testGetShowingForMovieByDate() {
         System.out.println("\nStarting getShowingForMovieByDate tests (using stub)");
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
 
-        AccessShowing accessShowing=new AccessShowing();
-        ArrayList<Showing> showings=new ArrayList<>();
+        AccessShowing accessShowing =new AccessShowing();
+        ArrayList<Showing> showings =new ArrayList<>();
 
-        Calendar day=Calendar.getInstance();
+        Calendar day = Calendar.getInstance();
 
-        //day1 to day 7
-        for(int i=0;i<7;i++){
+
+        for(int i = 0;i<7;i++) {
             accessShowing.getShowingForMovieByDate(showings,1,day);
             assertEquals(2,showings.size());
             assertTrue(showings.contains(new Showing(1+i*12,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15)));
@@ -70,18 +70,18 @@ public class AccessShowingTest extends TestCase {
 
     }
 
-    public void testGetShowing(){
+    public void testGetShowing() {
         System.out.println("\nStarting getShowing tests (using stub)");
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
 
-        AccessShowing accessShowing=new AccessShowing();
+        AccessShowing accessShowing = new AccessShowing();
         Showing showing;
 
-        Calendar day=Calendar.getInstance();
+        Calendar day = Calendar.getInstance();
 
-        //day1 to day 7
-        for(int i=0;i<7;i++) {
+
+        for(int i = 0;i<7;i++) {
             showing = accessShowing.getShowing(1+i*12);
             assertEquals(showing,new Showing(1+i*12,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15));
 
@@ -126,16 +126,16 @@ public class AccessShowingTest extends TestCase {
     }
 
 
-    public void testInsertShowing(){
+    public void testInsertShowing() {
         System.out.println("\nStarting insertShowing tests (using stub)");
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
 
-        AccessShowing accessShowing=new AccessShowing();
+        AccessShowing accessShowing = new AccessShowing();
 
         assertNull(accessShowing.getShowing(100));
 
-        Showing newShowing=new Showing(100);
+        Showing newShowing = new Showing(100);
         accessShowing.insertShowing(newShowing);
 
         assertNotNull(accessShowing.getShowing(100));
@@ -144,16 +144,16 @@ public class AccessShowingTest extends TestCase {
         System.out.println("\nFinished insertShowing tests (using stub)");
     }
 
-    public void testUpdateShowing(){
+    public void testUpdateShowing() {
         System.out.println("\nStarting updateShowing tests (using stub)");
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
 
-        AccessShowing accessShowing=new AccessShowing();
+        AccessShowing accessShowing = new AccessShowing();
 
-        Calendar day=Calendar.getInstance();
+        Calendar day = Calendar.getInstance();
 
-        Showing oldShowing=new Showing(1,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15);
+        Showing oldShowing = new Showing(1,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15);
 
 
         assertEquals(oldShowing.getMovieID(),accessShowing.getShowing(1).getMovieID());
@@ -162,7 +162,7 @@ public class AccessShowingTest extends TestCase {
         assertEquals(oldShowing.getTheatreID(),accessShowing.getShowing(1).getTheatreID());
         assertEquals(oldShowing.getShowingTime(),accessShowing.getShowing(1).getShowingTime());
 
-        Showing newShowing=new Showing(1,2,2,30,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 11, 20);
+        Showing newShowing = new Showing(1,2,2,30,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 11, 20);
         accessShowing.updateShowing(newShowing);
 
         assertEquals(newShowing.getMovieID(),accessShowing.getShowing(1).getMovieID());
@@ -175,20 +175,18 @@ public class AccessShowingTest extends TestCase {
         System.out.println("\nFinished updateShowing tests (using stub)");
     }
 
-    public void testDeleteShowing(){
+    public void testDeleteShowing() {
         System.out.println("\nStarting deleteShowing tests (using stub)");
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
 
-        AccessShowing accessShowing=new AccessShowing();
+        AccessShowing accessShowing = new AccessShowing();
         Showing showing;
-        // 84 showings in DB
-        for(int i=1;i<85;i++){
-            showing=accessShowing.getShowing(i);
+        for(int i = 1;i<85;i++) {
+            showing = accessShowing.getShowing(i);
             assertNotNull(showing);
             accessShowing.deleteShowing(showing);
             assertNull(accessShowing.getShowing(i));
-
         }
         Services.closeDataAccess();
         System.out.println("\nFinished deleteShowing tests (using stub)");

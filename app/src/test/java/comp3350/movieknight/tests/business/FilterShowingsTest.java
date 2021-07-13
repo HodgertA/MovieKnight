@@ -28,7 +28,7 @@ public class FilterShowingsTest extends TestCase {
         System.out.println("Finished filter movies test: testNullList");
     }
 
-    public void testEmptyList(){
+    public void testEmptyList() {
         System.out.println("Starting filter movies test: testEmptyList");
 
         Calendar today = Calendar.getInstance();
@@ -40,7 +40,7 @@ public class FilterShowingsTest extends TestCase {
         System.out.println("Finished filter movies test: testEmptyList");
     }
 
-    public void testNullList(){
+    public void testNullList() {
         System.out.println("Starting filter movies test: testNullList");
 
         Calendar today = Calendar.getInstance();
@@ -52,7 +52,7 @@ public class FilterShowingsTest extends TestCase {
         System.out.println("Finished filter movies test: testNullList");
     }
 
-    public void testAllMoviesShowingToday(){
+    public void testAllMoviesShowingToday() {
         System.out.println("Starting filter movies test: testAllMoviesShowingToday");
 
         Calendar today = Calendar.getInstance();
@@ -77,15 +77,15 @@ public class FilterShowingsTest extends TestCase {
 
     }
 
-    public void testNoMoviesShowingToday(){
+    public void testNoMoviesShowingToday() {
         System.out.println("Starting filter movies test: testNoMoviesShowingToday");
 
         Calendar today = Calendar.getInstance();
-        Calendar differentDay=Calendar.getInstance();
+        Calendar differentDay = Calendar.getInstance();
         differentDay.add(Calendar.DATE,1);
-        Calendar differentMonth=Calendar.getInstance();
+        Calendar differentMonth = Calendar.getInstance();
         differentMonth.add(Calendar.MONTH,1);
-        Calendar differentYear=Calendar.getInstance();
+        Calendar differentYear = Calendar.getInstance();
         differentYear.add(Calendar.YEAR,1);
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
@@ -101,17 +101,17 @@ public class FilterShowingsTest extends TestCase {
 
     }
 
-    public void testSomeMoviesShowingToday(){
+    public void testSomeMoviesShowingToday() {
 
         System.out.println("Starting filter movies test: testSomeMoviesShowingToday");
 
-        Calendar today=Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
 
-        Calendar differentDay=Calendar.getInstance();
+        Calendar differentDay = Calendar.getInstance();
         differentDay.add(Calendar.DATE,1);
-        Calendar differentMonth=Calendar.getInstance();
+        Calendar differentMonth = Calendar.getInstance();
         differentMonth.add(Calendar.MONTH,1);
-        Calendar differentYear=Calendar.getInstance();
+        Calendar differentYear = Calendar.getInstance();
         differentYear.add(Calendar.YEAR,1);
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
@@ -136,10 +136,10 @@ public class FilterShowingsTest extends TestCase {
         System.out.println("Finished filter movies test: testNormalCase");
     }
 
-    public void testAllMoviesShowingForFutureDate(){
+    public void testAllMoviesShowingForFutureDate() {
         System.out.println("Starting filter movies test: testAllMoviesShowingForFutureDate");
 
-        Calendar futureDate=Calendar.getInstance();
+        Calendar futureDate = Calendar.getInstance();
         futureDate.add(Calendar.DATE,1);
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
@@ -163,7 +163,7 @@ public class FilterShowingsTest extends TestCase {
 
     }
 
-    public void testNoMoviesShowingForFutureDate(){
+    public void testNoMoviesShowingForFutureDate() {
         System.out.println("Starting filter movies test: testNoMoviesShowingForFutureDate");
 
         Calendar today = Calendar.getInstance();
@@ -187,17 +187,17 @@ public class FilterShowingsTest extends TestCase {
 
     }
 
-    public void testSomeMoviesShowingForFutureDate(){
+    public void testSomeMoviesShowingForFutureDate() {
 
         System.out.println("Starting filter movies test: testSomeMoviesShowingForFutureDate");
 
-        Calendar today=Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
 
-        Calendar tomorrow=Calendar.getInstance();
+        Calendar tomorrow = Calendar.getInstance();
         tomorrow.add(Calendar.DATE,1);
-        Calendar differentMonth=Calendar.getInstance();
+        Calendar differentMonth = Calendar.getInstance();
         differentMonth.add(Calendar.MONTH,1);
-        Calendar differentYear=Calendar.getInstance();
+        Calendar differentYear = Calendar.getInstance();
         differentYear.add(Calendar.YEAR,1);
 
         ArrayList<Showing> showings = new ArrayList<Showing>();
