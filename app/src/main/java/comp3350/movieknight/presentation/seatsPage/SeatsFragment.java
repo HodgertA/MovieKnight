@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +18,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
@@ -133,12 +134,14 @@ public class SeatsFragment extends Fragment {
     public void openCartPage() {
 
         numberOfSeats = adapter.numOfSeats;
+        ArrayList<Integer> selectedSeats = adapter.selectedSeats;
         linearLayout.setVisibility(View.GONE);
         this.getParentFragment().setMenuVisibility(false);
         childFragment = new CartFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("showingId", showingID);
         bundle.putInt("numSeats", numberOfSeats);
+        bundle.putIntegerArrayList("selectedSeats", selectedSeats);
         bundle.putInt("userId", userID);
 
         // parse movie info to next screen

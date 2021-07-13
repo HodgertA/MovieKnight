@@ -7,20 +7,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -60,7 +55,6 @@ public class MovieDescriptionFragment extends Fragment {
     private ImageView imageViewMovieImage;
     private TextView textViewMovieDesc;
 
-
     private AccessShowing accessShowing;
     private ArrayList<Showing> showings;
     private RecyclerView showingTimeRecyclerView;
@@ -71,8 +65,7 @@ public class MovieDescriptionFragment extends Fragment {
     private Calendar selectDate;
     private ImageButton backButton;
 
-    public MovieDescriptionFragment() {
-    }
+    public MovieDescriptionFragment() { }
 
     public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieID, int userID) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
@@ -93,9 +86,9 @@ public class MovieDescriptionFragment extends Fragment {
             movieTitle = getArguments().getString(ARG_PARAM1);
             moviePoster = getArguments().getInt(ARG_PARAM2);
             movieDesc = getArguments().getString(ARG_PARAM3);
-            movieID=getArguments().getInt(ARG_PARAM4);
-            userID=getArguments().getInt(ARG_PARAM5);
-            selectDate=Calendar.getInstance();
+            movieID = getArguments().getInt(ARG_PARAM4);
+            userID = getArguments().getInt(ARG_PARAM5);
+            selectDate = Calendar.getInstance();
         }
     }
 
@@ -103,16 +96,15 @@ public class MovieDescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
 
-        accessShowing=new AccessShowing();
+        accessShowing = new AccessShowing();
 
-        showings =new ArrayList<>();
+        showings = new ArrayList<>();
         String result = accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
 
-
-        if(result == null) {
+        if (result == null) {
             showingTimeRecyclerView= view.findViewById(R.id.show_time_recycler_view);
             showingTimeRecyclerView.setLayoutManager(new GridLayoutManager(context, 1));
         }
@@ -120,7 +112,7 @@ public class MovieDescriptionFragment extends Fragment {
         ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
         showingTimeRecyclerView.setAdapter(adapter);
 
-        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 selectDate.set(Calendar.YEAR,year);
@@ -143,7 +135,7 @@ public class MovieDescriptionFragment extends Fragment {
 
         selectDate.add(Calendar.DATE,6);
         datePicker.getDatePicker().setMaxDate(selectDate.getTimeInMillis());
-        dateButton= view.findViewById(R.id.date_button);
+        dateButton = view.findViewById(R.id.date_button);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

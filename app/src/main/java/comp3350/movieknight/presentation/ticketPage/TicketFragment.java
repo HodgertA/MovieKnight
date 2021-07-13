@@ -35,13 +35,12 @@ public class TicketFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         accessTickets = new AccessTickets();
 
-        tickets= accessTickets.getUserTickets(userID);
+        tickets = accessTickets.getUserTickets(userID);
 
-        ticketRecyclerView=view.findViewById(R.id.tickets_recycler_view);
+        ticketRecyclerView = view.findViewById(R.id.tickets_recycler_view);
         ticketRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter=new TicketRecyclerViewAdapter(tickets);
         ticketRecyclerView.setAdapter(adapter);
-
 
         return view;
     }

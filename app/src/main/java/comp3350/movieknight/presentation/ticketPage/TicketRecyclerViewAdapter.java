@@ -49,7 +49,7 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
             String showingTime = String.valueOf(showing.getShowingTime());
             String[] time = showingTime.split("\\.");
 
-            if(time[1].length()<2){
+            if(time[1].length() < 2){
                 time[1] += '0';
             }
             holder.getShowingTime().setText(time[0] + ":" + time[1]);

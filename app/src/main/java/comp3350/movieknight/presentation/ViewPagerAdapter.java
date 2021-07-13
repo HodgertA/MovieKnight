@@ -39,7 +39,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
         return NUM_FRAGMENTS;
     }
 
-    public void updateTicketFragment(){
+    public void updateTicketFragment() {
         if(ticketFragment!=null)
         ticketFragment.updateTickets();
     }

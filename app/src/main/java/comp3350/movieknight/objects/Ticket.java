@@ -47,14 +47,14 @@ public class Ticket {
 
     public boolean equals(Object object) {
 
-        boolean result=false;
+        boolean result = false;
         Ticket ticket;
 
         if(object instanceof Ticket) {
-            ticket=(Ticket) object;
+            ticket = (Ticket) object;
 
             if(ticket.showingID == showingID && ticket.seatNum == seatNum) {
-                result=true;
+                result = true;
             }
         }
 

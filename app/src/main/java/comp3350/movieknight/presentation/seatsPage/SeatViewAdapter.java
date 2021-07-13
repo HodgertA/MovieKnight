@@ -18,12 +18,16 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
 
     private boolean[] seats;
     private boolean[] unavailableSeats;
-    private ArrayList<Integer> selectedSeats;
+    public ArrayList<Integer> selectedSeats;
     private Context context;
-    public int numOfSeats=0;
+    private final int FULL_OPACITY = 255;
+    private final int QUARTER_OPACITY = 64;
+    private final boolean DEFAULT_ENABLED = true;
+    public int numOfSeats = 0;
 
     public SeatViewAdapter(Context context, SeatsFragment seatsFragment, boolean []seats) {
         this.seats = seats;
+        unavailableSeats = seats.clone();
         unavailableSeats = new boolean[seats.length];
         System.arraycopy(seats, 0, unavailableSeats, 0, seats.length);
         this.selectedSeats = new ArrayList<>();
@@ -41,14 +45,30 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull @NotNull SeatViewHolder holder, int position) {
         ImageButton seat = holder.getSeatView();
-        if(!seats[position]) {
-            if(!unavailableSeats[position]) {
-                seat.setEnabled(false);
-                seat.setAlpha(64);
+        seat.setEnabled(DEFAULT_ENABLED);
+        seat.setImageAlpha(FULL_OPACITY);
+        if (!seats[position]) {
+            if (!unavailableSeats[position]) {
+                seat.setEnabled(!DEFAULT_ENABLED);
+                seat.setImageAlpha(QUARTER_OPACITY);
+//                seat.setEnabled(false);
+//                seat.setAlpha(64);
             }
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.reserved_seat));
         } else {
-            seat.setImageDrawable(context.getResources().getDrawable(R.drawable.available_seat));
+            holder.getSeatView().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    seats[position] = !seats[position];
+                    if (!seats[position] && !selectedSeats.contains(position)) {
+                        selectedSeats.add(position);
+                        numOfSeats++;
+                    } else {
+                        selectedSeats.remove((Integer) position);
+                        seat.setImageDrawable(context.getResources().getDrawable(R.drawable.available_seat));
+                    }
+                }
+            });
         }
 
         holder.getSeatView().setOnClickListener(new View.OnClickListener() {

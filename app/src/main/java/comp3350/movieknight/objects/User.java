@@ -2,8 +2,7 @@ package comp3350.movieknight.objects;
 
 import org.jetbrains.annotations.NotNull;
 
-public class User
-{
+public class User {
     private int userID;
     private String username;
 
