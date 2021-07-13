@@ -7,8 +7,7 @@ public class User
     private int userID;
     private String username;
 
-    public User(int newId, String username)
-    {
+    public User(int newId, String username) {
         if (newId >= 0) {
             userID = newId;
             this.username = username;
@@ -32,8 +31,7 @@ public class User
         return "User: " + userID + " " + username;
     }
 
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         boolean result;
         User user;
 
