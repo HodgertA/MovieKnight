@@ -18,18 +18,17 @@ import comp3350.movieknight.business.AccessShowing;
 import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Ticket;
-import comp3350.movieknight.presentation.movieListPage.MovieItemViewHolder;
 
 public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHolder> {
     private ArrayList<Ticket> tickets;
     private AccessShowing accessShowing;
     private AccessMovies accessMovies;
-    public TicketRecyclerViewAdapter(ArrayList<Ticket> tickets){
-        this.tickets=tickets;
-        accessShowing=new AccessShowing();
-        accessMovies=new AccessMovies();
-    }
 
+    public TicketRecyclerViewAdapter(ArrayList<Ticket> tickets){
+        this.tickets = tickets;
+        accessShowing = new AccessShowing();
+        accessMovies = new AccessMovies();
+    }
 
     @NonNull
     @NotNull
@@ -44,18 +43,18 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     public void onBindViewHolder(@NonNull @NotNull TicketViewHolder holder, int position) {
         Showing showing=accessShowing.getShowing(tickets.get(position).getShowingID());
 
-            String ticketDate=String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
+            String ticketDate = String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
             holder.getTicketDate().setText(ticketDate);
 
-            String showingTime=String.valueOf(showing.getShowingTime());
-            String[] time=showingTime.split("\\.");
+            String showingTime = String.valueOf(showing.getShowingTime());
+            String[] time = showingTime.split("\\.");
 
             if(time[1].length()<2){
-                time[1]+='0';
+                time[1] += '0';
             }
             holder.getShowingTime().setText(time[0] + ":" + time[1]);
 
-            Movie movie=accessMovies.getMovie(showing.getMovieID());
+            Movie movie = accessMovies.getMovie(showing.getMovieID());
 
             holder.getMovieTitle().setText(movie.getTitle());
 

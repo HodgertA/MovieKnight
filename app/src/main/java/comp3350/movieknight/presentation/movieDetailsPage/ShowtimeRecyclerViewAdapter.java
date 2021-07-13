@@ -19,10 +19,9 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
     private ArrayList<Showing> showings;
     private MovieDescriptionFragment movieDescriptionFragment;
     public ShowtimeRecyclerViewAdapter(Context context, MovieDescriptionFragment movieDescriptionFragment, ArrayList<Showing> showings){
-        this.context=context;
-        this.showings=showings;
+        this.context = context;
+        this.showings = showings;
         this.movieDescriptionFragment = movieDescriptionFragment;
-
     }
 
     @NonNull
