@@ -51,7 +51,7 @@ public class AccessTicketsTest extends TestCase {
         //empty list test done
 
 
-        //fill list test
+        //full list test
         selectedSeats = new ArrayList<>();
         for(int i = 0;i<24;i++) {
             selectedSeats.add(i);
@@ -63,7 +63,7 @@ public class AccessTicketsTest extends TestCase {
         for(int i = 0;i<24;i++) {
             assertTrue(tickets.contains(new Ticket(6,20,i)));
         }
-        //fill list test done
+        //full list test done
         Services.closeDataAccess();
         System.out.println("\nFinished createTickets tests (using stub)");
     }
