@@ -14,7 +14,6 @@ public class FindAvailableSeats {
 
         Iterator<Ticket> itr = tickets.iterator();
         while (itr.hasNext()) {
-
             Ticket ticket = itr.next();
             result[ticket.getSeatNum()] = false;
         }
