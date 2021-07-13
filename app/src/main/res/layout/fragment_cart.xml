@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.cartFragment.CartFragment">
+    tools:context=".presentation.cartFragment.CartFragment"
+    android:id="@+id/cart_fragment_container">
 
     <!-- TODO: Update blank fragment layout -->
 

@@ -7,11 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -33,6 +33,7 @@ public class SeatsFragment extends Fragment {
     private Context context;
     private RecyclerView seatsRecyclerView;
     private ImageButton backButton;
+    private TextView screenText;
     RecyclerView.LayoutManager layoutManager;
     private int showingID;
     private int userID;
@@ -52,12 +53,11 @@ public class SeatsFragment extends Fragment {
     private AccessTickets accessTickets;
     private CartFragment childFragment;
     private Button btnCheckout;
-    private LinearLayout linearLayout;
     private SeatViewAdapter adapter;
 
     public SeatsFragment() { }
 
-    public static SeatsFragment newInstance(int showingId, int numberOfSeats, int userID) {
+    public static SeatsFragment newInstance (int showingId, int numberOfSeats, int userID) {
         SeatsFragment fragment = new SeatsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, showingId);
@@ -90,6 +90,7 @@ public class SeatsFragment extends Fragment {
         accessTickets = new AccessTickets();
 
         seats = accessTickets.compileSeatAvailability(showingID, numberOfSeats);
+        screenText = view.findViewById(R.id.screen_textView);
 
         seatsRecyclerView = view.findViewById(R.id.seats_recycler_view);
         layoutManager = new GridLayoutManager(context, ITEMS_PER_ROW);
@@ -115,32 +116,32 @@ public class SeatsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setHasOptionsMenu(true);
-
         btnCheckout = view.findViewById(R.id.btn_checkout);
-        linearLayout = view.findViewById(R.id.linearLayout);
 
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCartPage();
+                if(adapter.getSelectedSeats().size() > 0) {
+                    openCartPage();
+                } else {
+                    Toast.makeText(context,"No seats selected",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
     public void openCartPage() {
+        ArrayList<Integer> selectedSeats = adapter.getSelectedSeats();
+        backButton.setVisibility(View.GONE);
+        seatsRecyclerView.setVisibility(View.GONE);
+        screenText.setVisibility(View.GONE);
+        btnCheckout.setVisibility(View.GONE);
 
-        numberOfSeats = adapter.numOfSeats;
-        ArrayList<Integer> selectedSeats = adapter.selectedSeats;
-        linearLayout.setVisibility(View.GONE);
         this.getParentFragment().setMenuVisibility(false);
         childFragment = new CartFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("showingId", showingID);
-        bundle.putInt("numSeats", numberOfSeats);
+        bundle.putInt("numSeats", selectedSeats.size());
         bundle.putIntegerArrayList("selectedSeats", selectedSeats);
         bundle.putInt("userId", userID);
 
@@ -151,6 +152,6 @@ public class SeatsFragment extends Fragment {
 
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.add(R.id.seat_fragment_container, childFragment).commit();
+        transaction.replace(R.id.seat_fragment_container, childFragment).addToBackStack(null).commit();
     }
 }

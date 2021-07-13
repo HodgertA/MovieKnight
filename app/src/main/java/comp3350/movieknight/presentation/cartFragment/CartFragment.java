@@ -7,11 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -97,10 +99,6 @@ public class CartFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         accessTickets = new AccessTickets();
 
-//        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        setHasOptionsMenu(true);
-
         textViewMovieName = view.findViewById(R.id.textViewMovieName);
         textViewMovieTime = view.findViewById(R.id.textViewMovieTime);
         textViewNumOfTickets = view.findViewById(R.id.textViewNumOfTickets);
@@ -113,26 +111,13 @@ public class CartFragment extends Fragment {
         btn_paybill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                passToDatabase(v);
+                passToDatabase();
             }
         });
-
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            Fragment fragment = CartFragment.this.getParentFragment();
-            SeatsFragment frag = (SeatsFragment) fragment;
-            //frag.finishMyChild();
-
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void passToDatabase(View v) {
-        accessTickets.createTicket(userID,selectedSeats,showingID);
+    public void passToDatabase() {
+        accessTickets.createTicket(userID, selectedSeats, showingID);
+        getChildFragmentManager().popBackStack();
     }
 }
