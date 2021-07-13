@@ -21,8 +21,8 @@ public class FilterMoviesTest extends TestCase {
 
         try {
             FilterList.filterMoviesInTheatres(movies);
-            fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+            fail("Expected an NullPointerException");
+        } catch (NullPointerException ex) {}
 
         System.out.println("Finished filter movies test: testNullList");
 

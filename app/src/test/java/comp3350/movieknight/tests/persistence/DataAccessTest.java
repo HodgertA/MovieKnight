@@ -162,7 +162,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
-        assertEquals(8.15, showing.getShowingTime());
+        assertEquals(8, showing.getShowingHour());
+        assertEquals(15, showing.getShowingMinute());
 
         showing = showings.get(12);
         day.add(Calendar.DATE, 1);
@@ -174,7 +175,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
-        assertEquals(8.15, showing.getShowingTime());
+        assertEquals(8, showing.getShowingHour());
+        assertEquals(15, showing.getShowingMinute());
 
 
         showing = showings.get(41);
@@ -187,7 +189,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
-        assertEquals(12.55, showing.getShowingTime());
+        assertEquals(12, showing.getShowingHour());
+        assertEquals(55, showing.getShowingMinute());
 
         showing = showings.get(69);
         day.add(Calendar.DATE, 2);
@@ -199,7 +202,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
-        assertEquals(20.35, showing.getShowingTime());
+        assertEquals(20, showing.getShowingHour());
+        assertEquals(35, showing.getShowingMinute());
 
         showings.clear();
         result = dataAccess.getMovieShowings(showings, 1);
@@ -249,7 +253,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
-        assertEquals(9.45, showing.getShowingTime());
+        assertEquals(9, showing.getShowingHour());
+        assertEquals(45, showing.getShowingMinute());
 
         System.out.println("Finished DataAccess Test: testDefaultShowings");
     }
@@ -459,7 +464,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(today.get(Calendar.YEAR), showing.getShowingDate().get(Calendar.YEAR));
         assertEquals(today.get(Calendar.MONTH), showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(today.get(Calendar.DATE), showing.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.15, showing.getShowingTime());
+        assertEquals(10, showing.getShowingHour());
+        assertEquals(15, showing.getShowingMinute());
 
         showings.clear();
         result = dataAccess.getTheatreShowings(showings, 1);
@@ -489,7 +495,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(today.get(Calendar.YEAR), showing.getShowingDate().get(Calendar.YEAR));
         assertEquals(today.get(Calendar.MONTH), showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(today.get(Calendar.DATE), showing.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.15, showing.getShowingTime());
+        assertEquals(10, showing.getShowingHour());
+        assertEquals(15, showing.getShowingMinute());
 
         showings.clear();
         result = dataAccess.getTheatreShowings(showings, 1);
@@ -1107,7 +1114,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showing.getShowingDate().get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showing.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.15, showing.getShowingTime());
+        assertEquals(10, showing.getShowingHour());
+        assertEquals(15, showing.getShowingMinute());
 
         showings.clear();
         result = dataAccess.getTheatreShowings(showings, 1);
@@ -1137,7 +1145,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showing.getShowingDate().get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showing.getShowingDate().get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showing.getShowingDate().get(Calendar.DATE));
-        assertEquals(10.15, showing.getShowingTime());
+        assertEquals(10, showing.getShowingHour());
+        assertEquals(15, showing.getShowingMinute());
 
         showings.clear();
         result = dataAccess.getTheatreShowings(showings, 1);

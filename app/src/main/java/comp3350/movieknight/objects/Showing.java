@@ -9,18 +9,20 @@ public class Showing {
     private int movieID;
     private int theatreID;
     private Calendar showingDate;
-    private double showingTime;
+    private int showingHour;
+    private int showingMinute;
     private int seats;
 
     public Showing(int showingID) {
         if(showingID>=0) {
-            this.showingID=showingID;
-            this.movieID=0;
-            this.theatreID=0;
-            this.showingDate=null;
-            this.showingTime=0d;
+            this.showingID = showingID;
+            this.movieID = 0;
+            this.theatreID = 0;
+            this.showingDate = null;
+            this.showingHour = 0;
+            this.showingMinute = 0;
             this.seats=0;
-        }else {
+        } else {
             throw new IllegalArgumentException();
         }
     }
@@ -32,7 +34,8 @@ public class Showing {
             this.theatreID = theatreID;
             this.showingDate = Calendar.getInstance();
             this.showingDate.set(year, month-1, date, hour, minute);
-            this.showingTime = hour + ( minute / 100.0);
+            this.showingHour = hour;
+            this.showingMinute = minute;
         } else {
             throw new IllegalArgumentException();
         }
@@ -54,13 +57,15 @@ public class Showing {
         return theatreID;
     }
 
-    public double getShowingTime() { return showingTime;}
+    public int getShowingHour() { return showingHour; }
+
+    public int getShowingMinute() { return showingMinute; }
 
     public int getSeats() { return seats; }
 
     @NotNull
     public String toString() {
-        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing time: " + showingDate.get(Calendar.YEAR) + " " + (showingDate.get(Calendar.MONTH)+1)+" " + showingDate.get(Calendar.DATE) + " at " + showingTime;
+        return "Showing: "+ showingID + ", Movie: " + movieID + ", Theatre: " + theatreID + ", Showing time: " + showingDate.get(Calendar.YEAR) + " " + (showingDate.get(Calendar.MONTH)+1)+" " + showingDate.get(Calendar.DATE) + " at " + showingHour + ":" + showingMinute;
     }
 
     public boolean equals(Object object) {
