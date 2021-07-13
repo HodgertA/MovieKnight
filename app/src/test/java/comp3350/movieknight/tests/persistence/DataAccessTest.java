@@ -222,6 +222,17 @@ public class DataAccessTest extends TestCase {
         assertNull(result);
         assertEquals(84, showings.size());
 
+        day.add(Calendar.DATE, -5);
+        showing = new Showing(12, 1, 1, 24, 1, 1, 1, 1, 1);
+        showing = dataAccess.getShowing(showing);
+        assertEquals(5, showing.getMovieID());
+        assertEquals(1,showing.getTheatreID());
+        assertEquals(24, showing.getSeats());
+        showingDate = showing.getShowingDate();
+        assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
+        assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
+        assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
+
         System.out.println("Finished DataAccess Test: testDefaultShowings");
     }
 
@@ -737,6 +748,9 @@ public class DataAccessTest extends TestCase {
         dataAccess.getAllShowings(showings);
         assertEquals(84, showings.size());
 
+        showing = dataAccess.getShowing(showing);
+        assertNull(showing);
+
         ticket = new Ticket(3, 12, 3);
         result = dataAccess.updateTicket(ticket);
         assertEquals("Nonexistent Ticket", result);
@@ -1048,6 +1062,11 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.getAllShowings(showings);
         assertNull(result);
         assertEquals(0, showings.size());
+
+        showings.clear();
+        showing = dataAccess.getShowing(new Showing(1, 1, 1, 1, 1, 1, 1, 1,1));
+        showing = dataAccess.getShowing(showing);
+        assertNull(showing);
 
         showing = new Showing(85, 3, 1, 20, day.get(Calendar.YEAR), day.get(Calendar.MONTH)+1, day.get(Calendar.DATE), 10, 15);
         result = dataAccess.insertShowing(showing);
