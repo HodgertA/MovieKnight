@@ -10,16 +10,14 @@ import org.jetbrains.annotations.NotNull;
 import comp3350.movieknight.R;
 
 public class TicketViewHolder extends RecyclerView.ViewHolder {
-    private TextView movieTitle,ticketDate,showingTime;
 
-
+    private TextView movieTitle, ticketDate, showingTime;
 
     public TicketViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
-        movieTitle=itemView.findViewById(R.id.ticket_movie_title);
-        ticketDate=itemView.findViewById(R.id.ticket_date);
-        showingTime=itemView.findViewById(R.id.ticket_showing_time);
-
+        movieTitle = itemView.findViewById(R.id.ticket_movie_title);
+        ticketDate = itemView.findViewById(R.id.ticket_date);
+        showingTime = itemView.findViewById(R.id.ticket_showing_time);
     }
 
     public TextView getMovieTitle(){
@@ -29,6 +27,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder {
     public TextView getTicketDate(){
         return ticketDate;
     }
+
     public TextView getShowingTime(){
         return showingTime;
     }

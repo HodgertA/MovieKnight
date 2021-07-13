@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setUpViewPager();
     }
 
-    private void setUpBottomNavigation()
-    {
+    private void setUpBottomNavigation() {
         bottomNav.setOnNavigationItemSelectedListener((item) -> {
             switch(item.getItemId()) {
                 case R.id.nav_movie_list:
@@ -52,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpViewPager()
-    {
+    private void setUpViewPager() {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle());
         viewPager.setAdapter(viewPagerAdapter);
 
@@ -87,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         Main.shutDown();
     }
 

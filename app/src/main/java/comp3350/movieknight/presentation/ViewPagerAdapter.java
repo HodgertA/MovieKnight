@@ -25,7 +25,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new MovieListFragment();
             case 1:
-
                 ticketFragment=new TicketFragment();
                 return ticketFragment;
             default:

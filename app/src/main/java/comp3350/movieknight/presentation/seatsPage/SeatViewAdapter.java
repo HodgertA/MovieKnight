@@ -53,6 +53,7 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
         } else {
             seat.setImageDrawable(context.getResources().getDrawable(R.drawable.available_seat));
         }
+
         holder.getSeatView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -7,20 +7,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -70,9 +65,6 @@ public class MovieDescriptionFragment extends Fragment {
     private Calendar selectDate;
     private ImageButton backButton;
 
-    public MovieDescriptionFragment() {
-    }
-
     public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieID, int userID) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
         Bundle args = new Bundle();
@@ -92,9 +84,9 @@ public class MovieDescriptionFragment extends Fragment {
             movieTitle = getArguments().getString(ARG_PARAM1);
             moviePoster = getArguments().getInt(ARG_PARAM2);
             movieDesc = getArguments().getString(ARG_PARAM3);
-            movieID=getArguments().getInt(ARG_PARAM4);
-            userID=getArguments().getInt(ARG_PARAM5);
-            selectDate=Calendar.getInstance();
+            movieID = getArguments().getInt(ARG_PARAM4);
+            userID = getArguments().getInt(ARG_PARAM5);
+            selectDate = Calendar.getInstance();
         }
     }
 
@@ -105,9 +97,9 @@ public class MovieDescriptionFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
 
-        accessShowing=new AccessShowing();
+        accessShowing = new AccessShowing();
 
-        showings =new ArrayList<>();
+        showings = new ArrayList<>();
         String result = accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
 
 
@@ -128,11 +120,10 @@ public class MovieDescriptionFragment extends Fragment {
                 showings.clear();
                 accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
                 adapter.notifyDataSetChanged();
-
             }
         };
 
-        datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
+        datePicker = new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
         datePicker.getDatePicker().setMinDate(selectDate.getTimeInMillis());
         datePicker.getDatePicker().setX(105);
         datePicker.getDatePicker().setY(20);
@@ -142,7 +133,7 @@ public class MovieDescriptionFragment extends Fragment {
 
         selectDate.add(Calendar.DATE,6);
         datePicker.getDatePicker().setMaxDate(selectDate.getTimeInMillis());
-        dateButton= view.findViewById(R.id.date_button);
+        dateButton = view.findViewById(R.id.date_button);
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
