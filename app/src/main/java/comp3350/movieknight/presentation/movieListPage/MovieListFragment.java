@@ -71,7 +71,7 @@ public class MovieListFragment extends Fragment {
     }
 
     //Remove child fragment (MovieDescriptionFragment) from stack of fragment to show parent fragment(MovieListFragment)
-    public void finishMyChild(){
+    public void finishMyChild() {
         movieListRecyclerView.setVisibility(View.VISIBLE);
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

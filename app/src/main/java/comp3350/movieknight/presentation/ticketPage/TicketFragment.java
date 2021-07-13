@@ -32,8 +32,8 @@ public class TicketFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_ticket, container, false);
-        accessTickets=new AccessTickets();
+        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
+        accessTickets = new AccessTickets();
 
         tickets= accessTickets.getUserTickets(userID);
 

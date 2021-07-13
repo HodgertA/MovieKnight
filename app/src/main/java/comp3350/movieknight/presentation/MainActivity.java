@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void setUpViewPager()
-    {
+    private void setUpViewPager() {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), loggedInUser);
         viewPager.setAdapter(viewPagerAdapter);
 
