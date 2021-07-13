@@ -52,7 +52,6 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         if (Integer.parseInt(showingMinute) < 10) {
             showingMinute = "0" + showingMinute;
         }
-
         holder.getShowingTime().setText(showingHour + ":" + showingMinute);
 
         Movie movie = accessMovies.getMovie(showing.getMovieID());

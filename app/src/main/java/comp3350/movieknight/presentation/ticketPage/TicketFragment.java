@@ -37,7 +37,7 @@ public class TicketFragment extends Fragment {
         tickets=new ArrayList<Ticket>();
         accessTickets.getUserTickets(tickets,userID);
 
-        ticketRecyclerView=view.findViewById(R.id.tickets_recycler_view);
+        ticketRecyclerView = view.findViewById(R.id.tickets_recycler_view);
         ticketRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter=new TicketRecyclerViewAdapter(tickets);
         ticketRecyclerView.setAdapter(adapter);

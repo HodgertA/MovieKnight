@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -54,7 +55,6 @@ public class MovieDescriptionFragment extends Fragment {
     private ImageView imageViewMovieImage;
     private TextView textViewMovieDesc;
 
-
     private AccessShowing accessShowing;
     private ArrayList<Showing> showings;
     private RecyclerView showingTimeRecyclerView;
@@ -64,6 +64,8 @@ public class MovieDescriptionFragment extends Fragment {
     private Button dateButton;
     private Calendar selectDate;
     private ImageButton backButton;
+
+    public MovieDescriptionFragment() { }
 
     public static MovieDescriptionFragment newInstance(String movieTitle, int moviePoster, String movieDesc,int movieID, int userID) {
         MovieDescriptionFragment fragment = new MovieDescriptionFragment();
@@ -94,7 +96,7 @@ public class MovieDescriptionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view=inflater.inflate(R.layout.fragment_movie_description, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie_description, container, false);
         context = requireContext();
 
         accessShowing = new AccessShowing();
@@ -102,8 +104,7 @@ public class MovieDescriptionFragment extends Fragment {
         showings = new ArrayList<>();
         String result = accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
 
-
-        if(result == null) {
+        if (result == null) {
             showingTimeRecyclerView= view.findViewById(R.id.show_time_recycler_view);
             showingTimeRecyclerView.setLayoutManager(new GridLayoutManager(context, 1));
         }
@@ -111,7 +112,7 @@ public class MovieDescriptionFragment extends Fragment {
         ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
         showingTimeRecyclerView.setAdapter(adapter);
 
-        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 selectDate.set(Calendar.YEAR,year);
@@ -120,10 +121,11 @@ public class MovieDescriptionFragment extends Fragment {
                 showings.clear();
                 accessShowing.getShowingForMovieByDate(showings,movieID,selectDate);
                 adapter.notifyDataSetChanged();
+
             }
         };
 
-        datePicker = new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
+        datePicker=new DatePickerDialog(context, AlertDialog.THEME_DEVICE_DEFAULT_DARK,dateSetListener,selectDate.get(Calendar.YEAR),selectDate.get(Calendar.MONTH),selectDate.get(Calendar.DATE));
         datePicker.getDatePicker().setMinDate(selectDate.getTimeInMillis());
         datePicker.getDatePicker().setX(105);
         datePicker.getDatePicker().setY(20);
@@ -175,12 +177,21 @@ public class MovieDescriptionFragment extends Fragment {
         dateButton.setVisibility(View.GONE);
         backButton.setVisibility(View.GONE);
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String selectedDate = dateFormat.format(selectDate.getTime());
+
         this.getParentFragment().setMenuVisibility(false);
         childFragment = new SeatsFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("showingId",showing.getShowingID());
         bundle.putInt("numSeats",showing.getSeats());
         bundle.putInt("userId",userID);
+
+        // parse movie info to next screen
+        bundle.putString("movieTitle", movieTitle);
+        bundle.putString("movieTime", String.valueOf(showing.getShowingHour() + ":" + showing.getShowingMinute()));
+        bundle.putString("movieDate", selectedDate);
+
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.movie_description_fragment_container, childFragment).addToBackStack(null).commit();

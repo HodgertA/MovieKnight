@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.cartFragment.CartFragment"
+    android:id="@+id/cart_fragment_container">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/orderSum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:gravity="center_horizontal"
+        android:text="Order Summary"
+        android:textSize="25dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/movieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="60dp"
+        android:text="Movie Name"
+        android:textSize="15dp"
+        />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="60dp"
+        android:text="Time"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/numOfTickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="240dp"
+        android:layout_marginTop="60dp"
+        android:text="Number of Ticket(s)"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/textViewMovieName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100dp"
+        android:layout_toLeftOf="@+id/date_button"
+        android:text="Textview"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/textViewMovieTime"
+        android:layout_toLeftOf="@+id/date_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="100dp"
+        android:text="Textview"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/textViewNumOfTickets"
+        android:layout_toLeftOf="@+id/date_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="290dp"
+        android:layout_marginTop="100dp"
+        android:text="Textview"
+        android:textSize="15dp"/>
+
+    <Button
+        android:id="@+id/btn_paybill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+       android:layout_marginStart="150dp"
+        android:text="Pay the bill" />
+
+</FrameLayout>
