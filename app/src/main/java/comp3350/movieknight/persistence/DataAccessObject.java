@@ -309,9 +309,8 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getAllShowings(List<Showing> showingResult) {
         Showing showing;
-        int showingID, movieID, theatreID, seats;
+        int showingID, movieID, theatreID, seats, showingHour, showingMinute;
         long showingDate;
-        double showingTime;
 
         result = null;
         try {
@@ -327,15 +326,14 @@ public class DataAccessObject implements DataAccess {
                 movieID = rs6.getInt("MovieID");
                 theatreID = rs6.getInt("TheatreID");
                 showingDate = rs6.getLong("ShowingDate");
-                showingTime = rs6.getDouble("ShowingTime");
+                showingHour = rs6.getInt("ShowingHour");
+                showingMinute = rs6.getInt("ShowingMinute");
                 seats = rs6.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
-                int hour = (int) Math.floor(showingTime);
-                int minute = (int) ((showingTime - hour)*100);
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), showingHour, showingMinute);
                 showingResult.add(showing);
             }
         } catch (Exception e) {
@@ -348,9 +346,8 @@ public class DataAccessObject implements DataAccess {
     @Override
     public Showing getShowing(Showing showing) {
 
-        int showingID, movieID, theatreID, seats;
+        int showingID, movieID, theatreID, seats, showingHour, showingMinute;
         long showingDate;
-        double showingTime;
         Showing result = null;
 
         try {
@@ -366,16 +363,15 @@ public class DataAccessObject implements DataAccess {
                 movieID = rs7.getInt("MovieID");
                 theatreID = rs7.getInt("TheatreID");
                 showingDate = rs7.getLong("ShowingDate");
-                showingTime = rs7.getDouble("ShowingTime");
+                showingHour = rs7.getInt("ShowingHour");
+                showingMinute = rs7.getInt("ShowingMinute");
                 seats = rs7.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
 
-                int hour = (int) Math.floor(showingTime);
-                int minute = (int) ((showingTime - hour)*100);
+                result = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE), showingHour, showingMinute);
 
-                result = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE),hour,minute);
             }
         }catch (Exception e){
             processSQLError(e);
@@ -387,9 +383,8 @@ public class DataAccessObject implements DataAccess {
     public String getMovieShowings(List<Showing> showingResult, int newMovieID) {
 
         Showing showing;
-        int showingID, movieID, theatreID, seats;
+        int showingID, movieID, theatreID, seats, showingHour, showingMinute;
         long showingDate;
-        double showingTime;
 
         try {
             cmdString = "Select * from Showings where MovieID=" + newMovieID;
@@ -405,15 +400,14 @@ public class DataAccessObject implements DataAccess {
                 movieID = rs8.getInt("MovieID");
                 theatreID = rs8.getInt("TheatreID");
                 showingDate = rs8.getLong("ShowingDate");
-                showingTime = rs8.getDouble("ShowingTime");
+                showingHour = rs8.getInt("ShowingHour");
+                showingMinute = rs8.getInt("ShowingMinute");
                 seats = rs8.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
-                int hour = (int) Math.floor(showingTime);
-                int minute = (int) ((showingTime - hour)*100);
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), showingHour, showingMinute);
                 showingResult.add(showing);
             }
         } catch (Exception e) {
@@ -426,9 +420,8 @@ public class DataAccessObject implements DataAccess {
     @Override
     public String getTheatreShowings(List<Showing> showingResult, int newTheatreID) {
         Showing showing;
-        int showingID, movieID, theatreID, seats;
+        int showingID, movieID, theatreID, seats, showingHour, showingMinute;
         long showingDate;
-        double showingTime;
 
         try {
             cmdString = "Select * from Showings where TheatreID=" + newTheatreID;
@@ -444,15 +437,14 @@ public class DataAccessObject implements DataAccess {
                 movieID = rs9.getInt("MovieID");
                 theatreID = rs9.getInt("TheatreID");
                 showingDate = rs9.getLong("ShowingDate");
-                showingTime = rs9.getDouble("ShowingTime");
+                showingHour = rs9.getInt("ShowingHour");
+                showingMinute = rs9.getInt("ShowingMinute");
                 seats = rs9.getInt("Seats");
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
-                int hour = (int) Math.floor(showingTime);
-                int minute = (int) ((showingTime - hour)*100);
 
-                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
+                showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), showingHour, showingMinute);
                 showingResult.add(showing);
             }
         } catch (Exception e) {
@@ -472,7 +464,8 @@ public class DataAccessObject implements DataAccess {
                     + ", " + showing.getMovieID()
                     + ", " + showing.getTheatreID()
                     + ", " + showing.getShowingDate().getTimeInMillis()
-                    + ", " + showing.getShowingTime()
+                    + ", " + showing.getShowingHour()
+                    + ", " + showing.getShowingMinute()
                     + ", " + showing.getSeats();
 
             cmdString = "Insert into Showings " +" Values(" + values + ")";
@@ -494,7 +487,8 @@ public class DataAccessObject implements DataAccess {
             values = "MovieID=" + showing.getMovieID() + ", "
                     + "TheatreID=" + showing.getTheatreID() + ", "
                     + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
-                    + "ShowingTime=" + showing.getShowingTime() + ", "
+                    + "ShowingHour=" + showing.getShowingHour() + ", "
+                    + "ShowingHour=" + showing.getShowingMinute() + ", "
                     + "Seats=" + showing.getSeats();
             where = "where ShowingID=" + showing.getShowingID();
 

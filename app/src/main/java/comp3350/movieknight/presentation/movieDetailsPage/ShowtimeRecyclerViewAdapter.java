@@ -34,16 +34,14 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
 
     @Override
     public void onBindViewHolder(@NonNull ShowtimeHolder holder, int position) {
-        String showtime=String.valueOf(showings.get(position).getShowingTime());
+        String showHour = String.valueOf(showings.get(position).getShowingHour());
+        String showMinute = String.valueOf(showings.get(position).getShowingMinute());
 
-        String[] time=showtime.split("\\.");
-
-        if(time[1].length()<2){
-            time[1]+='0';
+        if (Integer.parseInt(showMinute) < 10) {
+            showMinute = "0" + showMinute;
         }
 
-        holder.getShowtime().setText( time[0] + ":" + time[1]);
-
+        holder.getShowtime().setText( showHour + ":" + showMinute);
 
         holder.getShowtime().setOnClickListener(new View.OnClickListener() {
             @Override
