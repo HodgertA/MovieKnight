@@ -32,11 +32,7 @@ public class AccessTickets {
         return FindAvailableSeats.compileAvailableSeats(tickets, numberOfSeats);
     }
 
-    public ArrayList<Ticket> getUserTickets(int userId) {
-        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
-        dataAccess.getUserTickets(tickets, userId);
-        return tickets;
-    }
+    public String getUserTickets(ArrayList<Ticket> tickets,int userId) { return dataAccess.getUserTickets(tickets, userId); }
 
     public void createTicket(int userID, ArrayList<Integer> selectedSeats, int showingID) {
         for (int seatNum : selectedSeats) {

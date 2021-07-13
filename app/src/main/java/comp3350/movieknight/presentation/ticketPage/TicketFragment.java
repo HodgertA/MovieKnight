@@ -34,19 +34,20 @@ public class TicketFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         accessTickets = new AccessTickets();
-
-        tickets= accessTickets.getUserTickets(userID);
+        tickets=new ArrayList<Ticket>();
+        accessTickets.getUserTickets(tickets,userID);
 
         ticketRecyclerView=view.findViewById(R.id.tickets_recycler_view);
         ticketRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter=new TicketRecyclerViewAdapter(tickets);
         ticketRecyclerView.setAdapter(adapter);
-
-
         return view;
     }
 
-    public void updateTickets(){
+    public void updateTickets() {
+        tickets.clear();
+        accessTickets.insertTicket(new Ticket(100,100,100));
+        accessTickets.getUserTickets(tickets,userID);
         adapter.notifyDataSetChanged();
     }
 
