@@ -15,8 +15,7 @@ public class AccessMovies {
         dataAccess = Services.getDataAccess(Main.dbName);
     }
 
-    public String getMoviesInTheatres(ArrayList<Movie> movies)
-    {
+    public String getMoviesInTheatres(ArrayList<Movie> movies) {
         dataAccess.getAllMovies(movies);
         return FilterList.filterMoviesInTheatres(movies);
     }

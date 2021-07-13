@@ -10,23 +10,19 @@ import comp3350.movieknight.persistence.DataAccess;
 public class AccessTickets {
     private DataAccess dataAccess;
 
-    public AccessTickets()
-    {
+    public AccessTickets() {
         dataAccess = Services.getDataAccess(Main.dbName);
     }
 
-    public String insertTicket(Ticket ticket)
-    {
+    public String insertTicket(Ticket ticket) {
         return dataAccess.insertTicket(ticket);
     }
 
-    public String updateTicket(Ticket ticket)
-    {
+    public String updateTicket(Ticket ticket) {
         return dataAccess.updateTicket(ticket);
     }
 
-    public String deleteTicket(Ticket ticket)
-    {
+    public String deleteTicket(Ticket ticket) {
         return dataAccess.deleteTicket(ticket);
     }
 
