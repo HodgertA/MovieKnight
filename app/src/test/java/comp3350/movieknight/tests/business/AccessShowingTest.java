@@ -23,8 +23,8 @@ public class AccessShowingTest extends TestCase {
         Services.closeDataAccess();
         Services.createDataAccess(new DatabaseStub(dbName));
 
-        AccessShowing accessShowing =new AccessShowing();
-        ArrayList<Showing> showings =new ArrayList<>();
+        AccessShowing accessShowing = new AccessShowing();
+        ArrayList<Showing> showings = new ArrayList<>();
 
         Calendar day = Calendar.getInstance();
 
