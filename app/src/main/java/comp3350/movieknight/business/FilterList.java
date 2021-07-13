@@ -10,14 +10,10 @@ import comp3350.movieknight.objects.Showing;
 public class FilterList {
 
     public static String filterMoviesInTheatres(ArrayList<Movie> movies) {
-        //get todays date
         Calendar today = Calendar.getInstance();
-
-        //iterate through list of movies
         Iterator<Movie> iterator = movies.iterator();
 
         while (iterator.hasNext()) {
-
             Movie movie = iterator.next();
             Calendar lastShowDate = movie.getLastShowDate();
 
@@ -32,14 +28,12 @@ public class FilterList {
         return null;
     }
 
-    public static String filterShowingsBySelectDate(ArrayList<Showing> showings,Calendar date){
+    public static String filterShowingsBySelectDate(ArrayList<Showing> showings,Calendar date) {
 
         if(showings != null) {
-
             Iterator<Showing> iterator = showings.iterator();
 
             while (iterator.hasNext()) {
-
                 Showing sh = iterator.next();
 
                 if (sh==null || sh.getShowingDate().get(Calendar.YEAR) != date.get(Calendar.YEAR) ||

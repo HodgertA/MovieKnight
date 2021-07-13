@@ -11,20 +11,20 @@ import comp3350.movieknight.persistence.DataAccess;
 public class AccessShowing {
     private DataAccess dataAccess;
 
-    public AccessShowing(){
+    public AccessShowing() {
         dataAccess = Services.getDataAccess(Main.dbName);
     }
 
-    public String getShowingForMovieByDate(ArrayList<Showing> showingList, int movieID, Calendar date){
+    public String getShowingForMovieByDate(ArrayList<Showing> showingList, int movieID, Calendar date) {
         dataAccess.getMovieShowings(showingList ,movieID);
         return FilterList.filterShowingsBySelectDate(showingList,date);
     }
 
-    public Showing getShowing(int showingID){return dataAccess.getShowing(new Showing(showingID));}
+    public Showing getShowing(int showingID) { return dataAccess.getShowing(new Showing(showingID));}
 
-    public String insertShowing(Showing newShowing){return dataAccess.insertShowing(newShowing);}
+    public String insertShowing(Showing newShowing) { return dataAccess.insertShowing(newShowing);}
 
-    public String updateShowing(Showing showing){return dataAccess.updateShowing(showing);}
+    public String updateShowing(Showing showing) { return dataAccess.updateShowing(showing);}
 
-    public String deleteShowing(Showing showing){return dataAccess.deleteShowing(showing);}
+    public String deleteShowing(Showing showing) { return dataAccess.deleteShowing(showing);}
 }

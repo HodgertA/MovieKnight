@@ -14,21 +14,21 @@ public class FilterMoviesTest extends TestCase {
         super(arg0);
     }
 
-    public void testNullList(){
+    public void testNullList() {
         System.out.println("Starting filter movies test: testNullList");
 
         ArrayList<Movie> movies = null;
 
         try {
             FilterList.filterMoviesInTheatres(movies);
-            fail("Expected an IllegalArguementException");
-        } catch (NullPointerException ex) {}
+            fail("Expected an IllegalArgumentException");
+        } catch (IllegalArgumentException ex) {}
 
         System.out.println("Finished filter movies test: testNullList");
 
     }
 
-    public void testEmptyList(){
+    public void testEmptyList() {
         System.out.println("Starting filter movies test: testEmptyList");
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
@@ -39,7 +39,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testEmptyList");
     }
 
-    public void testOneMovieInTheatres(){
+    public void testOneMovieInTheatres() {
         System.out.println("Starting filter movies test: testOneMovieInTheatres");
 
         Calendar calendar = Calendar.getInstance();
@@ -58,7 +58,7 @@ public class FilterMoviesTest extends TestCase {
 
     }
 
-    public void testOneMovieNotInTheatres(){
+    public void testOneMovieNotInTheatres() {
         System.out.println("Starting filter movies test: testOneMovieNotInTheatres");
 
         Calendar calendar = Calendar.getInstance();
@@ -73,7 +73,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testOneMovieNotInTheatres");
     }
 
-    public void testAllMoviesNotInTheatres(){
+    public void testAllMoviesNotInTheatres() {
         System.out.println("Starting filter movies test: testAllMoviesNotInTheatres");
 
         Calendar yesterday = Calendar.getInstance();
@@ -96,7 +96,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testAllMoviesNotInTheatres");
     }
 
-    public void testAllMoviesInTheatres(){
+    public void testAllMoviesInTheatres() {
 
         System.out.println("Starting filter movies test: testAllMoviesInTheatres");
 
@@ -126,7 +126,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testAllMoviesNotInTheatres");
     }
 
-    public void testLastDayInTheatres(){
+    public void testLastDayInTheatres() {
         System.out.println("Starting filter movies test: testLastDayInTheatres");
 
         Calendar today = Calendar.getInstance();
@@ -144,7 +144,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testLastDayInTheatres");
     }
 
-    public void testDayBeforeLastDayInTheatres(){
+    public void testDayBeforeLastDayInTheatres() {
         System.out.println("Starting filter movies test: testDayBeforeLastDayInTheatres");
 
         Calendar tomorrow = Calendar.getInstance();
@@ -164,7 +164,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testDayBeforeLastDayInTheatres");
     }
 
-    public void testDayAfterLastDayInTheatres(){
+    public void testDayAfterLastDayInTheatres() {
         System.out.println("Starting filter movies test: testDayBeforeLastDayInTheatres");
 
         Calendar yesterday = Calendar.getInstance();
@@ -182,7 +182,7 @@ public class FilterMoviesTest extends TestCase {
         System.out.println("Finished filter movies test: testDayBeforeLastDayInTheatres");
     }
 
-    public void testNormalCase(){
+    public void testNormalCase() {
         System.out.println("Starting filter movies test: testNormalCase");
 
         Calendar yesterday = Calendar.getInstance();
@@ -200,11 +200,11 @@ public class FilterMoviesTest extends TestCase {
 
         ArrayList<Movie> movies = new ArrayList<Movie>();
 
-        Movie movieNotPlaying1 =new Movie(5, "", "Shrek", "poster", 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE));
+        Movie movieNotPlaying1 = new Movie(5, "", "Shrek", "poster", 120, yesterday.get(Calendar.YEAR), yesterday.get(Calendar.MONTH)+1, yesterday.get(Calendar.DATE));
         movies.add(movieNotPlaying1);
-        Movie movieNotPlaying2 =new Movie(5, "", "Finding Nemo", "poster", 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE));
+        Movie movieNotPlaying2 = new Movie(5, "", "Finding Nemo", "poster", 120, lastMonth.get(Calendar.YEAR), lastMonth.get(Calendar.MONTH)+1, lastMonth.get(Calendar.DATE));
         movies.add(movieNotPlaying2);
-        Movie movieNotPlaying3 =new Movie(5, "", "Ice Age", "poster", 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE));
+        Movie movieNotPlaying3 = new Movie(5, "", "Ice Age", "poster", 120, lastYear.get(Calendar.YEAR), lastYear.get(Calendar.MONTH)+1, lastYear.get(Calendar.DATE));
         movies.add(movieNotPlaying3);
         Movie moviePlaying1 = new Movie(1, "", "Shrek", "poster", 120, tomorrow.get(Calendar.YEAR), tomorrow.get(Calendar.MONTH)+1, tomorrow.get(Calendar.DATE));
         movies.add(moviePlaying1);

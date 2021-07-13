@@ -9,12 +9,9 @@ import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.jetbrains.annotations.NotNull;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
@@ -38,18 +35,6 @@ public class SeatsFragment extends Fragment {
     private static final String ARG_PARAM3 = "userId";
 
     private AccessTickets accessTickets;
-
-    public SeatsFragment() { }
-
-    public static SeatsFragment newInstance(int showingId, int numberOfSeats, int userID) {
-        SeatsFragment fragment = new SeatsFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, showingId);
-        args.putInt(ARG_PARAM2, numberOfSeats);
-        args.putInt(ARG_PARAM3, userID);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -87,7 +72,6 @@ public class SeatsFragment extends Fragment {
                 frag.finishMyChild();
             }
         });
-
         return view;
     }
 }
