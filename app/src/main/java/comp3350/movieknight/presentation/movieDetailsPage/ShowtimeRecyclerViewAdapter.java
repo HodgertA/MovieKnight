@@ -42,7 +42,6 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
         }
 
         holder.getShowtime().setText( showHour + ":" + showMinute);
-
         holder.getShowtime().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

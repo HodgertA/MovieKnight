@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import comp3350.movieknight.R;
 
-public class SeatViewHolder extends RecyclerView.ViewHolder{
+public class SeatViewHolder extends RecyclerView.ViewHolder {
     private ImageButton seatView;
 
     public SeatViewHolder(@NonNull @NotNull View itemView) {

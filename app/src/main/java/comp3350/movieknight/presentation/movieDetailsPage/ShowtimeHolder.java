@@ -13,7 +13,7 @@ public class ShowtimeHolder extends RecyclerView.ViewHolder {
 
     public ShowtimeHolder(@NonNull @NotNull View itemView) {
         super(itemView);
-        showtime=itemView.findViewById(R.id.show_time_button);
+        showtime = itemView.findViewById(R.id.show_time_button);
     }
 
     public Button getShowtime() {

@@ -680,7 +680,7 @@ public class DataAccessObject implements DataAccess {
 
         result = null;
         try {
-            cmdString = "Select * from Tickets where UserID= " + newUserID;
+            cmdString = "Select * from Tickets where UserID= " + newUserID + "";
             rs13 = st5.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
@@ -712,7 +712,7 @@ public class DataAccessObject implements DataAccess {
                     ", " + ticket.getShowingID() +
                     ", " + ticket.getSeatNum();
 
-            cmdString = "Insert into Users " +" Values(" + values +")";
+            cmdString = "Insert into Tickets " +" Values(" + values +")";
             updateCount = st5.executeUpdate(cmdString);
             result = checkWarning(st5, updateCount);
         } catch (Exception e) {

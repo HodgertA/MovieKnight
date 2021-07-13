@@ -8,8 +8,7 @@ public class TicketTest extends TestCase {
 
     public TicketTest(String arg0) { super(arg0);}
 
-    public void testTypicalTicket()
-    {
+    public void testTypicalTicket() {
         System.out.println("Starting Ticket test: testTypicalTicket");
 
         Ticket ticket1 = new Ticket(1, 1, 10);
@@ -31,8 +30,7 @@ public class TicketTest extends TestCase {
         System.out.println("Finished Ticket test: testTypicalTicket");
     }
 
-    public void testTwoTickets()
-    {
+    public void testTwoTickets() {
         System.out.println("Starting Ticket test: testTwoTickets");
 
         Ticket ticket1 = new Ticket(1, 1, 10);
@@ -66,8 +64,7 @@ public class TicketTest extends TestCase {
         System.out.println("Finished Ticket test: testTwoTickets");
     }
 
-    public void testEdgeCases()
-    {
+    public void testEdgeCases() {
         System.out.println("Starting Ticket test: testEdgeCases");
 
         Ticket ticket1 = new Ticket(0, 0, 1);
@@ -89,8 +86,7 @@ public class TicketTest extends TestCase {
         System.out.println("Finished Ticket test: testEdgeCases");
     }
 
-    public void testInvalidValues()
-    {
+    public void testInvalidValues() {
         System.out.println("Starting Ticket test: testInvalidValues");
 
         Ticket ticket;
@@ -98,27 +94,27 @@ public class TicketTest extends TestCase {
         try {
             ticket = new Ticket(-1,1,1);
             fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             ticket = new Ticket(1,-1,1);
             fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             ticket = new Ticket(1,1,-1);
             fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             ticket = new Ticket(-1,1);
             fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             ticket = new Ticket(1,-1);
             fail("Expected an IllegalArgumentException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         System.out.println("Finished Ticket test: testInvalidValues");
     }

@@ -4,15 +4,13 @@ import junit.framework.TestCase;
 
 import comp3350.movieknight.objects.Theatre;
 
-public class TheatreTest extends TestCase
-{
+public class TheatreTest extends TestCase {
     public TheatreTest(String arg0)
     {
         super(arg0);
     }
 
-    public void testTypicalTheatre()
-    {
+    public void testTypicalTheatre() {
         System.out.println("Starting Theatre test: testTypicalTheatre");
 
         Theatre theatre =  new Theatre(1, 10);
@@ -25,11 +23,10 @@ public class TheatreTest extends TestCase
         System.out.println("Finished Theatre test: testTypicalTheatre");
     }
 
-    public void testTwoTheatres()
-    {
+    public void testTwoTheatres() {
         System.out.println("Starting Theatre test: testTwoTheatres");
 
-        Theatre theatre1 =  new Theatre(1, 10);
+        Theatre theatre1 = new Theatre(1, 10);
         Theatre theatre2 = new Theatre(2, 10);
         assertNotNull(theatre1);
         assertNotNull(theatre2);
@@ -44,11 +41,10 @@ public class TheatreTest extends TestCase
         System.out.println("Finished Theatre test: testTwoTheatres");
     }
 
-    public void testEdgeCases()
-    {
+    public void testEdgeCases() {
         System.out.println("Starting Theatre test: testEdgeCases");
 
-        Theatre theatre =  new Theatre(0, 1);
+        Theatre theatre = new Theatre(0, 1);
         assertNotNull(theatre);
         assertEquals(0,theatre.getTheatreID());
         assertEquals(1, theatre.getNumSeats());
@@ -58,20 +54,19 @@ public class TheatreTest extends TestCase
         System.out.println("Finished Theatre test: testEdgeCases");
     }
 
-    public void testInvalidValues()
-    {
+    public void testInvalidValues() {
         System.out.println("Starting Theatre test: testInvalidValues");
         Theatre theatre;
 
         try {
             theatre = new Theatre(-1, 10);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             theatre = new Theatre(1, 0);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         System.out.println("Finished Theatre test: testInvalidValues");
     }

@@ -4,12 +4,10 @@ import junit.framework.TestCase;
 
 import comp3350.movieknight.objects.User;
 
-public class UserTest extends TestCase
-{
+public class UserTest extends TestCase {
     public UserTest(String arg0) { super(arg0); }
 
-    public void testTypicalUser()
-    {
+    public void testTypicalUser() {
         System.out.println("Starting User test: testTypicalUser");
 
         User user = new User(123, "John Smith");
@@ -22,8 +20,7 @@ public class UserTest extends TestCase
         System.out.println("Finished User test: testTypicalUser");
     }
 
-    public void testEmptyValues()
-    {
+    public void testEmptyValues() {
         System.out.println("Starting User test: testEmptyValues");
 
         User user = new User(1, "");
@@ -36,8 +33,7 @@ public class UserTest extends TestCase
         System.out.println("Finished User test: testEmptyValues");
     }
 
-    public void testTwoUsers()
-    {
+    public void testTwoUsers() {
         System.out.println("Starting User test: testTwoUsers");
 
         User user1 = new User(123, "John Smith");
@@ -55,8 +51,7 @@ public class UserTest extends TestCase
         System.out.println("Finished User test: testTwoUsers");
     }
 
-    public void testNullValues()
-    {
+    public void testNullValues() {
         System.out.println("Starting User test: testNullValues");
 
         User user = new User(1, null);
@@ -69,8 +64,7 @@ public class UserTest extends TestCase
         System.out.println("Finished User test: testNullValues");
     }
 
-    public void testEdgeCases()
-    {
+    public void testEdgeCases() {
         System.out.println("Starting User test: testEdgeCases");
 
         User user = new User(0, "    J");
@@ -83,13 +77,12 @@ public class UserTest extends TestCase
         System.out.println("Finished User test: testEdgeCases");
     }
 
-    public void testInvalidValues()
-    {
+    public void testInvalidValues() {
         System.out.println("Starting User test: testInvalidValues");
         try {
             User user = new User(-1, "Bob Jones");
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         System.out.println("Finished User test: testInvalidValues");
     }
