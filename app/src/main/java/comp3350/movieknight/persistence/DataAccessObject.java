@@ -340,7 +340,7 @@ public class DataAccessObject implements DataAccess {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
@@ -380,7 +380,7 @@ public class DataAccessObject implements DataAccess {
                 calendar.setTimeInMillis(showingDate);
 
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 result = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH)+1, calendar.get(Calendar.DATE),hour,minute);
             }
@@ -416,12 +416,10 @@ public class DataAccessObject implements DataAccess {
                 showingTime = rs8.getDouble("ShowingTime");
                 seats = rs8.getInt("Seats");
 
-                System.out.println(showingID + ", " + movieID + ", " + theatreID + ", " + showingDate + ", " + showingTime + ", " + seats);
-
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
@@ -461,7 +459,7 @@ public class DataAccessObject implements DataAccess {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(showingDate);
                 int hour = (int) Math.floor(showingTime);
-                int minute = (int) showingTime - hour;
+                int minute = (int) ((showingTime - hour)*100);
 
                 showing = new Showing(showingID, movieID, theatreID, seats, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE), hour, minute);
                 showingResult.add(showing);
