@@ -162,6 +162,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
+        assertEquals(8.15, showing.getShowingTime());
 
         showing = showings.get(12);
         day.add(Calendar.DATE, 1);
@@ -173,6 +174,8 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
+        assertEquals(8.15, showing.getShowingTime());
+
 
         showing = showings.get(41);
         day.add(Calendar.DATE, 2);
@@ -184,6 +187,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
+        assertEquals(12.55, showing.getShowingTime());
 
         showing = showings.get(69);
         day.add(Calendar.DATE, 2);
@@ -195,6 +199,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
+        assertEquals(20.35, showing.getShowingTime());
 
         showings.clear();
         result = dataAccess.getMovieShowings(showings, 1);
@@ -244,6 +249,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.YEAR), showingDate.get(Calendar.YEAR));
         assertEquals(day.get(Calendar.MONTH), showingDate.get(Calendar.MONTH));
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
+        assertEquals(9.45, showing.getShowingTime());
 
         System.out.println("Finished DataAccess Test: testDefaultShowings");
     }
