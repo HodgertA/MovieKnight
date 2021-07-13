@@ -189,7 +189,7 @@ public class MovieDescriptionFragment extends Fragment {
 
         // parse movie info to next screen
         bundle.putString("movieTitle", movieTitle);
-        bundle.putString("movieTime", String.valueOf(showing.getShowingTime()));
+        bundle.putString("movieTime", String.valueOf(showing.getShowingHour() + ":" + showing.getShowingMinute()));
         bundle.putString("movieDate", selectedDate);
 
         childFragment.setArguments(bundle);
