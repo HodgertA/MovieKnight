@@ -100,6 +100,18 @@ public class DataAccessTest extends TestCase {
         assertEquals(7, lastShowingDate.get(Calendar.MONTH)+1);
         assertEquals(26, lastShowingDate.get(Calendar.DATE));
 
+        movie = new Movie(1, "", "", "", 1, 1, 1, 1);
+        movie = dataAccess.getMovie(movie);
+        assertEquals(1, movie.getMovieID());
+        assertEquals("Description for The Bee Movie", movie.getDescription());
+        assertEquals("The Bee Movie", movie.getTitle());
+        assertEquals("the_bee_movie", movie.getPoster());
+        assertEquals(120, movie.getRuntime());
+        lastShowingDate = movie.getLastShowDate();
+        assertEquals(2021, lastShowingDate.get(Calendar.YEAR));
+        assertEquals(6, lastShowingDate.get(Calendar.MONTH)+1);
+        assertEquals(8, lastShowingDate.get(Calendar.DATE));
+
         System.out.println("Finished DataAccess Test: testDefaultMovies");
     }
 
@@ -721,6 +733,9 @@ public class DataAccessTest extends TestCase {
         dataAccess.getAllMovies(movies);
         assertEquals(5, movies.size());
 
+        movie = dataAccess.getMovie(movie);
+        assertNull(movie);
+
         theatre = new Theatre(6, 1);
         result = dataAccess.updateTheatre(theatre);
         assertEquals("Nonexistent Theatre", result);
@@ -848,6 +863,9 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.getAllMovies(movies);
         assertNull(result);
         assertEquals(0, movies.size());
+
+        movie = dataAccess.getMovie(new Movie(1, "", "", "", 120, 1, 1, 1));
+        assertNull(movie);
 
         movies.clear();
         movie = new Movie(6, "A description", "A title", "a_poster", 120, 2022, 12, 24);
