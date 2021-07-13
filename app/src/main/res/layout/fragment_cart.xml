@@ -6,8 +6,6 @@
     tools:context=".presentation.cartFragment.CartFragment"
     android:id="@+id/cart_fragment_container">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
         android:id="@+id/orderSum"
         android:layout_width="wrap_content"
