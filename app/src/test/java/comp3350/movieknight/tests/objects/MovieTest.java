@@ -6,15 +6,13 @@ import java.util.Calendar;
 
 import comp3350.movieknight.objects.Movie;
 
-public class MovieTest extends TestCase
-{
+public class MovieTest extends TestCase {
     public MovieTest(String arg0)
     {
         super(arg0);
     }
 
-    public void testTypicalMovie()
-    {
+    public void testTypicalMovie() {
         System.out.println("Starting Movie test: testTypicalMovie");
 
         Movie movie1 = new Movie(1);
@@ -40,8 +38,7 @@ public class MovieTest extends TestCase
         System.out.println("Finished Movie test: testTypicalMovie");
     }
 
-    public void testEmptyValues()
-    {
+    public void testEmptyValues() {
         System.out.println("Starting Movie test: testEmptyValues");
 
         Movie movie1 = new Movie(1, "", "","", 100, 2021, 10, 20);
@@ -60,8 +57,7 @@ public class MovieTest extends TestCase
         System.out.println("Finished Movie test: testEmptyValues");
     }
 
-    public void testTwoMovies()
-    {
+    public void testTwoMovies() {
         System.out.println("Starting Movie test: testTwoMovies");
 
         Movie movie1 = new Movie(1);
@@ -101,8 +97,7 @@ public class MovieTest extends TestCase
         System.out.println("Finished Movie test: testTwoMovies");
     }
 
-    public void testNullValues()
-    {
+    public void testNullValues() {
         System.out.println("Starting Movie test: testNullValues");
 
         Movie movie1 = new Movie(1, null, null,null, 100, 2021, 10, 20);
@@ -121,8 +116,7 @@ public class MovieTest extends TestCase
         System.out.println("Finished Movie test: testNullValues");
     }
 
-    public void testEdgeCases()
-    {
+    public void testEdgeCases() {
         System.out.println("Starting Movie test: testEdgeCases");
 
         Movie movie1 = new Movie(0);
@@ -147,35 +141,34 @@ public class MovieTest extends TestCase
         System.out.println("Finished Movie test: testEdgeCases");
     }
 
-    public void testInvalidValues()
-    {
+    public void testInvalidValues() {
         System.out.println("Starting Movie test: testInvalidValues");
 
         Movie movie;
         try {
             movie = new Movie(-1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             movie = new Movie(-1, "A description", "A title","poster", 1, 2021, 1, 31);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             movie = new Movie(0, "A description", "A title","poster", -1, 2021, 1, 31);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             movie = new Movie(0, "A description", "A title","poster", 1, 2021, 13, 31);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             movie = new Movie(0, "A description", "A title","poster", 1, 2021, 1, 35);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         System.out.println("Finished Movie test: testInvalidValues");
     }

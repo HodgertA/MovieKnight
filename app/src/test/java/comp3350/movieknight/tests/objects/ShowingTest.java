@@ -5,15 +5,13 @@ import java.util.Calendar;
 
 import comp3350.movieknight.objects.Showing;
 
-public class ShowingTest extends TestCase
-{
+public class ShowingTest extends TestCase {
     public ShowingTest(String arg0)
     {
         super(arg0);
     }
 
-    public void testTypicalShowing()
-    {
+    public void testTypicalShowing() {
         System.out.println("Starting Showing test: testTypicalShowing");
 
         Showing showing = new Showing(1, 1, 1, 12, 2021, 7, 10, 10,10);
@@ -32,8 +30,7 @@ public class ShowingTest extends TestCase
         System.out.println("Finished Showing test: testTypicalUser");
     }
 
-    public void testTwoShowings()
-    {
+    public void testTwoShowings() {
         System.out.println("Starting Showing test: testTwoShowings");
 
         Showing showing1 = new Showing(1, 1, 1,12,2021, 7, 10, 10,10);
@@ -63,8 +60,7 @@ public class ShowingTest extends TestCase
         System.out.println("Finished Showing test: testTwoShowings");
     }
 
-    public void testEdgeCases()
-    {
+    public void testEdgeCases() {
         System.out.println("Starting Showing test: testEdgeCases");
 
         Showing showing = new Showing(0, 0, 0, 1,1, 1, 1, 10,10);
@@ -83,50 +79,49 @@ public class ShowingTest extends TestCase
         System.out.println("Finished Showing test: testEdgeCases");
     }
 
-    public void testInvalidValues()
-    {
+    public void testInvalidValues() {
         System.out.println("Starting Showing test: testInvalidValues");
 
         Showing showing;
         try {
             showing = new Showing(-1, 1,1,1,1, 1,1, 1, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, -1,1,1,1, 1,1, 1, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, 1,-1,1,1, 1,1, 1, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, 1,1,0,1, 1,1, 1, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, 1,1,1,1, 13,1, 1, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, 1,1,1,1, 1,-1, 1, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, 1,1,1,1, 1,1, 25, 1);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         try {
             showing = new Showing(1, 1,1,1,1, 1,1, 1, 65);
             fail("Expected an IllegalArguementException");
-        } catch (IllegalArgumentException ex) {}
+        } catch (IllegalArgumentException ex) { }
 
         System.out.println("Finished Showing test: testInvalidValues");
     }
