@@ -4,8 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Calendar;
 
-public class Movie
-{
+public class Movie {
     private int movieID;
     private String description;
     private String title;
@@ -13,8 +12,7 @@ public class Movie
     private int runtime;
     private Calendar lastShowDate;
 
-    public Movie(int movieID)
-    {
+    public Movie(int movieID) {
         if (movieID >= 0) {
             this.movieID = movieID;
             this.description = null;
@@ -26,8 +24,7 @@ public class Movie
         }
     }
 
-    public Movie(int movieID, String description, String title, String poster, int runtime, int endYear, int endMonth, int endDay )
-    {
+    public Movie(int movieID, String description, String title, String poster, int runtime, int endYear, int endMonth, int endDay ) {
         if (movieID >= 0 && runtime >= 0 && endMonth > 0 && endMonth <=12 && endDay > 0 && endDay <= 31) {
             this.movieID = movieID;
             this.description = description;
@@ -75,8 +72,7 @@ public class Movie
         return "Movie: " + movieID + " " + title;
     }
 
-    public boolean equals(Object object)
-    {
+    public boolean equals(Object object) {
         boolean result = false;
         Movie movie;
 

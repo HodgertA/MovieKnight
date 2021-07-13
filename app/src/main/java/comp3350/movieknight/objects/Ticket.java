@@ -8,7 +8,7 @@ public class Ticket {
     private int userID;
     private int showingID;
 
-    public Ticket(int userID, int showingID, int seatNum){
+    public Ticket(int userID, int showingID, int seatNum) {
         if (userID >= 0 && showingID >= 0 && seatNum >= 0) {
             this.userID = userID;
             this.showingID = showingID;
@@ -18,7 +18,7 @@ public class Ticket {
         }
     }
 
-    public Ticket(int showingID, int seatNum){
+    public Ticket(int showingID, int seatNum) {
         if (showingID >= 0 && seatNum >= 0) {
             this.userID = -1;
             this.showingID = showingID;
@@ -50,12 +50,10 @@ public class Ticket {
         boolean result=false;
         Ticket ticket;
 
-        if(object instanceof Ticket)
-        {
+        if(object instanceof Ticket) {
             ticket=(Ticket) object;
 
-            if(ticket.showingID == showingID && ticket.seatNum == seatNum)
-            {
+            if(ticket.showingID == showingID && ticket.seatNum == seatNum) {
                 result=true;
             }
         }
