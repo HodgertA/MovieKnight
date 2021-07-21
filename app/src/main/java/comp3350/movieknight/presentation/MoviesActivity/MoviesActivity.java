@@ -1,6 +1,7 @@
 package comp3350.movieknight.presentation.MoviesActivity;
 
 import comp3350.movieknight.R;
+import comp3350.movieknight.presentation.MainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -84,7 +85,8 @@ public class MoviesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
+        Intent intent= new Intent(MoviesActivity.this, MainActivity.class);
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
 }
