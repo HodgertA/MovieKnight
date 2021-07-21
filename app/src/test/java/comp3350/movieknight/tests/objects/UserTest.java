@@ -14,7 +14,7 @@ public class UserTest extends TestCase {
         assertNotNull(user);
         assertEquals(123, user.getUserID());
         assertEquals("John Smith", user.getUsername());
-        assertEquals("User: 123 John Smith", user.toString());
+        assertEquals("John Smith", user.toString());
         assertEquals(user,user);
 
         System.out.println("Finished User test: testTypicalUser");
@@ -27,7 +27,7 @@ public class UserTest extends TestCase {
         assertNotNull(user);
         assertEquals(1, user.getUserID());
         assertEquals("", user.getUsername());
-        assertEquals("User: 1 ", user.toString());
+        assertEquals("", user.toString());
         assertEquals(user,user);
 
         System.out.println("Finished User test: testEmptyValues");
@@ -44,8 +44,8 @@ public class UserTest extends TestCase {
         assertEquals(456, user2.getUserID());
         assertEquals("John Smith", user1.getUsername());
         assertEquals("Bob Jones", user2.getUsername());
-        assertEquals("User: 123 John Smith", user1.toString());
-        assertEquals("User: 456 Bob Jones", user2.toString());
+        assertEquals("John Smith", user1.toString());
+        assertEquals("Bob Jones", user2.toString());
         assertFalse(user1.equals(user2));
 
         System.out.println("Finished User test: testTwoUsers");
@@ -58,7 +58,7 @@ public class UserTest extends TestCase {
         assertNotNull(user);
         assertEquals(1, user.getUserID());
         assertEquals(null, user.getUsername());
-        assertEquals("User: 1 null", user.toString());
+        assertEquals(null, user.toString());
         assertEquals(user,user);
 
         System.out.println("Finished User test: testNullValues");
@@ -71,7 +71,7 @@ public class UserTest extends TestCase {
         assertNotNull(user);
         assertEquals(0, user.getUserID());
         assertEquals("    J", user.getUsername());
-        assertEquals("User: 0     J", user.toString());
+        assertEquals("    J", user.toString());
         assertEquals(user,user);
 
         System.out.println("Finished User test: testEdgeCases");
