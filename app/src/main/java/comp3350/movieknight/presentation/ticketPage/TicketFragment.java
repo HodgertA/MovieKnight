@@ -46,7 +46,6 @@ public class TicketFragment extends Fragment {
 
     public void updateTickets() {
         tickets.clear();
-        accessTickets.insertTicket(new Ticket(100,100,100));
         accessTickets.getUserTickets(tickets,userID);
         adapter.notifyDataSetChanged();
     }

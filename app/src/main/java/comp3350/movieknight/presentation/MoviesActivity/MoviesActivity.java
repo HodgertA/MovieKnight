@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 public class MoviesActivity extends AppCompatActivity {
-    private int loggedInUser = 1;
+    private int loggedInUser;
     private BottomNavigationView bottomNav;
     private ViewPager2 viewPager;
 
@@ -17,7 +17,7 @@ public class MoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Bundle bundle = getIntent().getExtras();
-        loggedInUser = bundle.getInt("loggedInUserID", 1);
+        loggedInUser = bundle.getInt("LoggedInUserID", 1);
 
         setContentView(R.layout.activity_movies);
 
