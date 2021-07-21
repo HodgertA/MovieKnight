@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation;
+package comp3350.movieknight.presentation.MoviesActivity;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -9,13 +9,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import comp3350.movieknight.presentation.ticketPage.TicketFragment;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 
-public class ViewPagerAdapter extends FragmentStateAdapter {
+public class MoviesActivityViewPagerAdapter extends FragmentStateAdapter {
 
     private static final int NUM_FRAGMENTS = 2;
     private TicketFragment ticketFragment;
     private int userID;
 
-    public ViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int userID) {
+    public MoviesActivityViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, int userID) {
         super(fragmentManager, lifecycle);
         this.userID = userID;
     }
