@@ -2,89 +2,80 @@ package comp3350.movieknight.presentation;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.application.Main;
+import comp3350.movieknight.business.AccessUser;
+import comp3350.movieknight.objects.User;
+import comp3350.movieknight.presentation.MoviesActivity.MoviesActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-    private final int loggedInUser = 1;
-    private BottomNavigationView bottomNav;
-    private ViewPager2 viewPager;
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    private int loggedInUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         copyDatabaseToDevice();
 
         Main.startUp();
 
         setContentView(R.layout.activity_main);
-
-        bottomNav = findViewById(R.id.bottom_nav);
-        viewPager = findViewById(R.id.view_pager);
-
-        setUpBottomNavigation();
-        setUpViewPager();
+        setupDropDown();
+        setupButton();
     }
 
-    private void setUpBottomNavigation() {
-        bottomNav.setOnNavigationItemSelectedListener((item) -> {
-            switch(item.getItemId()) {
-                case R.id.nav_movie_list:
-                    viewPager.setCurrentItem(0);
-                    break;
-                case R.id.nav_tickets:
-                    viewPager.setCurrentItem(1);
-                    break;
-            }
-            return true;
-        });
+    private void setupDropDown() {
+        AccessUser accessUser = new AccessUser();
+        ArrayList<User> users = new ArrayList<User>();
+        accessUser.getAllUsers(users);
+
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, R.layout.spinner_item, users);
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
-    private void setUpViewPager() {
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), getLifecycle(), loggedInUser);
-        viewPager.setAdapter(viewPagerAdapter);
+    private void setupButton() {
+        Button button = findViewById(R.id.button);
 
-        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        bottomNav.getMenu().findItem(R.id.nav_movie_list).setChecked(true);
-                        break;
-                    case 1:
-                        bottomNav.getMenu().findItem(R.id.nav_tickets).setChecked(true);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                super.onPageScrollStateChanged(state);
-                viewPagerAdapter.updateTicketFragment();
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this, MoviesActivity.class);
+                intent.putExtra("LoggedInUserID",loggedInUserID);
+                startActivity(intent);
             }
         });
     }
 
     @Override
+    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+        User loggedInUser = (User) arg0.getItemAtPosition(position);
+        loggedInUserID = loggedInUser.getUserID();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {}
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
-
         Main.shutDown();
     }
 

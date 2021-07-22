@@ -27,7 +27,7 @@ public class User {
     @NotNull
     public String toString()
     {
-        return "User: " + userID + " " + username;
+        return username;
     }
 
     public boolean equals(Object object) {
