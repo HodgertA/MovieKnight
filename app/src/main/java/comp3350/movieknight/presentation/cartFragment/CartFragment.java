@@ -35,13 +35,14 @@ public class CartFragment extends Fragment {
     private String showDate;
     private int userID;
     private int showingID;
-    private ArrayList<Integer> selectedSeats;
+    private ArrayList<Integer> selectedSeats; // the seat id
 
     private TextView textViewMovieName;
     private TextView textViewMovieTime;
     private TextView textViewNumOfTickets;
     private Button btn_paybill;
     private AccessTickets accessTickets;
+    private TextView textViewSelectedSeats;
 
     public CartFragment() { }
 
@@ -85,10 +86,13 @@ public class CartFragment extends Fragment {
         textViewMovieTime = view.findViewById(R.id.textViewMovieTime);
         textViewNumOfTickets = view.findViewById(R.id.textViewNumOfTickets);
         btn_paybill = view.findViewById(R.id.btn_paybill);
+        textViewSelectedSeats = view.findViewById(R.id.textViewSeatID);
 
-        textViewMovieTime.setText(showDate + " " +movieTime);
+        textViewMovieTime.setText(showDate + " " + movieTime);
         textViewNumOfTickets.setText(numTickets + "");
         textViewMovieName.setText(movieTitle);
+        // remove brackets for output
+        textViewSelectedSeats.setText(selectedSeats.toString().substring(1, selectedSeats.toString().length() - 1) + "");
 
         btn_paybill.setOnClickListener(new View.OnClickListener() {
             @Override
