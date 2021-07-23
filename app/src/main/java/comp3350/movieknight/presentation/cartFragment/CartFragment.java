@@ -17,6 +17,9 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
+import comp3350.movieknight.presentation.movieDetailsPage.MovieDescriptionFragment;
+import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
+import comp3350.movieknight.presentation.seatsPage.SeatsFragment;
 
 public class CartFragment extends Fragment {
 
@@ -98,10 +101,27 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 passToDatabase();
+                backToMovieList();
             }
         });
     }
+    public void backToMovieList(){
 
+        Fragment fragment = getParentFragment();
+        SeatsFragment seatsFragment = (SeatsFragment) fragment;
+
+        fragment = fragment.getParentFragment();
+        MovieDescriptionFragment movieDescriptionFragment=(MovieDescriptionFragment) fragment;
+
+        fragment = fragment.getParentFragment();
+        MovieListFragment movieListFragment=(MovieListFragment)fragment;
+
+        seatsFragment.finishMyChild();
+        movieDescriptionFragment.finishMyChild();
+        movieListFragment.finishMyChild();
+
+
+    }
     public void passToDatabase() {
         accessTickets.createTicket(userID, selectedSeats, showingID);
         getChildFragmentManager().popBackStack();

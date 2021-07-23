@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -153,5 +154,15 @@ public class SeatsFragment extends Fragment {
         childFragment.setArguments(bundle);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.seat_fragment_container, childFragment).addToBackStack(null).commit();
+    }
+    public void finishMyChild() {
+        backButton.setVisibility(View.VISIBLE);
+        seatsRecyclerView.setVisibility(View.VISIBLE);
+        screenText.setVisibility(View.VISIBLE);
+        btnCheckout.setVisibility(View.VISIBLE);
+        FragmentManager manager = getChildFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.remove(childFragment);
+        transaction.commit();
     }
 }
