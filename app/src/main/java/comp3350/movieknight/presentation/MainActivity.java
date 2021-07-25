@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
     private int loggedInUserID;
 
     @Override
@@ -35,20 +35,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Main.startUp();
 
         setContentView(R.layout.activity_main);
-        setupDropDown();
+        setupList();
         setupButton();
     }
 
-    private void setupDropDown() {
+    private void setupList() {
         AccessUser accessUser = new AccessUser();
         ArrayList<User> users = new ArrayList<User>();
         accessUser.getAllUsers(users);
 
-        Spinner spinner = findViewById(R.id.spinner);
-        ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, R.layout.spinner_item, users);
-        adapter.setDropDownViewResource(R.layout.spinner_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        ListView listview = findViewById(R.id.list);
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(this, R.layout.list_item, R.id.text1, users);
+        listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                User loggedInUser = (User) adapterView.getItemAtPosition(position);
+                loggedInUserID = loggedInUser.getUserID();
+            }
+        });
+
     }
 
     private void setupButton() {
@@ -63,15 +70,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         });
     }
-
-    @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-        User loggedInUser = (User) arg0.getItemAtPosition(position);
-        loggedInUserID = loggedInUser.getUserID();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {}
 
     @Override
     protected void onDestroy() {
