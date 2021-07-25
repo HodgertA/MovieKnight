@@ -109,7 +109,7 @@ public class MovieDescriptionFragment extends Fragment {
             showingTimeRecyclerView.setLayoutManager(new GridLayoutManager(context, 1));
         }
 
-        ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context,this, showings);
+        ShowtimeRecyclerViewAdapter adapter = new ShowtimeRecyclerViewAdapter(context, showings);
         showingTimeRecyclerView.setAdapter(adapter);
 
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {

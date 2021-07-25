@@ -96,7 +96,7 @@ public class SeatsFragment extends Fragment {
         layoutManager = new GridLayoutManager(context, ITEMS_PER_ROW);
         seatsRecyclerView.setLayoutManager(layoutManager);
 
-        adapter = new SeatViewAdapter(context,this, seats);
+        adapter = new SeatViewAdapter(context, seats);
         seatsRecyclerView.setAdapter(adapter);
 
         backButton = view.findViewById(R.id.seats_select_back_button);

@@ -21,8 +21,7 @@ public class MoviesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle bundle = getIntent().getExtras();
-        loggedInUser = bundle.getInt("LoggedInUserID", 1);
+        loggedInUser = MainActivity.getLoggedInUserID();
 
         setContentView(R.layout.activity_movies);
 

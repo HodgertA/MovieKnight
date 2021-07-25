@@ -25,7 +25,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private int loggedInUserID;
+    private static int loggedInUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,5 +128,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 in.close();
             }
         }
+    }
+
+    public static int getLoggedInUserID() {
+        return loggedInUserID;
     }
 }
