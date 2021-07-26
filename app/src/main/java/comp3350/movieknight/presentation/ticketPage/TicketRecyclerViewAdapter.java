@@ -98,7 +98,7 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
 
         ArrayList<User> users = new ArrayList<User>();
         accessUser.getAllUsers(users);
-        ArrayAdapter<User> adapter=new ArrayAdapter<User>(context,R.layout.spinner_item,users);
+        ArrayAdapter<User> adapter=new ArrayAdapter<User>(context,R.layout.friend_spinner,users);
         selectfriendSpinner.setAdapter(adapter);
         selectfriendSpinner.setOnItemSelectedListener(this);
 
