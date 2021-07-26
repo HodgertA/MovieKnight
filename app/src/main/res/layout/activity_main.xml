@@ -26,6 +26,7 @@
             android:layout_marginBottom="5dp"
             android:text="@string/login_prompt"
             android:textColor="@color/black"
+            android:textStyle="bold"
             android:textSize="25sp" />
 
         <ListView
@@ -37,7 +38,7 @@
             android:choiceMode="singleChoice"
             android:clickable="true"
             android:drawSelectorOnTop="false"
-            android:listSelector="@android:color/darker_gray"
+            android:listSelector="#cccccc"
             android:focusable="true" />
 
     </LinearLayout>
