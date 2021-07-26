@@ -12,18 +12,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
-import comp3350.movieknight.objects.Ticket;
+
 
 public class TicketFragment extends Fragment {
 
     private RecyclerView ticketRecyclerView;
     private TicketRecyclerViewAdapter adapter;
-    private ArrayList<Ticket> tickets;
-    private AccessTickets accessTickets;
+
     private int userID;
 
     public TicketFragment(int userID){
@@ -33,21 +31,16 @@ public class TicketFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ticket, container, false);
-        accessTickets = new AccessTickets();
-        tickets=new ArrayList<Ticket>();
-        accessTickets.getUserTickets(tickets,userID);
 
         ticketRecyclerView = view.findViewById(R.id.tickets_recycler_view);
         ticketRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter=new TicketRecyclerViewAdapter(tickets);
+        adapter=new TicketRecyclerViewAdapter(userID,getChildFragmentManager(),getActivity(),getContext());
         ticketRecyclerView.setAdapter(adapter);
         return view;
     }
 
     public void updateTickets() {
-        tickets.clear();
-        accessTickets.getUserTickets(tickets,userID);
-        adapter.notifyDataSetChanged();
+        adapter.updateTickets();
     }
 
 }
