@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
@@ -17,7 +16,6 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></TextView>
 
@@ -25,13 +23,14 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         android:paddingLeft="15dp"
         android:paddingTop="5dp"
         android:paddingRight="15dp"
-        app:layout_constraintEnd_toEndOf="@id/title"
-        app:layout_constraintStart_toStartOf="@id/title"
-        app:layout_constraintTop_toTopOf="@id/title"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:srcCompat="@drawable/available_seat"></ImageView>
 
     <TextView
@@ -45,7 +44,6 @@
         android:text="movie Title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="26sp"
-        app:layout_constraintBottom_toTopOf="@+id/ticket_date"
         app:layout_constraintStart_toStartOf="@id/imageView2"
         app:layout_constraintTop_toTopOf="@id/imageView2" />
 
@@ -65,10 +63,12 @@
         android:id="@+id/ticket_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="20dp"
+
         android:text="date"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/ticket_movie_title"
         app:layout_constraintTop_toBottomOf="@+id/ticket_movie_title" />
 
@@ -82,7 +82,7 @@
         android:layout_marginTop="20dp"
 
         android:layout_marginBottom="20dp"
-        android:text="send this ticket to"
+        android:text="send this ticket to "
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
