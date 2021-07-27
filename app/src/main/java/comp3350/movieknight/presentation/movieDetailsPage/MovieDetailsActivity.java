@@ -3,21 +3,16 @@ package comp3350.movieknight.presentation.movieDetailsPage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +24,6 @@ import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessShowing;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
-import comp3350.movieknight.presentation.seatsPage.SeatsFragment;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
