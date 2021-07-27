@@ -40,9 +40,9 @@ public class DatabaseStub implements DataAccess {
         movies.add(movie);
         movie = new Movie(3, "Description for Monsters Inc.", "Monsters Inc.", "monsters_inc", 120, 2022, 6,7);
         movies.add(movie);
-        movie = new Movie(4, "Description for Ice Age", "Ice Age", "ice_age", 120, 2021, 7,26);
+        movie = new Movie(4, "Description for Ice Age", "Ice Age", "ice_age", 120, 2021, 8,26);
         movies.add(movie);
-        movie = new Movie(5, "Description for Shrek", "Shrek", "shrek", 120, 2021, 7,26);
+        movie = new Movie(5, "Description for Shrek", "Shrek", "shrek", 120, 2021, 8,26);
         movies.add(movie);
 
         theatres = new ArrayList<Theatre>();
