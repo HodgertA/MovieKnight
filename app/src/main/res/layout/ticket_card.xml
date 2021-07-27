@@ -8,6 +8,15 @@
     android:layout_margin="15dp"
     >
 
+    <Button
+        android:id="@+id/send_tickets_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></Button>
     <TextView
         android:id="@+id/ticket_movie_title"
         android:layout_width="wrap_content"
@@ -45,5 +54,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="37dp"
+        android:layout_height="38dp"
+        android:rotation="-135"
+        android:scaleX="2"
+        android:scaleY="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_drop_down_24"
+        tools:ignore="VectorDrawableCompat" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

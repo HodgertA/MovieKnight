@@ -11,8 +11,9 @@
         android:id="@+id/linear_layout"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@id/button"
+        android:layout_above="@+id/button"
         android:layout_marginHorizontal="60dp"
+        android:layout_marginBottom="18dp"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="10dip">
@@ -20,31 +21,36 @@
         <TextView
             android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
             android:layout_marginTop="10dip"
             android:layout_marginBottom="5dp"
-            android:text="Select User:"
-            android:textSize="25dp"
-            android:textColor="@color/black" />
+            android:text="@string/login_prompt"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="25sp" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_width = "wrap_content"
-            android:layout_alignBottom="@+id/textView"
-            android:layout_toRightOf="@+id/textView"
             android:layout_marginTop="5dp"
-            />
+            android:background="@drawable/border"
+            android:choiceMode="singleChoice"
+            android:clickable="true"
+            android:drawSelectorOnTop="false"
+            android:listSelector="#cccccc"
+            android:focusable="true" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="137dp"
-        android:textSize="25dp" />
+        android:layout_marginBottom="123dp"
+        android:text="@string/login_button"
+        android:textSize="25sp" />
 
 </RelativeLayout>
