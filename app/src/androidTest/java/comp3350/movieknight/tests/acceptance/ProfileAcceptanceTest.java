@@ -28,6 +28,7 @@ public class ProfileAcceptanceTest {
     @Test
     public void testProfile() {
         onView(withText("MovieKnight")).check(matches(isDisplayed()));
+        onView(withText("Select User:")).check(matches(isDisplayed()));
         onView(withId(R.id.list)).perform(click());
         onView(withText("LOGIN")).perform(click());
     }
