@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-    private int loggedInUserID;
+    private static int loggedInUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
