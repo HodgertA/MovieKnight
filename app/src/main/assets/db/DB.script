@@ -11,8 +11,8 @@ SET SCHEMA PUBLIC
 INSERT INTO MOVIES VALUES(1, 'Description for The Bee Movie', 'The Bee Movie', 'the_bee_movie', 120, 1623128400000);
 INSERT INTO MOVIES VALUES(2, 'Description for Finding Nemo', 'Finding Nemo', 'finding_nemo', 120, 1654750800000);
 INSERT INTO MOVIES VALUES(3, 'Description for Monsters Inc.', 'Monsters Inc.', 'monsters_inc', 120, 1654578000000);
-INSERT INTO MOVIES VALUES(4, 'Description for Ice Age', 'Ice Age', 'ice_age', 120, 1627275600000);
-INSERT INTO MOVIES VALUES(5, 'Description for Shrek', 'Shrek', 'shrek', 120, 1627275600000);
+INSERT INTO MOVIES VALUES(4, 'Description for Ice Age', 'Ice Age', 'ice_age', 120, 1630075402000);
+INSERT INTO MOVIES VALUES(5, 'Description for Shrek', 'Shrek', 'shrek', 120, 1630075402000);
 INSERT INTO THEATRES VALUES(1, 24);
 
 -- Day 1
