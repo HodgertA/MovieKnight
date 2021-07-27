@@ -47,16 +47,16 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     private Context context;
     private Activity activity;
 
-    public TicketRecyclerViewAdapter(int userID, FragmentManager fragmentManager, Activity activity, Context context){
-        tickets=new ArrayList<Ticket>();
-        this.userID=userID;
+    public TicketRecyclerViewAdapter(int userID, FragmentManager fragmentManager, Activity activity, Context context) {
+        tickets = new ArrayList<Ticket>();
+        this.userID = userID;
         accessShowing = new AccessShowing();
         accessMovies = new AccessMovies();
-        accessTickets=new AccessTickets();
+        accessTickets = new AccessTickets();
         accessTickets.getUserTickets(tickets,userID);
-        accessUser=new AccessUser();
-        this.context=context;
-        this.activity=activity;
+        accessUser = new AccessUser();
+        this.context = context;
+        this.activity = activity;
     }
 
     @NonNull
@@ -83,22 +83,22 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         });
     }
 
-    public void openDialog(int position){
+    public void openDialog(int position) {
 
         Spinner selectfriendSpinner;
-        AlertDialog.Builder alertDialog=new AlertDialog.Builder(context);
-        LayoutInflater inflater=activity.getLayoutInflater();
-        View view=inflater.inflate(R.layout.send_ticket_dialog,null);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View view = inflater.inflate(R.layout.send_ticket_dialog,null);
         setupString(position);
         ((TextView)view.findViewById(R.id.ticket_date)).setText(ticketDate);
         ((TextView)view.findViewById(R.id.ticket_showing_time)).setText(showingTime);
         ((TextView)view.findViewById(R.id.ticket_movie_title)).setText(movieName);
-        selectfriendSpinner= view.findViewById(R.id.select_user_spinner);
+        selectfriendSpinner = view.findViewById(R.id.select_user_spinner);
 
 
         ArrayList<User> users = new ArrayList<User>();
         accessUser.getAllUsers(users);
-        ArrayAdapter<User> adapter=new ArrayAdapter<User>(context,R.layout.friend_spinner,users);
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(context,R.layout.friend_spinner,users);
         selectfriendSpinner.setAdapter(adapter);
         selectfriendSpinner.setOnItemSelectedListener(this);
 
@@ -107,20 +107,19 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
                 .setPositiveButton("YES!!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                accessTickets.deleteTicket(tickets.get(position));
-                Ticket friendTicket= new Ticket(selectFriend,tickets.get(position).getShowingID(),tickets.get(position).getSeatNum());
-                accessTickets.insertTicket(friendTicket);
+                Ticket friendTicket = new Ticket(selectFriend,tickets.get(position).getShowingID(),tickets.get(position).getSeatNum());
+                accessTickets.updateTicket(friendTicket);
                 updateTickets();
             }
         }).setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {}
+            public void onClick(DialogInterface dialog, int which) { }
         });
         alertDialog.show();
 
     }
-    public void setupString(int position){
-        Showing showing=accessShowing.getShowing(tickets.get(position).getShowingID());
+    public void setupString(int position) {
+        Showing showing = accessShowing.getShowing(tickets.get(position).getShowingID());
         ticketDate = String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
 
         String showingHour = String.valueOf(showing.getShowingHour());
@@ -129,9 +128,9 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         if (Integer.parseInt(showingMinute) < 10) {
             showingMinute = "0" + showingMinute;
         }
-        showingTime=showingHour + ":" + showingMinute;
+        showingTime = showingHour + ":" + showingMinute;
         Movie movie = accessMovies.getMovie(showing.getMovieID());
-        movieName=movie.getTitle();
+        movieName = movie.getTitle();
     }
 
     public void updateTickets() {
@@ -147,7 +146,7 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            selectFriend=((User) parent.getItemAtPosition(position)).getUserID();
+            selectFriend = ((User) parent.getItemAtPosition(position)).getUserID();
 
     }
 

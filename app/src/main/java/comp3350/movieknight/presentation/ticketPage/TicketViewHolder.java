@@ -20,7 +20,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder {
         movieTitle = itemView.findViewById(R.id.ticket_movie_title);
         ticketDate = itemView.findViewById(R.id.ticket_date);
         showingTime = itemView.findViewById(R.id.ticket_showing_time);
-        tickeButton=itemView.findViewById(R.id.send_tickets_button);
+        tickeButton = itemView.findViewById(R.id.send_tickets_button);
     }
 
     public TextView getMovieTitle(){
@@ -35,5 +35,5 @@ public class TicketViewHolder extends RecyclerView.ViewHolder {
         return showingTime;
     }
 
-    public Button getTickeButton(){return tickeButton;}
+    public Button getTickeButton() {return tickeButton;}
 }
