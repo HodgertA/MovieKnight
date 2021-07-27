@@ -86,7 +86,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(120, movie.getRuntime());
         lastShowingDate = movie.getLastShowDate();
         assertEquals(2021, lastShowingDate.get(Calendar.YEAR));
-        assertEquals(7, lastShowingDate.get(Calendar.MONTH)+1);
+        assertEquals(8, lastShowingDate.get(Calendar.MONTH)+1);
         assertEquals(26, lastShowingDate.get(Calendar.DATE));
 
         movie = movies.get(4);
@@ -97,7 +97,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(120, movie.getRuntime());
         lastShowingDate = movie.getLastShowDate();
         assertEquals(2021, lastShowingDate.get(Calendar.YEAR));
-        assertEquals(7, lastShowingDate.get(Calendar.MONTH)+1);
+        assertEquals(8, lastShowingDate.get(Calendar.MONTH)+1);
         assertEquals(26, lastShowingDate.get(Calendar.DATE));
 
         movie = new Movie(1, "", "", "", 1, 1, 1, 1);
