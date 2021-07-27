@@ -24,7 +24,7 @@ public class SeatViewAdapter extends RecyclerView.Adapter<SeatViewHolder> {
     private final int QUARTER_OPACITY = 64;
     private final boolean DEFAULT_ENABLED = true;
 
-    public SeatViewAdapter(Context context, SeatsFragment seatsFragment, boolean []seats) {
+    public SeatViewAdapter(Context context, boolean []seats) {
         this.seats = seats;
         unavailableSeats = seats.clone();
         this.selectedSeats = new ArrayList<>();

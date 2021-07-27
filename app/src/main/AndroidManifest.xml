@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="comp3350.movieknight">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,8 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieKnight">
         <activity
-            android:name=".presentation.MainActivity"
-            >
+            android:name=".presentation.cartFragment.CartActivity"
+            android:parentActivityName=".presentation.seatsPage.SeatsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.seatsPage.SeatsActivity" />
+
+        </activity>
+        <activity
+            android:name=".presentation.seatsPage.SeatsActivity"
+            android:parentActivityName=".presentation.movieDetailsPage.MovieDetailsActivity">
+            <meta-data
+                android:name="test"
+                android:value=".presentation.movieDetailsPage.MovieDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".presentation.movieDetailsPage.MovieDetailsActivity"
+            android:parentActivityName=".presentation.MoviesActivity.MoviesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MoviesActivity.MoviesActivity" />
+        </activity>
+        <activity android:name=".presentation.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
