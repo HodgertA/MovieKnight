@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+
 public class MainActivity extends AppCompatActivity {
     private int loggedInUserID;
 
@@ -126,5 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 in.close();
             }
         }
+    }
+
+    public static int getLoggedInUserID() {
+        return loggedInUserID;
     }
 }
