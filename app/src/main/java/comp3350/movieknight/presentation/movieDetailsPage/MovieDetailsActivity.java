@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +25,8 @@ import java.util.Calendar;
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessShowing;
 import comp3350.movieknight.objects.Showing;
+import comp3350.movieknight.presentation.MainActivity;
+import comp3350.movieknight.presentation.MoviesActivity.MoviesActivity;
 import comp3350.movieknight.presentation.movieListPage.MovieListFragment;
 
 public class MovieDetailsActivity extends AppCompatActivity {
@@ -121,9 +125,19 @@ public class MovieDetailsActivity extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
+            case R.id.action_logout:
+                Intent intent= new Intent(MovieDetailsActivity.this, MainActivity.class);
+                startActivity(intent);
+                return super.onOptionsItemSelected(item);
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.movies_menu, menu);
+        return true;
     }
 
     private void initializeView() {
