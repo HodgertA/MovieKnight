@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
+import comp3350.movieknight.presentation.MainActivity;
+import comp3350.movieknight.presentation.MoviesActivity.MoviesActivity;
 import comp3350.movieknight.presentation.cartFragment.CartActivity;
 import comp3350.movieknight.presentation.movieDetailsPage.MovieDetailsActivity;
 
@@ -75,6 +78,10 @@ public class SeatsActivity extends AppCompatActivity {
                 NavUtils.navigateUpFromSameTask(this);
                 finish();
                 return true;
+            case R.id.action_logout:
+                Intent intent= new Intent(SeatsActivity.this, MainActivity.class);
+                startActivity(intent);
+                return super.onOptionsItemSelected(item);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -104,6 +111,12 @@ public class SeatsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.movies_menu, menu);
+        return true;
     }
 
     public void openCartPage() {
