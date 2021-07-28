@@ -23,16 +23,6 @@ public class ViewTicketAcceptanceTest {
     public ActivityTestRule<MainActivity> mainActivity = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testLoginScreen() {
-        onView(withText("MovieKnight")).check(matches(isDisplayed()));
-        onView(withText("Select User:")).check(matches(isDisplayed()));
-        onView(withText("Default User")).check(matches(isDisplayed()));
-        onView(withText("User2")).check(matches(isDisplayed()));
-        onView(withText("User3")).check(matches(isDisplayed()));
-        onView(withText("LOGIN")).check(matches(isDisplayed()));
-    }
-
-    @Test
     public void testViewTickets() {
         onView(withText("Default User")).perform(click());
         onView(withText("LOGIN")).perform(click());
