@@ -14,7 +14,7 @@ import comp3350.movieknight.tests.business.FindAvailableSeatsTest;
 import comp3350.movieknight.tests.objects.*;
 import comp3350.movieknight.tests.persistence.DataAccessTest;
 
-public class AllTests {
+public class RunUnitTests {
 	public static TestSuite suite;
 
     public static Test suite() {
