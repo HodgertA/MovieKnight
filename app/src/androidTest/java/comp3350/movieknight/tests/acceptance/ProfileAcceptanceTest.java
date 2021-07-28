@@ -26,10 +26,17 @@ public class ProfileAcceptanceTest {
     public ActivityTestRule<MainActivity> homeActivity = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void testProfile() {
+    public void testLogin() {
         onView(withText("MovieKnight")).check(matches(isDisplayed()));
         onView(withText("Select User:")).check(matches(isDisplayed()));
+        onView(withText("Default User")).check(matches(isDisplayed()));
+        onView(withText("User2")).check(matches(isDisplayed()));
+        onView(withText("User3")).check(matches(isDisplayed()));
         onView(withId(R.id.list)).perform(click());
         onView(withText("LOGIN")).perform(click());
+    }
+
+    public void testLogout() {
+        onView(withId(R.id.action_logout)).perform(click());
     }
 }
