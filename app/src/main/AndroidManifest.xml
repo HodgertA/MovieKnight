@@ -28,10 +28,10 @@
         </activity>
         <activity
             android:name=".presentation.movieDetailsPage.MovieDetailsActivity"
-            android:parentActivityName=".presentation.MoviesActivity.MoviesActivity">
+            android:parentActivityName=".presentation.moviesActivity.MoviesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".presentation.MoviesActivity.MoviesActivity" />
+                android:value=".presentation.moviesActivity.MoviesActivity" />
         </activity>
         <activity android:name=".presentation.MainActivity">
             <intent-filter>
@@ -40,7 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.MoviesActivity.MoviesActivity" />
+        <activity android:name=".presentation.moviesActivity.MoviesActivity" />
     </application>
 
 </manifest>

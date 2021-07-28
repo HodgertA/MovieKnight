@@ -18,7 +18,7 @@ import comp3350.movieknight.presentation.MainActivity;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class viewMoviesAcceptanceTest {
+public class ViewMoviesAcceptanceTest {
 
     @Rule
     public ActivityTestRule<MainActivity> homeActivity = new ActivityTestRule<>(MainActivity.class);

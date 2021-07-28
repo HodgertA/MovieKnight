@@ -3,10 +3,10 @@ package comp3350.movieknight.tests;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
-import comp3350.movieknight.tests.acceptance.viewMoviesAcceptanceTest;
+import comp3350.movieknight.tests.acceptance.ViewMoviesAcceptanceTest;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({viewMoviesAcceptanceTest.class})
+@Suite.SuiteClasses({ViewMoviesAcceptanceTest.class})
 public class RunAcceptanceTests
 {
     public RunAcceptanceTests()

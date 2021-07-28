@@ -4,7 +4,7 @@ import comp3350.movieknight.R;
 import comp3350.movieknight.application.Main;
 import comp3350.movieknight.business.AccessUser;
 import comp3350.movieknight.objects.User;
-import comp3350.movieknight.presentation.MoviesActivity.MoviesActivity;
+import comp3350.movieknight.presentation.moviesActivity.MoviesActivity;
 
 import android.content.Context;
 import android.content.Intent;
