@@ -139,4 +139,45 @@ public class AccessUserTest extends TestCase {
         System.out.println("\nFinished updateMovie tests (using stub)");
     }
 
+    public void testGetAllFriends(){
+        System.out.println("\nStarting getAllFriends tests (using stub)");
+
+        Services.closeDataAccess();
+        Services.createDataAccess(new DatabaseStub(dbName));
+
+        AccessUser accessUser = new AccessUser();
+
+        User user1 = new User(1, "Default User");
+        User user2 = new User(2, "User2");
+        User user3 = new User(3, "User3");
+
+        ArrayList<User> friends = new ArrayList<User>();
+        accessUser.getAllFriends(friends,user1);
+
+        assertEquals(2, friends.size());
+        assertFalse(friends.contains(user1));
+        assertTrue(friends.contains(user2));
+        assertTrue(friends.contains(user3));
+
+        friends.clear();
+        accessUser.getAllFriends(friends,user2);
+
+        assertEquals(2, friends.size());
+        assertTrue(friends.contains(user1));
+        assertFalse(friends.contains(user2));
+        assertTrue(friends.contains(user3));
+
+        friends.clear();
+        accessUser.getAllFriends(friends,user3);
+
+        assertEquals(2, friends.size());
+        assertTrue(friends.contains(user1));
+        assertTrue(friends.contains(user2));
+        assertFalse(friends.contains(user3));
+
+        Services.closeDataAccess();
+
+        System.out.println("\nFinished getAllFriends tests (using stub)");
+    }
+
 }
