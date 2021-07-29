@@ -3,11 +3,12 @@ package comp3350.movieknight.tests;
 import org.junit.runners.Suite;
 import org.junit.runner.RunWith;
 
+import comp3350.movieknight.tests.acceptance.ReserveSeatsAcceptanceTest;
 import comp3350.movieknight.tests.acceptance.ViewTicketAcceptanceTest;
-import comp3350.movieknight.tests.acceptance.viewMoviesAcceptanceTest;
+import comp3350.movieknight.tests.acceptance.ViewMoviesAcceptanceTest;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({viewMoviesAcceptanceTest.class, ViewTicketAcceptanceTest.class})
+@Suite.SuiteClasses({ViewMoviesAcceptanceTest.class, ViewTicketAcceptanceTest.class, ReserveSeatsAcceptanceTest.class})
 public class RunAcceptanceTests
 {
     public RunAcceptanceTests()
