@@ -315,7 +315,7 @@ public class DataAccessObject implements DataAccess {
         result = null;
         try {
             cmdString = "Select * from Showings";
-            rs4 = st3.executeQuery(cmdString);
+            rs6 = st3.executeQuery(cmdString);
         } catch (Exception e) {
             processSQLError(e);
         }
@@ -488,7 +488,7 @@ public class DataAccessObject implements DataAccess {
                     + "TheatreID=" + showing.getTheatreID() + ", "
                     + "ShowingDate=" + showing.getShowingDate().getTimeInMillis() + ", "
                     + "ShowingHour=" + showing.getShowingHour() + ", "
-                    + "ShowingHour=" + showing.getShowingMinute() + ", "
+                    + "ShowingMinute=" + showing.getShowingMinute() + ", "
                     + "Seats=" + showing.getSeats();
             where = "where ShowingID=" + showing.getShowingID();
 
