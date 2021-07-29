@@ -248,6 +248,8 @@ public class DatabaseStub implements DataAccess {
         users.add(user);
         user = new User(3, "User3");
         users.add(user);
+        user = new User(4, "NoTickets");
+        users.add(user);
 
         tickets = new ArrayList<Ticket>();
         ticket = new Ticket(1, 1, 0);

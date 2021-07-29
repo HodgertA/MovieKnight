@@ -346,7 +346,7 @@ public class DataAccessTest extends TestCase {
         users = new ArrayList<User>();
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
 
         user = users.get(0);
         assertEquals(1, user.getUserID());
@@ -656,15 +656,15 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("Starting DataAccess Test: testTypicalUsers");
 
-        user = new User(4, "Bob");
+        user = new User(5, "Bob");
         result = dataAccess.insertUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(4, users.size());
+        assertEquals(5, users.size());
         assertTrue(users.contains(user));
-        user = users.get(3);
-        assertEquals(4, user.getUserID());
+        user = users.get(4);
+        assertEquals(5, user.getUserID());
         assertEquals("Bob", user.getUsername());
 
         users.clear();
@@ -673,7 +673,7 @@ public class DataAccessTest extends TestCase {
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(4, users.size());
+        assertEquals(5, users.size());
         assertTrue(users.contains(user));
         user = users.get(3);
         assertEquals(4, user.getUserID());
@@ -685,7 +685,7 @@ public class DataAccessTest extends TestCase {
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
         assertFalse(users.contains(user));
 
         System.out.println("Finished DataAccess Test: testTypicalUsers");
@@ -736,7 +736,7 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.insertUser(user);
         assertTrue(result.contains("Violation of unique constraint"));
         dataAccess.getAllUsers(users);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
 
         System.out.println("Finished DataAccess Test: testDuplicateObjects");
     }
@@ -824,7 +824,7 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.deleteUser(user);
         assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllUsers(users);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
 
         System.out.println("Finished DataAccess Test: testNonExistentObjects");
     }
@@ -1353,6 +1353,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.deleteUser(new User(1, "Default User"));
         dataAccess.deleteUser(new User(2, "User2"));
         dataAccess.deleteUser(new User(3, "User3"));
+        dataAccess.deleteUser(new User(4, "NoTickets"));
 
         users = new ArrayList<User>();
         result = dataAccess.getAllUsers(users);
@@ -1360,7 +1361,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(0, users.size());
 
         users.clear();
-        user = new User(4, "Bob");
+        user = new User(5, "Bob");
         result = dataAccess.insertUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
@@ -1368,11 +1369,11 @@ public class DataAccessTest extends TestCase {
         assertEquals(1, users.size());
         assertTrue(users.contains(user));
         user = users.get(0);
-        assertEquals(4, user.getUserID());
+        assertEquals(5, user.getUserID());
         assertEquals("Bob", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.updateUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
@@ -1380,11 +1381,11 @@ public class DataAccessTest extends TestCase {
         assertEquals(1, users.size());
         assertTrue(users.contains(user));
         user = users.get(0);
-        assertEquals(4, user.getUserID());
+        assertEquals(5, user.getUserID());
         assertEquals("Greg", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.deleteUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
