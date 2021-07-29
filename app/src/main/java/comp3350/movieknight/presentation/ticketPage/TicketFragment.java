@@ -12,10 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import comp3350.movieknight.R;
-import comp3350.movieknight.business.AccessTickets;
-
 
 public class TicketFragment extends Fragment {
 

@@ -57,8 +57,8 @@ public class UserTest extends TestCase {
         User user = new User(1, null);
         assertNotNull(user);
         assertEquals(1, user.getUserID());
-        assertEquals(null, user.getUsername());
-        assertEquals(null, user.toString());
+        assertNull(user.getUsername());
+        assertNull(user.toString());
         assertEquals(user,user);
 
         System.out.println("Finished User test: testNullValues");

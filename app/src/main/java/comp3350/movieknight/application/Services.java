@@ -23,8 +23,7 @@ public class Services {
         return dataAccessService;
     }
 
-    public static DataAccess getDataAccess(String dbName)
-    {
+    public static DataAccess getDataAccess(String dbName) {
         if (dataAccessService == null) {
             System.out.println("Connection to data access has not been established.");
             System.exit(1);
@@ -32,8 +31,7 @@ public class Services {
         return dataAccessService;
     }
 
-    public static void closeDataAccess()
-    {
+    public static void closeDataAccess() {
         if (dataAccessService != null) {
             dataAccessService.close();
         }

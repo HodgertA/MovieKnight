@@ -70,9 +70,4 @@ public class MovieListFragment extends Fragment {
     public static Bundle getChosenMovie() {
         return chosenMovie;
     }
-
-    //Remove child fragment (MovieDescriptionFragment) from stack of fragment to show parent fragment(MovieListFragment)
-    public void finishMyChild() {
-
-    }
 }

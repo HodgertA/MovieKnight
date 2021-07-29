@@ -15,7 +15,7 @@ import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.presentation.seatsPage.SeatsActivity;
 
-public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHolder>{
+public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHolder> {
 
     private Context context;
     private ArrayList<Showing> showings;
@@ -42,7 +42,7 @@ public class ShowtimeRecyclerViewAdapter extends RecyclerView.Adapter<ShowtimeHo
             showMinute = "0" + showMinute;
         }
 
-        holder.getShowtime().setText( showHour + ":" + showMinute);
+        holder.getShowtime().setText(showHour + ":" + showMinute);
         holder.getShowtime().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

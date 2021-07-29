@@ -35,5 +35,5 @@ public class TicketViewHolder extends RecyclerView.ViewHolder {
         return showingTime;
     }
 
-    public Button getTickeButton() {return tickeButton;}
+    public Button getTickeButton() { return tickeButton; }
 }

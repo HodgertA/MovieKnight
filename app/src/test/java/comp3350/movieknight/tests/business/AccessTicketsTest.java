@@ -29,9 +29,9 @@ public class AccessTicketsTest extends TestCase {
         selectedSeats.add(5);
         selectedSeats.add(12);
         selectedSeats.add(20);
-        accessTickets.createTicket(4,selectedSeats,1);
+        accessTickets.createTicket(4, selectedSeats,1);
 
-        ArrayList<Ticket> tickets=new ArrayList<Ticket>();
+        ArrayList<Ticket> tickets = new ArrayList<Ticket>();
         accessTickets.getUserTickets(tickets,4);
 
         assertEquals(3,tickets.size());
@@ -40,30 +40,28 @@ public class AccessTicketsTest extends TestCase {
         assertTrue(tickets.contains(new Ticket(4,1,20)));
         //normal test done
 
-
         //empty list test
         selectedSeats = new ArrayList<>();
-        accessTickets.createTicket(5,selectedSeats,1);
+        accessTickets.createTicket(5, selectedSeats,1);
 
         tickets.clear();
         accessTickets.getUserTickets(tickets,5);
 
-        assertEquals(0,tickets.size());
+        assertEquals(0, tickets.size());
         //empty list test done
-
 
         //full list test
         selectedSeats = new ArrayList<>();
-        for(int i = 0;i<24;i++) {
+        for(int i = 0; i < 24; i++) {
             selectedSeats.add(i);
         }
-        accessTickets.createTicket(6,selectedSeats,20);
+        accessTickets.createTicket(6, selectedSeats,20);
         tickets.clear();
         accessTickets.getUserTickets(tickets , 6);
 
-        assertEquals(24,tickets.size());
-        for(int i = 0;i<24;i++) {
-            assertTrue(tickets.contains(new Ticket(6,20,i)));
+        assertEquals(24, tickets.size());
+        for(int i = 0; i < 24; i++) {
+            assertTrue(tickets.contains(new Ticket(6,20, i)));
         }
         //full list test done
         Services.closeDataAccess();
@@ -77,10 +75,10 @@ public class AccessTicketsTest extends TestCase {
         Services.createDataAccess(new DatabaseStub(dbName));
 
         AccessTickets accessTickets = new AccessTickets();
-        ArrayList<Ticket>tickets =new ArrayList<Ticket>();
+        ArrayList<Ticket>tickets = new ArrayList<Ticket>();
                 accessTickets.getUserTickets(tickets,1);
 
-        assertEquals(8,tickets.size());
+        assertEquals(8, tickets.size());
         assertTrue(tickets.contains(new Ticket(1, 1, 0)));
         assertTrue(tickets.contains(new Ticket(1, 1, 3)));
         assertTrue(tickets.contains(new Ticket(1, 2, 6)));
@@ -89,7 +87,6 @@ public class AccessTicketsTest extends TestCase {
         assertTrue(tickets.contains(new Ticket(1, 7, 15)));
         assertTrue(tickets.contains(new Ticket(1, 10, 18)));
         assertTrue(tickets.contains(new Ticket(1, 12, 4)));
-
 
         Services.closeDataAccess();
         System.out.println("\nFinished getUserTickets tests (using stub)");
@@ -130,15 +127,15 @@ public class AccessTicketsTest extends TestCase {
         ArrayList<Ticket> tickets = new ArrayList<>();
         ArrayList<Ticket> ticketsDB=new ArrayList<>();
         accessTickets.getUserTickets(ticketsDB,4);
-        assertEquals(0,ticketsDB.size());
+        assertEquals(0, ticketsDB.size());
 
         tickets.add(new Ticket(4,100,100));
         accessTickets.insertTicket(tickets.get(0));
 
         ticketsDB.clear();
         accessTickets.getUserTickets(ticketsDB,4);
-        assertEquals(1,ticketsDB.size());
-        assertEquals(tickets,ticketsDB);
+        assertEquals(1, ticketsDB.size());
+        assertEquals(tickets, ticketsDB);
 
         Services.closeDataAccess();
         System.out.println("\nFinished insertTicket tests (using stub)");
@@ -151,7 +148,7 @@ public class AccessTicketsTest extends TestCase {
         Services.createDataAccess(new DatabaseStub(dbName));
 
         AccessTickets accessTickets = new AccessTickets();
-        ArrayList<Ticket> ticketsDB=new ArrayList<>();
+        ArrayList<Ticket> ticketsDB = new ArrayList<>();
         accessTickets.getUserTickets(ticketsDB,1);
         assertEquals(1,ticketsDB.get(0).getUserID());
         assertEquals(0,ticketsDB.get(0).getSeatNum());
@@ -178,11 +175,11 @@ public class AccessTicketsTest extends TestCase {
         Services.createDataAccess(new DatabaseStub(dbName));
 
         AccessTickets accessTickets = new AccessTickets();
-        ArrayList<Ticket>ticketsDB=new ArrayList<Ticket>();
+        ArrayList<Ticket>ticketsDB = new ArrayList<Ticket>();
         accessTickets.getUserTickets(ticketsDB,1);
-        assertEquals(8,ticketsDB.size());
+        assertEquals(8, ticketsDB.size());
 
-        for(int j = 1;j<4;j++) {
+        for(int j = 1; j<4; j++) {
             for (int i = 0; i < 8; i++) {
                 ticketsDB.clear();
                 accessTickets.getUserTickets(ticketsDB,j);
@@ -196,6 +193,4 @@ public class AccessTicketsTest extends TestCase {
         Services.closeDataAccess();
         System.out.println("\nFinished deleteTicket tests (using stub)");
     }
-
-
 }

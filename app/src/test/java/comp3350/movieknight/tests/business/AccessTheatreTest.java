@@ -43,7 +43,7 @@ public class AccessTheatreTest extends TestCase {
         assertEquals(theatre, accessTheatre.getTheatre(1));
 
         accessTheatre.deleteTheatre(theatre);
-        assertEquals(null, accessTheatre.getTheatre(1));
+        assertNull(accessTheatre.getTheatre(1));
 
         Services.closeDataAccess();
         System.out.println("\nFinished deleteTheatre tests (using stub)");
@@ -58,7 +58,7 @@ public class AccessTheatreTest extends TestCase {
         AccessTheatre accessTheatre = new AccessTheatre();
 
         Theatre theatre = new Theatre(2, 24);
-        assertEquals(null, accessTheatre.getTheatre(2));
+        assertNull(accessTheatre.getTheatre(2));
 
         accessTheatre.insertTheatre(theatre);
         assertEquals(theatre, accessTheatre.getTheatre(2));

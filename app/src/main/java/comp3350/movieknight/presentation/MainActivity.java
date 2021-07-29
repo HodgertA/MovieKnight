@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
 public class MainActivity extends AppCompatActivity {
     private static int loggedInUserID;
 
@@ -87,16 +86,14 @@ public class MainActivity extends AppCompatActivity {
         AssetManager assetManager = getAssets();
 
         try {
-
             assetNames = assetManager.list(DB_PATH);
+
             for (int i = 0; i < assetNames.length; i++) {
                 assetNames[i] = DB_PATH + "/" + assetNames[i];
             }
 
             copyAssetsToDirectory(assetNames, dataDirectory);
-
             Main.setDBPathName(dataDirectory.toString() + "/" + Main.dbName);
-
         } catch (IOException ioe) {
             System.out.println("Unable to access application data: " + ioe.getMessage());
         }

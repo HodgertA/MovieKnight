@@ -62,7 +62,6 @@ public class AccessMoviesTest extends TestCase {
         ArrayList<Movie> movies = new ArrayList<Movie>();
         accessMovies.getMoviesInTheatres(movies);
 
-
         assertEquals(movie1, accessMovies.getMovie(1));
         assertEquals(movie2, accessMovies.getMovie(2));
         assertEquals(movie3, accessMovies.getMovie(3));
@@ -93,8 +92,8 @@ public class AccessMoviesTest extends TestCase {
         accessMovies.deleteMovie(movie1);
         accessMovies.deleteMovie(movie2);
 
-        assertEquals(null, accessMovies.getMovie(1));
-        assertEquals(null, accessMovies.getMovie(2));
+        assertNull(accessMovies.getMovie(1));
+        assertNull(accessMovies.getMovie(2));
 
         Services.closeDataAccess();
         System.out.println("\nFinished deleteMovie tests (using stub)");
@@ -110,7 +109,7 @@ public class AccessMoviesTest extends TestCase {
 
         Movie movie = new Movie(6, "Description for Wall-E", "Wall-E", "", 120, 2021, 7, 26);
 
-        assertEquals(null, accessMovies.getMovie(6));
+        assertNull(accessMovies.getMovie(6));
 
         accessMovies.insertMovie(movie);
         assertEquals(movie, accessMovies.getMovie(6));

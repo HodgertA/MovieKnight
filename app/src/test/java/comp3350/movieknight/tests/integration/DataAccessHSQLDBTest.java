@@ -7,8 +7,7 @@ import comp3350.movieknight.application.Services;
 import comp3350.movieknight.persistence.DataAccess;
 import comp3350.movieknight.tests.persistence.DataAccessTest;
 
-public class DataAccessHSQLDBTest extends TestCase
-{
+public class DataAccessHSQLDBTest extends TestCase {
 	private static String dbName = Main.dbName;
 	
 	public DataAccessHSQLDBTest(String arg0)
@@ -16,8 +15,7 @@ public class DataAccessHSQLDBTest extends TestCase
 		super(arg0);
 	}
 
-	public void testDataAccess()
-	{
+	public void testDataAccess() {
 		DataAccess dataAccess;
 		
 		Services.closeDataAccess();

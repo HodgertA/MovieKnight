@@ -19,17 +19,13 @@ import comp3350.movieknight.objects.Theatre;
 import comp3350.movieknight.objects.Ticket;
 import comp3350.movieknight.objects.User;
 
-
-public class BusinessPersistenceSeamTest extends TestCase
-{
+public class BusinessPersistenceSeamTest extends TestCase {
 	public BusinessPersistenceSeamTest(String arg0)
 	{
 		super(arg0);
 	}
 
-	public void testAccessMovies()
-	{
-
+	public void testAccessMovies() {
 		Services.closeDataAccess();
 
 		System.out.println("\nStarting Integration test of AccessMovies to persistence");
@@ -61,7 +57,6 @@ public class BusinessPersistenceSeamTest extends TestCase
 		assertEquals(movie4, accessMovies.getMovie(4));
 		assertEquals(movie5, accessMovies.getMovie(5));
 
-
 		assertNull(accessMovies.getMovie(6));
 		accessMovies.insertMovie(movie6);
 		assertEquals(movie6, accessMovies.getMovie(6));
@@ -82,8 +77,7 @@ public class BusinessPersistenceSeamTest extends TestCase
 		System.out.println("Finished Integration test of AccessMovies to persistence");
 	}
 
-	public void testAccessTheatre()
-	{
+	public void testAccessTheatre() {
 
 		Services.closeDataAccess();
 
@@ -114,8 +108,7 @@ public class BusinessPersistenceSeamTest extends TestCase
 		System.out.println("Finished Integration test of AccessTheatre to persistence");
 	}
 
-	public void testAccessShowing()
-	{
+	public void testAccessShowing() {
 
 		Services.closeDataAccess();
 
@@ -153,8 +146,7 @@ public class BusinessPersistenceSeamTest extends TestCase
 	}
 
 
-	public void testAccessTickets()
-	{
+	public void testAccessTickets() {
 		Services.closeDataAccess();
 
 		System.out.println("\nStarting Integration test of AccessTickets to persistence");
@@ -223,8 +215,7 @@ public class BusinessPersistenceSeamTest extends TestCase
 	}
 
 
-	public void testAccessUser()
-	{
+	public void testAccessUser() {
 
 		Services.closeDataAccess();
 

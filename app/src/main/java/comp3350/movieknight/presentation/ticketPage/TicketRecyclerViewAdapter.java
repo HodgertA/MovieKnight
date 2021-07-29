@@ -1,6 +1,5 @@
 package comp3350.movieknight.presentation.ticketPage;
 
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,7 +30,6 @@ import comp3350.movieknight.objects.Movie;
 import comp3350.movieknight.objects.Showing;
 import comp3350.movieknight.objects.Ticket;
 import comp3350.movieknight.objects.User;
-
 
 public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHolder> implements AdapterView.OnItemSelectedListener {
     String showingTime;
@@ -84,7 +82,6 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     }
 
     public void openDialog(int position) {
-
         Spinner selectfriendSpinner;
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
         LayoutInflater inflater = activity.getLayoutInflater();
@@ -95,7 +92,6 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         ((TextView)view.findViewById(R.id.ticket_movie_title)).setText(movieName);
         selectfriendSpinner = view.findViewById(R.id.select_user_spinner);
 
-
         ArrayList<User> friends =new ArrayList<>();
         accessUser.getAllFriends(friends,new User(userID,null));
 
@@ -103,9 +99,7 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         selectfriendSpinner.setAdapter(adapter);
         selectfriendSpinner.setOnItemSelectedListener(this);
 
-        alertDialog.setView(view)
-
-                .setPositiveButton("YES!!", new DialogInterface.OnClickListener() {
+        alertDialog.setView(view).setPositiveButton("YES!!", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Ticket friendTicket = new Ticket(selectFriend,tickets.get(position).getShowingID(),tickets.get(position).getSeatNum());
@@ -121,7 +115,7 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     }
     public void setupString(int position) {
         Showing showing = accessShowing.getShowing(tickets.get(position).getShowingID());
-        ticketDate = String.valueOf((showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE));
+        ticketDate = (showing.getShowingDate().get(Calendar.MONTH)+1)+"/"+showing.getShowingDate().get(Calendar.DATE);
 
         String showingHour = String.valueOf(showing.getShowingHour());
         String showingMinute = String.valueOf(showing.getShowingMinute());
@@ -148,11 +142,8 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             selectFriend = ((User) parent.getItemAtPosition(position)).getUserID();
-
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 }

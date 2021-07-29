@@ -12,10 +12,9 @@ import comp3350.movieknight.tests.acceptance.ViewMoviesAcceptanceTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ViewMoviesAcceptanceTest.class, ViewTicketAcceptanceTest.class, ProfileAcceptanceTest.class, SendTicketAcceptanceTest.class, ReserveSeatsAcceptanceTest.class})
 
-public class RunAcceptanceTests
-{
+public class RunAcceptanceTests {
     public RunAcceptanceTests()
     {
-        System.out.println("Sample Acceptance tests");
+        System.out.println("Running Acceptance tests");
     }
 }

@@ -24,6 +24,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
 import androidx.test.espresso.contrib.RecyclerViewActions;
+
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class ReserveSeatsAcceptanceTest {
@@ -33,12 +34,10 @@ public class ReserveSeatsAcceptanceTest {
 
     @Test
     public void testReserveSeat() {
-
         AccessTickets at = new AccessTickets();
 
         onView(withText("NoTickets")).perform(click());
         onView(withText("LOGIN")).perform(click());
-
 
         onView(allOf(withId(R.id.movie_card), withText("Finding Nemo")));
 
@@ -56,12 +55,9 @@ public class ReserveSeatsAcceptanceTest {
         onView(withText("CHECKOUT")).perform(click());
         onView(withText("PAY THE BILL")).perform(click());
 
-
         onView(withText("Finding Nemo")).check(matches(isDisplayed())).perform(click());
         onView(withText("10:55")).check(matches(isDisplayed())).perform(click());
-        onView(ViewMatchers.withId(R.id.seats_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(1,
-                        click()));
+        onView(ViewMatchers.withId(R.id.seats_recycler_view)).perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
         onView(withText("CHECKOUT")).perform(click());
 
         onView(withText("Screen")).check(matches(isDisplayed()));

@@ -28,8 +28,7 @@ public class AccessShowingTest extends TestCase {
 
         Calendar day = Calendar.getInstance();
 
-
-        for(int i = 0;i<7;i++) {
+        for (int i = 0; i < 7; i++) {
             accessShowing.getShowingForMovieByDate(showings,1,day);
             assertEquals(2,showings.size());
             assertTrue(showings.contains(new Showing(1+i*12,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15)));
@@ -80,8 +79,7 @@ public class AccessShowingTest extends TestCase {
 
         Calendar day = Calendar.getInstance();
 
-
-        for(int i = 0;i<7;i++) {
+        for(int i = 0; i < 7; i++) {
             showing = accessShowing.getShowing(1+i*12);
             assertEquals(showing,new Showing(1+i*12,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15));
 
@@ -125,7 +123,6 @@ public class AccessShowingTest extends TestCase {
         System.out.println("\nFinished getShowing tests (using stub)");
     }
 
-
     public void testInsertShowing() {
         System.out.println("\nStarting insertShowing tests (using stub)");
         Services.closeDataAccess();
@@ -155,7 +152,6 @@ public class AccessShowingTest extends TestCase {
 
         Showing oldShowing = new Showing(1,1,1,24,day.get(Calendar.YEAR),day.get(Calendar.MONTH)+1,day.get(Calendar.DATE), 8, 15);
 
-
         assertEquals(oldShowing.getMovieID(),accessShowing.getShowing(1).getMovieID());
         assertEquals(oldShowing.getSeats(),accessShowing.getShowing(1).getSeats());
         assertEquals(oldShowing.getShowingID(),accessShowing.getShowing(1).getShowingID());
@@ -184,7 +180,7 @@ public class AccessShowingTest extends TestCase {
 
         AccessShowing accessShowing = new AccessShowing();
         Showing showing;
-        for(int i = 1;i<85;i++) {
+        for(int i = 1; i < 85; i++) {
             showing = accessShowing.getShowing(i);
             assertNotNull(showing);
             accessShowing.deleteShowing(showing);

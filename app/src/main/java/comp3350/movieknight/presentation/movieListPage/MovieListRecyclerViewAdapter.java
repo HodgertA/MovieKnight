@@ -1,7 +1,6 @@
 package comp3350.movieknight.presentation.movieListPage;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +11,8 @@ import java.util.ArrayList;
 
 import comp3350.movieknight.R;
 import comp3350.movieknight.objects.Movie;
-import comp3350.movieknight.presentation.movieDetailsPage.MovieDetailsActivity;
 
-public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItemViewHolder>{
+public class MovieListRecyclerViewAdapter extends RecyclerView.Adapter<MovieItemViewHolder> {
 
     private Context context;
     private ArrayList<Movie> movies;
