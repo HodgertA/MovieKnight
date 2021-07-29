@@ -28,12 +28,12 @@ public class AccessUserTest extends TestCase {
         User user1 = new User(1, "Default User");
         User user2 = new User(2, "User2");
         User user3 = new User(3, "User3");
-        User user4 = new User(4, "Another");
+        User user4 = new User(5, "Another");
 
         ArrayList<User> users = new ArrayList<User>();
         accessUser.getAllUsers(users);
 
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
         assertTrue(users.contains(user1));
         assertTrue(users.contains(user2));
         assertTrue(users.contains(user3));
@@ -58,7 +58,7 @@ public class AccessUserTest extends TestCase {
         ArrayList<User> users = new ArrayList<User>();
         accessUser.getAllUsers(users);
 
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
         assertTrue(users.contains(user1));
         assertTrue(users.contains(user2));
         assertTrue(users.contains(user3));
@@ -69,7 +69,7 @@ public class AccessUserTest extends TestCase {
 
         users.clear();
         accessUser.getAllUsers(users);
-        assertEquals(0, users.size());
+        assertEquals(1, users.size());
         assertFalse(users.contains(user1));
         assertFalse(users.contains(user2));
         assertFalse(users.contains(user3));
@@ -127,7 +127,7 @@ public class AccessUserTest extends TestCase {
         accessUser.updateUser(user3);
         accessUser.getAllUsers(users);
 
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
         assertTrue(users.contains(user1));
         assertEquals("New Username", users.get(0).getUsername());
         assertTrue(users.contains(user2));

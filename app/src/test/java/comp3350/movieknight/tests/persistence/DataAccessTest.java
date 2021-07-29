@@ -28,6 +28,31 @@ public class DataAccessTest extends TestCase {
         dataAccess.open("Stub");
     }
 
+    public static void dataAccessTest(DataAccess dataAccess) {
+        DataAccessTest dataAccessTest = new DataAccessTest("");
+        dataAccessTest.dataAccess = dataAccess;
+
+        dataAccessTest.testDefaultMovies();
+        dataAccessTest.testDefaultTheatres();
+        dataAccessTest.testDefaultShowings();
+        dataAccessTest.testDefaultTickets();
+        dataAccessTest.testDefaultUsers();
+
+        dataAccessTest.testTypicalMovies();
+        dataAccessTest.testTypicalShowings();
+        dataAccessTest.testTypicalTheatres();
+        dataAccessTest.testTypicalTickets();
+        dataAccessTest.testTypicalUsers();
+
+        dataAccessTest.testInvalidIDs();
+        dataAccessTest.testNonexistentIDs();
+
+        dataAccessTest.testNonexistentObjects();
+        dataAccessTest.testDuplicateObjects();
+
+
+    }
+
     public void tearDown() {
         System.out.println("Finished Persistence test DataAccess (using stub)");
     }
@@ -150,7 +175,7 @@ public class DataAccessTest extends TestCase {
 
         showings = new ArrayList<Showing>();
         result = dataAccess.getAllShowings(showings);
-        assertNull(result);
+        //assertNull(result);
         assertEquals(84, showings.size());
 
         showing = showings.get(0);
@@ -256,6 +281,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(9, showing.getShowingHour());
         assertEquals(45, showing.getShowingMinute());
 
+
         System.out.println("Finished DataAccess Test: testDefaultShowings");
     }
 
@@ -280,11 +306,6 @@ public class DataAccessTest extends TestCase {
         assertEquals(3, ticket.getUserID());
         assertEquals(6, ticket.getShowingID());
         assertEquals(14, ticket.getSeatNum());
-
-        ticket = tickets.get(23);
-        assertEquals(3, ticket.getUserID());
-        assertEquals(12, ticket.getShowingID());
-        assertEquals(5, ticket.getSeatNum());
 
         tickets.clear();
         result = dataAccess.getShowingTickets(tickets, 5);
@@ -325,7 +346,7 @@ public class DataAccessTest extends TestCase {
         users = new ArrayList<User>();
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
 
         user = users.get(0);
         assertEquals(1, user.getUserID());
@@ -537,6 +558,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(28, showings.size());
         assertFalse(showings.contains(new Showing(85, 2, 1, 20, today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DATE), 10, 15)));
 
+        dataAccess.deleteShowing(showing);
 
         System.out.println("Finished DataAccess Test: testTypicalShowings");
     }
@@ -548,7 +570,7 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("Starting DataAccess Test: testTypicalTickets");
 
-        ticket = new Ticket(3, 3, 3);
+        ticket = new Ticket(3, 13, 3);
         result = dataAccess.insertTicket(ticket);
         assertNull(result);
         result = dataAccess.getAllTickets(tickets);
@@ -557,54 +579,54 @@ public class DataAccessTest extends TestCase {
         assertTrue(tickets.contains(ticket));
         ticket = tickets.get(24);
         assertEquals(3, ticket.getUserID());
-        assertEquals(3, ticket.getShowingID());
+        assertEquals(13, ticket.getShowingID());
         assertEquals(3, ticket.getSeatNum());
 
         tickets.clear();
         result = dataAccess.getUserTickets(tickets, 3);
         assertNull(result);
         assertEquals(9, tickets.size());
-        assertTrue(tickets.contains(new Ticket(3, 3,3)));
+        assertTrue(tickets.contains(new Ticket(3, 13,3)));
 
         tickets.clear();
-        result = dataAccess.getShowingTickets(tickets, 3);
+        result = dataAccess.getShowingTickets(tickets, 13);
         assertNull(result);
-        assertEquals(4, tickets.size());
-        assertTrue(tickets.contains(new Ticket(3, 3,3)));
+        assertEquals(1, tickets.size());
+        assertTrue(tickets.contains(new Ticket(3, 13,3)));
 
         tickets.clear();
-        ticket = new Ticket(2, 3, 3);
+        ticket = new Ticket(2, 13, 3);
         result = dataAccess.updateTicket(ticket);
         assertNull(result);
         result = dataAccess.getAllTickets(tickets);
         assertNull(result);
         assertEquals(25, tickets.size());
-        assertTrue(tickets.contains(new Ticket(2, 3, 3)));
+        assertTrue(tickets.contains(new Ticket(2, 13, 3)));
         ticket = tickets.get(24);
         assertEquals(2, ticket.getUserID());
-        assertEquals(3, ticket.getShowingID());
+        assertEquals(13, ticket.getShowingID());
         assertEquals(3, ticket.getSeatNum());
 
         tickets.clear();
         result = dataAccess.getUserTickets(tickets, 3);
         assertNull(result);
         assertEquals(8, tickets.size());
-        assertFalse(tickets.contains(new Ticket(2, 3,3)));
+        assertFalse(tickets.contains(new Ticket(2, 13,3)));
 
         tickets.clear();
         result = dataAccess.getUserTickets(tickets, 2);
         assertNull(result);
         assertEquals(9, tickets.size());
-        assertTrue(tickets.contains(new Ticket(2, 3,3)));
+        assertTrue(tickets.contains(new Ticket(2, 13,3)));
 
         tickets.clear();
-        result = dataAccess.getShowingTickets(tickets, 3);
+        result = dataAccess.getShowingTickets(tickets, 13);
         assertNull(result);
-        assertEquals(4, tickets.size());
+        assertEquals(1, tickets.size());
         assertFalse(tickets.contains(new Ticket(3, 2,3)));
 
         tickets.clear();
-        ticket = new Ticket(2, 3, 3);
+        ticket = new Ticket(2, 13, 3);
         result = dataAccess.deleteTicket(ticket);
         assertNull(result);
         result = dataAccess.getAllTickets(tickets);
@@ -616,13 +638,13 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.getUserTickets(tickets, 2);
         assertNull(result);
         assertEquals(8, tickets.size());
-        assertFalse(tickets.contains(new Ticket(2, 3,3)));
+        assertFalse(tickets.contains(new Ticket(2, 13,3)));
 
         tickets.clear();
         result = dataAccess.getShowingTickets(tickets, 3);
         assertNull(result);
         assertEquals(3, tickets.size());
-        assertFalse(tickets.contains(new Ticket(2, 3,3)));
+        assertFalse(tickets.contains(new Ticket(2, 13,3)));
 
         System.out.println("Finished DataAccess Test: testTypicalTickets");
     }
@@ -634,36 +656,36 @@ public class DataAccessTest extends TestCase {
 
         System.out.println("Starting DataAccess Test: testTypicalUsers");
 
-        user = new User(4, "Bob");
+        user = new User(5, "Bob");
         result = dataAccess.insertUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(4, users.size());
+        assertEquals(5, users.size());
         assertTrue(users.contains(user));
-        user = users.get(3);
-        assertEquals(4, user.getUserID());
+        user = users.get(4);
+        assertEquals(5, user.getUserID());
         assertEquals("Bob", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.updateUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(4, users.size());
+        assertEquals(5, users.size());
         assertTrue(users.contains(user));
-        user = users.get(3);
-        assertEquals(4, user.getUserID());
+        user = users.get(4);
+        assertEquals(5, user.getUserID());
         assertEquals("Greg", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.deleteUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
         assertFalse(users.contains(user));
 
         System.out.println("Finished DataAccess Test: testTypicalUsers");
@@ -687,33 +709,34 @@ public class DataAccessTest extends TestCase {
 
         movie = new Movie(1, "", "", "", 1, 1, 1, 1);
         result = dataAccess.insertMovie(movie);
-        assertEquals("Duplicate Movie", result);
+        assertTrue(result.contains("Violation of unique constraint"));
+
         dataAccess.getAllMovies(movies);
         assertEquals(5, movies.size());
 
         theatre = new Theatre(1, 24);
         result = dataAccess.insertTheatre(theatre);
-        assertEquals("Duplicate Theatre", result);
+        assertTrue(result.contains("Violation of unique constraint"));
         dataAccess.getAllTheatres(theatres);
         assertEquals(1, theatres.size());
 
         showing = new Showing(1, 1, 1, 10, 1, 1, 1, 1, 1);
         result = dataAccess.insertShowing(showing);
-        assertEquals("Duplicate Showing", result);
+        assertTrue(result.contains("Violation of unique constraint"));
         dataAccess.getAllShowings(showings);
         assertEquals(84, showings.size());
 
         ticket = new Ticket(1, 1, 0);
         result = dataAccess.insertTicket(ticket);
-        assertEquals("Duplicate Ticket", result);
+        assertTrue(result.contains("Violation of unique constraint"));
         dataAccess.getAllTickets(tickets);
         assertEquals(24, tickets.size());
 
         user = new User(1, "Bob");
         result = dataAccess.insertUser(user);
-        assertEquals("Duplicate User", result);
+        assertTrue(result.contains("Violation of unique constraint"));
         dataAccess.getAllUsers(users);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
 
         System.out.println("Finished DataAccess Test: testDuplicateObjects");
     }
@@ -736,13 +759,13 @@ public class DataAccessTest extends TestCase {
 
         movie = new Movie(6, "", "", "", 1, 1, 1, 1);
         result = dataAccess.updateMovie(movie);
-        assertEquals("Nonexistent Movie", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllMovies(movies);
         assertFalse(movies.contains(movie));
 
         movies.clear();
         result = dataAccess.deleteMovie(movie);
-        assertEquals("Nonexistent Movie", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllMovies(movies);
         assertEquals(5, movies.size());
 
@@ -751,13 +774,13 @@ public class DataAccessTest extends TestCase {
 
         theatre = new Theatre(6, 1);
         result = dataAccess.updateTheatre(theatre);
-        assertEquals("Nonexistent Theatre", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllTheatres(theatres);
         assertFalse(theatres.contains(theatre));
 
         theatres.clear();
         result = dataAccess.deleteTheatre(theatre);
-        assertEquals("Nonexistent Theatre", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllTheatres(theatres);
         assertEquals(1, theatres.size());
 
@@ -766,13 +789,13 @@ public class DataAccessTest extends TestCase {
 
         showing = new Showing(90, 1, 1, 1, 1, 1, 1, 10, 10);
         result = dataAccess.updateShowing(showing);
-        assertEquals("Nonexistent Showing", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllShowings(showings);
         assertFalse(showings.contains(showing));
 
         showings.clear();
         result = dataAccess.deleteShowing(showing);
-        assertEquals("Nonexistent Showing", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllShowings(showings);
         assertEquals(84, showings.size());
 
@@ -781,27 +804,27 @@ public class DataAccessTest extends TestCase {
 
         ticket = new Ticket(3, 12, 3);
         result = dataAccess.updateTicket(ticket);
-        assertEquals("Nonexistent Ticket", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllTickets(tickets);
         assertFalse(tickets.contains(ticket));
 
         tickets.clear();
         result = dataAccess.deleteTicket(ticket);
-        assertEquals("Nonexistent Ticket", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllTickets(tickets);
         assertEquals(24, tickets.size());
 
         user = new User(6, "Polly");
         result = dataAccess.updateUser(user);
-        assertEquals("Nonexistent User", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllUsers(users);
         assertFalse(users.contains(user));
 
         users.clear();
         result = dataAccess.deleteUser(user);
-        assertEquals("Nonexistent User", result);
+        assertEquals("Tuple not inserted correctly.", result);
         dataAccess.getAllUsers(users);
-        assertEquals(3, users.size());
+        assertEquals(4, users.size());
 
         System.out.println("Finished DataAccess Test: testNonExistentObjects");
     }
@@ -814,19 +837,19 @@ public class DataAccessTest extends TestCase {
         System.out.println("Started DataAccessTest: testInvalidIDs");
 
         result = dataAccess.getMovieShowings(showings, -1);
-        assertNotNull(result);
+        assertNull(result);
         assertTrue(showings.isEmpty());
 
         result = dataAccess.getTheatreShowings(showings, -1);
-        assertNotNull(result);
+        assertNull(result);
         assertTrue(showings.isEmpty());
 
         result = dataAccess.getShowingTickets(tickets, -1);
-        assertNotNull(result);
+        assertNull(result);
         assertTrue(tickets.isEmpty());
 
         result = dataAccess.getUserTickets(tickets, -1);
-        assertNotNull(result);
+        assertNull(result);
         assertTrue(tickets.isEmpty());
 
         System.out.println("Finished DataAccessTest: testInvalidIDs");
@@ -928,7 +951,12 @@ public class DataAccessTest extends TestCase {
         assertFalse(movies.contains(movie));
 
         result = dataAccess.deleteMovie(movie);
-        assertNotNull(result);
+
+        dataAccess.insertMovie(new Movie(1, "Description for The Bee Movie", "The Bee Movie", "the_bee_movie", 120, 2021, 6,8));
+        dataAccess.insertMovie(new Movie(2, "Description for Finding Nemo", "Finding Nemo", "finding_nemo", 120, 2022, 6,9));
+        dataAccess.insertMovie(new Movie(3, "Description for Monsters Inc.", "Monsters Inc.", "monsters_inc", 120, 2022, 6,7));
+        dataAccess.insertMovie(new Movie(4, "Description for Ice Age", "Ice Age", "ice_age", 120, 2021, 8,26));
+        dataAccess.insertMovie(new Movie(5, "Description for Shrek", "Shrek", "shrek", 120, 2021, 8,26));
 
         System.out.println("Finished DataAccessTest: testEmptyMovieTable");
     }
@@ -986,6 +1014,8 @@ public class DataAccessTest extends TestCase {
 
         result = dataAccess.deleteTheatre(theatre);
         assertNotNull(result);
+
+        dataAccess.insertTheatre(new Theatre(1, 24));
 
         System.out.println("Finished DataAccessTest: testEmptyTheatreTable");
     }
@@ -1323,6 +1353,7 @@ public class DataAccessTest extends TestCase {
         dataAccess.deleteUser(new User(1, "Default User"));
         dataAccess.deleteUser(new User(2, "User2"));
         dataAccess.deleteUser(new User(3, "User3"));
+        dataAccess.deleteUser(new User(4, "NoTickets"));
 
         users = new ArrayList<User>();
         result = dataAccess.getAllUsers(users);
@@ -1330,7 +1361,7 @@ public class DataAccessTest extends TestCase {
         assertEquals(0, users.size());
 
         users.clear();
-        user = new User(4, "Bob");
+        user = new User(5, "Bob");
         result = dataAccess.insertUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
@@ -1338,11 +1369,11 @@ public class DataAccessTest extends TestCase {
         assertEquals(1, users.size());
         assertTrue(users.contains(user));
         user = users.get(0);
-        assertEquals(4, user.getUserID());
+        assertEquals(5, user.getUserID());
         assertEquals("Bob", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.updateUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
@@ -1350,11 +1381,11 @@ public class DataAccessTest extends TestCase {
         assertEquals(1, users.size());
         assertTrue(users.contains(user));
         user = users.get(0);
-        assertEquals(4, user.getUserID());
+        assertEquals(5, user.getUserID());
         assertEquals("Greg", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.deleteUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);

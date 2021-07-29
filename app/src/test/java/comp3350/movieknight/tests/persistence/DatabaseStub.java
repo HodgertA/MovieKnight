@@ -248,6 +248,8 @@ public class DatabaseStub implements DataAccess {
         users.add(user);
         user = new User(3, "User3");
         users.add(user);
+        user = new User(4, "NoTickets");
+        users.add(user);
 
         tickets = new ArrayList<Ticket>();
         ticket = new Ticket(1, 1, 0);
@@ -325,7 +327,7 @@ public class DatabaseStub implements DataAccess {
         if (!movies.contains(movie)) {
             movies.add(movie);
         } else {
-            result = "Duplicate Movie";
+            result = "Violation of unique constraint";
         }
         return result;
     }
@@ -339,7 +341,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             movies.set(index, movie);
         } else {
-            result = "Nonexistent Movie";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -353,7 +355,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             movies.remove(index);
         } else {
-            result = "Nonexistent Movie";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -381,7 +383,7 @@ public class DatabaseStub implements DataAccess {
         if (!theatres.contains(theatre)) {
             theatres.add(theatre);
         } else {
-            result = "Duplicate Theatre";
+            result = "Violation of unique constraint";
         }
         return result;
     }
@@ -395,7 +397,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             theatres.set(index, theatre);
         } else {
-            result = "Nonexistent Theatre";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -409,7 +411,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             theatres.remove(index);
         } else {
-            result = "Nonexistent Theatre";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -442,9 +444,8 @@ public class DatabaseStub implements DataAccess {
                     showingList.add(curr);
                 }
             }
-        } else {
-            result = "Invalid MovieID";
         }
+
        return result;
     }
 
@@ -460,9 +461,8 @@ public class DatabaseStub implements DataAccess {
                     showingList.add(curr);
                 }
             }
-        } else {
-            result = "Invalid TheatreID";
         }
+
         return result;
     }
 
@@ -472,7 +472,7 @@ public class DatabaseStub implements DataAccess {
         if (!showings.contains(showing)) {
             showings.add(showing);
         } else {
-            result = "Duplicate Showing";
+            result = "Violation of unique constraint";
         }
         return result;
     }
@@ -486,7 +486,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             showings.set(index, showing);
         } else {
-            result = "Nonexistent Showing";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -500,7 +500,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             showings.remove(index);
         } else {
-            result = "Nonexistent Showing";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -517,7 +517,7 @@ public class DatabaseStub implements DataAccess {
         if (!users.contains(user)) {
             users.add(user);
         } else {
-            result = "Duplicate User";
+            result = "Violation of unique constraint";
         }
         return result;
     }
@@ -531,7 +531,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             users.set(index, user);
         } else {
-            result = "Nonexistent User";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -545,7 +545,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             users.remove(index);
         } else {
-            result = "Nonexistent User";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -568,8 +568,6 @@ public class DatabaseStub implements DataAccess {
                     ticketList.add(curr);
                 }
             }
-        } else {
-            result = "Invalid ShowingID";
         }
 
         return result;
@@ -587,9 +585,8 @@ public class DatabaseStub implements DataAccess {
                     ticketList.add(curr);
                 }
             }
-        } else {
-            result = "Invalid UserID";
         }
+
         return result;
     }
 
@@ -599,7 +596,7 @@ public class DatabaseStub implements DataAccess {
         if (!tickets.contains(ticket)) {
             tickets.add(ticket);
         } else {
-            result = "Duplicate Ticket";
+            result = "Violation of unique constraint";
         }
         return result;
     }
@@ -613,7 +610,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             tickets.set(index, ticket);
         } else {
-            result = "Nonexistent Ticket";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
@@ -627,7 +624,7 @@ public class DatabaseStub implements DataAccess {
         if (index >= 0) {
             tickets.remove(index);
         } else {
-            result = "Nonexistent Ticket";
+            result = "Tuple not inserted correctly.";
         }
         return result;
     }
