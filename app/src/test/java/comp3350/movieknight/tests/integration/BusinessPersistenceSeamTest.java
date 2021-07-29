@@ -237,12 +237,12 @@ public class BusinessPersistenceSeamTest extends TestCase
 		User user1 = new User(1, "Default User");
 		User user2 = new User(2, "User2");
 		User user3 = new User(3, "User3");
-		User user4 = new User(4, "Another");
+		User user4 = new User(5, "Another");
 
 		ArrayList<User> users = new ArrayList<User>();
 		accessUser.getAllUsers(users);
 
-		assertEquals(3, users.size());
+		assertEquals(4, users.size());
 		assertTrue(users.contains(user1));
 		assertTrue(users.contains(user2));
 		assertTrue(users.contains(user3));
@@ -251,7 +251,7 @@ public class BusinessPersistenceSeamTest extends TestCase
 		accessUser.insertUser(user4);
 		users.clear();
 		accessUser.getAllUsers(users);
-		assertEquals(4, users.size());
+		assertEquals(5, users.size());
 		assertTrue(users.contains(user4));
 
 		User newUser1 = new User(1, "New Username");
@@ -266,7 +266,7 @@ public class BusinessPersistenceSeamTest extends TestCase
 		users.clear();
 		accessUser.getAllUsers(users);
 		assertFalse(users.contains(user4));
-		assertEquals(3, users.size());
+		assertEquals(4, users.size());
 		assertTrue(users.contains(user1));
 		assertEquals("New Username", users.get(0).getUsername());
 		assertTrue(users.contains(user2));

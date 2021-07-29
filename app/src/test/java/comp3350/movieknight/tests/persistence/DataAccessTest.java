@@ -668,19 +668,19 @@ public class DataAccessTest extends TestCase {
         assertEquals("Bob", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.updateUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
         assertNull(result);
         assertEquals(5, users.size());
         assertTrue(users.contains(user));
-        user = users.get(3);
-        assertEquals(4, user.getUserID());
+        user = users.get(4);
+        assertEquals(5, user.getUserID());
         assertEquals("Greg", user.getUsername());
 
         users.clear();
-        user = new User(4, "Greg");
+        user = new User(5, "Greg");
         result = dataAccess.deleteUser(user);
         assertNull(result);
         result = dataAccess.getAllUsers(users);
