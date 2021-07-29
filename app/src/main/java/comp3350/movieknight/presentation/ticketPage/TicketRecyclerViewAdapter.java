@@ -96,7 +96,8 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         selectfriendSpinner = view.findViewById(R.id.select_user_spinner);
 
 
-        ArrayList<User> friends = getAllFriends();
+        ArrayList<User> friends =new ArrayList<>();
+        accessUser.getAllFriends(friends,new User(userID,null));
 
         ArrayAdapter<User> adapter = new ArrayAdapter<User>(context,R.layout.friend_spinner,friends);
         selectfriendSpinner.setAdapter(adapter);
@@ -137,13 +138,6 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         tickets.clear();
         accessTickets.getUserTickets(tickets,userID);
         notifyDataSetChanged();
-    }
-    public ArrayList<User> getAllFriends(){
-        ArrayList result=new ArrayList();
-        accessUser.getAllUsers(result);
-        result.remove(new User(userID,null));
-
-        return result;
     }
 
     @Override
