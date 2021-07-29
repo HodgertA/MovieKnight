@@ -8,6 +8,7 @@ import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
 import static androidx.test.espresso.Espresso.*;
+import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 import static androidx.test.espresso.assertion.ViewAssertions.*;
 
@@ -25,6 +26,9 @@ public class ViewMoviesAcceptanceTest {
 
     @Test
     public void testViewMovies() {
+        onView(withText("Default User")).perform(click());
+        onView(withText("LOGIN")).perform(click());
+
         onView(withText("MovieKnight")).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.movie_card), withText("Finding Nemo")));
         onView(allOf(withId(R.id.movie_card), withText("Shrek")));

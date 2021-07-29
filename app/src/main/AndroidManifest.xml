@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieKnight">
         <activity
-            android:name=".presentation.cartFragment.CartActivity"
+            android:name=".presentation.cartActivity.CartActivity"
             android:parentActivityName=".presentation.seatsPage.SeatsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

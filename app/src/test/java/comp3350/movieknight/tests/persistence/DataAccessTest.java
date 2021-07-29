@@ -49,8 +49,6 @@ public class DataAccessTest extends TestCase {
 
         dataAccessTest.testNonexistentObjects();
         dataAccessTest.testDuplicateObjects();
-
-
     }
 
     public void tearDown() {
@@ -203,7 +201,6 @@ public class DataAccessTest extends TestCase {
         assertEquals(8, showing.getShowingHour());
         assertEquals(15, showing.getShowingMinute());
 
-
         showing = showings.get(41);
         day.add(Calendar.DATE, 2);
         assertEquals(42, showing.getShowingID());
@@ -280,7 +277,6 @@ public class DataAccessTest extends TestCase {
         assertEquals(day.get(Calendar.DATE), showingDate.get(Calendar.DATE));
         assertEquals(9, showing.getShowingHour());
         assertEquals(45, showing.getShowingMinute());
-
 
         System.out.println("Finished DataAccess Test: testDefaultShowings");
     }

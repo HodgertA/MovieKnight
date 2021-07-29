@@ -161,7 +161,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         // parse movie info to next screen
         chosenShowing.putString("movieTitle", movieTitle);
-        chosenShowing.putString("movieTime", String.valueOf(showing.getShowingHour() + ":" + showing.getShowingMinute()));
+        chosenShowing.putString("movieTime", showing.getShowingHour() + ":" + showing.getShowingMinute());
         chosenShowing.putString("movieDate", selectedDate);
     }
 

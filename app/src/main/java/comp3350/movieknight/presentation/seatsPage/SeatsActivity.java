@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import comp3350.movieknight.R;
 import comp3350.movieknight.business.AccessTickets;
 import comp3350.movieknight.presentation.MainActivity;
-import comp3350.movieknight.presentation.MoviesActivity.MoviesActivity;
-import comp3350.movieknight.presentation.cartFragment.CartActivity;
+import comp3350.movieknight.presentation.cartActivity.CartActivity;
 import comp3350.movieknight.presentation.movieDetailsPage.MovieDetailsActivity;
 
 public class SeatsActivity extends AppCompatActivity {

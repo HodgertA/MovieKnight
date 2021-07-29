@@ -139,7 +139,7 @@ public class AccessUserTest extends TestCase {
         System.out.println("\nFinished updateMovie tests (using stub)");
     }
 
-    public void testGetAllFriends(){
+    public void testGetAllFriends() {
         System.out.println("\nStarting getAllFriends tests (using stub)");
 
         Services.closeDataAccess();
@@ -150,34 +150,49 @@ public class AccessUserTest extends TestCase {
         User user1 = new User(1, "Default User");
         User user2 = new User(2, "User2");
         User user3 = new User(3, "User3");
+        User user4 = new User(4, "NoTickets");
 
         ArrayList<User> friends = new ArrayList<User>();
-        accessUser.getAllFriends(friends,user1);
+        accessUser.getAllFriends(friends, user1);
 
-        assertEquals(2, friends.size());
+        assertEquals(3, friends.size());
         assertFalse(friends.contains(user1));
         assertTrue(friends.contains(user2));
         assertTrue(friends.contains(user3));
+        assertTrue(friends.contains(user4));
 
         friends.clear();
         accessUser.getAllFriends(friends,user2);
 
-        assertEquals(2, friends.size());
+        assertEquals(3, friends.size());
         assertTrue(friends.contains(user1));
         assertFalse(friends.contains(user2));
         assertTrue(friends.contains(user3));
+        assertTrue(friends.contains(user4));
 
         friends.clear();
         accessUser.getAllFriends(friends,user3);
 
-        assertEquals(2, friends.size());
+        assertEquals(3, friends.size());
         assertTrue(friends.contains(user1));
         assertTrue(friends.contains(user2));
         assertFalse(friends.contains(user3));
+
+        System.out.println(friends.get(2).toString());
+
+        assertTrue(friends.contains(user4));
+
+        friends.clear();
+        accessUser.getAllFriends(friends,user4);
+
+        assertEquals(3, friends.size());
+        assertTrue(friends.contains(user1));
+        assertTrue(friends.contains(user2));
+        assertTrue(friends.contains(user3));
+        assertFalse(friends.contains(user4));
 
         Services.closeDataAccess();
 
         System.out.println("\nFinished getAllFriends tests (using stub)");
     }
-
 }

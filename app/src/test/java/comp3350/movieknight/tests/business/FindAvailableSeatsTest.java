@@ -18,7 +18,7 @@ public class FindAvailableSeatsTest extends TestCase {
 
         try {
             FindAvailableSeats.compileAvailableSeats(null,10);
-            fail("Expected an IllegalArguementException");
+            fail("Expected a NullPointerException");
         } catch (NullPointerException e) { }
 
         System.out.println("Finished find available seats test: testNullList");
@@ -45,7 +45,7 @@ public class FindAvailableSeatsTest extends TestCase {
 
         try {
             FindAvailableSeats.compileAvailableSeats(tickets,10);
-            fail("Expected an IllegalArguementException");
+            fail("Expected an NullPointerException");
         } catch (NullPointerException e) { }
 
         System.out.println("Finished find available seats test: testNullTicket");
@@ -76,7 +76,7 @@ public class FindAvailableSeatsTest extends TestCase {
 
         try {
             FindAvailableSeats.compileAvailableSeats(tickets,0);
-            fail("Expected an IllegalArguementException");
+            fail("Expected an ArrayIndexOutOfBoundsException");
         } catch (ArrayIndexOutOfBoundsException e) { }
 
         System.out.println("Finished find available seats test: testZeroSeat");
@@ -92,7 +92,7 @@ public class FindAvailableSeatsTest extends TestCase {
 
         try {
             FindAvailableSeats.compileAvailableSeats(tickets,-1);
-            fail("Expected an IllegalArguementException");
+            fail("Expected an NegativeArraySizeException");
         } catch (NegativeArraySizeException e) { }
 
         System.out.println("Finished find available seats test: testNegativeSeat");
@@ -108,7 +108,7 @@ public class FindAvailableSeatsTest extends TestCase {
         try {
             //ticket seat number is bigger than the number of seats
             FindAvailableSeats.compileAvailableSeats(tickets,10);
-            fail("Expected an IllegalArguementException");
+            fail("Expected an ArrayIndexOutOfBoundsException");
         } catch (ArrayIndexOutOfBoundsException e) { }
 
         System.out.println("Finished find available seats test: testTicketSeatNumberBiggerThanTotalSeatsNum");

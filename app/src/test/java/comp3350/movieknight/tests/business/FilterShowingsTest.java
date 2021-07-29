@@ -98,7 +98,6 @@ public class FilterShowingsTest extends TestCase {
         assertTrue(showings.isEmpty());
 
         System.out.println("Finished filter movies test: testNoMoviesShowingToday");
-
     }
 
     public void testSomeMoviesShowingToday() {
@@ -160,7 +159,6 @@ public class FilterShowingsTest extends TestCase {
         assertTrue(showings.contains(showing3));
 
         System.out.println("Finished filter movies test: testAllMoviesShowingForFutureDate");
-
     }
 
     public void testNoMoviesShowingForFutureDate() {
@@ -184,7 +182,6 @@ public class FilterShowingsTest extends TestCase {
         assertTrue(showings.isEmpty());
 
         System.out.println("Finished filter movies test: testNoMoviesShowingForFutureDate");
-
     }
 
     public void testSomeMoviesShowingForFutureDate() {
@@ -222,5 +219,4 @@ public class FilterShowingsTest extends TestCase {
 
         System.out.println("Finished filter movies test: testSomeMoviesShowingForFutureDate");
     }
-
 }

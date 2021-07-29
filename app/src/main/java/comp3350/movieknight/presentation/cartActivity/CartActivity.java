@@ -1,4 +1,4 @@
-package comp3350.movieknight.presentation.cartFragment;
+package comp3350.movieknight.presentation.cartActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

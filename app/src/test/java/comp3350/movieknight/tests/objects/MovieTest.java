@@ -103,9 +103,9 @@ public class MovieTest extends TestCase {
         Movie movie1 = new Movie(1, null, null,null, 100, 2021, 10, 20);
         assertNotNull(movie1);
         assertEquals(1, movie1.getMovieID());
-        assertEquals(null, movie1.getDescription());
-        assertEquals(null, movie1.getTitle());
-        assertEquals(null, movie1.getPoster());
+        assertNull(movie1.getDescription());
+        assertNull(movie1.getTitle());
+        assertNull(movie1.getPoster());
         assertEquals(100, movie1.getRuntime());
         assertEquals(2021, movie1.getLastShowDate().get(Calendar.YEAR));
         assertEquals(9, movie1.getLastShowDate().get(Calendar.MONTH));

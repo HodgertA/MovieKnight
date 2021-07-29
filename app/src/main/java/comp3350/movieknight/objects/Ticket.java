@@ -46,7 +46,6 @@ public class Ticket {
     }
 
     public boolean equals(Object object) {
-
         boolean result = false;
         Ticket ticket;
 

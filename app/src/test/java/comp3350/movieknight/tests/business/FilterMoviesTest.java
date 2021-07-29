@@ -55,7 +55,6 @@ public class FilterMoviesTest extends TestCase {
         assertTrue(movies.contains(movie));
 
         System.out.println("Finished filter movies test: testOneMovieInTheatres");
-
     }
 
     public void testOneMovieNotInTheatres() {
@@ -225,6 +224,5 @@ public class FilterMoviesTest extends TestCase {
 
         System.out.println("Finished filter movies test: testNormalCase");
     }
-
 }
 
