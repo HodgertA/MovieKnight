@@ -33,4 +33,10 @@ public class AccessUser {
     {
         return dataAccess.deleteUser(user);
     }
+
+    public String getAllFriends(ArrayList<User> friendList,User myself){
+        String result=dataAccess.getAllUsers(friendList);
+        friendList.remove(myself);
+        return result;
+    }
 }

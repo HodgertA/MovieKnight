@@ -96,9 +96,10 @@ public class TicketRecyclerViewAdapter extends RecyclerView.Adapter<TicketViewHo
         selectfriendSpinner = view.findViewById(R.id.select_user_spinner);
 
 
-        ArrayList<User> users = new ArrayList<User>();
-        accessUser.getAllUsers(users);
-        ArrayAdapter<User> adapter = new ArrayAdapter<User>(context,R.layout.friend_spinner,users);
+        ArrayList<User> friends =new ArrayList<>();
+        accessUser.getAllFriends(friends,new User(userID,null));
+
+        ArrayAdapter<User> adapter = new ArrayAdapter<User>(context,R.layout.friend_spinner,friends);
         selectfriendSpinner.setAdapter(adapter);
         selectfriendSpinner.setOnItemSelectedListener(this);
 
